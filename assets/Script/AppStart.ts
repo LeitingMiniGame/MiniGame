@@ -8,7 +8,7 @@
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class NewClass extends cc.Component {
+export default class AppStart extends cc.Component {
     loadList = [
         {
             name : 'hero',
@@ -19,10 +19,11 @@ export default class NewClass extends cc.Component {
             name : 'mapLayer',
             path : 'Prefab/MapPrefab/MapLayer',
             zOrder : 0
-        }
+        },
     ]
     isLoadFinish:number = 0
     allFinish:number = 0
+
     start () {
         this.allFinish = this.loadList.length
         this.loadResource()
@@ -30,6 +31,7 @@ export default class NewClass extends cc.Component {
 
     loadResource(){
         if(this.isLoadFinish == this.allFinish){
+            this.loadFinishCallBack()
             return
         }
         let name = this.loadList[this.isLoadFinish].name
@@ -47,12 +49,20 @@ export default class NewClass extends cc.Component {
         })
     }
 
-    update (dt) {
-        if(this.isLoadFinish == this.allFinish){
-            this.hero.data.parent = this.node
-            this.mapLayer.data.getComponent('Map').char = this.hero.data
-            this.mapLayer.data.parent = this.node
-            this.isLoadFinish = 0
-        }
+    addHero(){
+        this.hero.data.parent = this.node
     }
+
+    addMapLayer(){
+        this.mapLayer.data.getComponent('Map').char = this.hero.data
+        this.mapLayer.data.parent = this.node
+    }
+
+    loadFinishCallBack(){
+        this.addHero()
+        this.addMapLayer()
+    }
+
+    // update (dt) {
+    // }
 }
