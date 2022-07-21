@@ -15,14 +15,27 @@ export default abstract class Char extends cc.Component {
     hp:number
     damage:number
 
-
-    loadImage(path){
-        cc.resources.load(path, cc.SpriteFrame, (error, assets) =>{
+    loadImage(path){        
+        cc.resources.load(path, cc.SpriteFrame, (error, assets:cc.SpriteFrame) =>{
             if(error){
                 return
             }
             var sprite = this.node.addComponent(cc.Sprite);
             sprite.spriteFrame = assets
+            this.node.setContentSize(68, 68)
+            this.move()
+        })
+    }
+
+    loadAnimate(path){
+        cc.resources.load(path, cc.AnimationClip, (error, clip:cc.AnimationClip) =>{
+            if(error){
+                return
+            }
+            var anim = this.node.addComponent(cc.Animation);
+            clip.wrapMode = cc.WrapMode.Loop
+            anim.addClip(clip);
+            anim.play('BeeMove');
             this.node.setContentSize(68, 68)
             this.move()
         })

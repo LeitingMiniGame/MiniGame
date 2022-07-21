@@ -23,7 +23,7 @@ export default abstract class weapon extends cc.Component {
     }
 
     loadImage(path){
-        cc.resources.load(path, cc.SpriteFrame, (error, assets) =>{
+        cc.resources.load(path, cc.SpriteFrame, (error, assets:cc.SpriteFrame) =>{
             if(error){
                 return
             }

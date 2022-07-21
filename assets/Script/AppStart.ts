@@ -21,31 +21,9 @@ export default class AppStart extends cc.Component {
     allFinish:number = 0
 
     start () {
-        // this.allFinish = this.loadList.length
         this.addHero()
         this.addMapLayer()
-        // this.loadResource()
     }
-
-    // loadResource(){
-    //     if(this.isLoadFinish == this.allFinish){
-    //         this.loadFinishCallBack()
-    //         return
-    //     }
-    //     let name = this.loadList[this.isLoadFinish].name
-    //     let path = this.loadList[this.isLoadFinish].path
-    //     let zOrder = this.loadList[this.isLoadFinish].zOrder
-    //     // 加载地图
-    //     cc.resources.load(path, cc.Prefab, (error, assets) =>{
-    //         if(error){
-    //             return
-    //         }
-    //         assets.data.zIndex = zOrder
-    //         this[name] = assets
-    //         this.isLoadFinish++
-    //         this.loadResource()
-    //     })
-    // }
 
     // 添加角色
     addHero(){
@@ -64,7 +42,6 @@ export default class AppStart extends cc.Component {
             mapLayer.node.parent = this.node
             mapLayer.mapBlock = assets
         })
-
     }
 
     loadFinishCallBack(){

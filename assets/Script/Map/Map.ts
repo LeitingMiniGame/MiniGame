@@ -2,6 +2,8 @@ import CharMgr from "../Mgr/CharMgr"
 import MonsterMgr from "../Mgr/MonsterMgr"
 
 const { ccclass, property } = cc._decorator
+const MAP_BLOCK_ZINDEX = 100
+const MONSTER_ZINDEX = 200
 
 @ccclass
 export default class Map extends cc.Component {
@@ -51,6 +53,7 @@ export default class Map extends cc.Component {
         .call(()=>{
             let monster = MonsterMgr.getInstance().createMonster("Monster", "putao")
             monster.node.parent = this.node
+            monster.node.zIndex = MONSTER_ZINDEX
         }).start()
     }
 
@@ -66,6 +69,7 @@ export default class Map extends cc.Component {
         } else {
             mapBlock = cc.instantiate(this.mapBlock)
         }
+        mapBlock.zIndex = MAP_BLOCK_ZINDEX
         return mapBlock
     }
 

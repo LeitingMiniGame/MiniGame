@@ -41,10 +41,4 @@ export default class CharMgr {
         return this._mapChar.get(name)
     }
 
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {}
-
-
-    // update (dt) {}
 }
