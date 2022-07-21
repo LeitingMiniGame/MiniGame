@@ -20,8 +20,8 @@ export default class Map extends cc.Component {
     onLoad(params?: any) {
         this._mapBlockPool = new cc.NodePool()
         let blockSize = cc.instantiate(this.mapBlock).getContentSize()
-        let row = cc.winSize.height / blockSize.height * 2
-        let col = cc.winSize.width / blockSize.width * 2
+        let row = Math.floor(cc.winSize.height / blockSize.height * 2)
+        let col = Math.floor(cc.winSize.width / blockSize.width * 2)
         let initCount = row * col
         for (let i = 0; i < initCount; i++) {
             let mapBlock = cc.instantiate(this.mapBlock)
