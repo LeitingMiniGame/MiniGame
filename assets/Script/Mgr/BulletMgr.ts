@@ -22,6 +22,8 @@ export default class BulletMgr  {
         let bullet = new cc.Node()
         bullet.addComponent(typeName)
         let bulletLayer = MapMgr.getInstance().getLayerByName('BulletLayer')
+        bullet.x = bulletLayer.convertToNodeSpaceAR(pos).x
+        bullet.y = bulletLayer.convertToNodeSpaceAR(pos).y
         bullet.parent = bulletLayer
     }
 }

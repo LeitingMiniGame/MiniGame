@@ -1,10 +1,3 @@
-// Learn TypeScript:
-//  - https://docs.cocos.com/creator/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-
 import MonsterMgr from "../Mgr/MonsterMgr";
 import Weapon from "./Weapon";
 const { ccclass, property } = cc._decorator;
@@ -23,7 +16,7 @@ export default class Clover extends Weapon {
         let worldPos = this.node.convertToWorldSpaceAR(cc.v2(0, 0))
         let targetPos = MonsterMgr.getInstance().getNearestMonsterPos(worldPos)
         if(!targetPos){
-            return cc.v2(cc.randomRange(-1000, 1000), cc.randomRange(-1000, 1000))
+            return cc.v2(Math.random(), Math.random())
         }
         return targetPos.sub(worldPos)
     }

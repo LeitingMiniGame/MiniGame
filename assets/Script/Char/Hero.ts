@@ -1,5 +1,4 @@
 import Char from "./Char";
-import MapMgr from "../Mgr/MapMgr";
 import BulletMgr from "../Mgr/BulletMgr";
 const { ccclass, property } = cc._decorator;
 
@@ -19,6 +18,7 @@ export default class Hero extends Char {
                     .delay(this.fireInterval)
             )
             .start()
+
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
     }
 
@@ -39,10 +39,12 @@ export default class Hero extends Char {
 
     }
 
-    move() { }
+    move() {}
 
-    update(dt) {
 
+
+
+    update (dt) {
     }
 
 }

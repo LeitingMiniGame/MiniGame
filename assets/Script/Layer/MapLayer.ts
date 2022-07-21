@@ -44,10 +44,6 @@ export default class Map extends cc.Component {
             }
         }
 
-        // 监听事件
-        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
-        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this)
-
         // 开始生成怪物
         cc.tween(this.node)
         .call(()=>{
@@ -97,50 +93,5 @@ export default class Map extends cc.Component {
         }
         mapBlock.parent = this.node
         mapBlock.setPosition(newPos)
-    }
-
-    // 监听按键
-    onKeyDown(event) {
-        if (this.direStack.indexOf(event.keyCode) == -1) {
-            this.direStack.push(event.keyCode)
-        }
-    }
-    onKeyUp(event) {
-        let index = this.direStack.indexOf(event.keyCode)
-        if (index != -1) {
-            this.direStack.splice(index, 1);
-        }
-    }
-
-    // 移动地图
-    moveMap(dt){
-        let leftVec = 0
-        let upVec = 0
-        for (let i = 0; i < this.direStack.length; i++) {
-            switch (this.direStack[i]) {
-                case cc.macro.KEY.w:
-                    upVec = -1
-                    break
-                case cc.macro.KEY.s:
-                    upVec = 1
-                    break
-                case cc.macro.KEY.a:
-                    leftVec = 1
-                    break
-                case cc.macro.KEY.d:
-                    leftVec = -1
-                    break
-            }
-        }
-        if (leftVec != 0) {
-            this.node.x += this.speed * dt * leftVec;
-        }
-        if (upVec != 0) {
-            this.node.y += this.speed * dt * upVec;
-        }
-    }
-
-    update (dt) {
-        this.moveMap(dt)
     }
 }

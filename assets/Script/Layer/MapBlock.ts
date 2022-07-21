@@ -1,10 +1,3 @@
-// Learn TypeScript:
-//  - https://docs.cocos.com/creator/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -21,7 +14,7 @@ export default class MapBlock extends cc.Component {
     // 检测是否回收地图块
     checkOverBorder(){
         let pos = this.node.convertToWorldSpaceAR(cc.v2(0, 0));
-        let map = this.node.parent.getComponent('Map')
+        let map = this.node.parent.getComponent('MapLayer')
         if (pos.x < - cc.winSize.width / 2 ||
             pos.x > cc.winSize.width * 1.5 ||
             pos.y < - cc.winSize.height / 2 ||
