@@ -1,3 +1,5 @@
+import CharMgr from "../Mgr/CharMgr"
+
 const { ccclass, property } = cc._decorator
 
 @ccclass
@@ -8,9 +10,6 @@ export default class Map extends cc.Component {
     })
     mapBlock: cc.Prefab = null
 
-    @property(cc.Node)
-    char:cc.Node = null;
-
     private _mapBlockPool: cc.NodePool
 
     //方向
@@ -18,6 +17,11 @@ export default class Map extends cc.Component {
     speed:number = 0
 
     onLoad(params?: any) {
+        this.speed = CharMgr.getInstance().getCharByName("Hero").speed
+    }
+
+    start(params?: any) {
+        // 创建对象池
         this._mapBlockPool = new cc.NodePool()
         let blockSize = cc.instantiate(this.mapBlock).getContentSize()
         let row = Math.floor(cc.winSize.height / blockSize.height * 2)
@@ -27,13 +31,8 @@ export default class Map extends cc.Component {
             let mapBlock = cc.instantiate(this.mapBlock)
             this._mapBlockPool.put(mapBlock)
         }
-        this.speed = this.char.getComponent("Hero").speed
-    }
 
-    start(params?: any) {
-        let blockSize = this.getMapBlock().getContentSize()
-        let row = cc.winSize.height / blockSize.height * 2
-        let col = cc.winSize.width / blockSize.width * 2
+        // 将地图贴上
         for (let i = 0; i < row; i++) {
             for (let j = 0; j < col; j++) {
                 let mapBlock = this.getMapBlock()
@@ -121,6 +120,11 @@ export default class Map extends cc.Component {
         if (upVec != 0) {
             this.node.y += this.speed * dt * upVec;
         }
+    }
+
+    // 生成怪物
+    createMonster(){
+
     }
 
     update (dt) {

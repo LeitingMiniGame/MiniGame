@@ -8,25 +8,25 @@
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class Char extends cc.Component {
+export default abstract class Char extends cc.Component {
 
     speed:number
     hp:number
     damage:number
 
-    // @property(cc.Label)
-    // label: cc.Label = null;
 
-    // @property
-    // text: string = 'hello';
+    loadImage(path){
+        cc.resources.load(path, cc.SpriteFrame, (error, assets) =>{
+            if(error){
+                return
+            }
+            var sprite = this.node.addComponent(cc.Sprite);
+            sprite.spriteFrame = assets
+            this.node.setContentSize(68, 68)
+            this.move()
+        })
+    }
 
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {}
-
-    // start () {
-
-    // }
-
-    // update (dt) {}
+    // 子弹的移动逻辑，子类需要实现
+    abstract move():any
 }

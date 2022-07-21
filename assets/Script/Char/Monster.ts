@@ -4,25 +4,24 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
+import Char from "./Char";
 
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class Monster extends cc.Component {
-
-    @property(cc.Label)
-    label: cc.Label = null;
-
-    @property
-    text: string = 'hello';
-
+export default class Monster extends Char {
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {}
-
-    start () {
-
+    onLoad () {
+        this.loadImage("Image/Monster")
     }
+
+    move() {
+    }
+
+    // start () {
+
+    // }
 
     // update (dt) {}
 }
