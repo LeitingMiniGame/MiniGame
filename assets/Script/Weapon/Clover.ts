@@ -6,9 +6,19 @@ const { ccclass, property } = cc._decorator;
 export default class Clover extends Weapon {
 
     speed: number = 600
+    size: cc.Size = cc.size(20, 20)
+    hp: number = 10
+    damage: number = 10
 
     start() {
         this.loadImage('Image/Hero')
+
+        let boxCollider = this.addComponent(cc.BoxCollider)
+        boxCollider.size = this.size
+
+        this.hp = 10
+        this.damage = 10
+
     }
 
     getTarget() {

@@ -34,6 +34,11 @@ export default class MonsterMgr extends CharMgr{
         return monster
     }
 
+    public removeMonster(monster){
+        this._mapCharById.delete(monster.id)
+        monster.node.removeFromParent()
+    }
+
     public getNearestMonsterPos(worldPos:cc.Vec2){
         let nearestLen = 99999999
         let nearest:cc.Vec2

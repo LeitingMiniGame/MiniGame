@@ -19,7 +19,7 @@ export default class BulletMgr  {
     }
 
     public createBullet(typeName:string, pos:cc.Vec2){
-        let bullet = new cc.Node()
+        let bullet = new cc.Node(typeName)
         bullet.addComponent(typeName)
         let bulletLayer = MapMgr.getInstance().getLayerByName('BulletLayer')
         bullet.x = bulletLayer.convertToNodeSpaceAR(pos).x

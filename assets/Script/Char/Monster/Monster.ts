@@ -1,4 +1,5 @@
 import CharMgr from "../../Mgr/CharMgr";
+import MonsterMgr from "../../Mgr/MonsterMgr";
 import Char from "../Char";
 
 const { ccclass, property } = cc._decorator;
@@ -7,6 +8,12 @@ const { ccclass, property } = cc._decorator;
 export default class Monster extends Char {
     targetPos: cc.Vec2 = cc.v2(0, 0)
     getTargetInterval: number = 0.1
+
+    start() {
+        let boxCollider = this.addComponent(cc.BoxCollider)
+        boxCollider.size = this.size
+        this.node.group = 'Monster'
+    }
 
     // 获取目标位置
     getTaget() {
@@ -28,6 +35,28 @@ export default class Monster extends Char {
                 .by(this.getTargetInterval, { position: cc.v3(this.targetPos.x, this.targetPos.y) })
                 .start()
         }, this.getTargetInterval, cc.macro.REPEAT_FOREVER)
+    }
+
+    injured(damage){
+        this.hp -= damage
+        if (this.hp <= 0) {
+            MonsterMgr.getInstance().removeMonster(this)
+        }
+    }
+
+
+    onCollisionEnter(other, self) {
+        if (other.node.group == "Weapon") {
+            let weapon = other.node.getComponent(other.node.name)
+            let monster = self.node.getComponent(self.node.name)
+            weapon.injured(monster.damage)
+            monster.injured(weapon.damage)
+        }
+        if (other.node.group == "Hero") {
+            let hero = other.node.getComponent(other.node.name)
+            let monster = self.node.getComponent(self.node.name)
+            hero.injured(monster.damage)
+        }
     }
 
     // start () {

@@ -11,8 +11,6 @@ export default class Hero extends Char {
     fireInterval: number = 1
 
     start() {
-
-        
         this.loadAnimate("Animate/BeeMove")
         cc.tween(this.node)
             .repeatForever(
@@ -21,7 +19,9 @@ export default class Hero extends Char {
                     .delay(this.fireInterval)
             )
             .start()
-
+        let boxCollider = this.addComponent(cc.BoxCollider)
+        boxCollider.size = this.size
+        this.node.group = 'Hero'
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
     }
 
@@ -39,6 +39,13 @@ export default class Hero extends Char {
     // 攻击函数
     fire() {
         BulletMgr.getInstance().createBullet('Clover', this.getWorldPos())
+    }
+
+    // 受伤的函数
+    injured(damage){
+        this.hp -= damage
+        console.log(this.hp);
+        
     }
 
     move() { }

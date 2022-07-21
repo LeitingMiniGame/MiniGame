@@ -3,8 +3,13 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default abstract class Weapon extends cc.Component {
 
-    onLoad() {
+    hp: number
+    damage: number
+    speed: number
+    size: cc.Size
 
+    onLoad() {
+        this.node.group = 'Weapon'
     }
 
     loadImage(path) {
@@ -14,9 +19,16 @@ export default abstract class Weapon extends cc.Component {
             }
             var sprite = this.node.addComponent(cc.Sprite);
             sprite.spriteFrame = assets
-            this.node.setContentSize(20, 20)
+            this.node.setContentSize(this.size)
             this.move()
         })
+    }
+
+    injured(damage){
+        this.hp -= damage
+        if (this.hp <= 0) {
+            this.node.removeFromParent()
+        }
     }
 
     abstract getTarget(): any

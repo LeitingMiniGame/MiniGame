@@ -15,6 +15,12 @@ export default class AppStart extends cc.Component {
         this.addMapLayer()
         this.addBulletLayer()
         this.addMonsterLayer()
+
+        // 开启碰撞检测
+        var manager = cc.director.getCollisionManager();
+        manager.enabled = true;
+        manager.enabledDebugDraw = true;
+        manager.enabledDrawBoundingBox = true;
     }
 
     // 添加角色

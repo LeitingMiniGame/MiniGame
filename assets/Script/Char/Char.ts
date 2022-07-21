@@ -7,6 +7,7 @@ export default abstract class Char extends cc.Component {
     speed: number
     hp: number
     damage: number
+    size:cc.Size = cc.size(68, 68)
 
     onLoad(){
         this.node.addComponent(cc.Sprite)
@@ -19,7 +20,7 @@ export default abstract class Char extends cc.Component {
             }
             var sprite = this.node.addComponent(cc.Sprite);
             sprite.spriteFrame = assets
-            this.node.setContentSize(68, 68)
+            this.node.setContentSize(this.size)
             this.move()
         })
     }
@@ -32,7 +33,7 @@ export default abstract class Char extends cc.Component {
             var anim = this.node.addComponent(cc.Animation);
             anim.addClip(clip);
             anim.play('BeeMove');
-            this.node.setContentSize(68, 68)
+            this.node.setContentSize(this.size)
             this.move()
         })
     }

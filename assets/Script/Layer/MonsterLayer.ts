@@ -10,7 +10,7 @@ export default class MonsterLayer extends cc.Component {
 
     // onLoad () {}
     createInterval = 1
-    createNum = 2
+    createNum = 3
 
     getCreatePos() {
         let winSize = cc.winSize
@@ -32,7 +32,7 @@ export default class MonsterLayer extends cc.Component {
 
     addMonster() {
         for (let i = 0; i < this.createNum; i++) {
-            let monster = MonsterMgr.getInstance().createMonster("Bee", "bee")
+            let monster = MonsterMgr.getInstance().createMonster("Bee", "Bee")
             monster.node.parent = this.node
             monster.node.setPosition(this.getCreatePos())
         }
