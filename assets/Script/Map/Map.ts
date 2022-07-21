@@ -3,12 +3,10 @@ const { ccclass, property } = cc._decorator
 @ccclass
 export default class Map extends cc.Component {
 
-    // 这个属性引用了星星预制资源
     @property({
         type: cc.Prefab
     })
     mapBlock: cc.Prefab = null
-
 
     @property(cc.Node)
     char:cc.Node = null;
@@ -17,8 +15,7 @@ export default class Map extends cc.Component {
 
     //方向
     direStack = []
-    speed = 20
-
+    speed:number = 0
 
     //第一进来。
     onLoad(params?: any) {
@@ -31,6 +28,7 @@ export default class Map extends cc.Component {
             let mapBlock = cc.instantiate(this.mapBlock)
             this._mapBlockPool.put(mapBlock)
         }
+        this.speed = this.char.getComponent("Hero").speed
     }
 
     start(params?: any) {
@@ -45,15 +43,10 @@ export default class Map extends cc.Component {
             }
         }
 
-        //add keyboard input listener to jump, turnLeft and turnRight
-        // cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
-        // cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this)
-        // touch input
-        // this.node.parent.on(cc.Node.EventType.TOUCH_START, this.onTouchBegan, this)
-        // this.node.parent.on(cc.Node.EventType.TOUCH_END, this.onTouchEnded, this)
-
-        var follow = cc.follow(this.char, cc.rect(0,0, 1500,1500));
-        this.node.runAction(follow);
+        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
+        cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this)
+        // var follow = cc.follow(this.char, cc.rect(0,0, 1500,1500));
+        // this.node.runAction(follow);
     }
 
     // 获取地图块
@@ -68,33 +61,43 @@ export default class Map extends cc.Component {
     }
 
     onKeyDown(event) {
-        this.direStack.push(event.keyCode)
+        if (this.direStack.indexOf(event.keyCode) == -1) {
+            this.direStack.push(event.keyCode)
+        }
     }
 
     onKeyUp(event) {
-        for(let i = 0; i < this.direStack.length; i++){
-            if(this.direStack[i] = event.keyCode){
-                this.direStack.splice(i, 1);
-                break
-            }
+        let index = this.direStack.indexOf(event.keyCode)
+        if (index != -1) {
+            this.direStack.splice(index, 1);
         }
-        // switch (event.keyCode) {
-        //     case cc.macro.KEY.w:
-        //         this.direction[0] = false
-        //         break
-        //     case cc.macro.KEY.s:
-        //         this.direction[1] = false
-        //         break
-        //     case cc.macro.KEY.a:
-        //         this.direction[2] = false
-        //         break
-        //     case cc.macro.KEY.d:
-        //         this.direction[3] = false
-        //         break
-        // }
     }
 
-    // update (dt) {
-
-    // }
+    update (dt) {
+        let leftVec = 0
+        let upVec = 0
+        for (let i = 0; i < this.direStack.length; i++) {
+            switch (this.direStack[i]) {
+                case cc.macro.KEY.w:
+                    upVec = -1
+                    break
+                case cc.macro.KEY.s:
+                    upVec = 1
+                    break
+                case cc.macro.KEY.a:
+                    leftVec = 1
+                    break
+                case cc.macro.KEY.d:
+                    leftVec = -1
+                    break
+            }
+        }
+        if (leftVec != 0) {
+            this.node.x += this.speed * dt * leftVec;
+        }
+        if (upVec != 0) {
+            this.node.y += this.speed * dt * upVec;
+        }
+        console.log(this.node.x);
+    }
 }
