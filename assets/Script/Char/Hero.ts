@@ -10,7 +10,7 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class NewClass extends cc.Component {
 
-    speed = 150
+    speed = 200
 
     start() {
 

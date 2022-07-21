@@ -17,7 +17,6 @@ export default class Map extends cc.Component {
     direStack = []
     speed:number = 0
 
-    //第一进来。
     onLoad(params?: any) {
         this._mapBlockPool = new cc.NodePool()
         let blockSize = cc.instantiate(this.mapBlock).getContentSize()
@@ -39,14 +38,12 @@ export default class Map extends cc.Component {
             for (let j = 0; j < col; j++) {
                 let mapBlock = this.getMapBlock()
                 mapBlock.parent = this.node
-                mapBlock.setPosition(blockSize.width * i - cc.winSize.width / 2, blockSize.height * j - cc.winSize.height / 2)
+                mapBlock.setPosition(blockSize.width * j - cc.winSize.width, blockSize.height * i - cc.winSize.height)
             }
         }
 
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this)
-        // var follow = cc.follow(this.char, cc.rect(0,0, 1500,1500));
-        // this.node.runAction(follow);
     }
 
     // 获取地图块
@@ -60,12 +57,37 @@ export default class Map extends cc.Component {
         return mapBlock
     }
 
+    // 回收地图块
+    recycleMapBlock(mapBlock) {
+        this._mapBlockPool.put(mapBlock);
+    }
+
+    addNewMapBlock(oldX:number, oldY:number, worldPos){
+        let mapBlock = this.getMapBlock()
+        let blockSize = mapBlock.getContentSize()
+        let col = Math.floor(cc.winSize.width / blockSize.width * 2)
+        let row = Math.floor(cc.winSize.height / blockSize.height * 2)
+        let newPos
+        if(worldPos.x < - cc.winSize.width / 2){
+            newPos = new cc.Vec2(oldX + blockSize.width * col, oldY)            
+        }else if(worldPos.x > cc.winSize.width * 1.5){
+            let col = Math.floor(cc.winSize.width / blockSize.width * 2)
+            newPos = new cc.Vec2(oldX - blockSize.width * col, oldY)  
+        }else if(worldPos.y < - cc.winSize.height / 2){
+            newPos = new cc.Vec2(oldX, oldY + blockSize.width * row)
+        }else if(worldPos.y > cc.winSize.height * 1.5){
+            newPos = new cc.Vec2(oldX, oldY - blockSize.width * row)
+        }
+        mapBlock.parent = this.node
+        mapBlock.setPosition(newPos)
+    }
+
+    // 监听按键
     onKeyDown(event) {
         if (this.direStack.indexOf(event.keyCode) == -1) {
             this.direStack.push(event.keyCode)
         }
     }
-
     onKeyUp(event) {
         let index = this.direStack.indexOf(event.keyCode)
         if (index != -1) {
@@ -73,7 +95,8 @@ export default class Map extends cc.Component {
         }
     }
 
-    update (dt) {
+    // 移动地图
+    moveMap(dt){
         let leftVec = 0
         let upVec = 0
         for (let i = 0; i < this.direStack.length; i++) {
@@ -98,6 +121,9 @@ export default class Map extends cc.Component {
         if (upVec != 0) {
             this.node.y += this.speed * dt * upVec;
         }
-        console.log(this.node.x);
+    }
+
+    update (dt) {
+        this.moveMap(dt)
     }
 }
