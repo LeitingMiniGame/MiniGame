@@ -27,7 +27,7 @@ export default class Clover extends Weapon {
         let time = targetPos.len() / this.flySpeed
         this.node.runAction(cc.sequence(cc.moveBy(time, targetPos), cc.removeSelf()))
         cc.tween(this.node)
-            .by(time, { position: targetPos })
+            .by(time, { position: cc.v3(targetPos.x, targetPos.y) })
             .removeSelf()
             .start()
     }

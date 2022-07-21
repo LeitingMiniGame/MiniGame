@@ -51,7 +51,7 @@ export default class Map extends cc.Component {
         // 开始生成怪物
         cc.tween(this.node)
         .call(()=>{
-            let monster = MonsterMgr.getInstance().createMonster("Monster", "putao")
+            let monster = MonsterMgr.getInstance().createMonster("Bee", "bee")
             monster.node.parent = this.node
             monster.node.zIndex = MONSTER_ZINDEX
         }).start()

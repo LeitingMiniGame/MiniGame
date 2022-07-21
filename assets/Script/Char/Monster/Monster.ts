@@ -1,11 +1,5 @@
-// Learn TypeScript:
-//  - https://docs.cocos.com/creator/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
-import CharMgr from "../Mgr/CharMgr";
-import Char from "./Char";
+import CharMgr from "../../Mgr/CharMgr";
+import Char from "../Char";
 
 const { ccclass, property } = cc._decorator;
 
@@ -16,8 +10,7 @@ export default class Monster extends Char {
     getTargetInterval: number = 0.1
 
     onLoad() {
-        this.loadImage('Animate/BeeMove1')
-        this.loadAnimate("Animate/BeeMove")
+
     }
 
     // 获取目标位置
@@ -35,9 +28,9 @@ export default class Monster extends Char {
             let nor = this.getTaget().normalizeSelf()
             let scale = this.speed * this.getTargetInterval
             this.targetPos = nor.multiply(cc.v2(scale, scale))
-            this.node.scaleX = this.targetPos.x < 0? -1:1
+            this.node.scaleX = this.targetPos.x < 0 ? -1 : 1
             cc.tween(this.node)
-                .by(this.getTargetInterval, { position: this.targetPos})
+                .by(this.getTargetInterval, { position: cc.v3(this.targetPos.x, this.targetPos.y) })
                 .start()
         }, this.getTargetInterval, cc.macro.REPEAT_FOREVER)
     }
