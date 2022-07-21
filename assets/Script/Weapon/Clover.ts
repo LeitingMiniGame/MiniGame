@@ -5,6 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+import MonsterMgr from "../Mgr/MonsterMgr";
 import Weapon from "./Weapon";
 const { ccclass, property } = cc._decorator;
 
@@ -19,7 +20,12 @@ export default class Clover extends Weapon {
 
 
     getTarget() {
-        return cc.v2(0, 1000)
+        let worldPos = this.node.convertToWorldSpaceAR(cc.v2(0, 0))
+        let targetPos = MonsterMgr.getInstance().getNearestMonsterPos(worldPos)
+        if(!targetPos){
+            return cc.v2(cc.randomRange(-1000, 1000), cc.randomRange(-1000, 1000))
+        }
+        return targetPos.sub(worldPos)
     }
 
     move() {

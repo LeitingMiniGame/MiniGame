@@ -5,24 +5,13 @@ const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class AppStart extends cc.Component {
-    // loadList = [
-    //     {
-    //         name : 'hero',
-    //         path : 'Prefab/Char/Hero',
-    //         zOrder : 200
-    //     },
-    //     {
-    //         name : 'mapLayer',
-    //         path : 'Prefab/MapPrefab/MapLayer',
-    //         zOrder : 0
-    //     },
-    // ]
     isLoadFinish:number = 0
     allFinish:number = 0
 
-    start () {
+    onLoad () {
         this.addHero()
         this.addMapLayer()
+        this.addBulletLayer()
     }
 
     // 添加角色
@@ -34,14 +23,23 @@ export default class AppStart extends cc.Component {
 
     // 添加地图层
     addMapLayer(){
-        cc.resources.load("Prefab/MapPrefab/MapBlock", cc.Prefab, (error, assets) =>{
+        cc.resources.load("Prefab/MapPrefab/mapBlock1", cc.Prefab, (error, assets) =>{
             if(error){
                 return
             }
-            let mapLayer = MapMgr.getInstance().createrMap()
+            let node = new cc.Node('mapLayer')
+            let mapLayer = node.addComponent("Map")
             mapLayer.node.parent = this.node
             mapLayer.mapBlock = assets
+            MapMgr.getInstance().addLayerMap('mapLayer', node)
         })
+    }
+
+    addBulletLayer(){
+        let node = new cc.Node('BulletLayer')
+        node.parent = this.node
+        node.zIndex = 200
+        MapMgr.getInstance().addLayerMap('BulletLayer', node)
     }
 
     loadFinishCallBack(){

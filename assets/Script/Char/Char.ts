@@ -26,7 +26,6 @@ export default abstract class Char extends cc.Component {
                 return
             }
             var anim = this.node.addComponent(cc.Animation);
-            clip.wrapMode = cc.WrapMode.Loop
             anim.addClip(clip);
             anim.play('BeeMove');
             this.node.setContentSize(68, 68)
@@ -34,6 +33,9 @@ export default abstract class Char extends cc.Component {
         })
     }
 
+    getWorldPos(){
+        return this.node.convertToWorldSpaceAR(cc.v2(0, 0))
+    }
     getPos(){
         return cc.v2(this.node.x ,this.node.y)
     }

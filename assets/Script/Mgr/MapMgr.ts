@@ -5,14 +5,12 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import Map from "../Map/Map";
-
 const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class MapMgr {
     private static _instance:MapMgr = null;
-    private mapLayer:Map = null
+    private layerMap:Map<string, cc.Node> = new Map()
     public static getInstance(){
         if(!this._instance){
             this._instance = new MapMgr();
@@ -24,14 +22,11 @@ export default class MapMgr {
     private _init(){  
     }
 
-    public createrMap(){
-        let node = new cc.Node
-        let mapLayer = node.addComponent("Map")
-        this.mapLayer = mapLayer
-        return mapLayer
+    public addLayerMap(name:string, node:cc.Node){
+        this.layerMap.set(name, node)
     }
 
-    public getMap(){
-        return this.mapLayer
+    public getLayerByName(name:string){
+        return this.layerMap.get(name)
     }
 }
