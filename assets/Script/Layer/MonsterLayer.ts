@@ -9,7 +9,8 @@ export default class MonsterLayer extends cc.Component {
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {}
-    fireInterval = 1
+    createInterval = 1
+    createNum = 2
 
 
     getCreatePos() {
@@ -30,8 +31,8 @@ export default class MonsterLayer extends cc.Component {
         return this.node.convertToNodeSpaceAR(worldPos).addSelf(pos)
     }
 
-    addMonster(num) {
-        for (let i = 0; i < num; i++) {
+    addMonster() {
+        for (let i = 0; i < this.createNum; i++) {
             let monster = MonsterMgr.getInstance().createMonster("Bee", "bee")
             monster.node.parent = this.node
             monster.node.setPosition(this.getCreatePos())
@@ -43,14 +44,10 @@ export default class MonsterLayer extends cc.Component {
         cc.tween(this.node)
             .repeatForever(
                 cc.tween()
-                    .call(() => this.addMonster(2))
-                    .delay(this.fireInterval)
+                    .call(() => this.addMonster())
+                    .delay(this.createInterval)
             )
             .start()
-
     }
 
-
-
-    // update (dt) {}
 }
