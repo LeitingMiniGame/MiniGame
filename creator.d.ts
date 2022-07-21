@@ -9033,11 +9033,7 @@ declare namespace cc {
 	}	
 	/** !#en Renders a sprite in the scene.
 	!#zh 该组件用于在场景中渲染精灵。 */
-	export class Sprite extends RenderComponent implements BlendFunc {
-        sprite: Asset;
-        [x: string]: Asset;
-        [x: string]: Asset;
-        [x: string]: Asset;		
+	export class Sprite extends RenderComponent implements BlendFunc {		
 		/** !#en The sprite frame of the sprite.
 		!#zh 精灵的精灵帧 */
 		spriteFrame: SpriteFrame;		
