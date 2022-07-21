@@ -3,9 +3,6 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default abstract class Weapon extends cc.Component {
 
-    @property(cc.Node)
-    char: cc.Node = null;
-
     onLoad() {
 
     }

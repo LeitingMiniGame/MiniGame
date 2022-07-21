@@ -12,7 +12,6 @@ export default class MonsterLayer extends cc.Component {
     createInterval = 1
     createNum = 2
 
-
     getCreatePos() {
         let winSize = cc.winSize
         let rMin = Math.sqrt(winSize.width * winSize.width + winSize.height * winSize.height) / 2

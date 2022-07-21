@@ -6,9 +6,13 @@ const { ccclass, property } = cc._decorator;
 export default class Hero extends Char {
 
     speed: number = 200
+    hp:number = 100
+
     fireInterval: number = 1
 
     start() {
+
+        
         this.loadAnimate("Animate/BeeMove")
         cc.tween(this.node)
             .repeatForever(

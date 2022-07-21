@@ -5,7 +5,6 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class Monster extends Char {
-    speed: number = 100
     targetPos: cc.Vec2 = cc.v2(0, 0)
     getTargetInterval: number = 0.1
 

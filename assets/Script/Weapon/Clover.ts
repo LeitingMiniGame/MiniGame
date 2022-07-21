@@ -5,7 +5,7 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class Clover extends Weapon {
 
-    flySpeed: number = 600
+    speed: number = 600
 
     start() {
         this.loadImage('Image/Hero')
@@ -22,7 +22,7 @@ export default class Clover extends Weapon {
 
     move() {
         let targetPos = this.getTarget()
-        let time = targetPos.len() / this.flySpeed
+        let time = targetPos.len() / this.speed
         this.node.runAction(cc.sequence(cc.moveBy(time, targetPos), cc.removeSelf()))
         cc.tween(this.node)
             .by(time, { position: cc.v3(targetPos.x, targetPos.y) })
