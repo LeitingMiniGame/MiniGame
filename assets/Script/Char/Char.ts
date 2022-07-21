@@ -9,7 +9,8 @@ const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default abstract class Char extends cc.Component {
-
+    name:string
+    id:number
     speed:number
     hp:number
     damage:number
@@ -25,6 +26,10 @@ export default abstract class Char extends cc.Component {
             this.node.setContentSize(68, 68)
             this.move()
         })
+    }
+
+    getPos(){
+        return cc.v2(this.node.x ,this.node.y)
     }
 
     // 子弹的移动逻辑，子类需要实现

@@ -1,4 +1,5 @@
 import CharMgr from "../Mgr/CharMgr"
+import MonsterMgr from "../Mgr/MonsterMgr"
 
 const { ccclass, property } = cc._decorator
 
@@ -41,8 +42,20 @@ export default class Map extends cc.Component {
             }
         }
 
+        // 监听事件
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this)
+
+        // 开始生成怪物
+        cc.tween(this.node)
+        .call(()=>{
+            let monster = MonsterMgr.getInstance().createMonster("Monster", "putao")
+            monster.node.parent = this.node
+        }).start()
+    }
+
+    createMonster(){
+        let monster = CharMgr.getInstance().createChar("Monster", "monster")
     }
 
     // 获取地图块
@@ -61,6 +74,7 @@ export default class Map extends cc.Component {
         this._mapBlockPool.put(mapBlock);
     }
 
+    // 添加新的地图快
     addNewMapBlock(oldX:number, oldY:number, worldPos){
         let mapBlock = this.getMapBlock()
         let blockSize = mapBlock.getContentSize()
@@ -120,11 +134,6 @@ export default class Map extends cc.Component {
         if (upVec != 0) {
             this.node.y += this.speed * dt * upVec;
         }
-    }
-
-    // 生成怪物
-    createMonster(){
-
     }
 
     update (dt) {

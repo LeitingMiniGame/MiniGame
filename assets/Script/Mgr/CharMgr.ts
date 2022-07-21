@@ -9,7 +9,7 @@ const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class CharMgr {
-    private static _instance:CharMgr = null;
+    protected static _instance:CharMgr = null;
     private _mapChar:Map<string, Char> = new Map();
 
     public static getInstance(){
@@ -21,12 +21,18 @@ export default class CharMgr {
     }
 
 
-    private _init(){  
+    protected _init(){  
+    }
+
+
+    public GenNonDuplicateID(){
+        return Math.random().toString()
     }
 
     public createChar(charType:string, name:string){
         let node = new cc.Node
         let char = node.addComponent(charType)
+        char.name = name
         this._mapChar.set(name, char)
         return char
     }
