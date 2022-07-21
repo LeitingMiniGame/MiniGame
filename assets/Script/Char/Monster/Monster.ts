@@ -9,10 +9,6 @@ export default class Monster extends Char {
     targetPos: cc.Vec2 = cc.v2(0, 0)
     getTargetInterval: number = 0.1
 
-    onLoad() {
-
-    }
-
     // 获取目标位置
     getTaget() {
         let hero = CharMgr.getInstance().getCharByName("Hero")

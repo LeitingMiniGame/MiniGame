@@ -1,64 +1,72 @@
 
 import CharMgr from "./Mgr/CharMgr";
 import MapMgr from "./Mgr/MapMgr";
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class AppStart extends cc.Component {
-    isLoadFinish:number = 0
-    allFinish:number = 0
+    isLoadFinish: number = 0
+    allFinish: number = 0
 
-    onLoad () {
+    onLoad() {
         this.addHero()
         this.addLayerRoot()
+
+        this.addMapLayer()
+        this.addBulletLayer()
+        this.addMonsterLayer()
     }
 
     // 添加角色
-    addHero(){
+    addHero() {
         let hero = CharMgr.getInstance().createChar("Hero", "Hero")
         hero.node.parent = this.node
         hero.node.zIndex = 200
     }
 
-    addLayerRoot(){
-        let node = new cc.Node('layerRoot')
+    // 添加 layer 的根节点
+    addLayerRoot() {
+        let node = new cc.Node('LayerRoot')
         node.addComponent("LayerRoot")
         node.parent = this.node
         node.zIndex = 0
-        MapMgr.getInstance().addLayerMap('layerRoot', node)
+        MapMgr.getInstance().addLayerMap('LayerRoot', node)
 
-        this.addMapLayer()
-        this.addBulletLayer()
     }
 
     // 添加地图层
-    addMapLayer(){
-        cc.resources.load("Prefab/MapPrefab/MapBlock", cc.Prefab, (error, assets) =>{
-            if(error){
+    addMapLayer() {
+        cc.resources.load("Prefab/MapPrefab/MapBlock1", cc.Prefab, (error, assets) => {
+            if (error) {
                 return
             }
-            let node = new cc.Node('mapLayer')
+            let node = new cc.Node('MapLayer')
             let mapLayer = node.addComponent("MapLayer")
             mapLayer.mapBlock = assets
-            let layerRoot = MapMgr.getInstance().getLayerByName('layerRoot')
+            let layerRoot = MapMgr.getInstance().getLayerByName('LayerRoot')
             node.parent = layerRoot
-            MapMgr.getInstance().addLayerMap('mapLayer', node)
+            node.zIndex = 100
+            MapMgr.getInstance().addLayerMap('MapLayer', node)
         })
     }
 
-    addBulletLayer(){
+    // 添加子弹层
+    addBulletLayer() {
         let node = new cc.Node('BulletLayer')
-        let layerRoot = MapMgr.getInstance().getLayerByName('layerRoot')
+        let layerRoot = MapMgr.getInstance().getLayerByName('LayerRoot')
         node.parent = layerRoot
         node.zIndex = 200
         MapMgr.getInstance().addLayerMap('BulletLayer', node)
     }
 
-    loadFinishCallBack(){
-        this.addHero()
-        this.addMapLayer()
+    // 添加怪物层
+    addMonsterLayer() {
+        let node = new cc.Node('MonsterLayer')
+        node.addComponent("MonsterLayer")
+        let layerRoot = MapMgr.getInstance().getLayerByName('LayerRoot')
+        node.parent = layerRoot
+        node.zIndex = 300
+        MapMgr.getInstance().addLayerMap('MonsterLayer', node)
     }
 
-    // update (dt) {
-    // }
 }

@@ -1,9 +1,7 @@
 import CharMgr from "../Mgr/CharMgr"
-import MonsterMgr from "../Mgr/MonsterMgr"
 
 const { ccclass, property } = cc._decorator
 const MAP_BLOCK_ZINDEX = 100
-const MONSTER_ZINDEX = 200
 
 @ccclass
 export default class Map extends cc.Component {
@@ -14,14 +12,6 @@ export default class Map extends cc.Component {
     mapBlock: cc.Prefab = null
 
     private _mapBlockPool: cc.NodePool
-
-    //方向
-    direStack = []
-    speed:number = 0
-
-    onLoad(params?: any) {
-        this.speed = CharMgr.getInstance().getCharByName("Hero").speed
-    }
 
     start(params?: any) {
         // 创建对象池
@@ -44,16 +34,9 @@ export default class Map extends cc.Component {
             }
         }
 
-        // 开始生成怪物
-        cc.tween(this.node)
-        .call(()=>{
-            let monster = MonsterMgr.getInstance().createMonster("Bee", "bee")
-            monster.node.parent = this.node
-            monster.node.zIndex = MONSTER_ZINDEX
-        }).start()
     }
 
-    createMonster(){
+    createMonster() {
         let monster = CharMgr.getInstance().createChar("Monster", "monster")
     }
 
@@ -75,20 +58,20 @@ export default class Map extends cc.Component {
     }
 
     // 添加新的地图快
-    addNewMapBlock(oldX:number, oldY:number, worldPos){
+    addNewMapBlock(oldX: number, oldY: number, worldPos) {
         let mapBlock = this.getMapBlock()
         let blockSize = mapBlock.getContentSize()
         let col = Math.floor(cc.winSize.width / blockSize.width * 2)
         let row = Math.floor(cc.winSize.height / blockSize.height * 2)
         let newPos
-        if(worldPos.x < - cc.winSize.width / 2){
-            newPos = new cc.Vec2(oldX + blockSize.width * col, oldY)            
-        }else if(worldPos.x > cc.winSize.width * 1.5){
+        if (worldPos.x < - cc.winSize.width / 2) {
+            newPos = new cc.Vec2(oldX + blockSize.width * col, oldY)
+        } else if (worldPos.x > cc.winSize.width * 1.5) {
             let col = Math.floor(cc.winSize.width / blockSize.width * 2)
-            newPos = new cc.Vec2(oldX - blockSize.width * col, oldY)  
-        }else if(worldPos.y < - cc.winSize.height / 2){
+            newPos = new cc.Vec2(oldX - blockSize.width * col, oldY)
+        } else if (worldPos.y < - cc.winSize.height / 2) {
             newPos = new cc.Vec2(oldX, oldY + blockSize.width * row)
-        }else if(worldPos.y > cc.winSize.height * 1.5){
+        } else if (worldPos.y > cc.winSize.height * 1.5) {
             newPos = new cc.Vec2(oldX, oldY - blockSize.width * row)
         }
         mapBlock.parent = this.node

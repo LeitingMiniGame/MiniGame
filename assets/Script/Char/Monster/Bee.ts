@@ -2,14 +2,9 @@ import Monster from "./Monster";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class NewClass extends Monster {
-    // LIFE-CYCLE CALLBACKS:
-
-    onLoad () {
-        this.loadImage('Animate/BeeMove1')
+export default class Bee extends Monster {
+    start() {
         this.loadAnimate("Animate/BeeMove")
     }
 
-
-    // update (dt) {}
 }

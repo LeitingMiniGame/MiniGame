@@ -7,15 +7,14 @@ export default class Clover extends Weapon {
 
     flySpeed: number = 600
 
-    onLoad() {
+    start() {
         this.loadImage('Image/Hero')
     }
-
 
     getTarget() {
         let worldPos = this.node.convertToWorldSpaceAR(cc.v2(0, 0))
         let targetPos = MonsterMgr.getInstance().getNearestMonsterPos(worldPos)
-        if(!targetPos){
+        if (!targetPos) {
             return cc.v2(Math.random(), Math.random())
         }
         return targetPos.sub(worldPos)
@@ -30,12 +29,4 @@ export default class Clover extends Weapon {
             .removeSelf()
             .start()
     }
-
-    start() {
-
-    }
-
-    // update (dt) {
-
-    // }
 }

@@ -1,23 +1,18 @@
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default abstract class Weapon extends cc.Component {
 
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {}
-
     @property(cc.Node)
-    char:cc.Node = null;
+    char: cc.Node = null;
 
-
-    onLoad () {
+    onLoad() {
 
     }
 
-    loadImage(path){
-        cc.resources.load(path, cc.SpriteFrame, (error, assets:cc.SpriteFrame) =>{
-            if(error){
+    loadImage(path) {
+        cc.resources.load(path, cc.SpriteFrame, (error, assets: cc.SpriteFrame) => {
+            if (error) {
                 return
             }
             var sprite = this.node.addComponent(cc.Sprite);
@@ -27,10 +22,9 @@ export default abstract class Weapon extends cc.Component {
         })
     }
 
-    abstract getTarget():any
-    
-    // 子弹的移动逻辑，子类需要实现
-    abstract move():any
+    abstract getTarget(): any
 
-    // update (dt) {}
+    // 子弹的移动逻辑，子类需要实现
+    abstract move(): any
+
 }

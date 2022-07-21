@@ -9,7 +9,6 @@ export default class Hero extends Char {
     fireInterval: number = 1
 
     start() {
-        this.loadImage('Animate/BeeMove1')
         this.loadAnimate("Animate/BeeMove")
         cc.tween(this.node)
             .repeatForever(
@@ -22,7 +21,7 @@ export default class Hero extends Char {
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
     }
 
-    onKeyDown(event){
+    onKeyDown(event) {
         switch (event.keyCode) {
             case cc.macro.KEY.a:
                 this.node.scaleX = -1
@@ -36,15 +35,10 @@ export default class Hero extends Char {
     // 攻击函数
     fire() {
         BulletMgr.getInstance().createBullet('Clover', this.getWorldPos())
-
     }
 
-    move() {}
+    move() { }
 
-
-
-
-    update (dt) {
-    }
-
+    // update(dt) {
+    // }
 }
