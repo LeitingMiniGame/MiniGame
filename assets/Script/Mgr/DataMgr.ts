@@ -8,50 +8,45 @@ export default class DataMgr {
 
     protected bag: any[]
 
-    // [
-    //     {
-    //         name : '',
-    //         level: 1,
-    //         interval: 1,
-    //         hp: number,
-    //         damage: number,
-    //         speed: number,
-    //         size: cc.Size
-    //     }
-    // ]
-
     tempData = {
-        ['LineTest']: {
-            name: 'LineTest',
-            level: 1,
-            interval:1,
-            hp: 10,
-            damage: 10,
-            speed: 600,
-            size: cc.size(20, 20)
-        },
-        ['DomainTest']: {
-            name: 'DomainTest',
-            level: 1,
-            interval:1,
-            hp: 100000000,
-            damage: 5,
-            speed: 80,
-            maxSize: cc.size(500, 500),
-            size: cc.size(20, 20)
-        },
-        ['ProjectileTest']:{
-            name: 'ProjectileTest',
-            level: 1,
-            interval:1,
-            hp: 1000000,
-            damage: 10,
-            speed: 600,
-            size: cc.size(20, 20)
-        }
+        ['LineTest']: [
+            {
+                name: 'LineTest',
+                level: 1,
+                interval: 1,
+                hp: 10,
+                minDamage: 0,
+                maxDamage: 10,
+                speed: 600,
+                size: cc.size(20, 20)
+            }
+        ],
+        ['DomainTest']: [
+            {
+                name: 'DomainTest',
+                level: 1,
+                interval: 1,
+                hp: 100000000,
+                minDamage: 5,
+                maxDamage: 5,
+                speed: 80,
+                maxSize: cc.size(500, 500), // 领域型武器 领域的最大值
+                size: cc.size(20, 20)
+            }
+        ],
+        ['ProjectileTest']: [
+            {
+                name: 'ProjectileTest',
+                level: 1,
+                interval: 1,
+                hp: 1000000,
+                minDamage: 5,
+                maxDamage: 5,
+                speed: 600,
+                size: cc.size(20, 20)
+            }
+        ]
     }
-
-
 
     public static getInstance() {
         if (!this._instance) {
@@ -73,7 +68,7 @@ export default class DataMgr {
                 return
             }
         }
-        let newWeapon = this.tempData[typeName]
+        let newWeapon = this.tempData[typeName][0]
         this.bag.push(newWeapon)
 
         WeaponMgr.getInstance().addWeapon(newWeapon)
@@ -104,9 +99,9 @@ export default class DataMgr {
 
         }
 
+        let level = this.bag[typeName].level
         // 处理升级的逻辑
-        this.bag[typeName].level++
-        this.bag[typeName].interval -= 0.5
+        this.bag[typeName] = this.tempData[typeName][level]
 
         WeaponMgr.getInstance().upWeapon(this.bag[typeName])
     }
