@@ -18,8 +18,12 @@ export default class HeroTest extends Hero {
         this.loadResources('HeroMove1', 'Hero1Stay')
 
         this.addWeapon("LineTest")
-        this.addWeapon("ProjectileTest")
-        this.addWeapon("DomainTest")
+        // this.addWeapon("ProjectileTest")
+        // this.addWeapon("DomainTest")
+
+        this.scheduleOnce(()=>{
+            this.addWeapon("LineTest")
+        }, 5)
 
     }
 }

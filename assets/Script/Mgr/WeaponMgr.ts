@@ -31,14 +31,16 @@ export default class WeaponMgr {
         this.tweenMap = new Map
     }
 
+    // 生成攻击的缓动系统
     createFireTween(typeName) {
         let bulletLayer = MapMgr.getInstance().getLayerByName("BulletLayer")
+        let fireInterval = this.getWeapon(typeName).interval
         return cc.tween(bulletLayer)
             .repeatForever(
                 cc.tween()
                     .call(() => {
                         this.createBullet(typeName)
-                    }).delay(1)
+                    }).delay(fireInterval)
             )
     }
 
@@ -56,21 +58,37 @@ export default class WeaponMgr {
         tween.start()
     }
 
-    // 升级武器
-    upWeapon(typeName: string | number) {
-        let name
+    // 获取武器数据
+    getWeapon(typeName: string | number) {
         if (typeof (typeName) === 'number') {
-            this.bag[typeName].level++
-            name = this.bag[typeName].name
-        } else {
-            for (let i = 0; i < Math.min(6, this.bag.length); i++) {
-                if (this.bag[i].name == typeName) {
-                    this.bag[i].level++
-                }
-            }
-            name = typeName
+            return this.bag[typeName]
         }
 
+        for (let i = 0; i < Math.min(6, this.bag.length); i++) {
+            if (this.bag[i].name == typeName) {
+                return this.bag[i]
+            }
+        }
+    }
+
+    // 升级武器
+    upWeapon(typeName: string | number) {
+        if (typeof (typeName) === 'string') {
+            for (let i = 0; i < Math.min(6, this.bag.length); i++) {
+                if (this.bag[i].name == typeName) {
+                    this.upWeapon(i)
+                    return
+                }
+            }
+
+        }
+
+        // 处理升级的逻辑
+        this.bag[typeName].level++
+        this.bag[typeName].interval -= 0.5
+
+        // 处理缓动
+        let name = this.bag[typeName].name
         let oldTween = this.tweenMap.get(name)
         oldTween.stop()
         let newTween = this.createFireTween(name)
