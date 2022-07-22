@@ -16,14 +16,10 @@ export default class HeroTest extends Hero {
     maxCapacity: number = 6
     start() {
         this.loadResources('HeroMove1', 'Hero1Stay')
-        cc.tween(this.node)
-            .repeatForever(
-                cc.tween()
-                    .call(() => this.fire())
-                    .delay(this.fireInterval)
-            )
-            .start()
 
         this.addWeapon("LineTest")
+        this.addWeapon("ProjectileTest")
+        this.addWeapon("DomainTest")
+
     }
 }

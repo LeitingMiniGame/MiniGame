@@ -1,5 +1,5 @@
 import Char from "../Char";
-import BulletMgr from "../../Mgr/BulletMgr";
+import BulletMgr from "../../Mgr/WeaponMgr";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -26,13 +26,7 @@ export default class Hero extends Char {
     }
 
     addWeapon(typeName) {
-        for (let i = 0; i < Math.min(6, this.bag.length); i++) {
-            if (this.bag[i].name == typeName) {
-                this.bag[i].level++
-                return
-            }
-        }
-        this.bag.push({ name: typeName, level: 1 })
+        BulletMgr.getInstance().addWeapon(typeName)
     }
 
     changeState(state) {
@@ -73,13 +67,6 @@ export default class Hero extends Char {
             case cc.macro.KEY.d:
                 this.node.scaleX = 1
                 break
-        }
-    }
-
-    // 攻击函数
-    fire() {
-        for (let i = 0; i < this.bag.length; i++) {
-            BulletMgr.getInstance().createBullet(this.bag[i].name, this.getWorldPos())
         }
     }
 

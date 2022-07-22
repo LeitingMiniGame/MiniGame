@@ -73,7 +73,7 @@ export default class Projectile extends Weapon {
 
         let rigidbody = this.getComponent(cc.RigidBody)
         if (addSpeed.len() == 0) {
-            if (this.addSpeed.len() != 0) {
+            if (this.addSpeed && this.addSpeed.len() != 0) {
                 rigidbody.linearVelocity = rigidbody.linearVelocity.subSelf(this.addSpeed)
                 this.addSpeed = addSpeed
                 this.theta = 361
