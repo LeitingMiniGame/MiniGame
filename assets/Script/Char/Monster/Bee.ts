@@ -13,8 +13,8 @@ export default class Bee extends Monster {
         this.loadAnimate("Animate/BeeMove", "BeeMove")
     }
 
-    move(): void {
+    // move(): void {
         
-    }
+    // }
 
 }
