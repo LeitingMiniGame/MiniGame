@@ -20,8 +20,8 @@ export default class Hero extends Char {
         this.state = 'stateStay'
     }
 
-    loadResources(animateName,ImageName) {
-        this.loadImage('Image/'+ImageName)
+    loadResources(animateName, ImageName) {
+        this.loadImage('Image/' + ImageName)
         this.loadAnimate("Animate/" + animateName, animateName, true)
     }
 
@@ -34,7 +34,7 @@ export default class Hero extends Char {
             return
         }
         if (state != 'stateStay') {
-            let animate = this.getComponent(cc.Animation);
+            let animate = this.animateLayer.getComponent(cc.Animation);
             animate.play('HeroMove1');
         }
         this.state = state
@@ -44,7 +44,7 @@ export default class Hero extends Char {
     }
 
     stateStay() {
-        let animate = this.getComponent(cc.Animation);
+        let animate = this.animateLayer.getComponent(cc.Animation);
         if (animate) {
             animate.setCurrentTime(0, 'HeroMove1');
             animate.stop('HeroMove1');
@@ -74,7 +74,6 @@ export default class Hero extends Char {
     injured(damage) {
         this.hp -= damage
         console.log(this.hp);
-
     }
 
     move() {

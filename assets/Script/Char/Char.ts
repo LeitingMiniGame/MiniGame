@@ -9,8 +9,12 @@ export default abstract class Char extends cc.Component {
     damage: number
     size:cc.Size = cc.size(68, 68)
 
+    animateLayer:cc.Node
+
     onLoad(){
-        this.node.addComponent(cc.Sprite)
+        this.animateLayer = new cc.Node()
+        this.animateLayer.addComponent(cc.Sprite)
+        this.animateLayer.parent = this.node
     }
 
     loadImage(path) {
@@ -18,12 +22,12 @@ export default abstract class Char extends cc.Component {
             if (error) {
                 return
             }
-            let sprite = this.node.getComponent(cc.Sprite);
+            let sprite = this.animateLayer.getComponent(cc.Sprite);
             if(!sprite){
-                sprite = this.node.addComponent(cc.Sprite);
+                sprite = this.animateLayer.addComponent(cc.Sprite);
             }
             sprite.spriteFrame = assets
-            this.node.setContentSize(this.size)
+            this.animateLayer.setContentSize(this.size)
             this.move()
         })
     }
@@ -33,9 +37,10 @@ export default abstract class Char extends cc.Component {
             if (error) {
                 return
             }
-            let anim = this.node.getComponent(cc.Animation);
+
+            let anim = this.animateLayer.getComponent(cc.Animation);
             if(!anim){
-                anim = this.node.addComponent(cc.Animation);
+                anim = this.animateLayer.addComponent(cc.Animation);
             }
             anim.addClip(clip);
             if(!notNeedPlay){
@@ -52,9 +57,9 @@ export default abstract class Char extends cc.Component {
     getWorldPos() {
         return this.node.convertToWorldSpaceAR(cc.v2(0, 0))
     }
+
     getPos() {
         return cc.v2(this.node.x, this.node.y)
     }
 
-    abstract move(): any
 }

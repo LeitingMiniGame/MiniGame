@@ -8021,7 +8021,8 @@ declare namespace cc {
 	所有附加到节点的基类。<br/>
 	<br/>
 	注意：不允许使用组件的子类构造参数，因为组件是由引擎创建的。 */
-	export class Component extends Object {		
+	export class Component extends Object {
+        [x: string]: any;		
 		/** !#en The node this component is attached to. A component is always attached to a node.
 		!#zh 该组件被附加到的节点。组件总会附加到一个节点。 */
 		node: Node;		

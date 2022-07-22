@@ -9,7 +9,6 @@ export default class WeaponMgr {
 
     tweenMap: Map<string, cc.Tween> = null
 
-
     public static getInstance() {
         if (!this._instance) {
             this._instance = new WeaponMgr();

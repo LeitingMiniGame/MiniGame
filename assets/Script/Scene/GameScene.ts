@@ -1,4 +1,5 @@
 
+import NumImage from "../Control/NumImage";
 import CharMgr from "../Mgr/CharMgr";
 import MapMgr from "../Mgr/MapMgr";
 const { ccclass, property } = cc._decorator;
@@ -31,6 +32,9 @@ export default class GameScene extends cc.Component {
         // cc.PhysicsManager.DrawBits.e_jointBit |
         // cc.PhysicsManager.DrawBits.e_shapeBit
         cc.director.getPhysicsManager().gravity = cc.v2(0, -960);
+
+
+        NumImage.getInstance()
     }
 
     // 添加角色
