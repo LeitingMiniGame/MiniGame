@@ -18,23 +18,34 @@ export default abstract class Char extends cc.Component {
             if (error) {
                 return
             }
-            var sprite = this.node.addComponent(cc.Sprite);
+            let sprite = this.node.getComponent(cc.Sprite);
+            if(!sprite){
+                sprite = this.node.addComponent(cc.Sprite);
+            }
             sprite.spriteFrame = assets
             this.node.setContentSize(this.size)
             this.move()
         })
     }
 
-    loadAnimate(path) {
+    loadAnimate(path, animateName, notNeedPlay?) {
         cc.resources.load(path, cc.AnimationClip, (error, clip: cc.AnimationClip) => {
             if (error) {
                 return
             }
-            var anim = this.node.addComponent(cc.Animation);
+            let anim = this.node.getComponent(cc.Animation);
+            if(!anim){
+                anim = this.node.addComponent(cc.Animation);
+            }
             anim.addClip(clip);
-            anim.play('BeeMove');
-            this.node.setContentSize(this.size)
+            if(!notNeedPlay){
+                anim.play(animateName);
+            }
             this.move()
+            if(notNeedPlay){
+                anim.pause(animateName);
+            }
+            this.node.setContentSize(this.size)
         })
     }
 
@@ -45,6 +56,5 @@ export default abstract class Char extends cc.Component {
         return cc.v2(this.node.x, this.node.y)
     }
 
-    // 子弹的移动逻辑，子类需要实现
     abstract move(): any
 }

@@ -54,14 +54,24 @@ export default class LayerRoot extends cc.Component {
         let nextX = this.node.x
         let nextY = this.node.y
 
-        if (leftVec != 0) {
-            nextX += this.speed * dt * leftVec;
-        }
+        let state = 'stateStay'
+
         if (upVec != 0) {
             nextY += this.speed * dt * upVec;
+            state = upVec == 1?'moveUp':'moveDown'
         }
+
+        if (leftVec != 0) {
+            nextX += this.speed * dt * leftVec;
+            state = leftVec == 1?'moveLeft':'moveRight'
+        }
+
         this.node.x = nextX
         this.node.y = nextY
+        let hero = CharMgr.getInstance().getCharByName("Hero").getComponent('Hero')
+        if(hero.state != state){
+            hero.changeState(state)
+        }
     }
 
     update(dt) {

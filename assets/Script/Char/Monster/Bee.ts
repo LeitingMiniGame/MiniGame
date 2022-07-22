@@ -10,7 +10,7 @@ export default class Bee extends Monster {
 
     start() {
         super.start()
-        this.loadAnimate("Animate/BeeMove")
+        this.loadAnimate("Animate/BeeMove", "BeeMove")
     }
 
 }

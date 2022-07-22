@@ -21,6 +21,16 @@ export default class GameScene extends cc.Component {
         manager.enabled = true;
         manager.enabledDebugDraw = true;
         manager.enabledDrawBoundingBox = true;
+
+
+        var physicsManager = cc.director.getPhysicsManager();
+        physicsManager.enabled = true;
+        // physicsManager.debugDrawFlags = cc.PhysicsManager.DrawBits.e_aabbBit |
+        // cc.PhysicsManager.DrawBits.e_pairBit |
+        // cc.PhysicsManager.DrawBits.e_centerOfMassBit |
+        // cc.PhysicsManager.DrawBits.e_jointBit |
+        // cc.PhysicsManager.DrawBits.e_shapeBit
+
     }
 
     // 添加角色
