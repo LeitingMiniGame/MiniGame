@@ -1,59 +1,61 @@
 import Char from "../Char";
-import BulletMgr from "../../Mgr/BulletMgr";
+import DataMgr from "../../Mgr/DataMgr";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class Hero extends Char {
-
-    speed: number = 250
-    hp:number = 100
-    luckly:number = 20
-    size:cc.Size = cc.size(100, 100)
-
-    fireInterval: number = 1
+    speed: number
+    hp: number
+    luckly: number
+    size: cc.Size
+    fireInterval: number
     state: string;
+    bag: any
+    maxCapacity: number = 6
 
     start() {
-        this.loadImage("Image/Hero1Stay")
-        this.loadAnimate("Animate/HeroMove1", "HeroMove1", true)
-        cc.tween(this.node)
-            .repeatForever(
-                cc.tween()
-                    .call(() => this.fire())
-                    .delay(this.fireInterval)
-            )
-            .start()
         let boxCollider = this.addComponent(cc.BoxCollider)
         boxCollider.size = this.size
         this.node.group = 'Hero'
         this.state = 'stateStay'
     }
 
-    changeState(state){
-        if(state == this.state){
+    loadResources(animateName,ImageName) {
+        this.loadImage('Image/'+ImageName)
+        this.loadAnimate("Animate/" + animateName, animateName, true)
+    }
+
+    addWeapon(typeName) {
+        DataMgr.getInstance().addWeapon(typeName)
+    }
+
+    changeState(state) {
+        if (state == this.state) {
             return
         }
-        if(state!='stateStay'){
+        if (state != 'stateStay') {
             let animate = this.getComponent(cc.Animation);
             animate.play('HeroMove1');
         }
         this.state = state
-        if(typeof(this[state]) === 'function'){
+        if (typeof (this[state]) === 'function') {
             this[state]()
         }
     }
 
-    stateStay(){
+    stateStay() {
         let animate = this.getComponent(cc.Animation);
-        animate.setCurrentTime(0, 'HeroMove1');
-        animate.stop('HeroMove1');
+        if (animate) {
+            animate.setCurrentTime(0, 'HeroMove1');
+            animate.stop('HeroMove1');
+        }
     }
 
-    moveLeft(){
+    moveLeft() {
         this.node.scaleX = -1
     }
 
-    moveRight(){
+    moveRight() {
         this.node.scaleX = 1
     }
 
@@ -68,16 +70,11 @@ export default class Hero extends Char {
         }
     }
 
-    // 攻击函数
-    fire() {
-        BulletMgr.getInstance().createBullet('Projectile', this.getWorldPos())
-    }
-
     // 受伤的函数
-    injured(damage){
+    injured(damage) {
         this.hp -= damage
         console.log(this.hp);
-        
+
     }
 
     move() {

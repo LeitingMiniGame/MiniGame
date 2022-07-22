@@ -8,12 +8,15 @@ export default class LayerRoot extends cc.Component {
     //方向
     direStack = []
     speed: number = 0
+    upVec: number;
+    leftVec: number;
 
-    onLoad(params?: any) {
-        this.speed = CharMgr.getInstance().getCharByName("Hero").speed
-    }
+    // onLoad(params?: any) {
+      
+    // }
 
     start() {
+        this.speed = CharMgr.getInstance().getCharByName("Hero").speed
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this)
     }
@@ -58,20 +61,29 @@ export default class LayerRoot extends cc.Component {
 
         if (upVec != 0) {
             nextY += this.speed * dt * upVec;
-            state = upVec == 1?'moveUp':'moveDown'
+            state = upVec == 1 ? 'moveUp' : 'moveDown'
         }
 
         if (leftVec != 0) {
             nextX += this.speed * dt * leftVec;
-            state = leftVec == 1?'moveLeft':'moveRight'
+            state = leftVec == 1 ? 'moveLeft' : 'moveRight'
         }
+        this.upVec = upVec
+        this.leftVec = leftVec
 
         this.node.x = nextX
         this.node.y = nextY
+        
+        // 将移动同步头hero
         let hero = CharMgr.getInstance().getCharByName("Hero").getComponent('Hero')
-        if(hero.state != state){
+        hero.node.x = -nextX
+        hero.node.y = -nextY        
+        if (hero.state != state) {
             hero.changeState(state)
         }
+    }
+    getMoveVec() {
+        return { up: this.upVec, left: this.leftVec, speed: this.speed }
     }
 
     update(dt) {

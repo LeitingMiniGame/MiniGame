@@ -5,18 +5,14 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class Projectile extends Weapon {
-
-    speed: number = 600
-    size: cc.Size = cc.size(20, 20)
-    damage: number = 0
-    hp: number = 1000000
     equation: any
+    addSpeed: any;
+    theta: number;
 
     start() {
         let boxCollider = this.addComponent(cc.BoxCollider)
-        boxCollider.size = this.size
+        boxCollider.size = this.data.size
         this.addComponent(cc.RigidBody)
-        this.loadImage('Image/Hero')
     }
 
     // 获取子弹的目标
@@ -24,7 +20,7 @@ export default class Projectile extends Weapon {
         let worldPos = this.getWorldPos()
         let targetPos = MonsterMgr.getInstance().getNearestMonsterPos(worldPos)
         if (!targetPos || targetPos.sub(worldPos).len() > cc.winSize.height / 2) {
-            targetPos = cc.v2(cc.winSize.width / 4, worldPos.y)
+            targetPos = cc.v2(cc.winSize.width * 3 / 4, worldPos.y)
         }
 
         let posByThisNode = targetPos.subSelf(worldPos)
@@ -34,10 +30,7 @@ export default class Projectile extends Weapon {
         if (posByThisNode.x < 0) {
             tempX = -0.01
         }
-
         let tempY = this.getY(tempX)
-
-
         return cc.v2(tempX, tempY).normalizeSelf()
     }
 
@@ -51,15 +44,50 @@ export default class Projectile extends Weapon {
         return { a: a, b: b, c: c }
     }
 
+    // 传入x，获取抛物线上的 y
     getY(x: number) {
         return this.equation.a * x * x + this.equation.b * x + this.equation.c
     }
 
+    // 移动逻辑
     move() {
         let target = this.getTarget()
         let rigidbody = this.getComponent(cc.RigidBody)
-        rigidbody.linearVelocity = cc.v2(target.mulSelf(this.speed))
-        rigidbody.gravityScale = 3
+        rigidbody.linearVelocity = cc.v2(target.mulSelf(this.data.speed))
+        // 或者
+        let localPoint = cc.v2();
+        rigidbody.getWorldPoint(cc.v2(0, 0), localPoint)
     }
 
+    update(dt: number): void {
+        if (this.getWorldPos().y < -cc.winSize.height) {
+            // 超出地图外，回收
+            this.node.removeFromParent()
+        }
+
+        // 物理引擎是基于世界坐标系的，所以实际上的位置和速度应该在加上地图的移动速度
+        let moveVec = MapMgr.getInstance().getLayerByName("LayerRoot").getComponent("LayerRoot").getMoveVec()
+        let speed = cc.v2(moveVec.speed, moveVec.speed)
+
+        let addSpeed = speed.scaleSelf(cc.v2(moveVec.left, moveVec.up))
+
+        let rigidbody = this.getComponent(cc.RigidBody)
+        if (addSpeed.len() == 0) {
+            if (this.addSpeed && this.addSpeed.len() != 0) {
+                rigidbody.linearVelocity = rigidbody.linearVelocity.subSelf(this.addSpeed)
+                this.addSpeed = addSpeed
+                this.theta = 361
+            }
+        } else {
+            let theta = addSpeed.signAngle(cc.v2(1, 0))
+            if (theta != this.theta) {
+                if (this.addSpeed && this.addSpeed.len() != 0) {
+                    rigidbody.linearVelocity = rigidbody.linearVelocity.subSelf(this.addSpeed)
+                }
+                rigidbody.linearVelocity = rigidbody.linearVelocity.addSelf(addSpeed)
+                this.addSpeed = addSpeed
+                this.theta = theta
+            }
+        }
+    }
 }

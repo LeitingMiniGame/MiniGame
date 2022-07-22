@@ -9,9 +9,9 @@ export default class GameScene extends cc.Component {
     allFinish: number = 0
 
     onLoad() {
-        this.addHero()
         this.addLayerRoot()
 
+        this.addHero()
         this.addMapLayer()
         this.addBulletLayer()
         this.addMonsterLayer()
@@ -30,13 +30,14 @@ export default class GameScene extends cc.Component {
         // cc.PhysicsManager.DrawBits.e_centerOfMassBit |
         // cc.PhysicsManager.DrawBits.e_jointBit |
         // cc.PhysicsManager.DrawBits.e_shapeBit
-
+        cc.director.getPhysicsManager().gravity = cc.v2(0, -960);
     }
 
     // 添加角色
     addHero() {
-        let hero = CharMgr.getInstance().createChar("Hero", "Hero")
-        hero.node.parent = this.node
+        let hero = CharMgr.getInstance().createChar("HeroTest", "Hero")
+        let layerRoot = MapMgr.getInstance().getLayerByName('LayerRoot')
+        hero.node.parent = layerRoot
         hero.node.zIndex = 200
     }
 
@@ -71,7 +72,7 @@ export default class GameScene extends cc.Component {
         let node = new cc.Node('BulletLayer')
         let layerRoot = MapMgr.getInstance().getLayerByName('LayerRoot')
         node.parent = layerRoot
-        node.zIndex = 200
+        node.zIndex = 300
         MapMgr.getInstance().addLayerMap('BulletLayer', node)
     }
 
@@ -81,7 +82,7 @@ export default class GameScene extends cc.Component {
         node.addComponent("MonsterLayer")
         let layerRoot = MapMgr.getInstance().getLayerByName('LayerRoot')
         node.parent = layerRoot
-        node.zIndex = 300
+        node.zIndex = 200
         MapMgr.getInstance().addLayerMap('MonsterLayer', node)
     }
 
