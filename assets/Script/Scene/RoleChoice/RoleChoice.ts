@@ -1,5 +1,3 @@
-import Hero from "./Hero";
-
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -19,7 +17,7 @@ export default class NewClass extends cc.Component {
     ShowHeroDetail (event) {
         console.log("选择的英雄ID为"+this.HeroID);
         // 得到全局控制脚本
-        let RoleChoiceScene = cc.find("Canvas/Main Layout/Data").getComponent("RoleChoiceScene");
+        let RoleChoiceScene = cc.find("Canvas/Main Layout/Data").getComponent("RoleScene");
         RoleChoiceScene.LoadHeroData(parseInt(this.HeroID))
     }
 
