@@ -50,7 +50,7 @@ export default class Monster extends Char {
             let weapon = other.node.getComponent(other.node.name)
             let monster = self.node.getComponent(self.node.name)
             weapon.injured(monster.damage)
-            monster.injured(weapon.damage)
+            monster.injured(weapon.data.damage)
         }
         if (other.node.group == "Hero") {
             let hero = other.node.getComponent(other.node.name)

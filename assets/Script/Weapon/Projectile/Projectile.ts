@@ -11,7 +11,7 @@ export default class Projectile extends Weapon {
 
     start() {
         let boxCollider = this.addComponent(cc.BoxCollider)
-        boxCollider.size = this.size
+        boxCollider.size = this.data.size
         this.addComponent(cc.RigidBody)
     }
 
@@ -53,7 +53,7 @@ export default class Projectile extends Weapon {
     move() {
         let target = this.getTarget()
         let rigidbody = this.getComponent(cc.RigidBody)
-        rigidbody.linearVelocity = cc.v2(target.mulSelf(this.speed))
+        rigidbody.linearVelocity = cc.v2(target.mulSelf(this.data.speed))
         // 或者
         let localPoint = cc.v2();
         rigidbody.getWorldPoint(cc.v2(0, 0), localPoint)

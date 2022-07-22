@@ -6,12 +6,14 @@ export default class Domain extends Weapon {
 
     start() {
         let boxCollider = this.addComponent(cc.BoxCollider)
-        boxCollider.size = this.size
+        boxCollider.size = this.data.size
     }
 
     move() {
+        let scale = this.data.maxSize.width / this.data.size.width
+        let time = scale / this.data.speed
         cc.tween(this.node)
-            .to(0.5, { scale: 25 })
+            .to(time, { scale: scale })
             .removeSelf()
             .start()
     }

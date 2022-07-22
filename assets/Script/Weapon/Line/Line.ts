@@ -7,16 +7,12 @@ export default class Line extends Weapon {
 
     start() {        
         let boxCollider = this.addComponent(cc.BoxCollider)
-        boxCollider.size = this.size
+        boxCollider.size = this.data.size
     }
 
     move() {
         let targetPos = this.getTarget().mulSelf(cc.winSize.width * 2 / 3)
-        let time = targetPos.len() / this.speed
+        let time = targetPos.len() / this.data.speed
         this.node.runAction(cc.sequence(cc.moveBy(time, targetPos), cc.removeSelf()))
-        // cc.tween(this.node)
-        //     .by(time, { position: cc.v3(targetPos.x, targetPos.y) })
-        //     .removeSelf()
-        //     .start()
     }
 }

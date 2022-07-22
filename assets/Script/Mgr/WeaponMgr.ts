@@ -9,13 +9,6 @@ export default class WeaponMgr {
 
     tweenMap: Map<string, cc.Tween> = null
 
-    // [
-    //     {
-    //         name : '',
-    //         level: 1,
-    //         interval: 1,
-    //     }
-    // ]
 
     public static getInstance() {
         if (!this._instance) {
@@ -36,7 +29,7 @@ export default class WeaponMgr {
             .repeatForever(
                 cc.tween()
                     .call(() => {
-                        this.createBullet(weapon.name)
+                        this.createBullet(weapon)
                     }).delay(weapon.interval)
             )
         return tween
@@ -60,10 +53,11 @@ export default class WeaponMgr {
         newTween.start()
     }
 
-    public createBullet(typeName: string) {
+    public createBullet(weapon) {
         let pos = CharMgr.getInstance().getCharByName('Hero').getWorldPos()
-        let bullet = new cc.Node(typeName)
-        bullet.addComponent(typeName)
+        let bullet = new cc.Node(weapon.name)
+        let comp = bullet.addComponent(weapon.name)
+        comp.data = weapon
         let bulletLayer = MapMgr.getInstance().getLayerByName('BulletLayer')
         bullet.x = bulletLayer.convertToNodeSpaceAR(pos).x
         bullet.y = bulletLayer.convertToNodeSpaceAR(pos).y

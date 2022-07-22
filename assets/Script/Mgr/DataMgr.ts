@@ -1,22 +1,67 @@
 import WeaponMgr from "./WeaponMgr";
 
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class DataMgr {
-    protected static _instance:DataMgr = null;
+    protected static _instance: DataMgr = null;
 
-    protected bag:any[]
+    protected bag: any[]
 
-    public static getInstance(){
-        if(!this._instance){
+    // [
+    //     {
+    //         name : '',
+    //         level: 1,
+    //         interval: 1,
+    //         hp: number,
+    //         damage: number,
+    //         speed: number,
+    //         size: cc.Size
+    //     }
+    // ]
+
+    tempData = {
+        ['LineTest']: {
+            name: 'LineTest',
+            level: 1,
+            interval:1,
+            hp: 10,
+            damage: 10,
+            speed: 600,
+            size: cc.size(20, 20)
+        },
+        ['DomainTest']: {
+            name: 'DomainTest',
+            level: 1,
+            interval:1,
+            hp: 100000000,
+            damage: 5,
+            speed: 80,
+            maxSize: cc.size(500, 500),
+            size: cc.size(20, 20)
+        },
+        ['ProjectileTest']:{
+            name: 'ProjectileTest',
+            level: 1,
+            interval:1,
+            hp: 1000000,
+            damage: 10,
+            speed: 600,
+            size: cc.size(20, 20)
+        }
+    }
+
+
+
+    public static getInstance() {
+        if (!this._instance) {
             this._instance = new DataMgr();
             this._instance._init();
         }
         return this._instance;
     }
 
-    protected _init(){  
+    protected _init() {
         this.bag = []
     }
 
@@ -28,7 +73,7 @@ export default class DataMgr {
                 return
             }
         }
-        let newWeapon = { name: typeName, level: 1, interval: 1 }
+        let newWeapon = this.tempData[typeName]
         this.bag.push(newWeapon)
 
         WeaponMgr.getInstance().addWeapon(newWeapon)

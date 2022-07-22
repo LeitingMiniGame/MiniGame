@@ -5,10 +5,7 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default abstract class Weapon extends cc.Component {
 
-    hp: number
-    damage: number
-    speed: number
-    size: cc.Size
+    data:any
 
     onLoad() {
         this.node.group = 'Weapon'
@@ -21,14 +18,14 @@ export default abstract class Weapon extends cc.Component {
             }
             var sprite = this.node.addComponent(cc.Sprite);
             sprite.spriteFrame = assets
-            this.node.setContentSize(this.size)
+            this.node.setContentSize(this.data.size)
             this.move()
         })
     }
 
     injured(damage:number) {
-        this.hp -= damage
-        if (this.hp <= 0) {
+        this.data.hp -= damage
+        if (this.data.hp <= 0) {
             this.node.removeFromParent()
         }
     }
