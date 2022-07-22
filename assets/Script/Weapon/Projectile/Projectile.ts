@@ -5,12 +5,6 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class Projectile extends Weapon {
-
-    speed: number = 600
-    size: cc.Size = cc.size(20, 20)
-    damage: number = 0
-    hp: number = 100000000
-
     equation: any
     addSpeed: any;
     theta: number;
@@ -19,7 +13,6 @@ export default class Projectile extends Weapon {
         let boxCollider = this.addComponent(cc.BoxCollider)
         boxCollider.size = this.size
         this.addComponent(cc.RigidBody)
-        this.loadImage('Image/Hero')
     }
 
     // 获取子弹的目标
@@ -37,10 +30,7 @@ export default class Projectile extends Weapon {
         if (posByThisNode.x < 0) {
             tempX = -0.01
         }
-
         let tempY = this.getY(tempX)
-
-
         return cc.v2(tempX, tempY).normalizeSelf()
     }
 

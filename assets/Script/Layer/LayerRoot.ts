@@ -11,11 +11,12 @@ export default class LayerRoot extends cc.Component {
     upVec: number;
     leftVec: number;
 
-    onLoad(params?: any) {
-        this.speed = CharMgr.getInstance().getCharByName("Hero").speed
-    }
+    // onLoad(params?: any) {
+      
+    // }
 
     start() {
+        this.speed = CharMgr.getInstance().getCharByName("Hero").speed
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this)
     }
@@ -72,8 +73,11 @@ export default class LayerRoot extends cc.Component {
 
         this.node.x = nextX
         this.node.y = nextY
+        
         // 将移动同步头hero
         let hero = CharMgr.getInstance().getCharByName("Hero").getComponent('Hero')
+        hero.node.x = -nextX
+        hero.node.y = -nextY        
         if (hero.state != state) {
             hero.changeState(state)
         }

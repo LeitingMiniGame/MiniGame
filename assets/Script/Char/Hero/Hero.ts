@@ -70,7 +70,7 @@ export default class Hero extends Char {
 
     // 攻击函数
     fire() {
-        BulletMgr.getInstance().createBullet('Projectile', this.getWorldPos())
+        BulletMgr.getInstance().createBullet('DemainTest', this.getWorldPos())
     }
 
     // 受伤的函数
