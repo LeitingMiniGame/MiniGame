@@ -25,6 +25,8 @@ export default class JsonManager{
     public static getInstance() {
         if (!this._instance) {
             this._instance = new JsonManager();
+            // 初次加载则读取本地数据
+            this._instance.LoadDB();
         }
         return this._instance;
     }
@@ -63,13 +65,13 @@ export default class JsonManager{
         {
             let key = ObjNameArray[index];
             console.log("key:", key);
-            console.log("key type:",typeof key);
+            //console.log("key type:",typeof key);
             JsonStr = cc.sys.localStorage.getItem(key);
-            console.log("JsonStr:", JsonStr);
+            //console.log("JsonStr:", JsonStr);
             json = JSON.parse(JsonStr);
             console.log("json:", json);
             this._mapDBase.set(key,json);
-            console.log("_mapDB:", this._mapDBase);
+            //console.log("_mapDB:", this._mapDBase);
         }
         console.log("load over");
     }
