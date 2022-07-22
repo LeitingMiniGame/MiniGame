@@ -35,7 +35,7 @@ export default class GameScene extends cc.Component {
 
     // 添加角色
     addHero() {
-        let hero = CharMgr.getInstance().createChar("Hero", "Hero")
+        let hero = CharMgr.getInstance().createChar("HeroTest", "Hero")
         let layerRoot = MapMgr.getInstance().getLayerByName('LayerRoot')
         hero.node.parent = layerRoot
         hero.node.zIndex = 200

@@ -2,7 +2,7 @@ import Line from "./Line";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class Clover extends Line {
+export default class LineTest extends Line {
 
     speed: number = 600
     size: cc.Size = cc.size(20, 20)
