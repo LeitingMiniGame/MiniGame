@@ -16,7 +16,6 @@ export default class WeaponMgr {
     //         interval: 1,
     //     }
     // ]
-    bag: any[];
 
     public static getInstance() {
         if (!this._instance) {
@@ -27,71 +26,36 @@ export default class WeaponMgr {
     }
 
     protected _init() {
-        this.bag = []
         this.tweenMap = new Map
     }
 
     // 生成攻击的缓动系统
-    createFireTween(typeName) {
+    createFireTween(weapon) {
         let bulletLayer = MapMgr.getInstance().getLayerByName("BulletLayer")
-        let fireInterval = this.getWeapon(typeName).interval
-        return cc.tween(bulletLayer)
+        let tween = cc.tween(bulletLayer)
             .repeatForever(
                 cc.tween()
                     .call(() => {
-                        this.createBullet(typeName)
-                    }).delay(fireInterval)
+                        this.createBullet(weapon.name)
+                    }).delay(weapon.interval)
             )
+        return tween
     }
 
     // 增加武器
-    addWeapon(typeName) {
-        for (let i = 0; i < Math.min(6, this.bag.length); i++) {
-            if (this.bag[i].name == typeName) {
-                this.upWeapon(i)
-                return
-            }
-        }
-        this.bag.push({ name: typeName, level: 1, interval: 1 })
-        let tween = this.createFireTween(typeName)
-        this.tweenMap.set(typeName, tween)
+    addWeapon(weapon) {
+        let tween = this.createFireTween(weapon)
+        this.tweenMap.set(weapon.name, tween)
         tween.start()
     }
 
-    // 获取武器数据
-    getWeapon(typeName: string | number) {
-        if (typeof (typeName) === 'number') {
-            return this.bag[typeName]
-        }
-
-        for (let i = 0; i < Math.min(6, this.bag.length); i++) {
-            if (this.bag[i].name == typeName) {
-                return this.bag[i]
-            }
-        }
-    }
-
     // 升级武器
-    upWeapon(typeName: string | number) {
-        if (typeof (typeName) === 'string') {
-            for (let i = 0; i < Math.min(6, this.bag.length); i++) {
-                if (this.bag[i].name == typeName) {
-                    this.upWeapon(i)
-                    return
-                }
-            }
-
-        }
-
-        // 处理升级的逻辑
-        this.bag[typeName].level++
-        this.bag[typeName].interval -= 0.5
-
+    upWeapon(weapon) {
         // 处理缓动
-        let name = this.bag[typeName].name
+        let name = weapon.name
         let oldTween = this.tweenMap.get(name)
         oldTween.stop()
-        let newTween = this.createFireTween(name)
+        let newTween = this.createFireTween(weapon)
         this.tweenMap.set(name, newTween)
         newTween.start()
     }

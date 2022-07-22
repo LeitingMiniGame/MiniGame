@@ -1,5 +1,5 @@
 import Char from "../Char";
-import BulletMgr from "../../Mgr/WeaponMgr";
+import DataMgr from "../../Mgr/DataMgr";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -26,7 +26,7 @@ export default class Hero extends Char {
     }
 
     addWeapon(typeName) {
-        BulletMgr.getInstance().addWeapon(typeName)
+        DataMgr.getInstance().addWeapon(typeName)
     }
 
     changeState(state) {
