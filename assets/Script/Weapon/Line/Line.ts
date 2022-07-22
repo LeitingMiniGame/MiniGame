@@ -1,24 +1,13 @@
-import MonsterMgr from "../Mgr/MonsterMgr";
-import Weapon from "./Weapon";
+import MonsterMgr from "../../Mgr/MonsterMgr";
+import Weapon from "../Weapon";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class Clover extends Weapon {
+export default class Line extends Weapon {
 
-    speed: number = 600
-    size: cc.Size = cc.size(20, 20)
-    hp: number = 10
-    damage: number = 10
-
-    start() {
-        this.loadImage('Image/Hero')
-
+    start() {        
         let boxCollider = this.addComponent(cc.BoxCollider)
         boxCollider.size = this.size
-
-        this.hp = 10
-        this.damage = 10
-
     }
 
     getTarget() {
@@ -27,11 +16,11 @@ export default class Clover extends Weapon {
         if (!targetPos) {
             return cc.v2(Math.random(), Math.random())
         }
-        return targetPos.sub(worldPos)
+        return targetPos.sub(worldPos).normalizeSelf()
     }
 
     move() {
-        let targetPos = this.getTarget()
+        let targetPos = this.getTarget().mulSelf(cc.winSize.width * 2 / 3)
         let time = targetPos.len() / this.speed
         this.node.runAction(cc.sequence(cc.moveBy(time, targetPos), cc.removeSelf()))
         cc.tween(this.node)

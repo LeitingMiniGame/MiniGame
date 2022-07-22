@@ -7,6 +7,7 @@ export default class Hero extends Char {
 
     speed: number = 200
     hp:number = 100
+    luckly:number = 20
 
     fireInterval: number = 1
 

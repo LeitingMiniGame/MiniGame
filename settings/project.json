@@ -29,8 +29,8 @@
     "Hero"
   ],
   "start-scene": "2d2f792f-a40c-49bb-a189-ed176a246e49",
-  "design-resolution-width": 960,
-  "design-resolution-height": 640,
+  "design-resolution-width": 1920,
+  "design-resolution-height": 1080,
   "fit-width": false,
   "fit-height": true,
   "use-project-simulator-setting": false,
