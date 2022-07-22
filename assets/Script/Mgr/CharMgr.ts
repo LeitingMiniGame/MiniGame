@@ -30,7 +30,7 @@ export default class CharMgr {
     }
 
     public createChar(charType:string, name:string){
-        let node = new cc.Node
+        let node = new cc.Node(name)
         let char = node.addComponent(charType)
         char.name = name
         this._mapChar.set(name, char)

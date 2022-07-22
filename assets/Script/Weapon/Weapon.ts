@@ -1,43 +1,53 @@
-// Learn TypeScript:
-//  - https://docs.cocos.com/creator/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
+import MonsterMgr from "../Mgr/MonsterMgr";
 
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default abstract class weapon extends cc.Component {
+export default abstract class Weapon extends cc.Component {
 
-    // LIFE-CYCLE CALLBACKS:
+    hp: number
+    damage: number
+    speed: number
+    size: cc.Size
 
-    // onLoad () {}
-
-    @property(cc.Node)
-    char:cc.Node = null;
-
-
-    onLoad () {
-
+    onLoad() {
+        this.node.group = 'Weapon'
     }
 
-    loadImage(path){
-        cc.resources.load(path, cc.SpriteFrame, (error, assets:cc.SpriteFrame) =>{
-            if(error){
+    loadImage(path) {
+        cc.resources.load(path, cc.SpriteFrame, (error, assets: cc.SpriteFrame) => {
+            if (error) {
                 return
             }
             var sprite = this.node.addComponent(cc.Sprite);
             sprite.spriteFrame = assets
-            this.node.setContentSize(20, 20)
+            this.node.setContentSize(this.size)
             this.move()
         })
     }
 
-    abstract getTarget():any
-    
-    // 子弹的移动逻辑，子类需要实现
-    abstract move():any
+    injured(damage:number) {
+        this.hp -= damage
+        if (this.hp <= 0) {
+            this.node.removeFromParent()
+        }
+    }
 
-    // update (dt) {}
+    // 获取子弹的目标，默认获取最近的敌人
+    getTarget(): any {
+        let worldPos = this.node.convertToWorldSpaceAR(cc.v2(0, 0))
+        let targetPos = MonsterMgr.getInstance().getNearestMonsterPos(worldPos)
+        if (!targetPos) {
+            return cc.v2(Math.random(), Math.random())
+        }
+        return targetPos.sub(worldPos).normalizeSelf()
+    }
+
+    getWorldPos(){
+        return this.node.convertToWorldSpaceAR(cc.v2(0, 0))
+    }
+
+    // 子弹的移动逻辑，子类需要实现
+    abstract move(): any
+
 }
