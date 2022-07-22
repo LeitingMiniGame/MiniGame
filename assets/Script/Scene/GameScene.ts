@@ -1,10 +1,10 @@
 
-import CharMgr from "./Mgr/CharMgr";
-import MapMgr from "./Mgr/MapMgr";
+import CharMgr from "../Mgr/CharMgr";
+import MapMgr from "../Mgr/MapMgr";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class AppStart extends cc.Component {
+export default class GameScene extends cc.Component {
     isLoadFinish: number = 0
     allFinish: number = 0
 
