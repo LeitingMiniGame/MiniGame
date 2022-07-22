@@ -1,5 +1,5 @@
 
-import JsonManager from "../Mgr/JsonManager";
+import JsonManager from "../../Mgr/JsonManager";
 
 const {ccclass, property} = cc._decorator;
 
