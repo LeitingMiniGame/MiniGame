@@ -9,8 +9,10 @@ export default class Projectile extends Weapon {
     speed: number = 600
     size: cc.Size = cc.size(20, 20)
     damage: number = 0
-    hp: number = 1000000
+    hp: number = 10
+
     equation: any
+    addSpeed: any;
 
     start() {
         let boxCollider = this.addComponent(cc.BoxCollider)
@@ -59,7 +61,29 @@ export default class Projectile extends Weapon {
         let target = this.getTarget()
         let rigidbody = this.getComponent(cc.RigidBody)
         rigidbody.linearVelocity = cc.v2(target.mulSelf(this.speed))
-        rigidbody.gravityScale = 3
+        // 或者
+        let localPoint = cc.v2();
+        rigidbody.getWorldPoint(cc.v2(0, 0), localPoint)
     }
 
+    update(dt: number): void {
+        if (this.node.y < -cc.winSize.height) {
+            this.node.removeFromParent()
+        }
+        let moveVec = MapMgr.getInstance().getLayerByName("LayerRoot").getComponent("LayerRoot").getMoveVec()
+        let speed = cc.v2(moveVec.speed, moveVec.speed)
+        let addSpeed = speed.scaleSelf(cc.v2(moveVec.left, moveVec.up))
+        let rigidbody = this.getComponent(cc.RigidBody)
+        if (addSpeed.len() == 0) {
+            if (this.addSpeed.len() != 0) {
+                rigidbody.linearVelocity = rigidbody.linearVelocity.subSelf(this.addSpeed)
+                this.addSpeed = addSpeed
+            }
+        } else {
+            if (!this.addSpeed || this.addSpeed.len() == 0) {
+                rigidbody.linearVelocity = rigidbody.linearVelocity.addSelf(addSpeed)
+                this.addSpeed = addSpeed
+            }
+        }
+    }
 }
