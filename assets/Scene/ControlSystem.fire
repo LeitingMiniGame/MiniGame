@@ -1388,6 +1388,9 @@
     "ShopSystem": {
       "__uuid__": "c9717825-b43b-4f90-8a01-a7137681847e"
     },
+    "SettlementSystem": {
+      "__uuid__": "9a345bcc-095e-41ff-a6da-3f855e277445"
+    },
     "MainLayout": {
       "__id__": 29
     },
