@@ -1,5 +1,6 @@
 import Char from "../Char/Char";
 import MonsterLayer from "../Layer/MonsterLayer";
+import { randByWeight } from "../Tools/Tools";
 import CharMgr from "./CharMgr";
 import DataMgr from "./DataMgr";
 
@@ -163,38 +164,6 @@ export default class MonsterMgr {
         this.monsterLayer = monsterLayer
     }
 
-
-    // describe: 在范围内获取随机整数值 [min, max]
-    getRandomIntInclusive(min: number, max: number): number {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    // 根据权重随机
-    randByWeight(arr): number {
-        let totalWeight: number = 0;
-        let randIndex: number;
-        for (let itemWeightMsg of arr) {
-            totalWeight += itemWeightMsg.weight;
-        }
-
-        if (totalWeight <= 0) {
-            return randIndex
-        } else {
-            let randVal: number = this.getRandomIntInclusive(1, totalWeight);
-            for (let index = 0; index < arr.length; index++) {
-                if (randVal <= arr[index].weight) {
-                    randIndex = index;
-                    break;
-                } else {
-                    randVal -= arr[index].weight;
-                }
-            }
-        }
-        return randIndex;
-    }
-
     // 检测是否需要改变随机生成的逻辑
     checkRandomChange() {
         let self = MonsterMgr.getInstance()
@@ -214,7 +183,7 @@ export default class MonsterMgr {
                                 if (self._mapMonsterById.size >= self.curRandData.maxMonster) {
                                     return
                                 }
-                                let index = self.randByWeight(self.curRandData.monsterData)
+                                let index = randByWeight(self.curRandData.monsterData)
                                 let monsterData = self.curRandData.monsterData[index]
                                 self.addMonster(monsterData.name, 1)
                             })

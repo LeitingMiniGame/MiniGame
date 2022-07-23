@@ -4,7 +4,7 @@ import Char from "../Char";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class Item extends Char {
+export default abstract class Item extends Char {
 
     getTargetInterval: number = 0.1
     moveCallFunc: () => void;
@@ -64,5 +64,5 @@ export default class Item extends Char {
         }
     }
 
-    bePickUp() { }
+    abstract bePickUp() 
 }

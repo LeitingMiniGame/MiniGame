@@ -3,6 +3,7 @@ import CharMgr from "../../Mgr/CharMgr";
 import DataMgr from "../../Mgr/DataMgr";
 import ItemMgr from "../../Mgr/ItemMgr";
 import MonsterMgr from "../../Mgr/MonsterMgr";
+import { getRandomIntInclusive } from "../../Tools/Tools";
 import Char from "../Char";
 
 const { ccclass, property } = cc._decorator;
@@ -119,21 +120,13 @@ export default class Monster extends Char {
         }
     }
 
-    // 获取随机数
-    getRandInt(min, max) {
-        var range = max - min;
-        var rand = Math.random();
-        return (min + Math.round(rand * range));
-    }
-
     // 碰撞检测
     onCollisionEnter(other, self) {
         if (other.node.group == "Weapon") {
             let weapon = other.node.getComponent('Weapon')
             let monster = self.node.getComponent(self.node.name)
             weapon.injured()
-            let damage = this.getRandInt(weapon.data.minDamage, weapon.data.maxDamage)
-
+            let damage = getRandomIntInclusive(weapon.data.minDamage, weapon.data.maxDamage)
             let char = CharMgr.getInstance().getCharByName('Hero').getComponent('Hero')
             damage = char.getAddDamage(damage)
 
