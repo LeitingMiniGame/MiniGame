@@ -9,10 +9,21 @@ export default class NewClass extends cc.Component {
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {}
+    onLoad () {
+        //从上一个场景的常驻节点上获取当前场景需要使用的参数
+        let GlobalData = cc.find("GlobalData");
+
+        //添加DataNode为常驻节点
+        cc.game.addPersistRootNode(GlobalData);
+
+
+    }
 
     start () {
 
+        cc.director.preloadScene("ControlSystem", function () {
+            console.log("控制界面预加载好了");
+        });
     }
 
     SwitchToSetUp(){
@@ -20,6 +31,18 @@ export default class NewClass extends cc.Component {
         cc.director.loadScene('SetUp', function(){
             console.log("切换到设置界面啦");
         });
+    }
+
+    SwitchToControl(Para:string){
+        let GlobalData = cc.director.getScene().getChildByName("GlobalData").getComponent("GlobalData");
+
+        //设置DataNode要传递的数据
+        GlobalData.Data = {
+            FunctionalScene : "AchieveSystem"
+        }
+
+        // 切换到成就系统
+        cc.director.loadScene("AchieveSystem");
     }
 
     /** 根据数据Temp数据库中记录的PreviousScene标记返回上一个场景 */
