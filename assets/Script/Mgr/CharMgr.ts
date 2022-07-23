@@ -11,6 +11,7 @@ const {ccclass, property} = cc._decorator;
 export default class CharMgr {
     protected static _instance:CharMgr = null;
     private _mapChar:Map<string, Char> = new Map();
+    private _mapCharById:Map<string, cc.Node> = new Map();
 
     public static getInstance(){
         if(!this._instance){
@@ -33,6 +34,7 @@ export default class CharMgr {
         let node = new cc.Node(name)
         let char = node.addComponent(charType)
         char.name = name
+        this._mapCharById.set(node.uuid, node)
         this._mapChar.set(name, char)
         return char
     }
@@ -41,4 +43,12 @@ export default class CharMgr {
         return this._mapChar.get(name)
     }
 
+    public releaseChar(uuid) {
+        let node = this._mapCharById.get(uuid)
+        if(!node){
+            return
+        }
+        node.removeFromParent()
+        this._mapCharById.delete(uuid)
+    }
 }

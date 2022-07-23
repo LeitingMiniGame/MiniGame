@@ -70,9 +70,10 @@ export default class Monster extends Char {
             .to(0.3, { opacity: 100 })
             .to(0.3, { opacity: 255 })
             .start()
+        let self = this
         let imageNode = NumImage.getInstance().getNumImage(damage, () => {
-            if (this.hp <= 0) {
-                MonsterMgr.getInstance().removeMonster(this)
+            if (self.hp <= 0) {
+                MonsterMgr.getInstance().removeMonster(self)
             }
         })
         imageNode.parent = this.node
