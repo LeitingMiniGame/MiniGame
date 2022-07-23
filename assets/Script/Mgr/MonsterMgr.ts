@@ -16,7 +16,7 @@ export default class MonsterMgr {
         {
             time: 0,
             interval: 1,
-            maxMonster: 200,
+            maxMonster: 3,
             monsterData: [
                 {
                     name: 'Bee',
@@ -27,26 +27,27 @@ export default class MonsterMgr {
                     weight: 100
                 },
             ],
-        },
-        {
-            time: 10,
-            interval: 0.1,
-            maxMonster: 200,
-            monsterData: [
-                {
-                    name: 'Crow',
-                    weight: 100,
-                },
-                {
-                    name: 'Bee',
-                    weight: 80,
-                },
-                {
-                    name: 'Vine',
-                    weight: 100
-                },
-            ],
-        },
+        }
+        // },
+        // {
+        //     time: 10,
+        //     interval: 0.1,
+        //     maxMonster: 200,
+        //     monsterData: [
+        //         {
+        //             name: 'Crow',
+        //             weight: 100,
+        //         },
+        //         {
+        //             name: 'Bee',
+        //             weight: 80,
+        //         },
+        //         {
+        //             name: 'Vine',
+        //             weight: 100
+        //         },
+        //     ],
+        // },
     ]
     waveData = [
         // {
@@ -74,7 +75,7 @@ export default class MonsterMgr {
         //     type: 'Circle',
         //     monsterData: [
         //         {
-        //             name: 'Bee',
+        //             name: 'Vine',
         //             count: 40,
         //         }
         //     ]

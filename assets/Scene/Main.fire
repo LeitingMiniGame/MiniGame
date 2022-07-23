@@ -659,7 +659,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Grass",
+    "_name": "New Node",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -682,8 +682,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 64,
-      "height": 64
+      "width": 0,
+      "height": 0
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -717,38 +717,23 @@
     "_is3DNode": false,
     "_groupIndex": 0,
     "groupIndex": 0,
-    "_id": "5dMnc1YiNMtYf0HbYCAozX"
+    "_id": "13ckheIH9A2IUdhGItL2/P"
   },
   {
-    "__type__": "cc.Sprite",
+    "__type__": "cc.CircleCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 16
     },
     "_enabled": true,
-    "_materials": [
-      {
-        "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
-      }
-    ],
-    "_srcBlendFactor": 770,
-    "_dstBlendFactor": 771,
-    "_spriteFrame": {
-      "__uuid__": "08c9d47a-8e03-44cc-b3fe-99070da67de1"
-    },
-    "_type": 0,
-    "_sizeMode": 0,
-    "_fillType": 0,
-    "_fillCenter": {
+    "tag": 0,
+    "_offset": {
       "__type__": "cc.Vec2",
       "x": 0,
       "y": 0
     },
-    "_fillStart": 0,
-    "_fillRange": 0,
-    "_isTrimmedMode": true,
-    "_atlas": null,
-    "_id": "5fdb0PLkxIrLhkIZKsNvb4"
+    "_radius": 50,
+    "_id": "ebrQXN2VtITpLFsh5cTNSw"
   }
 ]

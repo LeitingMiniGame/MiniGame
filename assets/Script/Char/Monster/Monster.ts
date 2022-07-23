@@ -27,7 +27,13 @@ export default class Monster extends Char {
 
         this.moveCallFunc = () => {
             // 向量归一化*移动距离 = 本次移动的目标
-            let nor = this.getTaget().normalizeSelf()
+            let target = this.getTaget()
+            if (target.len() > cc.winSize.height * 2) {
+                // 距离太远，直接移除
+                MonsterMgr.getInstance().removeMonster(this)
+                return
+            }
+            let nor = target.normalizeSelf()
             let scale = this.data.speed * this.getTargetInterval
             this.targetPos = nor.multiply(cc.v2(scale, scale))
             this.animateLayer.scaleX = this.targetPos.x < 0 ? -1 : 1
@@ -84,7 +90,7 @@ export default class Monster extends Char {
     playInjured(damage) {
         if (this.data.hp > 0) {
             cc.tween(this.animateLayer)
-                .to(0.3, { opacity: 100 })
+                .to(0.3, { opacity: 80 })
                 .to(0.3, { opacity: 255 })
                 .start()
         }
