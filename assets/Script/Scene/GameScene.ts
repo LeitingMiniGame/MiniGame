@@ -12,11 +12,6 @@ export default class GameScene extends cc.Component {
     onLoad() {
         this.addLayerRoot()
 
-        this.addHero()
-        this.addMapLayer()
-        this.addBulletLayer()
-        this.addMonsterLayer()
-        this.addItemLayer()
 
         // 开启碰撞检测
         var manager = cc.director.getCollisionManager();
@@ -38,6 +33,14 @@ export default class GameScene extends cc.Component {
         NumImage.getInstance()
     }
 
+    start(){
+        this.addHero()
+        this.addMapLayer()
+        this.addBulletLayer()
+        this.addMonsterLayer()
+        this.addItemLayer()
+    }
+
     // 添加角色
     addHero() {
         let hero = CharMgr.getInstance().createChar("HeroTest", "Hero")
@@ -57,7 +60,7 @@ export default class GameScene extends cc.Component {
 
     // 添加地图层
     addMapLayer() {
-        cc.resources.load("Prefab/MapPrefab/MapBlock1", cc.Prefab, (error, assets) => {
+        cc.resources.load("Prefab/MapPrefab/Grass", cc.Prefab, (error, assets) => {
             if (error) {
                 return
             }

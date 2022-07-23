@@ -12,7 +12,7 @@ export default class LayerRoot extends cc.Component {
     leftVec: number;
 
     // onLoad(params?: any) {
-      
+
     // }
 
     start() {
@@ -54,30 +54,32 @@ export default class LayerRoot extends cc.Component {
                     break
             }
         }
-        let nextX = this.node.x
-        let nextY = this.node.y
+        let addX = 0
+        let addY = 0
 
         let state = 'stateStay'
 
         if (upVec != 0) {
-            nextY += this.speed * dt * upVec;
+            addY = this.speed * dt * upVec;
             state = upVec == 1 ? 'moveUp' : 'moveDown'
         }
 
         if (leftVec != 0) {
-            nextX += this.speed * dt * leftVec;
+            addX = this.speed * dt * leftVec;
             state = leftVec == 1 ? 'moveLeft' : 'moveRight'
         }
         this.upVec = upVec
         this.leftVec = leftVec
 
-        this.node.x = nextX
-        this.node.y = nextY
-        
+        let addVec = cc.v2(addX, addY).normalizeSelf().mulSelf(this.speed * dt)
+
+        this.node.x += addVec.x
+        this.node.y += addVec.y
+
         // 将移动同步头hero
         let hero = CharMgr.getInstance().getCharByName("Hero").getComponent('Hero')
-        hero.node.x = -nextX
-        hero.node.y = -nextY        
+        hero.node.x -= addVec.x
+        hero.node.y -= addVec.y
         if (hero.state != state) {
             hero.changeState(state)
         }

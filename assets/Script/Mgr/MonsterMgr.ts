@@ -79,9 +79,9 @@ export default class MonsterMgr{
     }
 
     // 添加怪物
-    addMonster() {
+    addMonster(monsterType, createNum) {
         for (let i = 0; i < this.createNum; i++) {
-            let monster = MonsterMgr.getInstance().createMonster("Vine", "Monster")
+            let monster = MonsterMgr.getInstance().createMonster(monsterType, "Monster")
             monster.node.parent = this.monsterLayer
             monster.node.setPosition(this.getCreatePos())
         }
@@ -90,15 +90,21 @@ export default class MonsterMgr{
     // 开始生成怪物
     beginCreateMonster(monsterLayer){
         this.monsterLayer = monsterLayer
+        // 定时生成怪物
         cc.tween(monsterLayer)
         .repeatForever(
             cc.tween()
                 .call(() => {
-                    MonsterMgr.getInstance().addMonster()
+                    MonsterMgr.getInstance().addMonster('Vine', 1)
+                    MonsterMgr.getInstance().addMonster('Crow', 1)
+                    MonsterMgr.getInstance().addMonster('Bee', 1)
                 })
                 .delay(this.createInterval)
         )
         .start()
+
+
+        //按照波次生成怪物
     }
 
 }
