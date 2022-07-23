@@ -40,12 +40,19 @@ export default class NewClass extends cc.Component {
 
     start () {
         console.log("AchieveScene要start啦")
-        let size = 30;
-        console.log("原本的高度为:",this.AchieveList.node.height)
-        console.log("achieve layout的高度为:",this.Achieve.data.getContentSize().height)
+
+        let GlobalDataNote = cc.director.getScene().getChildByName("GlobalData");
+        let GlobalDataObject = GlobalDataNote.getComponent("GlobalData").Data;
+        console.log("GlobalDataObject : ", GlobalDataObject)
+
+        console.log("GlobalDataObject[AchieveList] : ",GlobalDataObject["AchieveList"])
+        let AchieveConfigList = GlobalDataObject["AchieveList"];
+        let size = AchieveConfigList.length;
+        // console.log("原本的高度为:",this.AchieveList.node.height)
+        // console.log("achieve layout的高度为:",this.Achieve.data.getContentSize().height)
         // 每个组件间间隔5 上下隔开5 所以一共增加了size+1个5
         this.AchieveList.node.height = (this.Achieve.data.getContentSize().height+5) * size +5;
-        console.log("修改后的的高度为:",this.AchieveList.node.height)
+        // console.log("修改后的的高度为:",this.AchieveList.node.height)
         for(let index = 0;index < size ;index++){
             let Achieve = cc.instantiate(this.Achieve)
 

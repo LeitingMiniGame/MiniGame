@@ -107,13 +107,17 @@ export default class PopupManager {
             params = this.parseParams(params);
             // 当前已有弹窗在展示中则加入等待队列
             if (this._current || this.locked) {
+                console.log("当前已有弹窗在展示中则加入等待队列")
                 // 是否立即强制展示
                 if (params && params.immediately) {
                     this.locked = false;
+                    console.log("params : ",params)
+                    console.log("挂起当前弹窗")
                     // 挂起当前弹窗
                     await this.suspend();
                 } else {
                     // 将请求推入等待队列
+                    console.log("将请求推入等待队列")
                     this.push(path, options, params);
                     res(ShowResult.Waiting);
                     return;
@@ -126,9 +130,11 @@ export default class PopupManager {
                 params
             };
             // 先在缓存中获取弹窗节点
+            console.log("先在缓存中获取弹窗节点")
             let node = this.getNodeFromCache(path);
             // 缓存中没有，动态加载预制体资源
             if (!cc.isValid(node)) {
+                console.log("缓存中没有，动态加载预制体资源")
                 // 开始回调
                 this.loadStartCallback && this.loadStartCallback();
                 // 等待加载

@@ -9,7 +9,6 @@ export default class MyCheckBox extends cc.Component {
     @property
     key: string = "";
 
-    IsCheck: boolean = null;
     my_toggle: cc.Toggle = null;
     DB:JsonManager = null;
     // LIFE-CYCLE CALLBACKS:
@@ -19,7 +18,7 @@ export default class MyCheckBox extends cc.Component {
      */
     onLoad () {
         if(this.key == ""){
-            console.log(this.node.name,"中存在组件MyCheckBox发生异常: 未设置key");
+            console.warn(this.node.name,"中存在组件MyCheckBox发生异常: 未设置key");
             return false;
         }
 
@@ -33,13 +32,10 @@ export default class MyCheckBox extends cc.Component {
         if(!SetUp.hasOwnProperty(this.key) || SetUp[this.key] == undefined){
             // 若没有相关设置则初始化
             SetUp[this.key] = true;
-            if(this.IsCheck == null){
-
-            }
         }
-        this.IsCheck = SetUp[this.key];
+
         this.my_toggle = this.node.getComponent(cc.Toggle);
-        this.my_toggle.isChecked = this.IsCheck==null?true:this.IsCheck;
+        this.my_toggle.isChecked = SetUp[this.key]==null?true:SetUp[this.key];
     }
 
     UpdateCheckStatus(){
@@ -51,11 +47,11 @@ export default class MyCheckBox extends cc.Component {
 
         let SetUp = this.DB.query("SetUp");
         SetUp[this.key] = IsCheck;
-        // this.DB.set("SetUp",SetUp); ////---- 没有必要，新取到的就是最新内容，在这里修改等于在DB中修改
-        // console.log("DB:",this.DB);
-        // console.log("SetUp:",SetUp);
-        // console.log("SetUp type:",typeof SetUp);
-        // console.log("DB:SetUp:",this.DB.query("SetUp"));
+
+        console.log("SetUp[",this.key,"]:",SetUp[this.key]);
+
+        console.log("Data.SetUp[",this.key,"]",cc.director.getScene().getChildByName("GlobalData").getComponent("GlobalData").Data.SetUp[this.key])
+
     }
     start () {
 

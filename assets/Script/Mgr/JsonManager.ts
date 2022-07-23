@@ -17,9 +17,9 @@ export default class JsonManager{
     private static _instance: JsonManager = null;
 
     // 存储对象数据
-    private _mapDBase: Map<string, Object> = new Map();
+    private _mapDBase: Map<string, Object> = new Map<string, Object>();
     // 存储临时对象数据
-    private _mapTempDBase: Map<string, Object> = new Map();
+    private _mapTempDBase: Map<string, Object> = new Map<string, Object>();
 
     /** 单例模式，获取管理对象 */
     public static getInstance() {
@@ -46,7 +46,7 @@ export default class JsonManager{
             console.log("save :",key,"成功");
             // 记录保存了多少变量
             ObjNameArray.push(key);
-            console.log("save key 成功");
+            // console.log("save key 成功");
         });
         console.log("map循环结束");
         // 最后将数据类型映射关系、变量信息保存
@@ -104,6 +104,7 @@ export default class JsonManager{
     /** 清除所有内存数据 */
     public clear(){
         this._mapDBase.clear();
+        this._mapDBase = new Map<string, Object>();
     }
 
     /** 删除指定内存数据 */
@@ -140,6 +141,7 @@ export default class JsonManager{
     /** 清除所有临时内存数据 */
     public clearTemp(){
         this._mapTempDBase.clear();
+        this._mapTempDBase = new Map<string, Object>();
     }
 
     /** 删除指定临时内存数据 */
@@ -148,26 +150,27 @@ export default class JsonManager{
     }
 
     /** URL 是 resources/*.json */
-    public LoadJson(URL:string){
+    public LoadJson(URL:string, CallBack?:Function,Para?:any[]){
         console.log("URL:",URL);
         //URL 直接输入resources文件夹下的即可------出了点问题，无法使用了
-        // cc.loader.loadRes(URL, function(err, object) {
-        //     if(err) {
-        //         console.log("err:",err);
-        //         return null;
-        //     }
-        //     return object;
-        // })
-
-        // URL需要指定resources目录 例如resources/demo.json
-        cc.loader.load(cc.url.raw(URL), function(err,res){
+        cc.loader.loadRes(URL, function(err, object) {
             if(err) {
                 console.log("err:",err);
-                return;
+                return ;
             }
-            console.log("res:",res.json);
-
+            CallBack&&CallBack([object.json,Para])
+            return ;
         })
+
+        // URL需要指定resources目录 例如resources/demo.json
+        // cc.loader.load(cc.url.raw(URL), function(err,res){
+        //     if(err) {
+        //         console.log("err:",err);
+        //         return;
+        //     }
+        //     console.log("res:",res.json);
+
+        // })
     }
 
 }
