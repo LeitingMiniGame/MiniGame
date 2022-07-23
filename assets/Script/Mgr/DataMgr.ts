@@ -19,7 +19,7 @@ export default class DataMgr {
                 level: 1,
                 interval: 1,
                 preInterval: 0.05,
-                preCount: 4,
+                preCount: 1,
                 hp: 10,
                 minDamage: 5,
                 maxDamage: 10,

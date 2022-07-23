@@ -11,7 +11,7 @@ export default class CharMgr {
         ['HeroTest']: {
             image: 'Char/HeroStay1',
             animate: 'HeroMove1',
-            initWeapon: 'DomainTest',
+            initWeapon: 'LineTest',
             maxHp: 100,
             recovery: 1,
             speed: 250,
@@ -23,14 +23,13 @@ export default class CharMgr {
             magnet: 200,
             size: cc.size(100, 100)
         },
-
         ['Bee']: {
             animate: 'BeeMove',
             speed: 100,
             maxHp: 10,
             damage: 10,
             quality: 20,
-            size: cc.size(68, 68),
+            size: cc.size(46, 45),
         },
         ['Crow']: {
             animate: 'CrowMove',

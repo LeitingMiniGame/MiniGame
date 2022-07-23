@@ -1,6 +1,19 @@
 {
 	"game": {
-		"name": "未知游戏",
-		"appid": "UNKNOW"
-	}
+		"name": "MiniGame",
+		"appid": "685713511",
+		"cid": 0
+	},
+	"needExecNative": true,
+	"configs": [
+		{
+			"appid": "685713511",
+			"services": [
+				{
+					"service_id": "235",
+					"enable": false
+				}
+			]
+		}
+	]
 }
