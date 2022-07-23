@@ -121,7 +121,7 @@ export default class Monster extends Char {
     // 碰撞检测
     onCollisionEnter(other, self) {
         if (other.node.group == "Weapon") {
-            let weapon = other.node.getComponent(other.node.name)
+            let weapon = other.node.getComponent('Weapon')
             let monster = self.node.getComponent(self.node.name)
             weapon.injured()
             let damage = this.getRandInt(weapon.data.minDamage, weapon.data.maxDamage)

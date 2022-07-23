@@ -14,11 +14,12 @@ export default class DataMgr {
         ['LineTest']: [
             {
                 name: 'LineTest',
+                type: 'Line',
                 bulletIcon: 'Hero',
                 level: 1,
                 interval: 1,
                 preInterval: 0.05,
-                preCount: 2,
+                preCount: 4,
                 hp: 10,
                 minDamage: 5,
                 maxDamage: 10,
@@ -29,6 +30,24 @@ export default class DataMgr {
         ['DomainTest']: [
             {
                 name: 'DomainTest',
+                type: 'Domain',
+                bulletIcon: 'Hero',
+                level: 1,
+                interval: 1,
+                preInterval: 0.05,
+                preCount: 1,
+                hp: 100000000,
+                minDamage: 5,
+                maxDamage: 5,
+                speed: 100,
+                maxSize: cc.size(800, 800), // 领域型武器 领域的最大值
+                size: cc.size(20, 20)
+            }
+        ],
+        ['DomainTest1']: [
+            {
+                name: 'DomainTest',
+                type: 'Domain',
                 bulletIcon: 'Hero',
                 level: 1,
                 interval: 1,
@@ -45,6 +64,7 @@ export default class DataMgr {
         ['ProjectileTest']: [
             {
                 name: 'ProjectileTest',
+                type: 'Projectile',
                 bulletIcon: 'Hero',
                 level: 1,
                 interval: 1,

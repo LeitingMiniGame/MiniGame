@@ -1,9 +1,3 @@
-// Learn TypeScript:
-//  - https://docs.cocos.com/creator/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 import Char from "../Char/Char";
 const { ccclass, property } = cc._decorator;
 
@@ -17,13 +11,13 @@ export default class CharMgr {
         ['HeroTest']: {
             image: 'Char/HeroStay1',
             animate: 'HeroMove1',
-            initWeapon: 'LineTest',
+            initWeapon: 'DomainTest',
             maxHp: 100,
             recovery: 1,
             speed: 250,
             power: 0,
             coolDown: 1,
-            bulletCount: 1,
+            bulletCount: 0,
             growth: 1,
             luckly: 20,
             magnet: 200,

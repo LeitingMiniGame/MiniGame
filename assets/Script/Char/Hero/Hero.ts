@@ -21,7 +21,13 @@ export default class Hero extends Char {
         this.startRecovery()
 
         if(this.data.initWeapon){
-            this.addWeapon(this.data.initWeapon)
+            // this.addWeapon(this.data.initWeapon)
+            // this.addWeapon('LineTest')
+            this.addWeapon('DomainTest')
+            // this.addWeapon('ProjectileTest')
+
+            // this.addWeapon(this.data.initWeapon)
+
         }
     }
 
