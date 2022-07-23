@@ -3,17 +3,8 @@ const {ccclass, property} = cc._decorator;
 @ccclass
 export default class NewClass extends cc.Component {
 
-    @property(cc.RichText)
-    Situation: cc.RichText = null;
-
-    @property(cc.Label)
-    Describe: cc.Label = null;
-
-    @property(cc.Sprite)
-    AchieveIcon: cc.Sprite = null;
-
     @property
-    AchieveIconNum: number = -1;
+    AchieveID: number = -1;
 
     // LIFE-CYCLE CALLBACKS:
 
@@ -29,16 +20,14 @@ export default class NewClass extends cc.Component {
     }
 
     ShowAchieveDetail (event) {
-        console.log("选择的成就描述为"+this.Describe);
+        console.log("选择的成就ID:"+this.AchieveID);
         // 得到全局控制脚本
         let AchieveScene = cc.find("Canvas/Main Layout/AchieveSystem/Data").getComponent("AchieveScene");
-        AchieveScene.LoadAchieveData(this.Situation.string, this.Describe.string, this.AchieveIconNum)
+        AchieveScene.LoadAchieveData(this.AchieveID)
     }
 
-    init(Situation:string, Describe:string, AchieveIconNum:number){
-        this.Situation.string =Situation
-        this.Describe.string =Describe
-        this.AchieveIconNum = AchieveIconNum
+    init(AchieveID:number){
+        this.AchieveID = AchieveID
     }
 
     // update (dt) {}

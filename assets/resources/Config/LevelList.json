@@ -1,0 +1,28 @@
+[
+    {
+        "ID":1,
+        "Name":"第一关",
+        "Introduce":"这是第一关",
+        "IMG":"Image/head",
+        "CountDown":"30:00",
+        "EventFlowRate":2,
+        "MovingSpeed":10,
+        "GoldReward":20,
+        "Lucky":30,
+        "ExpReward":-20,
+        "EnemyHP":-30
+    },
+    {
+        "ID":2,
+        "Name":"第二关",
+        "Introduce":"这是第二关",
+        "IMG":"Image/clover",
+        "CountDown":"59:59",
+        "EventFlowRate":2,
+        "MovingSpeed":-10,
+        "GoldReward":60,
+        "Lucky":6,
+        "ExpReward":3,
+        "EnemyHP":1
+    }
+]

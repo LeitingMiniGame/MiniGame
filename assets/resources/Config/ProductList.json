@@ -1,0 +1,18 @@
+[
+    {
+        "ID":1,
+        "Name":"四叶草",
+        "Icon":"Image/clover",
+        "Level":3,
+        "Description":"这是个神奇的四叶草",
+        "Money":[0,100,200,300]
+    },
+    {
+        "ID":2,
+        "Name":"鸭子",
+        "Icon":"Image/head",
+        "Level":2,
+        "Description":"这是个呆头呆脑的鸭子",
+        "Money":5
+    }
+]

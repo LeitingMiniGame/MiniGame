@@ -17,7 +17,7 @@
         "__id__": 2
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [],
     "_prefab": null,
     "_opacity": 255,
@@ -1374,10 +1374,10 @@
     },
     "_enabled": true,
     "AchieveSystem": {
-      "__uuid__": "6facf6e2-4c3b-45f2-a240-99d0d955b9eb"
+      "__uuid__": "951f2aed-e743-4200-8801-fe0934f03090"
     },
     "RoleSystem": {
-      "__uuid__": "30a9cc67-fc11-48f5-97a1-eca6c44b651d"
+      "__uuid__": "406cda79-2104-4ee4-9711-685189cfdc34"
     },
     "LevelSystem": {
       "__uuid__": "2865dd3f-ab3e-42e2-a07e-45373e23c780"
@@ -1386,7 +1386,7 @@
       "__uuid__": "f3a6c8c4-f5ae-4474-ad83-f5254c2d21dc"
     },
     "ShopSystem": {
-      "__uuid__": "65b00772-b958-4fa8-86ce-e87aafff7c99"
+      "__uuid__": "c9717825-b43b-4f90-8a01-a7137681847e"
     },
     "MainLayout": {
       "__id__": 29
