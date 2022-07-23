@@ -5,16 +5,16 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 import Char from "../Char/Char";
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class CharMgr {
-    protected static _instance:CharMgr = null;
-    private _mapChar:Map<string, Char> = new Map();
-    private _mapCharById:Map<string, cc.Node> = new Map();
+    protected static _instance: CharMgr = null;
+    private _mapChar: Map<string, Char> = new Map();
+    private _mapCharById: Map<string, cc.Node> = new Map();
 
     CharData = {
-        ['HeroTest']:{
+        ['HeroTest']: {
             image: 'Char/HeroStay1',
             animate: 'HeroMove1',
             initWeapon: 'LineTest',
@@ -23,14 +23,31 @@ export default class CharMgr {
             speed: 250,
             power: 0,
             coolDown: 1,
-            bulletCount: 2,
+            bulletCount: 1,
             growth: 1,
             luckly: 20,
+            magnet: 200,
             size: cc.size(100, 100)
         },
 
-        ['Bee']:{
+        ['Bee']: {
             animate: 'BeeMove',
+            speed: 100,
+            maxHp: 10,
+            damage: 10,
+            quality: 20,
+            size: cc.size(68, 68),
+        },
+        ['Crow']: {
+            animate: 'CrowMove',
+            speed: 100,
+            maxHp: 10,
+            damage: 10,
+            quality: 20,
+            size: cc.size(68, 68),
+        },
+        ['Vine']: {
+            animate: 'VineMove',
             speed: 100,
             maxHp: 10,
             damage: 10,
@@ -39,22 +56,22 @@ export default class CharMgr {
         }
     }
 
-    public static getInstance(){
-        if(!this._instance){
+    public static getInstance() {
+        if (!this._instance) {
             this._instance = new CharMgr();
             this._instance._init();
         }
         return this._instance;
     }
 
-    protected _init(){  
+    protected _init() {
     }
 
-    public createChar(charType:string, name:string){
+    public createChar(charType: string, name: string) {
         let node = new cc.Node(name)
-        let char = node.addComponent(charType)
-        if(this.CharData[charType]){
-            let newData = Object.assign(this.CharData[charType])
+        let char = node.addComponent(name)
+        if (this.CharData[charType]) {
+            let newData = Object.create(this.CharData[charType])
             char.data = newData
         }
         char.name = name
@@ -63,13 +80,13 @@ export default class CharMgr {
         return char
     }
 
-    public getCharByName(name:string){
+    public getCharByName(name: string) {
         return this._mapChar.get(name)
     }
 
     public releaseChar(uuid) {
         let node = this._mapCharById.get(uuid)
-        if(!node){
+        if (!node) {
             return false
         }
         node.removeFromParent()

@@ -81,7 +81,7 @@ export default class MonsterMgr{
     // 添加怪物
     addMonster() {
         for (let i = 0; i < this.createNum; i++) {
-            let monster = MonsterMgr.getInstance().createMonster("Bee", "Bee")
+            let monster = MonsterMgr.getInstance().createMonster("Vine", "Monster")
             monster.node.parent = this.monsterLayer
             monster.node.setPosition(this.getCreatePos())
         }

@@ -18,9 +18,9 @@ export default class DataMgr {
                 level: 1,
                 interval: 1,
                 preInterval: 0.05,
-                preCount: 1,
+                preCount: 2,
                 hp: 10,
-                minDamage: 10,
+                minDamage: 5,
                 maxDamage: 10,
                 speed: 600,
                 size: cc.size(20, 20)

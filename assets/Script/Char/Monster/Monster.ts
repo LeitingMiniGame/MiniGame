@@ -123,7 +123,7 @@ export default class Monster extends Char {
         if (other.node.group == "Weapon") {
             let weapon = other.node.getComponent(other.node.name)
             let monster = self.node.getComponent(self.node.name)
-            weapon.injured(monster.data.damage)
+            weapon.injured()
             let damage = this.getRandInt(weapon.data.minDamage, weapon.data.maxDamage)
 
             let char = CharMgr.getInstance().getCharByName('Hero').getComponent('Hero')

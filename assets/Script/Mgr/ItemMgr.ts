@@ -35,7 +35,7 @@ export default class ItemMgr {
         let s = Math.random()
         let itemName = 'Coin1'
         let itemData = this.itemDatas[itemName]
-        if (s >= 0.9) {
+        if (s >= 0) {
             let itemLayer = MapMgr.getInstance().getLayerByName('ItemLayer')
             let item = this.createItem(itemData.comType, 'Item')
             item.data = itemData
