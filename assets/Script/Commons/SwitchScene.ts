@@ -34,6 +34,14 @@ export default class NewClass extends cc.Component {
         this.SwitchToControl("RoleChoice")
     }
 
+    SwichToLevelSelection(){
+        this.SwitchToControl("LevelSelection")
+    }
+
+    SwichToShop(){
+        this.SwitchToControl("Shop")
+    }
+
     private SwitchToControl(Para:string){
         let GlobalData = cc.director.getScene().getChildByName("GlobalData").getComponent("GlobalData");
         let GlobalDataObj:object = GlobalData.Data;
