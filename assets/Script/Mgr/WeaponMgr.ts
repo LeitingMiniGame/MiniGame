@@ -62,11 +62,15 @@ export default class WeaponMgr {
         newTween.start()
     }
 
+    // 生成子弹
     public createBullet(weapon) {
         let pos = CharMgr.getInstance().getCharByName('Hero').getWorldPos()
         let bullet = new cc.Node(weapon.name)
-        let comp = bullet.addComponent(weapon.name)
-        comp.data = Object.create(weapon)
+        bullet.addComponent(weapon.type)
+
+        let weaponComp = bullet.getComponent('Weapon')
+        weaponComp.data = Object.create(weapon)
+
         let bulletLayer = MapMgr.getInstance().getLayerByName('BulletLayer')
         bullet.x = bulletLayer.convertToNodeSpaceAR(pos).x
         bullet.y = bulletLayer.convertToNodeSpaceAR(pos).y

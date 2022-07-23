@@ -4,7 +4,12 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class MonsterLayer extends cc.Component {
-    start(): void {
-        MonsterMgr.getInstance().beginCreateMonster(this.node)
+    onLoad(): void {
+        MonsterMgr.getInstance().setMonsterLayer(this)
+    }
+
+    start(): void{
+        MonsterMgr.getInstance().beginCreateMonster()
+
     }
 }
