@@ -18,9 +18,9 @@ export default class HeroTest extends Hero {
         super.start()
         this.loadResources('HeroMove1', 'Hero1Stay')
 
-        // this.addWeapon("LineTest")
+        this.addWeapon("LineTest")
         // this.addWeapon("ProjectileTest")
-        this.addWeapon("DomainTest")
+        // this.addWeapon("DomainTest")
 
     }
 }
