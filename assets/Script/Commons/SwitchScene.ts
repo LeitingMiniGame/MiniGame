@@ -9,40 +9,43 @@ export default class NewClass extends cc.Component {
 
     // LIFE-CYCLE CALLBACKS:
 
-    onLoad () {
-        //从上一个场景的常驻节点上获取当前场景需要使用的参数
-        let GlobalData = cc.find("GlobalData");
-
-        //添加DataNode为常驻节点
-        cc.game.addPersistRootNode(GlobalData);
-
-
-    }
+    // onLoad () {
+    // }
 
     start () {
-
-        cc.director.preloadScene("ControlSystem", function () {
-            console.log("控制界面预加载好了");
-        });
+        // cc.director.preloadScene("ControlSystem", function () {
+        //     console.log("控制界面预加载好了");
+        // });
     }
 
     SwitchToSetUp(){
 
-        cc.director.loadScene('SetUp', function(){
-            console.log("切换到设置界面啦");
-        });
+        this.SwitchToControl("SetUp")
+        // cc.director.loadScene('SetUp', function(){
+        //     console.log("切换到设置界面啦");
+        // });
     }
 
-    SwitchToControl(Para:string){
+    SwichToAchieve(){
+        this.SwitchToControl("AchieveSystem")
+    }
+
+    SwichToRoleChoice(){
+        this.SwitchToControl("RoleChoice")
+    }
+
+    private SwitchToControl(Para:string){
         let GlobalData = cc.director.getScene().getChildByName("GlobalData").getComponent("GlobalData");
-
+        let GlobalDataObj:object = GlobalData.Data;
         //设置DataNode要传递的数据
-        GlobalData.Data = {
-            FunctionalScene : "AchieveSystem"
+        if(!GlobalDataObj){
+            console.log("GlobalData.Data为空");
+            return;
         }
+        GlobalDataObj["FunctionalScene"] = Para;
 
-        // 切换到成就系统
-        cc.director.loadScene("AchieveSystem");
+        // 切换到系统
+        cc.director.loadScene("ControlSystem");
     }
 
     /** 根据数据Temp数据库中记录的PreviousScene标记返回上一个场景 */

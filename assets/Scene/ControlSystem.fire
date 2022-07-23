@@ -1376,6 +1376,12 @@
     "AchieveSystem": {
       "__uuid__": "6facf6e2-4c3b-45f2-a240-99d0d955b9eb"
     },
+    "RoleSystem": {
+      "__uuid__": "a99d7ad3-0e81-4a53-8a2a-6047db4290bf"
+    },
+    "SetUpSystem": {
+      "__uuid__": "54cc7d74-dfe4-4533-b6e5-1cac011cfcf6"
+    },
     "MainLayout": {
       "__id__": 29
     },
