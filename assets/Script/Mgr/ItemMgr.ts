@@ -37,7 +37,7 @@ export default class ItemMgr {
         let itemData = this.itemDatas[itemName]
         if (s >= 0) {
             let itemLayer = MapMgr.getInstance().getLayerByName('ItemLayer')
-            let item = this.createItem(itemData.comType, 'Item')
+            let item = this.createItem(itemData.comType, itemData.comType)
             item.data = itemData
             item.node.parent = itemLayer
             item.node.setPosition(itemLayer.convertToNodeSpaceAR(wordPos))

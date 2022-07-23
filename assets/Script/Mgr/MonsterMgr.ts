@@ -1,6 +1,7 @@
 import Char from "../Char/Char";
 import MonsterLayer from "../Layer/MonsterLayer";
 import CharMgr from "./CharMgr";
+import DataMgr from "./DataMgr";
 
 const { ccclass, property } = cc._decorator;
 
@@ -15,8 +16,8 @@ export default class MonsterMgr {
     randData = [
         {
             time: 0,
-            interval: 1,
-            maxMonster: 3,
+            interval: 0.3,
+            maxMonster: 100,
             monsterData: [
                 {
                     name: 'Bee',
@@ -295,6 +296,8 @@ export default class MonsterMgr {
                         // 按波次生成怪物
                         this.checkWaveChange()
                         this.curTime++
+
+                        DataMgr.getInstance().setTimeLabel(this.curTime)
                     })
                     .delay(1)
             ).start()

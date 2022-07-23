@@ -23,6 +23,7 @@ export default class CharMgr {
             magnet: 200,
             size: cc.size(100, 100)
         },
+        // 怪物
         ['Bee']: {
             animate: 'BeeMove',
             speed: 100,
