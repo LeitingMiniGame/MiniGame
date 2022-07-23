@@ -14,6 +14,8 @@ export default class NewClass extends cc.Component {
         cc.game.addPersistRootNode(this.node);
 
         this.LoadJson("SetUp");
+        this.LoadJson("AchieveList");
+        this.LoadJson("RoleList");
     }
 
     start () {

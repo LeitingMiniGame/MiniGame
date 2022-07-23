@@ -10,6 +10,21 @@ export default class NewClass extends cc.Component {
     HeroCoin: cc.Prefab = null;
 
     @property(cc.RichText)
+    HeroName: cc.RichText = null;
+
+    @property(cc.Sprite)
+    HeroIMG: cc.Sprite = null;
+
+    @property(cc.Sprite)
+    WeaponIcon: cc.Sprite = null;
+
+    @property(cc.RichText)
+    Introduction: cc.RichText = null;
+
+    @property(cc.RichText)
+    PassiveEffect: cc.RichText = null;
+
+    @property(cc.RichText)
     MaxLife: cc.RichText = null;
 
     @property(cc.RichText)
@@ -51,9 +66,14 @@ export default class NewClass extends cc.Component {
         RecoverRichText.string = "300"
         console.log("Recover",this.Recover);
 
+        let GlobalDataNote = cc.director.getScene().getChildByName("GlobalData");
+        let GlobalDataObject = GlobalDataNote.getComponent("GlobalData").Data;
+        console.log("GlobalDataObject : ", GlobalDataObject)
 
+        console.log("GlobalDataObject[RoleList] : ",GlobalDataObject["RoleList"])
+        let RoleConfigList = GlobalDataObject["RoleList"];
+        let size = RoleConfigList.length;
 
-        let size = 30;
         console.log("原本的高度为:",this.HeroList.node.height)
         console.log("HeroCoin的高度为:",this.HeroCoin.data.getContentSize().height)
         // 每三个组件间间隔5 上隔开1 下隔开10
@@ -64,8 +84,16 @@ export default class NewClass extends cc.Component {
         console.log("修改后的的高度为:",this.HeroList.node.height)
 
         // 初始化30个英雄
-        for(let index = 0;index < 30 ;index++){
+        for(let index = 0;index < size ;index++){
             let HeroCoin = cc.instantiate(this.HeroCoin)
+            let Data = RoleConfigList[index];
+            console.log("Data : ", Data)
+            // 获取组件的layout
+            let HeroCoinSprite = HeroCoin.getComponent(cc.Sprite);
+
+            cc.loader.loadRes(Data["Icon"], cc.SpriteFrame, (err: any, spriteFrame) => {
+                HeroCoinSprite.spriteFrame = spriteFrame;
+            });
 
             HeroCoin.parent = this.HeroList.node
 
@@ -74,7 +102,40 @@ export default class NewClass extends cc.Component {
     }
 
     LoadHeroData(HeroID:number){
-        console.log("准备开始加载英雄（ID:",HeroID,"）的数据")
+        let GlobalDataNote = cc.director.getScene().getChildByName("GlobalData");
+        let GlobalDataObject = GlobalDataNote.getComponent("GlobalData").Data;
+        let RoleConfigList = GlobalDataObject["RoleList"];
+        for(let index = 0;index<RoleConfigList.length;index++){
+            if(RoleConfigList[index]["ID"] == HeroID){
+                this.HeroName.getComponent(cc.RichText).string = RoleConfigList[index]["Name"]
+                this.WeaponIcon.getComponent(cc.RichText).string = RoleConfigList[index]["Name"]
+
+                cc.loader.loadRes(RoleConfigList[index]["IMG"], cc.SpriteFrame, (err: any, spriteFrame) => {
+                    this.HeroIMG.getComponent(cc.Sprite).spriteFrame = spriteFrame;
+                });
+
+                cc.loader.loadRes(RoleConfigList[index]["WeaponIcon"], cc.SpriteFrame, (err: any, spriteFrame) => {
+                    this.WeaponIcon.getComponent(cc.Sprite).spriteFrame = spriteFrame;
+                });
+                this.Introduction.getComponent(cc.RichText).string = RoleConfigList[index]["Introduction"]
+                this.PassiveEffect.getComponent(cc.RichText).string = RoleConfigList[index]["PassiveEffect"]
+
+                this.MaxLife.getComponent(cc.RichText).string = RoleConfigList[index]["MaxLife"]
+                this.Recover.getComponent(cc.RichText).string = RoleConfigList[index]["Recover"]
+                this.MovingSpeed.getComponent(cc.RichText).string = RoleConfigList[index]["MovingSpeed"]
+                this.Power.getComponent(cc.RichText).string = RoleConfigList[index]["Power"]
+                this.RateOfFire.getComponent(cc.RichText).string = RoleConfigList[index]["RateOfFire"]
+                this.Range.getComponent(cc.RichText).string = RoleConfigList[index]["Range"]
+                this.Cooldowm.getComponent(cc.RichText).string = RoleConfigList[index]["Cooldown"]
+                this.NumberOfBullets.getComponent(cc.RichText).string = RoleConfigList[index]["NumberOfBullets"]
+
+                this.PickupRange.getComponent(cc.RichText).string = RoleConfigList[index]["PickupRange"]
+                this.Lucky.getComponent(cc.RichText).string = RoleConfigList[index]["Lucky"]
+
+                this.ExperienceGain.getComponent(cc.RichText).string = RoleConfigList[index]["ExperienceGain"]
+                break;
+            }
+        }
     }
 
     // update (dt) {}
