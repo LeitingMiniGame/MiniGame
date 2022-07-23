@@ -16,6 +16,7 @@ export default class GameScene extends cc.Component {
         this.addMapLayer()
         this.addBulletLayer()
         this.addMonsterLayer()
+        this.addItemLayer()
 
         // 开启碰撞检测
         var manager = cc.director.getCollisionManager();
@@ -42,7 +43,7 @@ export default class GameScene extends cc.Component {
         let hero = CharMgr.getInstance().createChar("HeroTest", "Hero")
         let layerRoot = MapMgr.getInstance().getLayerByName('LayerRoot')
         hero.node.parent = layerRoot
-        hero.node.zIndex = 200
+        hero.node.zIndex = 400
     }
 
     // 添加 layer 的根节点
@@ -52,7 +53,6 @@ export default class GameScene extends cc.Component {
         node.parent = this.node
         node.zIndex = 0
         MapMgr.getInstance().addLayerMap('LayerRoot', node)
-
     }
 
     // 添加地图层
@@ -71,12 +71,21 @@ export default class GameScene extends cc.Component {
         })
     }
 
+    // 添加道具层
+    addItemLayer(){
+        let node = new cc.Node('ItemLayer')
+        let layerRoot = MapMgr.getInstance().getLayerByName('LayerRoot')
+        node.parent = layerRoot
+        node.zIndex = 250
+        MapMgr.getInstance().addLayerMap('ItemLayer', node)
+    }
+
     // 添加子弹层
     addBulletLayer() {
         let node = new cc.Node('BulletLayer')
         let layerRoot = MapMgr.getInstance().getLayerByName('LayerRoot')
         node.parent = layerRoot
-        node.zIndex = 300
+        node.zIndex = 900
         MapMgr.getInstance().addLayerMap('BulletLayer', node)
     }
 
@@ -86,7 +95,7 @@ export default class GameScene extends cc.Component {
         node.addComponent("MonsterLayer")
         let layerRoot = MapMgr.getInstance().getLayerByName('LayerRoot')
         node.parent = layerRoot
-        node.zIndex = 200
+        node.zIndex = 300
         MapMgr.getInstance().addLayerMap('MonsterLayer', node)
     }
 

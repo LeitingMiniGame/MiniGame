@@ -7,15 +7,18 @@ export default class DataMgr {
     protected static _instance: DataMgr = null;
 
     protected bag: any[]
+    protected coin: number
 
-    tempData = {
+
+    bulletData = {
         ['LineTest']: [
             {
                 name: 'LineTest',
+                bulletIcon: 'Hero',
                 level: 1,
                 interval: 1,
                 hp: 10,
-                minDamage: 0,
+                minDamage: 10,
                 maxDamage: 10,
                 speed: 600,
                 size: cc.size(20, 20)
@@ -24,6 +27,7 @@ export default class DataMgr {
         ['DomainTest']: [
             {
                 name: 'DomainTest',
+                bulletIcon: 'Hero',
                 level: 1,
                 interval: 1,
                 hp: 100000000,
@@ -37,6 +41,7 @@ export default class DataMgr {
         ['ProjectileTest']: [
             {
                 name: 'ProjectileTest',
+                bulletIcon: 'Hero',
                 level: 1,
                 interval: 1,
                 hp: 1000000,
@@ -58,6 +63,11 @@ export default class DataMgr {
 
     protected _init() {
         this.bag = []
+        this.coin = 0
+    }
+
+    getData(obj){
+        return Object.create(obj)
     }
 
     // 增加武器
@@ -68,7 +78,7 @@ export default class DataMgr {
                 return
             }
         }
-        let newWeapon = this.tempData[typeName][0]
+        let newWeapon = this.getData(this.bulletData[typeName][0])
         this.bag.push(newWeapon)
 
         WeaponMgr.getInstance().addWeapon(newWeapon)
@@ -101,9 +111,14 @@ export default class DataMgr {
 
         let level = this.bag[typeName].level
         // 处理升级的逻辑
-        this.bag[typeName] = this.tempData[typeName][level]
+        this.bag[typeName] = this.getData(this.bulletData[typeName][level])
 
         WeaponMgr.getInstance().upWeapon(this.bag[typeName])
+    }
+
+    // 增加金币
+    addCoin(number) {
+        this.coin += number
     }
 
 }

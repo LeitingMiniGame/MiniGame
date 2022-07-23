@@ -16,7 +16,7 @@ export default class LayerRoot extends cc.Component {
     // }
 
     start() {
-        this.speed = CharMgr.getInstance().getCharByName("Hero").speed
+        this.speed = CharMgr.getInstance().getCharByName("Hero").data.speed
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this)
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this)
     }

@@ -11,15 +11,14 @@ import CharMgr from "./CharMgr";
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class MonsterMgr extends CharMgr{
+export default class MonsterMgr{
 
     createInterval = 1
     createNum = 3
 
-    private _mapCharById:Map<number, Char> = new Map();
+    private _mapMonsterById:Map<string, Char> = new Map();
     
     static _instance:MonsterMgr = null;
-    static monsterCounter:number = 0
     monsterLayer: any;
 
     public static getInstance(){
@@ -30,24 +29,25 @@ export default class MonsterMgr extends CharMgr{
         return this._instance;
     }
 
+    _init(){
+
+    }
 
     public createMonster(type, name){
-        let monster = this.createChar(type, name)
-        monster.id = MonsterMgr.monsterCounter++
-        monster.name = name
-        this._mapCharById.set(monster.id, monster)
+        let monster = CharMgr.getInstance().createChar(type, name)
+        this._mapMonsterById.set(monster.node.uuid, monster)
         return monster
     }
 
     public removeMonster(monster){
-        this._mapCharById.delete(monster.id)
-        monster.node.removeFromParent()
+        this._mapMonsterById.delete(monster.node.uuid)
+        return CharMgr.getInstance().releaseChar(monster.node.uuid)
     }
 
     public getNearestMonsterPos(worldPos:cc.Vec2){
         let nearestLen = 99999999
         let nearest:cc.Vec2
-        this._mapCharById.forEach((char, number) => {
+        this._mapMonsterById.forEach((char, number) => {
             let charPos = char.node.convertToWorldSpaceAR(cc.v2(0, 0))
             let len = worldPos.sub(charPos).len()
             if(len < nearestLen){
