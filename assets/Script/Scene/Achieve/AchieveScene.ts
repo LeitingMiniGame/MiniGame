@@ -28,7 +28,18 @@ export default class NewClass extends cc.Component {
     Achieve: cc.Prefab = null;
 
 
+    onLoad(){
+        console.log("AchieveScene要onLoad啦")
+
+    }
+
+
+    onEnable(){
+        console.log("AchieveScene要onEnable啦")
+    }
+
     start () {
+        console.log("AchieveScene要start啦")
         let size = 30;
         console.log("原本的高度为:",this.AchieveList.node.height)
         console.log("achieve layout的高度为:",this.Achieve.data.getContentSize().height)
@@ -42,6 +53,14 @@ export default class NewClass extends cc.Component {
 
             Achieve.getComponent("AchieveChoice").init(String(index+1),"测试数据",index+1);
         }
+    }
+
+    onDisable(){
+        console.log("AchieveScene要被关闭啦")
+    }
+
+    onDestroy(){
+        console.log("AchieveScene要被销毁啦")
     }
 
     LoadAchieveData(Situation:string, Describe:string, AchieveIconNum:number){
