@@ -28,7 +28,7 @@ export default class ConfirmPopup extends PopupBase<ConfirmPopupOptions> {
 
     /** 弹窗路径 */
     public static get path() {
-        return 'Prefab/Popup';
+        return 'Prefab/UI/Popup';
     }
 
     protected onLoad() {
@@ -60,6 +60,7 @@ export default class ConfirmPopup extends PopupBase<ConfirmPopupOptions> {
     protected onCloseBtnClick() {
         this.options.cancelCallback && this.options.cancelCallback();
         this.hide();
+        this.destroy()
     }
 
     protected updateDisplay(options: ConfirmPopupOptions): void {
@@ -70,6 +71,7 @@ export default class ConfirmPopup extends PopupBase<ConfirmPopupOptions> {
     protected onConfirmBtnClick() {
         this.options.confirmCallback && this.options.confirmCallback();
         this.hide();
+        this.destroy()
     }
 
 }

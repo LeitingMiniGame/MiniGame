@@ -149,7 +149,7 @@ export default class NewClass extends cc.Component {
             return false;
         if(!this.CheckGlobalObjectScenePara())
             return false;
-
+        console.warn("CheckGlobal this.GlobalDataObject SetUp: ",this.GlobalDataObject["SetUp"])
         return true;
     }
 

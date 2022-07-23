@@ -51,6 +51,7 @@ export default class NewClass extends cc.Component {
             return;
         }
         GlobalDataObj["FunctionalScene"] = Para;
+        console.log("SwitchToControl GlobalDataObj : ",GlobalDataObj)
 
         // 切换到系统
         cc.director.loadScene("ControlSystem");
@@ -81,7 +82,7 @@ export default class NewClass extends cc.Component {
 
     /** 删除存档，慎重使用 */
     DeleteArchive(){
-        console.log("准备跳出删除存档确认框")
+        console.log("准备跳出删除存档确认框1")
         let ConfirmPopupOp:ConfirmPopupOptions = {
             title: "删除存档",
             content: "你确定要删除存档数据嘛(一旦删除无法恢复)",
@@ -89,16 +90,38 @@ export default class NewClass extends cc.Component {
             cancelCallback: this.do_DeleteArchive_Cancel,
         };
 
+        console.log("准备跳出删除存档确认框2")
         const params = {
-            mode: PopupManager.CacheMode.Normal
+            mode: PopupManager.CacheMode.Once,
+            /** 立刻展示（将会挂起当前展示中的弹窗） */
+            immediately : true
         };
 
-        PopupManager.show('Prefab/Popup', ConfirmPopupOp, params);
+        console.log("准备跳出删除存档确认框3")
+        PopupManager.show('Prefab/UI/Popup', ConfirmPopupOp, params);
+        console.log("准备跳出删除存档确认框4")
+        // let ShowResult:
+        // console.log("准备跳出删除存档确认框结果:",PopupManager.ShowResult())
     }
 
     /** 执行确认删除存档逻辑 */
     do_DeleteArchive_OK(){
         console.log("开始删除存档")
+        let GlobalDataNote = cc.director.getScene().getChildByName("GlobalData");
+        let GlobalDataObject = GlobalDataNote.getComponent("GlobalData").Data;
+        console.log("存档删除前 GlobalDataObject : ",GlobalDataObject)
+        console.log("存档删除前 JsonManager : ",JsonManager.getInstance().queryAll())
+        GlobalDataObject = null
+        JsonManager.getInstance().clear();
+        console.log("存档已删除,开始保存数据")
+        console.log("存档删除后 GlobalDataObject : ",GlobalDataObject)
+        console.log("存档删除后 JsonManager : ",JsonManager.getInstance().queryAll())
+        JsonManager.getInstance().SaveDB();
+
+        cc.director.loadScene('HomePage', function(){
+            console.log("切换到初始界面啦");
+        });
+
     }
 
     /** 执行取消删除存档逻辑 */
