@@ -1839,7 +1839,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Skill Description",
+    "_name": "Description",
     "_objFlags": 0,
     "_parent": {
       "__id__": 46
@@ -3346,8 +3346,11 @@
     "CommodityCoin": {
       "__uuid__": "f35a737c-9433-4721-be32-e84d0b2e5aee"
     },
-    "LevelIcon": {
-      "__uuid__": "6d8841bf-30e1-4870-8582-677bf38505ea"
+    "LevelYes": {
+      "__uuid__": "623d865c-cfca-43f5-91ff-894274ad5ab7"
+    },
+    "LevelNo": {
+      "__uuid__": "be27f65c-b38c-4b8b-89ed-8c1d5982210f"
     },
     "ProductName": {
       "__id__": 38

@@ -52,18 +52,15 @@ export default class NewClass extends cc.Component {
             let LevelData = cc.instantiate(this.LevelData)
             let Data = LevelConfigList[index];
             console.log("Data:",Data)
-            let IMG = cc.find("Left Layout",LevelData).getComponent(cc.Sprite);
 
             cc.loader.loadRes(Data["IMG"], cc.SpriteFrame, (err: any, spriteFrame) => {
-                IMG.spriteFrame = spriteFrame;
+                cc.find("Left Layout",LevelData).getComponent(cc.Sprite).spriteFrame = spriteFrame;
             });
 
             // 获取组件的layout
-            let Name = cc.find("Left Layout/LevelName Label",LevelData).getComponent(cc.Label);
-            Name.string = Data["Name"]
+            cc.find("Left Layout/LevelName Label",LevelData).getComponent(cc.Label).string = Data["Name"]
 
-            let Introduce = cc.find("Right Layout/Level Introduce Label",LevelData).getComponent(cc.Label);
-            Introduce.string = Data["Introduce"]
+            cc.find("Right Layout/Level Introduce Label",LevelData).getComponent(cc.Label).string = Data["Introduce"]
 
             LevelData.parent = this.LevelList.node
 
