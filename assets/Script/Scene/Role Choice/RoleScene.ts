@@ -58,7 +58,7 @@ export default class NewClass extends cc.Component {
         console.log("HeroCoin的高度为:",this.HeroCoin.data.getContentSize().height)
         // 每三个组件间间隔5 上隔开1 下隔开10
         // 先获取一共多少层 如果是三的倍数则说明是刚好整数层
-        let floor = size%3 == 0 ? size/3 : size/3 + 1;
+        let floor = Math.ceil(size/3);
         console.log(`一共${floor}层`)
         this.HeroList.node.height = (floor-1) * 5 + floor * this.HeroCoin.data.getContentSize().height + 11;
         console.log("修改后的的高度为:",this.HeroList.node.height)

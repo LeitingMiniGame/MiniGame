@@ -9,7 +9,13 @@ export default class NewClass extends cc.Component {
     RoleSystem: cc.Prefab = null;
 
     @property(cc.Prefab)
+    LevelSystem: cc.Prefab = null;
+
+    @property(cc.Prefab)
     SetUpSystem: cc.Prefab = null;
+
+    @property(cc.Prefab)
+    ShopSystem: cc.Prefab = null;
 
     @property(cc.Layout)
     MainLayout: cc.Layout = null;
@@ -57,10 +63,27 @@ export default class NewClass extends cc.Component {
             case "SetUp":
                 this.OpenSetUpSystem();
                 break;
+            case "LevelSelection":
+                this.OpenLevelSystem();
+                break;
+            case "Shop":
+                    this.OpenShop();
+                    break;
             default:
                 break;
         }
         // this.OpenAchieveSystem();
+    }
+
+    private OpenShop(){
+        if(!this.SetUpSystem){
+            console.warn("商店系统挂载异常");
+            return;
+        }
+
+        let ShopSystem = cc.instantiate(this.ShopSystem)
+        ShopSystem.parent =this.MainLayout.node
+        ShopSystem.setPosition(cc.v2(0,0))
     }
 
     private OpenSetUpSystem(){
@@ -72,6 +95,17 @@ export default class NewClass extends cc.Component {
         let SetUpSystem = cc.instantiate(this.SetUpSystem)
         SetUpSystem.parent =this.MainLayout.node
         SetUpSystem.setPosition(cc.v2(0,0))
+    }
+
+    private OpenLevelSystem(){
+        if(!this.AchieveSystem){
+            console.warn("关卡选择系统挂载异常");
+            return;
+        }
+
+        let LevelSystem = cc.instantiate(this.LevelSystem)
+        LevelSystem.parent =this.MainLayout.node
+        LevelSystem.setPosition(cc.v2(0,0))
     }
 
     private OpenRoleSystem(){
