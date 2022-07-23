@@ -4,26 +4,21 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class Hero extends Char {
-    speed: number
-    hp: number
-    luckly: number
-    size: cc.Size
-    fireInterval: number
-    state: string;
-    bag: any
-    maxCapacity: number = 6
+    data:any
+
+    state: string
 
     start() {
         let boxCollider = this.addComponent(cc.BoxCollider)
-        boxCollider.size = this.size
+        boxCollider.size = this.data.size
         this.node.group = 'Hero'
         this.state = 'stateStay'
     }
 
-    loadResources(animateName, ImageName) {
-        this.loadImage('Image/' + ImageName)
-        this.loadAnimate("Animate/" + animateName, animateName, true)
-    }
+    // loadResources(animateName, ImageName) {
+    //     this.loadImage('Image/' + ImageName)
+    //     this.loadAnimate("Animate/" + animateName, animateName, true)
+    // }
 
     addWeapon(typeName) {
         DataMgr.getInstance().addWeapon(typeName)
@@ -72,8 +67,8 @@ export default class Hero extends Char {
 
     // 受伤的函数
     injured(damage) {
-        this.hp -= damage
-        console.log(this.hp);
+        this.data.hp -= damage
+        console.log(this.data.hp);
     }
 
     move() {

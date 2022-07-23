@@ -11,7 +11,7 @@ import CharMgr from "./CharMgr";
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class MonsterMgr extends CharMgr{
+export default class MonsterMgr{
 
     createInterval = 1
     createNum = 3
@@ -29,16 +29,19 @@ export default class MonsterMgr extends CharMgr{
         return this._instance;
     }
 
+    _init(){
+
+    }
 
     public createMonster(type, name){
-        let monster = this.createChar(type, name)
+        let monster = CharMgr.getInstance().createChar(type, name)
         this._mapMonsterById.set(monster.node.uuid, monster)
         return monster
     }
 
     public removeMonster(monster){
         this._mapMonsterById.delete(monster.node.uuid)
-        this.releaseChar(monster.node.uuid)
+        return CharMgr.getInstance().releaseChar(monster.node.uuid)
     }
 
     public getNearestMonsterPos(worldPos:cc.Vec2){

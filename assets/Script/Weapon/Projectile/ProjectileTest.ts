@@ -5,6 +5,5 @@ const { ccclass, property } = cc._decorator;
 export default class ProjectileTest extends Projectile {
     start() {
         super.start()
-        this.loadImage('Image/Hero')
     }
 }

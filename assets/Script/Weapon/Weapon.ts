@@ -9,6 +9,7 @@ export default abstract class Weapon extends cc.Component {
 
     onLoad() {
         this.node.group = 'Weapon'
+        this.loadImage('Image/Weapon/' + this.data.bulletIcon)
     }
 
     loadImage(path) {

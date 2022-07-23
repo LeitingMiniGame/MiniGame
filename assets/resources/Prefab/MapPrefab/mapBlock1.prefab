@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "MapBlock1",
+    "_name": "mapBlock1",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -92,7 +92,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "70d2db3f-9f54-424a-a8d6-ba919d6a83b5"
+      "__uuid__": "91519b78-19a1-42ce-8b93-eb8fadba0876"
     },
     "_type": 0,
     "_sizeMode": 1,

@@ -1,33 +1,62 @@
 import Item from "../Char/Item/Item";
 import CharMgr from "./CharMgr";
+import MapMgr from "./MapMgr";
 
 
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class ItemMgr {
-    protected static _instance:ItemMgr = null;
-    private _mapItem:Map<string, Item> = new Map();
+    protected static _instance: ItemMgr = null;
+    private _mapItemById: Map<string, Item> = new Map();
 
-    public static getInstance(){
-        if(!this._instance){
+    itemDatas = {
+        ['Coin1'] : {
+            comType: 'Coin',
+            icon: 'Grapes',
+            value: 1,
+            size: cc.size(40, 20)
+        }
+    }
+
+    public static getInstance() {
+        if (!this._instance) {
             this._instance = new ItemMgr();
             this._instance._init();
         }
         return this._instance;
     }
-    private _init() {
+
+    _init() {
 
     }
 
-    public createItem(charType:string, name:string){
+    tryCreateItem(wordPos) {
+        let s = Math.random()
+        let itemName = 'Coin1'
+        let itemData = this.itemDatas[itemName]
+        if (s >= 0) {
+
+            let itemLayer = MapMgr.getInstance().getLayerByName('ItemLayer')
+            let item = this.createItem(itemData.comType, 'Item')
+            item.data = itemData
+            item.node.parent = itemLayer
+            item.node.setPosition(itemLayer.convertToNodeSpaceAR(wordPos))
+        }
+    }
+
+    createItem(charType: string, name: string) {
         let item = CharMgr.getInstance().createChar(charType, name)
-        this._mapItem.set(name, item)
+        this._mapItemById.set(item.uuid, item)
         return item
     }
 
-    public getItemByName(name:string){
-        return this._mapItem.get(name)
+    removeItem(item) {
+        this._mapItemById.delete(item.uuid)
+        return CharMgr.getInstance().releaseChar(item.node.uuid)
     }
 
+    getItemByName(name: string) {
+        return this._mapItemById.get(name)
+    }
 }

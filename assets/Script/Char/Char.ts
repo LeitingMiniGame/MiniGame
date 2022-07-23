@@ -2,37 +2,41 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default abstract class Char extends cc.Component {
-    name: string
-    id: number
-    speed: number
-    hp: number
-    damage: number
-    size:cc.Size = cc.size(68, 68)
-
+    data:any
+    state: string;
     animateLayer:cc.Node
-
     onLoad(){
         this.animateLayer = new cc.Node()
         this.animateLayer.addComponent(cc.Sprite)
         this.animateLayer.parent = this.node
+
+        if(this.data.image){
+            this.loadImage(this.data.image)
+        }
+        if(this.data.animate){
+            this.loadAnimate(this.data.animate)
+        }
     }
 
-    loadImage(path) {
+    loadImage(imagePath) {
+        let path = 'Image/' + imagePath
         cc.resources.load(path, cc.SpriteFrame, (error, assets: cc.SpriteFrame) => {
             if (error) {
                 return
             }
+
             let sprite = this.animateLayer.getComponent(cc.Sprite);
             if(!sprite){
                 sprite = this.animateLayer.addComponent(cc.Sprite);
             }
             sprite.spriteFrame = assets
-            this.animateLayer.setContentSize(this.size)
+            this.animateLayer.setContentSize(this.data.size)
             this.move()
         })
     }
 
-    loadAnimate(path, animateName, notNeedPlay?) {
+    loadAnimate(animateName) {
+        let path = "Animate/" + animateName
         cc.resources.load(path, cc.AnimationClip, (error, clip: cc.AnimationClip) => {
             if (error) {
                 return
@@ -43,16 +47,13 @@ export default abstract class Char extends cc.Component {
                 anim = this.animateLayer.addComponent(cc.Animation);
             }
             anim.addClip(clip);
-            if(!notNeedPlay){
-                anim.play(animateName);
-            }
+            anim.play(animateName);            
+            // this.node.setContentSize(this.data.size)
             this.move()
-            if(notNeedPlay){
-                anim.pause(animateName);
-            }
-            this.node.setContentSize(this.size)
         })
     }
+
+    move() {}
 
     getWorldPos() {
         return this.node.convertToWorldSpaceAR(cc.v2(0, 0))
