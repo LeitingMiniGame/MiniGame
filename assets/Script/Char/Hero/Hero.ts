@@ -4,21 +4,48 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class Hero extends Char {
-    data:any
-
     state: string
+    onLoad() {
+        super.onLoad()
+        this.loadImage("Item/" + this.data.icon)
+        if (this.data.animate) {
+            this.loadAnimate(this.data.animate, true)
+        }
+    }
 
     start() {
         let boxCollider = this.addComponent(cc.BoxCollider)
         boxCollider.size = this.data.size
         this.node.group = 'Hero'
         this.state = 'stateStay'
+        this.startRecovery()
+
+        if(this.data.initWeapon){
+            this.addWeapon(this.data.initWeapon)
+        }
     }
 
-    // loadResources(animateName, ImageName) {
-    //     this.loadImage('Image/' + ImageName)
-    //     this.loadAnimate("Animate/" + animateName, animateName, true)
-    // }
+    // 开始恢复血量
+    startRecovery() {
+        this.schedule(() => {
+            this.data.hp = Math.min(this.data.hp + this.data.recovery, this.data.maxHp)
+        }, 1, cc.macro.REPEAT_FOREVER)
+    }
+
+    // 计算伤害加成
+    getAddDamage(damage) {
+        return Math.round(damage * (1 + this.data.power / 100))
+    }
+
+    // 计算开火间隔加成
+    getFireInterval(intervalTime) {
+        return intervalTime * (1 - this.data.coolDown / 100)
+    }
+
+    // 计算子弹数量加成
+    getFireCount(fireCount) {
+        return fireCount + this.data.bulletCount
+    }
 
     addWeapon(typeName) {
         DataMgr.getInstance().addWeapon(typeName)

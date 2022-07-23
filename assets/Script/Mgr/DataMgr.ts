@@ -17,6 +17,8 @@ export default class DataMgr {
                 bulletIcon: 'Hero',
                 level: 1,
                 interval: 1,
+                preInterval: 0.05,
+                preCount: 1,
                 hp: 10,
                 minDamage: 10,
                 maxDamage: 10,
@@ -30,6 +32,8 @@ export default class DataMgr {
                 bulletIcon: 'Hero',
                 level: 1,
                 interval: 1,
+                preInterval: 0.05,
+                preCount: 1,
                 hp: 100000000,
                 minDamage: 5,
                 maxDamage: 5,
@@ -44,6 +48,8 @@ export default class DataMgr {
                 bulletIcon: 'Hero',
                 level: 1,
                 interval: 1,
+                preInterval: 0.05,
+                preCount: 1,
                 hp: 1000000,
                 minDamage: 5,
                 maxDamage: 5,
@@ -66,8 +72,8 @@ export default class DataMgr {
         this.coin = 0
     }
 
-    getData(obj){
-        return Object.create(obj)
+    getData(obj) {
+        return Object.assign(obj)
     }
 
     // 增加武器

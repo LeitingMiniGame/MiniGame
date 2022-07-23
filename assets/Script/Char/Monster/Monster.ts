@@ -13,6 +13,13 @@ export default class Monster extends Char {
     moveCallFunc: Function;
     moveTween: cc.Tween<cc.Node>;
 
+    onLoad() {
+        super.onLoad()
+        if (this.data.animate) {
+            this.loadAnimate(this.data.animate)
+        }
+    }
+
     start() {
         let boxCollider = this.addComponent(cc.BoxCollider)
         boxCollider.size = this.data.size
@@ -43,11 +50,9 @@ export default class Monster extends Char {
         this.schedule(this.moveCallFunc, this.getTargetInterval, cc.macro.REPEAT_FOREVER)
     }
 
+    // 受伤接口
     injured(damage, backPos) {
         this.data.hp -= damage
-
-        let quality = 20
-        backPos.mulSelf(quality)
 
         if (this.moveTween) {
             this.moveTween.stop()
@@ -61,6 +66,9 @@ export default class Monster extends Char {
                 .call(() => { this.checkDie() })
                 .start()
         } else {
+            // 击退效果
+            let moveLen = 30 - 0.05 * this.data.quality
+            backPos.mulSelf(moveLen)
             cc.tween(this.node)
                 .by(0.1, { position: cc.v3(backPos.x, backPos.y, 0) })
                 .call(() => {
@@ -88,6 +96,7 @@ export default class Monster extends Char {
         imageNode.y = this.data.size.height / 2
     }
 
+    // 检测是否死亡
     checkDie() {
         if (this.data.hp <= 0) {
             if (this.state == 'die') {
@@ -102,18 +111,23 @@ export default class Monster extends Char {
         }
     }
 
+    // 获取随机数
     getRandInt(min, max) {
         var range = max - min;
         var rand = Math.random();
         return (min + Math.round(rand * range));
     }
 
+    // 碰撞检测
     onCollisionEnter(other, self) {
         if (other.node.group == "Weapon") {
             let weapon = other.node.getComponent(other.node.name)
             let monster = self.node.getComponent(self.node.name)
             weapon.injured(monster.data.damage)
             let damage = this.getRandInt(weapon.data.minDamage, weapon.data.maxDamage)
+
+            let char = CharMgr.getInstance().getCharByName('Hero').getComponent('Hero')
+            damage = char.getAddDamage(damage)
 
             let backPos = this.getWorldPos().subSelf(weapon.getWorldPos()).normalizeSelf()
             monster.injured(damage, backPos)
@@ -124,10 +138,4 @@ export default class Monster extends Char {
             hero.injured(monster.data.damage)
         }
     }
-
-    // start () {
-
-    // }
-
-    // update (dt) {}
 }

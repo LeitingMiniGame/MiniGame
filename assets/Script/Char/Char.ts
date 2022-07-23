@@ -9,12 +9,11 @@ export default abstract class Char extends cc.Component {
         this.animateLayer = new cc.Node()
         this.animateLayer.addComponent(cc.Sprite)
         this.animateLayer.parent = this.node
-
         if(this.data.image){
             this.loadImage(this.data.image)
         }
-        if(this.data.animate){
-            this.loadAnimate(this.data.animate)
+        if(this.data.maxHp){
+            this.data.hp = this.data.maxHp
         }
     }
 
@@ -35,7 +34,7 @@ export default abstract class Char extends cc.Component {
         })
     }
 
-    loadAnimate(animateName) {
+    loadAnimate(animateName, notNeedPlayOnLoad?) {
         let path = "Animate/" + animateName
         cc.resources.load(path, cc.AnimationClip, (error, clip: cc.AnimationClip) => {
             if (error) {
@@ -47,8 +46,9 @@ export default abstract class Char extends cc.Component {
                 anim = this.animateLayer.addComponent(cc.Animation);
             }
             anim.addClip(clip);
-            anim.play(animateName);            
-            // this.node.setContentSize(this.data.size)
+            if(!notNeedPlayOnLoad){
+                anim.play(animateName);            
+            }
             this.move()
         })
     }

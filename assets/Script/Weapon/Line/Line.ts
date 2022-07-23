@@ -11,7 +11,7 @@ export default class Line extends Weapon {
     }
 
     move() {
-        let targetPos = this.getTarget().mulSelf(cc.winSize.width * 2 / 3)
+        let targetPos = this.getTarget().mulSelf(cc.winSize.width * 2)
         let time = targetPos.len() / this.data.speed
         this.node.runAction(cc.sequence(cc.moveBy(time, targetPos), cc.removeSelf()))
     }

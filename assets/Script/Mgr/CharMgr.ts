@@ -17,12 +17,13 @@ export default class CharMgr {
         ['HeroTest']:{
             image: 'Char/HeroStay1',
             animate: 'HeroMove1',
-            hp: 100,
+            initWeapon: 'LineTest',
+            maxHp: 100,
             recovery: 1,
             speed: 250,
-            power: 3,
+            power: 0,
             coolDown: 1,
-            amount: 2,
+            bulletCount: 2,
             growth: 1,
             luckly: 20,
             size: cc.size(100, 100)
@@ -31,8 +32,9 @@ export default class CharMgr {
         ['Bee']:{
             animate: 'BeeMove',
             speed: 100,
-            hp: 10,
+            maxHp: 10,
             damage: 10,
+            quality: 20,
             size: cc.size(68, 68),
         }
     }
@@ -52,7 +54,7 @@ export default class CharMgr {
         let node = new cc.Node(name)
         let char = node.addComponent(charType)
         if(this.CharData[charType]){
-            let newData = Object.create(this.CharData[charType])
+            let newData = Object.assign(this.CharData[charType])
             char.data = newData
         }
         char.name = name
