@@ -17,7 +17,7 @@
         "__id__": 2
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [],
     "_prefab": null,
     "_opacity": 255,
@@ -1374,7 +1374,7 @@
     },
     "_enabled": true,
     "AchieveSystem": {
-      "__uuid__": "6facf6e2-4c3b-45f2-a240-99d0d955b9eb"
+      "__uuid__": "951f2aed-e743-4200-8801-fe0934f03090"
     },
     "RoleSystem": {
       "__uuid__": "406cda79-2104-4ee4-9711-685189cfdc34"

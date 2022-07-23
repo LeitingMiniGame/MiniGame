@@ -5,7 +5,7 @@
         "Icon":"Image/clover",
         "Level":3,
         "Description":"这是个神奇的四叶草",
-        "Money":100
+        "Money":[0,100,200,300]
     },
     {
         "ID":2,

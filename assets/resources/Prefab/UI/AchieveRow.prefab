@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Achieve Layout",
+    "_name": "AchieveRow",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -502,15 +502,7 @@
       "__id__": 1
     },
     "_enabled": true,
-    "Situation": {
-      "__id__": 3
-    },
-    "Describe": {
-      "__id__": 6
-    },
-    "AchieveIcon": {
-      "__id__": 10
-    },
+    "AchieveID": -1,
     "_id": ""
   },
   {
