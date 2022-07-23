@@ -314,7 +314,7 @@
         "__id__": 57
       },
       {
-        "__id__": 64
+        "__id__": 65
       }
     ],
     "_active": true,
@@ -2545,7 +2545,7 @@
         "__id__": 58
       }
     ],
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 63
@@ -2834,7 +2834,11 @@
     "_grayMaterial": null,
     "duration": 0.1,
     "zoomScale": 1.2,
-    "clickEvents": [],
+    "clickEvents": [
+      {
+        "__id__": 64
+      }
+    ],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
     "_N$transition": 3,
@@ -2895,6 +2899,16 @@
     "_id": "9aIhWDSvJJRq4cDvUiuypz"
   },
   {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 2
+    },
+    "component": "",
+    "_componentId": "2093eZrTs5D8YAy1Hj5QboA",
+    "handler": "resumeAll",
+    "customEventData": ""
+  },
+  {
     "__type__": "cc.Node",
     "_name": "PauseButton",
     "_objFlags": 0,
@@ -2903,13 +2917,13 @@
     },
     "_children": [
       {
-        "__id__": 65
+        "__id__": 66
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 70
+        "__id__": 71
       }
     ],
     "_prefab": null,
@@ -2965,20 +2979,20 @@
     "_name": "Background",
     "_objFlags": 512,
     "_parent": {
-      "__id__": 64
+      "__id__": 65
     },
     "_children": [
       {
-        "__id__": 66
+        "__id__": 67
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 68
+        "__id__": 69
       },
       {
-        "__id__": 69
+        "__id__": 70
       }
     ],
     "_prefab": null,
@@ -3034,13 +3048,13 @@
     "_name": "Label",
     "_objFlags": 512,
     "_parent": {
-      "__id__": 65
+      "__id__": 66
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 67
+        "__id__": 68
       }
     ],
     "_prefab": null,
@@ -3096,7 +3110,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 66
+      "__id__": 67
     },
     "_enabled": true,
     "_materials": [
@@ -3129,7 +3143,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 65
+      "__id__": 66
     },
     "_enabled": true,
     "_materials": [
@@ -3161,7 +3175,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 65
+      "__id__": 66
     },
     "_enabled": true,
     "alignMode": 0,
@@ -3188,14 +3202,18 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 64
+      "__id__": 65
     },
     "_enabled": true,
     "_normalMaterial": null,
     "_grayMaterial": null,
     "duration": 0.1,
     "zoomScale": 1.2,
-    "clickEvents": [],
+    "clickEvents": [
+      {
+        "__id__": 72
+      }
+    ],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
     "_N$transition": 3,
@@ -3251,8 +3269,18 @@
     "hoverSprite": null,
     "_N$disabledSprite": null,
     "_N$target": {
-      "__id__": 65
+      "__id__": 66
     },
     "_id": "a4A4i0iaxIZK/xe1dg2Uw7"
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 2
+    },
+    "component": "",
+    "_componentId": "2093eZrTs5D8YAy1Hj5QboA",
+    "handler": "pauseAll",
+    "customEventData": ""
   }
 ]

@@ -1,4 +1,3 @@
-import MonsterMgr from "../../Mgr/MonsterMgr";
 import Weapon from "../Weapon";
 const { ccclass, property } = cc._decorator;
 
@@ -13,6 +12,9 @@ export default class Line extends Weapon {
     move() {
         let targetPos = this.getTarget().mulSelf(cc.winSize.width * 2)
         let time = targetPos.len() / this.data.speed
-        this.node.runAction(cc.sequence(cc.moveBy(time, targetPos), cc.removeSelf()))
+        this.moveTween = cc.tween(this.node)
+            .by(time, {position: cc.v3(targetPos.x, targetPos.y)})
+            .removeSelf()
+            .start()
     }
 }

@@ -24,6 +24,7 @@ export default class Hero extends Char {
 
         if(this.data.initWeapon){
             this.addWeapon(this.data.initWeapon)
+            this.addWeapon('ProjectileTest')
         }
     }
 
@@ -111,4 +112,12 @@ export default class Hero extends Char {
     move() {
     }
 
+    pause(){
+        let animate = this.animateLayer.getComponent(cc.Animation)
+        animate.stop('HeroMove1');
+        this.state = 'stateStay'
+    }
+
+    resume(){
+    }
 }

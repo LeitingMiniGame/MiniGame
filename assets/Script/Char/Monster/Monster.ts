@@ -80,6 +80,9 @@ export default class Monster extends Char {
             cc.tween(this.node)
                 .by(0.1, { position: cc.v3(backPos.x, backPos.y, 0) })
                 .call(() => {
+                    if(this.isPause){
+                        return
+                    }
                     this.schedule(this.moveCallFunc, this.getTargetInterval, cc.macro.REPEAT_FOREVER)
                 })
                 .start()
@@ -138,5 +141,18 @@ export default class Monster extends Char {
             let monster = self.node.getComponent(self.node.name)
             hero.injured(monster.data.damage)
         }
+    }
+
+    pause(){
+        this.isPause= true
+        if(this.moveTween){
+            this.moveTween.stop()
+        }
+        this.unschedule(this.moveCallFunc)
+    }
+
+    resume(){
+        this.isPause= false
+        this.move()
     }
 }

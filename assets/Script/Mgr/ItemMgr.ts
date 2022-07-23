@@ -37,6 +37,7 @@ export default class ItemMgr {
             weight: 100
         }
     ]
+    isPause: boolean;
 
     public static getInstance() {
         if (!this._instance) {
@@ -66,6 +67,7 @@ export default class ItemMgr {
 
     createItem(charType: string, name: string) {
         let item = CharMgr.getInstance().createChar(charType, name)
+        item.isPause = this.isPause
         this._mapItemById.set(item.uuid, item)
         return item
     }
@@ -77,5 +79,19 @@ export default class ItemMgr {
 
     getItemByName(name: string) {
         return this._mapItemById.get(name)
+    }
+
+    pause(){
+        this.isPause = true
+        this._mapItemById.forEach((item, key) => {
+            item.getComponent('Item').pause()
+        });
+    }
+
+    resume(){
+        this.isPause = false
+        this._mapItemById.forEach((item, key) => {
+            item.getComponent('Item').resume()
+        });
     }
 }

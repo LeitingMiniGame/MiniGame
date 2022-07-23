@@ -90,4 +90,14 @@ export default class Projectile extends Weapon {
             }
         }
     }
+
+    pause(): void {
+        let rigidbody = this.getComponent(cc.RigidBody)
+        rigidbody.active = false
+    }
+
+    resume(): void {
+        let rigidbody = this.getComponent(cc.RigidBody)
+        rigidbody.active = true
+    }
 }

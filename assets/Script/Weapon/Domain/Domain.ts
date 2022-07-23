@@ -12,9 +12,11 @@ export default class Domain extends Weapon {
     move() {
         let scale = this.data.maxSize.width / this.data.size.width
         let time = scale / this.data.speed
-        cc.tween(this.node)
+        this.moveTween = cc.tween(this.node)
             .to(time, { scale: scale, opacity: 100 })
             .removeSelf()
             .start()
     }
+
+
 }

@@ -31,6 +31,7 @@ export default class WeaponMgr {
         let tween = cc.tween(bulletLayer)
             .repeatForever(
                 cc.tween()
+                    .delay(interval)
                     .call(() => {
                         for (let i = 0; i < fireCount; i++) {
                             cc.tween(bulletLayer)
@@ -39,7 +40,7 @@ export default class WeaponMgr {
                                     self.createBullet(weapon)
                                 }).start()
                         }
-                    }).delay(interval)
+                    })
             )
         return tween
     }
@@ -63,7 +64,7 @@ export default class WeaponMgr {
     }
 
     // 生成子弹
-    public createBullet(weapon) {
+    createBullet(weapon) {
         let pos = CharMgr.getInstance().getCharByName('Hero').getWorldPos()
         let bullet = new cc.Node(weapon.name)
         bullet.addComponent(weapon.type)
@@ -75,5 +76,28 @@ export default class WeaponMgr {
         bullet.x = bulletLayer.convertToNodeSpaceAR(pos).x
         bullet.y = bulletLayer.convertToNodeSpaceAR(pos).y
         bullet.parent = bulletLayer
+
+    }
+
+    pause(){
+        this.tweenMap.forEach((value, key) => {
+            value.stop()
+        });
+        let bulletLayer = MapMgr.getInstance().getLayerByName('BulletLayer')
+        let bullets = bulletLayer.children
+        bullets.forEach((bullet, key)=>{
+            bullet.getComponent('Weapon').pause()
+        })
+    }
+
+    resume(){
+        this.tweenMap.forEach((value, key) => {
+            value.start()
+        });
+        let bulletLayer = MapMgr.getInstance().getLayerByName('BulletLayer')
+        let bullets = bulletLayer.children
+        bullets.forEach((bullet, key)=>{
+            bullet.getComponent('Weapon').resume()
+        })
     }
 }

@@ -199,7 +199,6 @@ export default class DataMgr {
         this.killLabel.string = this.kullNum
     }
 
-
     // 增加时间
     setTimeLabel(time: number) {
         function padNumber(num: number, fill: number) {
@@ -219,7 +218,7 @@ export default class DataMgr {
     // 增加经验
     addExp(data) {
         let maxExp = this.levelExp[data.level - 1]
-        while (data.exp > maxExp) {
+        while (data.exp >= maxExp) {
             data.exp -= maxExp
             data.level++
             maxExp = this.levelExp[data.level - 1]
@@ -227,5 +226,4 @@ export default class DataMgr {
         this.levelLabel.string = data.level
         this.expPress.progress = data.exp / maxExp
     }
-
 }

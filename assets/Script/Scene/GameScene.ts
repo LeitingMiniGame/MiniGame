@@ -1,13 +1,19 @@
 
 import NumImage from "../Control/NumImage";
 import CharMgr from "../Mgr/CharMgr";
+import DataMgr from "../Mgr/DataMgr";
+import ItemMgr from "../Mgr/ItemMgr";
 import MapMgr from "../Mgr/MapMgr";
+import MonsterMgr from "../Mgr/MonsterMgr";
+import WeaponMgr from "../Mgr/WeaponMgr";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class GameScene extends cc.Component {
     isLoadFinish: number = 0
     allFinish: number = 0
+    curTime: any;
+    timeTween: cc.Tween<cc.Node>;
 
     onLoad() {
         this.addLayerRoot()
@@ -29,8 +35,8 @@ export default class GameScene extends cc.Component {
         // cc.PhysicsManager.DrawBits.e_shapeBit
         cc.director.getPhysicsManager().gravity = cc.v2(0, -960);
 
-
         NumImage.getInstance()
+        this.curTime = 0
     }
 
     start(){
@@ -39,6 +45,9 @@ export default class GameScene extends cc.Component {
         this.addBulletLayer()
         this.addMonsterLayer()
         this.addItemLayer()
+
+        // 开始计时
+        this.startTimeCount()
     }
 
     // 添加角色
@@ -102,4 +111,55 @@ export default class GameScene extends cc.Component {
         MapMgr.getInstance().addLayerMap('MonsterLayer', node)
     }
 
+    // 开始计时
+    startTimeCount(){
+        this.timeTween = cc.tween(this.node)
+        .repeatForever(
+            cc.tween()
+                .delay(1)
+                .call(() => {
+                    MonsterMgr.getInstance().beginCreateMonster(this.curTime)
+                    DataMgr.getInstance().setTimeLabel(this.curTime)
+                    this.curTime++
+                })
+        ).start()
+    }
+
+    // 暂停
+    pauseAll(){
+        cc.find('/UILayer/PauseButton').active = false
+        cc.find('/UILayer/StartButton').active = true
+
+        // 暂停时间
+        this.timeTween.stop()
+        // 暂停角色
+        CharMgr.getInstance().getCharByName('Hero').getComponent('Hero').pause()
+        // 暂停地图移动
+        MapMgr.getInstance().getLayerByName('LayerRoot').getComponent('LayerRoot').pause()
+        // 暂停开火，暂停子弹移动
+        WeaponMgr.getInstance().pause()
+        // 暂停怪物移动，暂停生成怪物
+        MonsterMgr.getInstance().pause()
+        // 暂停道具移动
+        ItemMgr.getInstance().pause()
+    }
+
+    // 恢复
+    resumeAll(){
+        cc.find('/UILayer/PauseButton').active = true
+        cc.find('/UILayer/StartButton').active = false
+
+        // 恢复时间
+        this.timeTween.start()
+        // 恢复角色
+        CharMgr.getInstance().getCharByName('Hero').getComponent('Hero').resume()
+        // 恢复地图移动
+        MapMgr.getInstance().getLayerByName('LayerRoot').getComponent('LayerRoot').resume()
+        // 恢复开火，恢复子弹移动
+        WeaponMgr.getInstance().resume()
+        // 恢复怪物移动，恢复生成怪物
+        MonsterMgr.getInstance().resume()
+        // 恢复道具移动
+        ItemMgr.getInstance().resume()
+    }
 }
