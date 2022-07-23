@@ -1,5 +1,6 @@
 import NumImage from "../../Control/NumImage";
 import CharMgr from "../../Mgr/CharMgr";
+import DataMgr from "../../Mgr/DataMgr";
 import ItemMgr from "../../Mgr/ItemMgr";
 import MonsterMgr from "../../Mgr/MonsterMgr";
 import Char from "../Char";
@@ -110,6 +111,7 @@ export default class Monster extends Char {
             }
             this.state = 'die'
             ItemMgr.getInstance().tryCreateItem(this.getWorldPos())
+            DataMgr.getInstance().addKillNum(1)
             let isRelease = MonsterMgr.getInstance().removeMonster(this)
             if (!isRelease) {
                 this.node.removeFromParent()

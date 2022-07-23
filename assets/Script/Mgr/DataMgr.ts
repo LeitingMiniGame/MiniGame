@@ -6,15 +6,22 @@ const { ccclass, property } = cc._decorator;
 export default class DataMgr {
     protected static _instance: DataMgr = null;
 
-    protected bag: any[]
-    protected coin: number
-
+    bag: any[]
+    coin: number
+    kullNum: number
+    coinLabel: any
+    killLabel: any
+    timeLabel: any
+    levelLabel: any
+    expPress: cc.ProgressBar
+    weaponList: cc.Node
 
     bulletData = {
         ['LineTest']: [
             {
                 name: 'LineTest',
                 type: 'Line',
+                icon: 'Dart',
                 bulletIcon: 'Hero',
                 level: 1,
                 interval: 1,
@@ -31,6 +38,7 @@ export default class DataMgr {
             {
                 name: 'DomainTest',
                 type: 'Domain',
+                icon: 'MagicWand',
                 bulletIcon: 'Hero',
                 level: 1,
                 interval: 1,
@@ -44,27 +52,11 @@ export default class DataMgr {
                 size: cc.size(20, 20)
             }
         ],
-        ['DomainTest1']: [
-            {
-                name: 'DomainTest',
-                type: 'Domain',
-                bulletIcon: 'Hero',
-                level: 1,
-                interval: 1,
-                preInterval: 0.05,
-                preCount: 1,
-                hp: 100000000,
-                minDamage: 5,
-                maxDamage: 5,
-                speed: 80,
-                maxSize: cc.size(500, 500), // 领域型武器 领域的最大值
-                size: cc.size(20, 20)
-            }
-        ],
         ['ProjectileTest']: [
             {
                 name: 'ProjectileTest',
                 type: 'Projectile',
+                icon: 'MagicWand1',
                 bulletIcon: 'Hero',
                 level: 1,
                 interval: 1,
@@ -79,6 +71,10 @@ export default class DataMgr {
         ]
     }
 
+    weaponIcon = [
+        'Dart', 'MagicWand', 'MagicWand1'
+    ]
+
     public static getInstance() {
         if (!this._instance) {
             this._instance = new DataMgr();
@@ -90,6 +86,30 @@ export default class DataMgr {
     protected _init() {
         this.bag = []
         this.coin = 0
+        this.kullNum = 0
+
+        this.coinLabel = cc.find('/UILayer/CoinPanel/CoinLabel').getComponent(cc.Label)
+        this.coinLabel.string = 0
+
+        this.killLabel = cc.find('/UILayer/KillPanel/KillLabel').getComponent(cc.Label)
+        this.killLabel.string = 0
+
+        this.timeLabel = cc.find('/UILayer/TimeLabel').getComponent(cc.Label)
+        this.timeLabel.string = '00:00'
+
+        this.levelLabel = cc.find('/UILayer/LevelBar/LevelLabel').getComponent(cc.Label)
+        this.levelLabel.string = 1
+
+        this.expPress = cc.find('/UILayer/LevelBar').getComponent(cc.ProgressBar)
+        this.expPress.progress = 0
+
+        this.weaponList = cc.find('/UILayer/WeaponList')
+
+        for (let i = 0; i < this.weaponIcon.length; i++) {
+            let path = 'Image/Weapon/' + this.weaponIcon[i]
+            cc.resources.preload(path, cc.SpriteFrame)
+        }
+
     }
 
     getData(obj) {
@@ -107,6 +127,15 @@ export default class DataMgr {
         let newWeapon = this.getData(this.bulletData[typeName][0])
         this.bag.push(newWeapon)
 
+        let iconPath = 'Image/Weapon/' + newWeapon.icon
+        let parentNode = this.weaponList.getChildByName('Item' + this.bag.length)
+        cc.resources.load(iconPath, cc.SpriteFrame, (error, assets:cc.SpriteFrame)=>{
+            let node = new cc.Node
+            let sprite = node.addComponent(cc.Sprite)
+            sprite.spriteFrame = assets
+            node.parent = parentNode
+            node.setContentSize(25, 25)
+        })
         WeaponMgr.getInstance().addWeapon(newWeapon)
     }
 
@@ -145,6 +174,30 @@ export default class DataMgr {
     // 增加金币
     addCoin(number) {
         this.coin += number
+        this.coinLabel.string = this.coin
+    }
+
+    // 增加击杀数
+    addKillNum(number) {
+        this.kullNum += number
+        this.killLabel.string = this.kullNum
+    }
+
+
+    // 增加时间
+    setTimeLabel(time: number) {
+        function padNumber(num: number, fill: number) {
+            var len = ('' + num).length;
+            return (Array(
+                fill > len ? fill - len + 1 || 0 : 0
+            ).join('0') + num);
+        }
+
+        let minute = Math.floor(time / 60)
+        let secon = Math.floor(time % 60)
+        let minuteStr = padNumber(minute, 2)
+        let seconStr = padNumber(secon, 2)
+        this.timeLabel.string = minuteStr + ':' + seconStr
     }
 
 }
