@@ -33,13 +33,30 @@ export function randByWeight(arr): number {
 }
 
 /**
+* @method 深复制一个json对象
+* @param source 需要深复制的对象
+* @return 返回一个新的json对象
+* @author vincent 2018-11-29
+* @version 0.0.0
+* @example
+* @log 1. vincent,2018-11-29, func、date、reg 和 err 类型不能正常拷贝
+*/
+export function deepCopyJson(source: Object): Object {
+    const newObject = {};
+    for (const key of Object.keys(source)) {
+        newObject[key] = typeof source[key] === 'object' ? deepCopyJson(source[key]) : source[key];
+    }
+    return newObject;
+}
+
+/**
  * 打开一个新的弹窗
  * Mode    : 1.有确认取消两个按钮  2.只有确认按钮
  * Message : 弹窗内容
  * Confirm : 确认按钮的回调函数
  * Cancel  : 取消按钮的回调函数
 */
-export function OpenPopups(Mode:number = 1, Message:string, Confirm:Function, Cancel:Function = null){
+export function OpenPopups(Mode: number = 1, Message: string, Confirm: Function, Cancel: Function = null) {
 
     let GlobalDataNote = cc.director.getScene().getChildByName("GlobalData");
     let PopTemplate = GlobalDataNote.getComponent("GlobalData").CommonPop;
@@ -52,21 +69,68 @@ export function OpenPopups(Mode:number = 1, Message:string, Confirm:Function, Ca
     Pop.parent = Root;
 }
 
-export namespace Data{
+export namespace Data {
 
+<<<<<<< HEAD
+=======
+    /**
+     * 获取关于设置相关数据的接口, 实时获取最新内容
+     */
+    export class SetUp {
+        // 存储临时对象数据
+        private SetUpObj: Object = null;
+        private static _instance: SetUp = null
+
+        /** 单例模式，获取管理对象 */
+        private static getInstance() {
+            if (!this._instance) {
+                this._instance = new SetUp();
+                // 初次加载则读取本地数据
+                this._instance.SetUpObj = JsonManager.getInstance().query("SetUp")
+            }
+            return this._instance;
+        }
+
+        /** 返回是否全屏 */
+        static IsFullScreen(): any {
+            return deepCopyJson(this.getInstance().SetUpObj["IsFullScreen"])
+        }
+
+        /** 返回是否显示伤害 */
+        static IsShowDamage(): any {
+            return deepCopyJson(this.getInstance().SetUpObj["IsShowDamage"])
+        }
+
+        /** 返回是否显示摇杆 */
+        static IsShowJoystick(): any {
+            return deepCopyJson(this.getInstance().SetUpObj["IsShowJoystick"])
+        }
+
+        /** 返回声音大小 */
+        static GetMusicNum(): any {
+            return deepCopyJson(this.getInstance().SetUpObj["Music"])
+        }
+
+        /** 返回音乐大小 */
+        static GetSoundNum(): any {
+            return deepCopyJson(this.getInstance().SetUpObj["Sound"])
+        }
+    }
+
+>>>>>>> 91511611bbee77782b2b6abfd3c198130a786d64
 
     /**
      * 获取关于Config目录下的静态配置相关数据的接口
      * 使用Config.GetConfig(JsonName) 即可
      */
-    export class Config{
+    export class Config {
 
         // 存储临时对象数据
         private static ConfigMap: Map<string, Object> = null;
-        private static IsInit : boolean = false
+        private static IsInit: boolean = false
 
         /** 初始化获取静态资源 */
-        public static Init(){
+        public static Init() {
             if (!this.IsInit) {
                 console.log("准备开始初始化Config")
                 this.IsInit = true;
@@ -84,14 +148,14 @@ export namespace Data{
             }
         }
 
-        private static LoadJson(para:string){
-            JsonManager.getInstance().LoadJson("Config/"+para, this.AddJson, [para])
+        private static LoadJson(para: string) {
+            JsonManager.getInstance().LoadJson("Config/" + para, this.AddJson, [para])
         }
 
         /** 将Json保存到Map中 */
-        private static AddJson(Paras:any[]){
-            let JsonName:string = Paras[1][0]
-            let JsonObj:Object = Paras[0]
+        private static AddJson(Paras: any[]) {
+            let JsonName: string = Paras[1][0]
+            let JsonObj: Object = Paras[0]
             // console.log("JsonName:",JsonName)
             // console.log("JsonObj:",JsonObj)
             // GlobalDataObject[JsonName] = JsonObj
@@ -100,16 +164,16 @@ export namespace Data{
         }
 
         /** 根据输入的配置文件名称返回对应的静态资源 */
-        public static GetConfig(JsonName:string){
+        public static GetConfig(JsonName: string) {
             Config.Init();
             // console.log("ConfigMap : ",Config.ConfigMap)
             // console.log("准备开始获取[",JsonName,"]")
             // if(!Config.ConfigMap.has(JsonName))
-            //     console.log("ConfigMap[",JsonName,"]:",Object.assign(Config.ConfigMap.get(JsonName)))
+            //     console.log("ConfigMap[",JsonName,"]:",deepCopyJson(Config.ConfigMap.get(JsonName)))
 
-            if(!Config.ConfigMap.has(JsonName))
+            if (!Config.ConfigMap.has(JsonName))
                 return null;
-            return Object.assign(Config.ConfigMap.get(JsonName))
+            return deepCopyJson(Config.ConfigMap.get(JsonName))
 
         }
     }
@@ -163,6 +227,7 @@ export namespace Data{
     /**
      * 使用此接口来记录或者读取临时数据/永久数据
      */
+<<<<<<< HEAD
     export class Hero{
         // 存储临时对象数据
         private HeroArrayObj: Object = null;
@@ -178,6 +243,9 @@ export namespace Data{
             }
             return this._instance;
         }
+=======
+    export class Hero {
+>>>>>>> 91511611bbee77782b2b6abfd3c198130a786d64
 
         // /** 返回是否全屏 */
         // static IsFullScreen():boolean{

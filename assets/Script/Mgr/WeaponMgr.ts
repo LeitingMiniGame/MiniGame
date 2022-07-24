@@ -1,3 +1,4 @@
+import { deepCopyJson } from "../Tools/Tools";
 import CharMgr from "./CharMgr";
 import MapMgr from "./MapMgr";
 
@@ -70,7 +71,7 @@ export default class WeaponMgr {
         bullet.addComponent(weapon.type)
 
         let weaponComp = bullet.getComponent('Weapon')
-        weaponComp.data = Object.create(weapon)
+        weaponComp.data = deepCopyJson(weapon)
 
         let bulletLayer = MapMgr.getInstance().getLayerByName('BulletLayer')
         bullet.x = bulletLayer.convertToNodeSpaceAR(pos).x

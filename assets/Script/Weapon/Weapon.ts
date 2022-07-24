@@ -8,6 +8,7 @@ export default abstract class Weapon extends cc.Component {
     data: any
 
     onLoad() {
+        this.data.size = cc.size(this.data.width, this.data.height)
         this.node.group = 'Weapon'
         this.loadImage('Image/Bullet/' + this.data.bulletIcon)
     }
@@ -28,6 +29,7 @@ export default abstract class Weapon extends cc.Component {
         this.data.hp -= this.data.minDamage
         if (this.data.hp <= 0) {
             this.node.removeFromParent()
+
         }
     }
 
