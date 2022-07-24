@@ -19,7 +19,7 @@ export default class Hero extends Char {
             if (err) {
                 return
             }
-            
+
             let hpProgress = cc.instantiate(assets)
             hpProgress.name = 'hpProgress'
             hpProgress.parent = this.node
@@ -76,7 +76,7 @@ export default class Hero extends Char {
     // 更新血量进度
     updateHpProess() {
         let hpProgress = this.node.getChildByName('hpProgress').getComponent(cc.ProgressBar)
-        if(hpProgress){
+        if (hpProgress) {
 
             hpProgress.progress = this.data.hp / this.data.maxHp
         }
