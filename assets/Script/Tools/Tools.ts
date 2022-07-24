@@ -129,7 +129,7 @@ export namespace Data {
                 this.LoadJson("itemDatas");
                 this.LoadJson("wavedrop")
                 this.LoadJson("waveEnemy")
-                this.LoadJson("ProductAttributeList")
+                this.LoadJson("attribute")
 
             }
         }
@@ -288,15 +288,16 @@ export namespace Data {
                 this.BufferAttrivuteConfig = new Map<number, Object>();
                 // 预处理要用到的数据
                 // 获取道具配置
-                let ProductAttributeList = Config.GetConfig("ProductAttributeList")
+                let ProductAttributeList = Config.GetConfig("attribute")
                  console.log("ProductAttributeList : ",ProductAttributeList)
                 let ProductAttributeKeys = Object.keys(ProductAttributeList)
+                console.log("ProductAttributeKeys : ",ProductAttributeKeys)
                 // 将其处理为ID=>Object 的形式
                 for(let index = 0;index < ProductAttributeKeys.length; index++){
                     let Key = parseInt(ProductAttributeKeys[index]);
                     let Value = ProductAttributeList[Key];
                     console.log("Key : ",Key,"  Value : ",Value)
-                    this.BufferAttrivuteConfig.set(ProductList[Key]["ID"], Value)
+                    this.BufferAttrivuteConfig.set(ProductAttributeList[Key]["ID"], Value)
                 }
                 console.log("预处理道具参数信息完成")
                 // console.log("BufferLevelConfig : ", this.BufferLevelConfig)
@@ -306,7 +307,7 @@ export namespace Data {
             return true;
         }
 
-        // 获取当前角色的所有配置数据
+        // 获取指定道具的配置数据
         public static GetLevelConfig(BufferID:number){
             Buffer.Init();
             // console.log("Hero.HeroMap : ",Hero.HeroMap)
@@ -314,6 +315,16 @@ export namespace Data {
             // console.log("Hero.HeroMap.get(CurrentHeroID) : ",Hero.HeroMap.get(CurrentHeroID))
             // console.log("deepCopyJson(Hero.HeroMap.get(CurrentHeroID)) : ",deepCopyJson(Hero.HeroMap.get(CurrentHeroID)))
             return deepCopyJson(Buffer.BufferLevelConfig.get(BufferID))
+        }
+
+        public static GetBufferAttribute(BufferID:number,Level:number){
+            Buffer.Init();
+            // 通过ID查找道具
+            let BufferData = Buffer.GetLevelConfig(BufferID);
+            console.log("BufferID : ", BufferID," Level: ",Level)
+            console.log("BufferData : ", BufferData)
+
+
         }
     }
 

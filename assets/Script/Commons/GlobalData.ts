@@ -30,7 +30,7 @@ export default class NewClass extends cc.Component {
         this.LoadJson("itemDatas")
         this.LoadJson("wavedrop")
         this.LoadJson("waveEnemy")
-        this.LoadJson("ProductAttributeList")
+        this.LoadJson("attribute")
 
 
         // 加载全局静态数据

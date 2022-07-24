@@ -218,7 +218,7 @@ export default class NewClass extends cc.Component {
                 let CurrentLevel = BufferList[CurrentID];
                 // console.log("CurrentID : ",CurrentID,"  CurrentLevel : ",CurrentLevel)
 
-                console.log("Buffer.BufferLevelConfig : ", Data.Buffer.GetLevelConfig(CurrentID))
+                console.log("Buffer.GetBufferAttribute : ", Data.Buffer.GetBufferAttribute(CurrentID, CurrentLevel ))
                 // 现在开始获取相关数据
             }
 
