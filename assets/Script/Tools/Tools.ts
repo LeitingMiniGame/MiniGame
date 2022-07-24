@@ -129,6 +129,7 @@ export namespace Data {
                 this.LoadJson("itemDatas");
                 this.LoadJson("wavedrop")
                 this.LoadJson("waveEnemy")
+                this.LoadJson("event")
 
             }
         }
