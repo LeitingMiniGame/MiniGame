@@ -12,7 +12,7 @@ export default class CharMgr {
         ['HeroTest']: {
             image: 'Char/HeroStay1',
             animate: 'HeroMove1',
-            initWeapon: 'LineTest',
+            initWeapon: 'magicwand',
             maxHp: 100,
             recovery: 1,
             speed: 250,
