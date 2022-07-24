@@ -1,7 +1,8 @@
 ﻿{
     "magicWand":[
         {
-            "name": "魔法棒",
+            "name": "magicWand",
+            "showName": "魔法棒",
             "type": "Line",
             "icon": "MagicWand",
             "bulletIcon": "magicbullet1",
@@ -18,7 +19,8 @@
             "height": 25
         },
         {
-            "name": "魔法棒",
+            "name": "magicWand",
+            "showName": "魔法棒",
             "type": "Line",
             "icon": "MagicWand",
             "bulletIcon": "magicbullet2",
@@ -35,7 +37,8 @@
             "height": 25
         },
         {
-            "name": "魔法棒",
+            "name": "magicWand",
+            "showName": "魔法棒",
             "type": "Line",
             "icon": "MagicWand",
             "bulletIcon": "magicbullet3",
@@ -52,7 +55,8 @@
             "height": 25
         },
         {
-            "name": "魔法棒",
+            "name": "magicWand",
+            "showName": "魔法棒",
             "type": "Line",
             "icon": "MagicWand",
             "bulletIcon": "magicbullet4",
@@ -69,7 +73,8 @@
             "height": 25
         },
         {
-            "name": "魔法棒",
+            "name": "magicWand",
+            "showName": "魔法棒",
             "type": "Line",
             "icon": "MagicWand",
             "bulletIcon": "magicbullet5",
@@ -86,7 +91,8 @@
             "height": 25
         },
         {
-            "name": "魔法棒",
+            "name": "magicWand",
+            "showName": "魔法棒",
             "type": "Line",
             "icon": "MagicWand",
             "bulletIcon": "magicbullet6",
@@ -103,7 +109,8 @@
             "height": 25
         },
         {
-            "name": "魔法棒",
+            "name": "magicWand",
+            "showName": "魔法棒",
             "type": "Line",
             "icon": "MagicWand",
             "bulletIcon": "magicbullet7",
@@ -120,7 +127,8 @@
             "height": 25
         },
         {
-            "name": "魔法棒",
+            "name": "magicWand",
+            "showName": "魔法棒",
             "type": "Line",
             "icon": "MagicWand",
             "bulletIcon": "magicbullet8",
@@ -139,7 +147,8 @@
     ],
     "bone":[
         {
-            "name": "骨头",
+            "name": "bone",
+            "showName": "骨头",
             "type": "Line",
             "icon": "bone",
             "bulletIcon": "bonebullet",
@@ -156,7 +165,8 @@
             "height": 25
         },
         {
-            "name": "骨头",
+            "name": "bone",
+            "showName": "骨头",
             "type": "Line",
             "icon": "bone",
             "bulletIcon": "bonebullet",
@@ -173,7 +183,8 @@
             "height": 36
         },
         {
-            "name": "骨头",
+            "name": "bone",
+            "showName": "骨头",
             "type": "Line",
             "icon": "bone",
             "bulletIcon": "bonebullet",
@@ -190,7 +201,8 @@
             "height": 36
         },
         {
-            "name": "骨头",
+            "name": "bone",
+            "showName": "骨头",
             "type": "Line",
             "icon": "bone",
             "bulletIcon": "bonebullet",
@@ -207,7 +219,8 @@
             "height": 36
         },
         {
-            "name": "骨头",
+            "name": "bone",
+            "showName": "骨头",
             "type": "Line",
             "icon": "bone",
             "bulletIcon": "bonebullet",
@@ -224,7 +237,8 @@
             "height": 42
         },
         {
-            "name": "骨头",
+            "name": "bone",
+            "showName": "骨头",
             "type": "Line",
             "icon": "bone",
             "bulletIcon": "bonebullet",
@@ -241,7 +255,8 @@
             "height": 42
         },
         {
-            "name": "骨头",
+            "name": "bone",
+            "showName": "骨头",
             "type": "Line",
             "icon": "bone",
             "bulletIcon": "bonebullet",
@@ -258,7 +273,8 @@
             "height": 42
         },
         {
-            "name": "骨头",
+            "name": "bone",
+            "showName": "骨头",
             "type": "Line",
             "icon": "bone",
             "bulletIcon": "bonebullet",
@@ -277,7 +293,8 @@
     ],
     "bow":[
         {
-            "name": "弹弓",
+            "name": "bow",
+            "showName": "弹弓",
             "type": "Line",
             "icon": "bow",
             "bulletIcon": "bowbullet",
@@ -294,7 +311,8 @@
             "height": 30
         },
         {
-            "name": "弹弓",
+            "name": "bow",
+            "showName": "弹弓",
             "type": "Line",
             "icon": "bow",
             "bulletIcon": "bowbullet",
@@ -311,7 +329,8 @@
             "height": 30
         },
         {
-            "name": "弹弓",
+            "name": "bow",
+            "showName": "弹弓",
             "type": "Line",
             "icon": "bow",
             "bulletIcon": "bowbullet",
@@ -328,7 +347,8 @@
             "height": 30
         },
         {
-            "name": "弹弓",
+            "name": "bow",
+            "showName": "弹弓",
             "type": "Line",
             "icon": "bow",
             "bulletIcon": "bowbullet",
@@ -345,7 +365,8 @@
             "height": 30
         },
         {
-            "name": "弹弓",
+            "name": "bow",
+            "showName": "弹弓",
             "type": "Line",
             "icon": "bow",
             "bulletIcon": "bowbullet",
@@ -362,7 +383,8 @@
             "height": 30
         },
         {
-            "name": "弹弓",
+            "name": "bow",
+            "showName": "弹弓",
             "type": "Line",
             "icon": "bow",
             "bulletIcon": "bowbullet",
@@ -379,7 +401,8 @@
             "height": 30
         },
         {
-            "name": "弹弓",
+            "name": "bow",
+            "showName": "弹弓",
             "type": "Line",
             "icon": "bow",
             "bulletIcon": "bowbullet",
@@ -396,7 +419,8 @@
             "height": 30
         },
         {
-            "name": "弹弓",
+            "name": "bow",
+            "showName": "弹弓",
             "type": "Line",
             "icon": "bow",
             "bulletIcon": "bowbullet",
@@ -415,7 +439,8 @@
     ],
     "shoe":[
         {
-            "name": "鞋子",
+            "name": "shoe",
+            "showName": "鞋子",
             "type": "Projectile",
             "icon": "shoe",
             "bulletIcon": "shoe",
@@ -432,7 +457,8 @@
             "height": 45
         },
         {
-            "name": "鞋子",
+            "name": "shoe",
+            "showName": "鞋子",
             "type": "Projectile",
             "icon": "shoe",
             "bulletIcon": "shoe",
@@ -449,7 +475,8 @@
             "height": 45
         },
         {
-            "name": "鞋子",
+            "name": "shoe",
+            "showName": "鞋子",
             "type": "Projectile",
             "icon": "shoe",
             "bulletIcon": "shoe",
@@ -466,7 +493,8 @@
             "height": 45
         },
         {
-            "name": "鞋子",
+            "name": "shoe",
+            "showName": "鞋子",
             "type": "Projectile",
             "icon": "shoe",
             "bulletIcon": "shoe",
@@ -483,7 +511,8 @@
             "height": 45
         },
         {
-            "name": "鞋子",
+            "name": "shoe",
+            "showName": "鞋子",
             "type": "Projectile",
             "icon": "shoe",
             "bulletIcon": "shoe",
@@ -500,7 +529,8 @@
             "height": 45
         },
         {
-            "name": "鞋子",
+            "name": "shoe",
+            "showName": "鞋子",
             "type": "Projectile",
             "icon": "shoe",
             "bulletIcon": "shoe",
@@ -517,7 +547,8 @@
             "height": 45
         },
         {
-            "name": "鞋子",
+            "name": "shoe",
+            "showName": "鞋子",
             "type": "Projectile",
             "icon": "shoe",
             "bulletIcon": "shoe",
@@ -534,7 +565,8 @@
             "height": 45
         },
         {
-            "name": "鞋子",
+            "name": "shoe",
+            "showName": "鞋子",
             "type": "Projectile",
             "icon": "shoe",
             "bulletIcon": "shoe",
@@ -553,7 +585,8 @@
     ],
     "boomerang":[
         {
-            "name": "重力回旋镖",
+            "name": "boomerang",
+            "showName": "重力回旋镖",
             "type": "Projectile",
             "icon": "boomerang",
             "bulletIcon": "boomerang",
@@ -570,7 +603,8 @@
             "height": 30
         },
         {
-            "name": "重力回旋镖",
+            "name": "boomerang",
+            "showName": "重力回旋镖",
             "type": "Projectile",
             "icon": "boomerang",
             "bulletIcon": "boomerang",
@@ -587,7 +621,8 @@
             "height": 30
         },
         {
-            "name": "重力回旋镖",
+            "name": "boomerang",
+            "showName": "重力回旋镖",
             "type": "Projectile",
             "icon": "boomerang",
             "bulletIcon": "boomerang",
@@ -604,7 +639,8 @@
             "height": 33
         },
         {
-            "name": "重力回旋镖",
+            "name": "boomerang",
+            "showName": "重力回旋镖",
             "type": "Projectile",
             "icon": "boomerang",
             "bulletIcon": "boomerang",
@@ -621,7 +657,8 @@
             "height": 33
         },
         {
-            "name": "重力回旋镖",
+            "name": "boomerang",
+            "showName": "重力回旋镖",
             "type": "Projectile",
             "icon": "boomerang",
             "bulletIcon": "boomerang",
@@ -638,7 +675,8 @@
             "height": 33
         },
         {
-            "name": "重力回旋镖",
+            "name": "boomerang",
+            "showName": "重力回旋镖",
             "type": "Projectile",
             "icon": "boomerang",
             "bulletIcon": "boomerang",
@@ -655,7 +693,8 @@
             "height": 36
         },
         {
-            "name": "重力回旋镖",
+            "name": "boomerang",
+            "showName": "重力回旋镖",
             "type": "Projectile",
             "icon": "boomerang",
             "bulletIcon": "boomerang",
@@ -672,7 +711,8 @@
             "height": 36
         },
         {
-            "name": "重力回旋镖",
+            "name": "boomerang",
+            "showName": "重力回旋镖",
             "type": "Projectile",
             "icon": "boomerang",
             "bulletIcon": "boomerang",
@@ -691,7 +731,8 @@
     ],
     "mushroom":[
         {
-            "name": "老蘑菇",
+            "name": "mushroom",
+            "showName": "老蘑菇",
             "type": "Projectile",
             "icon": "mushroom",
             "bulletIcon": "mushroom",
@@ -708,7 +749,8 @@
             "height": 30
         },
         {
-            "name": "老蘑菇",
+            "name": "mushroom",
+            "showName": "老蘑菇",
             "type": "Projectile",
             "icon": "mushroom",
             "bulletIcon": "mushroom",
@@ -725,7 +767,8 @@
             "height": 42
         },
         {
-            "name": "老蘑菇",
+            "name": "mushroom",
+            "showName": "老蘑菇",
             "type": "Projectile",
             "icon": "mushroom",
             "bulletIcon": "mushroom",
@@ -742,7 +785,8 @@
             "height": 42
         },
         {
-            "name": "老蘑菇",
+            "name": "mushroom",
+            "showName": "老蘑菇",
             "type": "Projectile",
             "icon": "mushroom",
             "bulletIcon": "mushroom",
@@ -759,7 +803,8 @@
             "height": 42
         },
         {
-            "name": "老蘑菇",
+            "name": "mushroom",
+            "showName": "老蘑菇",
             "type": "Projectile",
             "icon": "mushroom",
             "bulletIcon": "mushroom",
@@ -776,7 +821,8 @@
             "height": 54
         },
         {
-            "name": "老蘑菇",
+            "name": "mushroom",
+            "showName": "老蘑菇",
             "type": "Projectile",
             "icon": "mushroom",
             "bulletIcon": "mushroom",
@@ -793,7 +839,8 @@
             "height": 54
         },
         {
-            "name": "老蘑菇",
+            "name": "mushroom",
+            "showName": "老蘑菇",
             "type": "Projectile",
             "icon": "mushroom",
             "bulletIcon": "mushroom",
@@ -810,7 +857,8 @@
             "height": 54
         },
         {
-            "name": "老蘑菇",
+            "name": "mushroom",
+            "showName": "老蘑菇",
             "type": "Projectile",
             "icon": "mushroom",
             "bulletIcon": "mushroom",
@@ -829,7 +877,8 @@
     ],
     "shit":[
         {
-            "name": "臭臭",
+            "name": "shit",
+            "showName": "臭臭",
             "type": "Domain",
             "icon": "shit",
             "bulletIcon": "shit",
@@ -848,7 +897,8 @@
             "maxHeight": 175
         },
         {
-            "name": "臭臭",
+            "name": "shit",
+            "showName": "臭臭",
             "type": "Domain",
             "icon": "shit",
             "bulletIcon": "shit",
@@ -867,7 +917,8 @@
             "maxHeight": 245
         },
         {
-            "name": "臭臭",
+            "name": "shit",
+            "showName": "臭臭",
             "type": "Domain",
             "icon": "shit",
             "bulletIcon": "shit",
@@ -886,7 +937,8 @@
             "maxHeight": 245
         },
         {
-            "name": "臭臭",
+            "name": "shit",
+            "showName": "臭臭",
             "type": "Domain",
             "icon": "shit",
             "bulletIcon": "shit",
@@ -905,7 +957,8 @@
             "maxHeight": 280
         },
         {
-            "name": "臭臭",
+            "name": "shit",
+            "showName": "臭臭",
             "type": "Domain",
             "icon": "shit",
             "bulletIcon": "shit",
@@ -924,7 +977,8 @@
             "maxHeight": 280
         },
         {
-            "name": "臭臭",
+            "name": "shit",
+            "showName": "臭臭",
             "type": "Domain",
             "icon": "shit",
             "bulletIcon": "shit",
@@ -943,7 +997,8 @@
             "maxHeight": 315
         },
         {
-            "name": "臭臭",
+            "name": "shit",
+            "showName": "臭臭",
             "type": "Domain",
             "icon": "shit",
             "bulletIcon": "shit",
@@ -962,7 +1017,8 @@
             "maxHeight": 315
         },
         {
-            "name": "臭臭",
+            "name": "shit",
+            "showName": "臭臭",
             "type": "Domain",
             "icon": "shit",
             "bulletIcon": "shit",
@@ -983,7 +1039,8 @@
     ],
     "snow":[
         {
-            "name": "雪景球",
+            "name": "snow",
+            "showName": "雪景球",
             "type": "Domain",
             "icon": "snow",
             "bulletIcon": "snow",
@@ -1002,7 +1059,8 @@
             "maxHeight": 225
         },
         {
-            "name": "雪景球",
+            "name": "snow",
+            "showName": "雪景球",
             "type": "Domain",
             "icon": "snow",
             "bulletIcon": "snow",
@@ -1021,7 +1079,8 @@
             "maxHeight": 270
         },
         {
-            "name": "雪景球",
+            "name": "snow",
+            "showName": "雪景球",
             "type": "Domain",
             "icon": "snow",
             "bulletIcon": "snow",
@@ -1040,7 +1099,8 @@
             "maxHeight": 270
         },
         {
-            "name": "雪景球",
+            "name": "snow",
+            "showName": "雪景球",
             "type": "Domain",
             "icon": "snow",
             "bulletIcon": "snow",
@@ -1059,7 +1119,8 @@
             "maxHeight": 315
         },
         {
-            "name": "雪景球",
+            "name": "snow",
+            "showName": "雪景球",
             "type": "Domain",
             "icon": "snow",
             "bulletIcon": "snow",
@@ -1078,7 +1139,8 @@
             "maxHeight": 315
         },
         {
-            "name": "雪景球",
+            "name": "snow",
+            "showName": "雪景球",
             "type": "Domain",
             "icon": "snow",
             "bulletIcon": "snow",
@@ -1097,7 +1159,8 @@
             "maxHeight": 360
         },
         {
-            "name": "雪景球",
+            "name": "snow",
+            "showName": "雪景球",
             "type": "Domain",
             "icon": "snow",
             "bulletIcon": "snow",
@@ -1116,7 +1179,8 @@
             "maxHeight": 360
         },
         {
-            "name": "雪景球",
+            "name": "snow",
+            "showName": "雪景球",
             "type": "Domain",
             "icon": "snow",
             "bulletIcon": "snow",
