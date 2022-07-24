@@ -16,7 +16,7 @@ export default abstract class Item extends Char {
     onLoad() {
         super.onLoad()
         this.loadImage("Item/" + this.data.icon)
-
+        this.data.size = cc.size(this.data.width, this.data.height)
     }
 
     // 获取目标位置

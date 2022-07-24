@@ -124,6 +124,8 @@ export namespace Data {
                 this.LoadJson("lineweapon");
                 this.LoadJson("weapon");
                 this.LoadJson("enemy");
+                this.LoadJson("levelup");
+                this.LoadJson("itemDatas");
             }
         }
 
