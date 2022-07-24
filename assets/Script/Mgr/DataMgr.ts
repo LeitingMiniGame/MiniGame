@@ -223,7 +223,7 @@ export default class DataMgr {
             let iconNode = itemNode.getChildByName('Icon')
             iconNode.removeAllChildren()
 
-            itemNode.getChildByName('NameLabel').getComponent(cc.Label).string = weaponData.name
+            itemNode.getChildByName('NameLabel').getComponent(cc.Label).string = weaponData.showName
             itemNode.getChildByName('InfoLabel').getComponent(cc.Label).string = weaponData.describe
 
             cc.resources.load(iconPath, cc.SpriteFrame, (error, assets: cc.SpriteFrame) => {
