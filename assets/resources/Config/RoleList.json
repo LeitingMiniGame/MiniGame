@@ -28,7 +28,7 @@
 
         "RateOfFire":0,
         "Range":0,
-        "recovery":0,
+        "recovery":1,
 
         "speed":140,
 
@@ -64,7 +64,7 @@
 
         "RateOfFire":0,
         "Range":0,
-        "recovery":0,
+        "recovery":1.5,
 
         "speed":140,
 
