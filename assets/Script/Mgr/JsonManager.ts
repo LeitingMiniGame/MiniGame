@@ -34,31 +34,31 @@ export default class JsonManager{
     /** 将所有数据保存到本地 */
     public SaveDB(){
         // 保存前将之前的存档删除
-        cc.sys.localStorage.clear();////----需要讨论是否删除
+        cc.sys.localStorage.clear();//----需要讨论是否删除
 
-        console.log("save start");
+        //console.log("save start");
         let ObjNameArray : Array<string> = [];
         // 循环遍历所有此刻存储在JsonManager中的数据并保存
         this._mapDBase.forEach((value , key) =>{
-            console.log("save :",key);
+            //console.log("save :",key);
             cc.sys.localStorage.setItem(key, JSON.stringify(value));
-            console.log("save :",key,"成功");
+            //console.log("save :",key,"成功");
             // 记录保存了多少变量
             ObjNameArray.push(key);
-            // console.log("save key 成功");
+            // //console.log("save key 成功");
         });
-        // console.log("map循环结束");
+        // //console.log("map循环结束");
         // 最后将数据类型映射关系、变量信息保存
         cc.sys.localStorage.setItem("ObjNameArray", JSON.stringify(ObjNameArray));
-        console.log("save over");
+        //console.log("save over");
     }
 
     /** 将所有本地数据恢复到内存 */
     public LoadDB(){
         // 先将数据类型映射关系、变量信息读取出来
-        console.log("load start");
+        //console.log("load start");
         let ObjNameArray:Array<string> = JSON.parse(cc.sys.localStorage.getItem("ObjNameArray"));
-        console.log("ObjNameArray:", ObjNameArray);
+        //console.log("ObjNameArray:", ObjNameArray);
 
         if(!ObjNameArray) return;
 
@@ -67,16 +67,16 @@ export default class JsonManager{
         for(let index = 0 ;index < ObjNameArray.length ; index++)
         {
             let key = ObjNameArray[index];
-            console.log("key:", key);
+            //console.log("key:", key);
             //console.log("key type:",typeof key);
             JsonStr = cc.sys.localStorage.getItem(key);
             //console.log("JsonStr:", JsonStr);
             json = JSON.parse(JsonStr);
-            // console.log("json:", json);
+            // //console.log("json:", json);
             this._mapDBase.set(key,json);
             //console.log("_mapDB:", this._mapDBase);
         }
-        console.log("load over");
+        //console.log("load over");
     }
 
 
@@ -159,7 +159,7 @@ export default class JsonManager{
      * Para : 不定参数，需要再回调函数中使用的参数先暂存在这里
     */
     public LoadJson(URL:string, CallBack?:Function,Para?:any[]){
-        // console.log("URL:",URL);
+        // //console.log("URL:",URL);
         //URL 直接输入resources文件夹下的即可------出了点问题，无法使用了
         cc.loader.loadRes(URL, function(err, object) {
             if(err) {
@@ -173,10 +173,10 @@ export default class JsonManager{
         // URL需要指定resources目录 例如resources/demo.json
         // cc.loader.load(cc.url.raw(URL), function(err,res){
         //     if(err) {
-        //         console.log("err:",err);
+        //         //console.log("err:",err);
         //         return;
         //     }
-        //     console.log("res:",res.json);
+        //     //console.log("res:",res.json);
 
         // })
     }

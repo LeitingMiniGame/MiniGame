@@ -205,7 +205,7 @@ export default class GameScene extends cc.Component {
     }
 
     quitGame() {
-        console.log('quit');
+        //console.log('quit');
         // OpenPopups(1, "是否退出游戏", () => {
         // })
         this.pauseAll()
@@ -221,7 +221,7 @@ export default class GameScene extends cc.Component {
     }
 
     openSetting() {
-        console.log('setting');
+        //console.log('setting');
     }
 
     gameOver(isWin) {

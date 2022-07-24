@@ -13,7 +13,7 @@ export default class NewClass extends cc.Component {
 
     // update (dt) {}
     ShowHeroDetail (event) {
-        console.log("选择的关卡ID为"+this.LevelID);
+        //console.log("选择的关卡ID为"+this.LevelID);
         // 得到全局控制脚本
         let RoleChoiceScene = cc.find("Canvas/Main Layout/LevelSelectionSystem/Data").getComponent("LevelScene");
         RoleChoiceScene.LoadHeroData(parseInt(this.LevelID))

@@ -29,18 +29,18 @@ export default class NewClass extends cc.Component {
 
 
     onLoad(){
-        console.log("Control要onLoad啦")
-        console.log("准备开始获取常驻节点")
+        //console.log("Control要onLoad啦")
+        //console.log("准备开始获取常驻节点")
 
 
         // 在这里寻找金币的数量
         let GoldCoinNode = cc.find("Canvas/Main Layout/Top Layout/Gold coin/Coin Num");
-        console.log("金币数节点： ", GoldCoinNode);
+        //console.log("金币数节点： ", GoldCoinNode);
         let Basic = Data.Gamer.query("basic");
         GoldCoinNode.getComponent(cc.Label).string = Basic["Coin"]
 
         this.GlobalDataNote = cc.director.getScene().getChildByName("GlobalData");
-        console.log("GlobalDataNote : ", this.GlobalDataNote)
+        //console.log("GlobalDataNote : ", this.GlobalDataNote)
         if(!this.CheckGlobalNode())
             return;
 
@@ -56,11 +56,11 @@ export default class NewClass extends cc.Component {
 
 
     onEnable(){
-        console.log("Control要onEnable啦")
+        //console.log("Control要onEnable啦")
     }
 
     start () {
-        console.log("Control要start啦")
+        //console.log("Control要start啦")
         if(!this.CheckGlobal())
             return;
 
@@ -143,13 +143,13 @@ export default class NewClass extends cc.Component {
     }
 
     onDisable(){
-        console.log("Control要被关闭啦")
+        //console.log("Control要被关闭啦")
     }
 
     onDestroy(){
         if(!this.GlobalDataObject["FunctionalScene"])
             this.GlobalDataObject["FunctionalScene"] = null
-        console.log("Control要被销毁啦")
+        //console.log("Control要被销毁啦")
     }
 
     /** 检查全局数据是否存在 */
@@ -171,7 +171,7 @@ export default class NewClass extends cc.Component {
 
             // 切换回主界面
             cc.director.loadScene('HomePage', function(){
-                console.log("切换到初始界面啦");
+                //console.log("切换到初始界面啦");
             });
             return false;
         }
@@ -185,7 +185,7 @@ export default class NewClass extends cc.Component {
 
             // 切换回主界面
             cc.director.loadScene('HomePage', function(){
-                console.log("切换到初始界面啦");
+                //console.log("切换到初始界面啦");
             });
 
             return false;
@@ -200,7 +200,7 @@ export default class NewClass extends cc.Component {
 
             // 切换回主界面
             cc.director.loadScene('HomePage', function(){
-                console.log("切换到初始界面啦");
+                //console.log("切换到初始界面啦");
             });
 
             return false;
@@ -214,7 +214,7 @@ export default class NewClass extends cc.Component {
     //         return;
 
     //     if(!this.GlobalDataObject["FunctionalScene"]){
-    //         console.log("参数异常");
+    //         //console.log("参数异常");
     //         return;
     //     }
 
@@ -230,13 +230,13 @@ export default class NewClass extends cc.Component {
 
     //     // 切换回主界面
     //     cc.director.loadScene('HomePage', function(){
-    //         console.log("切换到初始界面啦");
+    //         //console.log("切换到初始界面啦");
     //     });
     // }
 
     // CloseAchieveSystem(){
     //     if(!this.AchieveSystem){
-    //         console.log("成就系统挂载异常");
+    //         //console.log("成就系统挂载异常");
     //         return;
     //     }
 

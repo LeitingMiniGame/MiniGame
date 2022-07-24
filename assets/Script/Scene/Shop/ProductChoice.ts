@@ -22,7 +22,7 @@ export default class NewClass extends cc.Component {
 
     // update (dt) {}
     ShowProductDetail (event) {
-        console.log("选择的商品ID为"+this.ProductID);
+        //console.log("选择的商品ID为"+this.ProductID);
         // 得到全局控制脚本
         let ShopScene = cc.find("Canvas/Main Layout/ShopSystem/Data").getComponent("ShopScene");
         let LevelNode = cc.find("Buttom Layout/Level", this.node).getComponent(cc.Label);
