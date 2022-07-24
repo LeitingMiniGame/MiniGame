@@ -123,6 +123,7 @@ export namespace Data {
                 this.LoadJson("ProductList");
                 this.LoadJson("lineweapon");
                 this.LoadJson("weapon");
+                this.LoadJson("enemy");
             }
         }
 
@@ -227,7 +228,8 @@ export namespace Data {
                     console.log("RoleList[Keys[index]] : ",RoleList[Keys[index]])
                     console.log(typeof(Keys[index])); // key['1'] key[1]
 
-                    let obj = RoleList[Keys[index]]
+                    let obj = RoleList[Number(Keys[index])]
+                    // let obj = RoleList[Keys[index]]
                     this.HeroMap.set(obj["ID"],obj)
                 }
             }
