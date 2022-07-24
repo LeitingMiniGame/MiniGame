@@ -89,19 +89,29 @@ export default class NewClass extends cc.Component {
     }
 
     ShowGlobalData(){
-        let IsShowDamage = Data.SetUp.IsShowDamage()
-        console.log("IsShowDamage : ",IsShowDamage)
-        console.log("IsFullScreen : ",Data.SetUp.IsFullScreen())
-        console.log("IsShowJoystick : ",Data.SetUp.IsShowJoystick())
-        console.log("Music : ",Data.SetUp.GetMusicNum())
-        console.log("Sound : ",Data.SetUp.GetSoundNum())
+        // let IsShowDamage = Data.SetUp.IsShowDamage()
+        // console.log("IsShowDamage : ",IsShowDamage)
+        // console.log("IsFullScreen : ",Data.SetUp.IsFullScreen())
+        // console.log("IsShowJoystick : ",Data.SetUp.IsShowJoystick())
+        // console.log("Music : ",Data.SetUp.GetMusicNum())
+        // console.log("Sound : ",Data.SetUp.GetSoundNum())
 
 
-        console.log("准备开始修改IsShowDamage")
-        IsShowDamage = true
-        console.log("修改IsShowDamage完毕")
-        console.log("IsShowDamage : ",Data.SetUp.IsShowDamage())
+        // console.log("准备开始修改IsShowDamage")
+        // IsShowDamage = true
+        // console.log("修改IsShowDamage完毕")
+        // console.log("IsShowDamage : ",Data.SetUp.IsShowDamage())
 
+        let SetUp =Data.Config.GetConfig("SetUp")
+        let AchieveList =Data.Config.GetConfig("AchieveList")
+        let LevelList =Data.Config.GetConfig("RoleList")
+        let ProductList =Data.Config.GetConfig("ProductList")
+        let lineweapon =Data.Config.GetConfig("lineweapon")
+        console.log("SetUp : ",SetUp)
+        console.log("AchieveList : ",AchieveList)
+        console.log("LevelList : ",LevelList)
+        console.log("ProductList : ",ProductList)
+        console.log("lineweapon : ",lineweapon)
     }
 
     onDestroy(){
