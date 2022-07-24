@@ -13,7 +13,9 @@ export default class Line extends Weapon {
         let targetPos = this.getTarget().mulSelf(cc.winSize.width * 2)
         let time = targetPos.len() / this.data.speed
 
-        let ang = targetPos.angle(cc.v2(0, 1)) / Math.PI * 360
+        let angle = Math.atan2(targetPos.y, targetPos.x);
+        var ang = angle * (180 / Math.PI) - 90;
+
         this.node.angle = ang
 
         this.moveTween = cc.tween(this.node)
