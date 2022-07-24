@@ -143,5 +143,10 @@ export default class NewClass extends cc.Component {
         }
     }
 
+
+    OpenGame(){
+        // 在这里暂存游戏人物数据，然后跳转到游戏界面
+        // 子弹、怪物、角色、
+    }
     // update (dt) {}
 }

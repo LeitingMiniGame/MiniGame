@@ -102,19 +102,19 @@ export default class NewClass extends cc.Component {
         // console.log("修改IsShowDamage完毕")
         // console.log("IsShowDamage : ",Data.SetUp.IsShowDamage())
 
-        let SetUp =Data.Config.GetConfig("SetUp")
-        let AchieveList =Data.Config.GetConfig("AchieveList")
-        let LevelList =Data.Config.GetConfig("RoleList")
-        let ProductList =Data.Config.GetConfig("ProductList")
-        let lineweapon =Data.Config.GetConfig("lineweapon")
-        let weapon =Data.Config.GetConfig("weapon")
-        Data
-        console.log("SetUp : ",SetUp)
-        console.log("AchieveList : ",AchieveList)
-        console.log("LevelList : ",LevelList)
-        console.log("ProductList : ",ProductList)
-        console.log("lineweapon : ",lineweapon)
-        console.log("weapon : ",weapon)
+        // let SetUp =Data.Config.GetConfig("SetUp")
+        // let AchieveList =Data.Config.GetConfig("AchieveList")
+        // let LevelList =Data.Config.GetConfig("RoleList")
+        // let ProductList =Data.Config.GetConfig("ProductList")
+        // let lineweapon =Data.Config.GetConfig("lineweapon")
+        // let weapon =Data.Config.GetConfig("weapon")
+        // Data
+        // console.log("SetUp : ",SetUp)
+        // console.log("AchieveList : ",AchieveList)
+        // console.log("LevelList : ",LevelList)
+        // console.log("ProductList : ",ProductList)
+        // console.log("lineweapon : ",lineweapon)
+        // console.log("weapon : ",weapon)
     }
 
     onDestroy(){

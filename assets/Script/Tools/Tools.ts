@@ -54,50 +54,6 @@ export function OpenPopups(Mode:number = 1, Message:string, Confirm:Function, Ca
 
 export namespace Data{
 
-    /**
-     * 获取关于设置相关数据的接口, 实时获取最新内容
-     */
-    export class SetUp{
-        // 存储临时对象数据
-        private SetUpObj: Object = null;
-        private static _instance : SetUp = null
-
-        /** 单例模式，获取管理对象 */
-        private static getInstance() {
-            if (!this._instance) {
-                this._instance = new SetUp();
-                // 初次加载则读取本地数据
-                this._instance.SetUpObj = JsonManager.getInstance().query("SetUp")
-            }
-            return this._instance;
-        }
-
-        /** 返回是否全屏 */
-        static IsFullScreen():boolean{
-            return Object.assign(this.getInstance().SetUpObj["IsFullScreen"])
-        }
-
-        /** 返回是否显示伤害 */
-        static IsShowDamage():boolean{
-            return Object.assign(this.getInstance().SetUpObj["IsShowDamage"])
-        }
-
-        /** 返回是否显示摇杆 */
-        static IsShowJoystick():boolean{
-            return Object.assign(this.getInstance().SetUpObj["IsShowJoystick"])
-        }
-
-        /** 返回声音大小 */
-        static GetMusicNum():number{
-            return Object.assign(this.getInstance().SetUpObj["Music"])
-        }
-
-        /** 返回音乐大小 */
-        static GetSoundNum():boolean{
-            return Object.assign(this.getInstance().SetUpObj["Sound"])
-        }
-    }
-
 
     /**
      * 获取关于Config目录下的静态配置相关数据的接口
@@ -158,10 +114,94 @@ export namespace Data{
         }
     }
 
+
+    /**
+     * 获取关于设置相关数据的接口, 实时获取最新内容
+     */
+    export class SetUp{
+        // 存储临时对象数据
+        private SetUpObj: Object = null;
+        private static _instance : SetUp = null
+
+        /** 单例模式，获取管理对象 */
+        private static getInstance() {
+            if (!this._instance) {
+                this._instance = new SetUp();
+                // 初次加载则读取本地数据
+                Config.Init();
+                this._instance.SetUpObj = Config.GetConfig("SetUp")
+            }
+            return this._instance;
+        }
+
+        /** 返回是否全屏 */
+        static IsFullScreen():boolean{
+            return Object.assign(this.getInstance().SetUpObj["IsFullScreen"])
+        }
+
+        /** 返回是否显示伤害 */
+        static IsShowDamage():boolean{
+            return Object.assign(this.getInstance().SetUpObj["IsShowDamage"])
+        }
+
+        /** 返回是否显示摇杆 */
+        static IsShowJoystick():boolean{
+            return Object.assign(this.getInstance().SetUpObj["IsShowJoystick"])
+        }
+
+        /** 返回声音大小 */
+        static GetMusicNum():number{
+            return Object.assign(this.getInstance().SetUpObj["Music"])
+        }
+
+        /** 返回音乐大小 */
+        static GetSoundNum():boolean{
+            return Object.assign(this.getInstance().SetUpObj["Sound"])
+        }
+    }
+
     /**
      * 使用此接口来记录或者读取临时数据/永久数据
      */
     export class Hero{
+        // 存储临时对象数据
+        private HeroArrayObj: Object = null;
+        private static _instance : Hero = null
 
+        /** 单例模式，获取管理对象 */
+        private static getInstance() {
+            if (!this._instance) {
+                this._instance = new Hero();
+                // 初次加载则读取本地数据
+                Config.Init();
+                this._instance.HeroArrayObj = Config.GetConfig("RoleList")
+            }
+            return this._instance;
+        }
+
+        // /** 返回是否全屏 */
+        // static IsFullScreen():boolean{
+        //     return Object.assign(this.getInstance().HeroArrayObj["IsFullScreen"])
+        // }
+
+        // /** 返回是否显示伤害 */
+        // static IsShowDamage():boolean{
+        //     return Object.assign(this.getInstance().HeroArrayObj["IsShowDamage"])
+        // }
+
+        // /** 返回是否显示摇杆 */
+        // static IsShowJoystick():boolean{
+        //     return Object.assign(this.getInstance().HeroArrayObj["IsShowJoystick"])
+        // }
+
+        // /** 返回声音大小 */
+        // static GetMusicNum():number{
+        //     return Object.assign(this.getInstance().HeroArrayObj["Music"])
+        // }
+
+        // /** 返回音乐大小 */
+        // static GetSoundNum():boolean{
+        //     return Object.assign(this.getInstance().HeroArrayObj["Sound"])
+        // }
     }
 }
