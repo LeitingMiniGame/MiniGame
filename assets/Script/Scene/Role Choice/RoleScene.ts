@@ -217,13 +217,31 @@ export default class NewClass extends cc.Component {
                 let CurrentID = parseInt(BufferIDList[index]);
                 let CurrentLevel = BufferList[CurrentID];
                 // console.log("CurrentID : ",CurrentID,"  CurrentLevel : ",CurrentLevel)
-
-                console.log("Buffer.GetBufferAttribute : ", Data.Buffer.GetBufferAttribute(CurrentID, CurrentLevel ))
+                let TempBuffer = Data.Buffer.GetBufferAttribute(CurrentID, CurrentLevel )
+                TempBuffer["ID"] = undefined
+                console.log("TempBuffer: ",TempBuffer )
+                // console.log("CurrentHero: ",CurrentHero )
+                // CurrentHero+=TempBuffer
+                // this.SetBuffer(CurrentHero, TempBuffer)
+                {
+                    CurrentHero["bulletCount"]+=TempBuffer["bulletCount"]
+                    CurrentHero["coolDown"]+=TempBuffer["coolDown"]
+                    CurrentHero["ExperienceGain"]+=TempBuffer["ExperienceGain"]
+                    CurrentHero["growth"]+=TempBuffer["growth"]
+                    CurrentHero["luckly"]+=TempBuffer["luckly"]
+                    CurrentHero["magnet"]+=TempBuffer["magnet"]
+                    CurrentHero["maxHp"]+=TempBuffer["maxHp"]
+                    CurrentHero["power"]+=TempBuffer["power"]
+                    CurrentHero["RateOfFire"]+=TempBuffer["RateOfFire"]
+                    CurrentHero["Range"]+=TempBuffer["Range"]
+                    CurrentHero["recovery"]+=TempBuffer["recovery"]
+                    CurrentHero["speed"]+=TempBuffer["speed"]
+                }
                 // 现在开始获取相关数据
             }
 
             console.log("Hero: ",CurrentHero)
-            return;
+            // return;
 
             //进入游戏界面
             console.log("准备开始游戏");
