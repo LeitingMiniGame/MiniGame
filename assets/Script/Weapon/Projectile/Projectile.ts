@@ -57,6 +57,12 @@ export default class Projectile extends Weapon {
         // 或者
         let localPoint = cc.v2();
         rigidbody.getWorldPoint(cc.v2(0, 0), localPoint)
+
+        cc.tween(this.node)
+            .repeatForever(
+                cc.tween()
+                    .by(1, { angle: 360 })
+            ).start()
     }
 
     update(dt: number): void {

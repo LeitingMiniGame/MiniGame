@@ -86,6 +86,7 @@ export default class Hero extends Char {
 
     // 增加经验
     addExp(exp) {
+        exp *= (1 + this.data.growth)
         this.data.exp += exp
         DataMgr.getInstance().addExp(this.data)
     }

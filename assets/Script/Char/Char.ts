@@ -52,11 +52,11 @@ export default abstract class Char extends cc.Component {
             if(!notNeedPlayOnLoad){
                 anim.play(animateName);            
             }
-            this.move()
+            this.move(clip)
         })
     }
 
-    move() {}
+    move(clip?) {}
 
     getWorldPos() {
         return this.node.convertToWorldSpaceAR(cc.v2(0, 0))

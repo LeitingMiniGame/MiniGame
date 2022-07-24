@@ -26,19 +26,27 @@ export default class GameScene extends cc.Component {
         // 开启碰撞检测
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
+        manager.enabledDebugDraw =true
+        manager.enabledDrawBoundingBox = true
 
         var physicsManager = cc.director.getPhysicsManager();
         physicsManager.enabled = true;
         cc.director.getPhysicsManager().gravity = cc.v2(0, -960);
         this.curTime = 0
-    }
 
-    start() {
         this.addHero()
         this.addMapLayer()
         this.addBulletLayer()
         this.addMonsterLayer()
         this.addItemLayer()
+    }
+
+    start() {
+        // this.addHero()
+        // this.addMapLayer()
+        // this.addBulletLayer()
+        // this.addMonsterLayer()
+        // this.addItemLayer()
 
         // 开始计时
         this.startTimeCount()
