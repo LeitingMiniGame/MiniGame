@@ -124,6 +124,7 @@ export class Config{
             this.LoadJson("LevelList");
             this.LoadJson("ProductList");
             this.LoadJson("lineweapon");
+            this.LoadJson("weapon");
         }
     }
 
@@ -135,19 +136,21 @@ export class Config{
     private static AddJson(Paras:any[]){
         let JsonName:string = Paras[1][0]
         let JsonObj:Object = Paras[0]
-        console.log("JsonName:",JsonName)
-        console.log("JsonObj:",JsonObj)
+        // console.log("JsonName:",JsonName)
+        // console.log("JsonObj:",JsonObj)
         // GlobalDataObject[JsonName] = JsonObj
         Config.ConfigMap.set(JsonName, JsonObj);
-        console.log("ConfigMap : ",Config.ConfigMap)
+        // console.log("ConfigMap : ",Config.ConfigMap)
     }
 
     /** 根据输入的配置文件名称返回对应的静态资源 */
     public static GetConfig(JsonName:string){
         Config.Init();
-        console.log("ConfigMap : ",Config.ConfigMap)
-        console.log("准备开始获取[",JsonName,"]")
-        console.log("ConfigMap[",JsonName,"]:",)
+        // console.log("ConfigMap : ",Config.ConfigMap)
+        // console.log("准备开始获取[",JsonName,"]")
+        // if(!Config.ConfigMap.has(JsonName))
+        //     console.log("ConfigMap[",JsonName,"]:",Object.assign(Config.ConfigMap.get(JsonName)))
+
         if(!Config.ConfigMap.has(JsonName))
             return null;
         return Object.assign(Config.ConfigMap.get(JsonName))

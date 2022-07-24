@@ -24,6 +24,7 @@ export default class NewClass extends cc.Component {
         this.LoadJson("LevelList");
         this.LoadJson("ProductList");
         this.LoadJson("lineweapon");
+        this.LoadJson("weapon");
 
         // 加载全局静态数据
         Data.Config.Init();
