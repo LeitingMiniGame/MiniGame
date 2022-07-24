@@ -30,6 +30,7 @@ export default class NewClass extends cc.Component {
         this.LoadJson("itemDatas")
         this.LoadJson("wavedrop")
         this.LoadJson("waveEnemy")
+        this.LoadJson("attribute")
         this.LoadJson("event")
 
 

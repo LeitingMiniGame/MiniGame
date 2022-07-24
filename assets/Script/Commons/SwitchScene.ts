@@ -13,6 +13,10 @@ export default class NewClass extends cc.Component {
     // onLoad () {
     // }
 
+
+    @property(cc.Node)
+    ZZRNode: cc.Node = null;
+
     start () {
         // cc.director.preloadScene("ControlSystem", function () {
         //     console.log("控制界面预加载好了");
@@ -164,6 +168,16 @@ export default class NewClass extends cc.Component {
             });
         });
 
+    }
+
+    OpenZhiZuoRen(){
+        // this.ZZRNode.active = true
+        cc.find("Canvas/CommonPopups").active = true;
+        console.log("cc.find(Canvas/CommonPopups):",cc.find("Canvas/CommonPopups"))
+    }
+    CloseZhiZuoRen(){
+        // this.ZZRNode.active = false;
+        cc.find("Canvas/CommonPopups").active = false;
     }
 
     /** 执行取消删除存档逻辑 */

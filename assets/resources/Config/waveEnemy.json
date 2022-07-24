@@ -1,7 +1,7 @@
 [
     {
         "time": 0,
-"interval": 0.4,
+        "interval": 1,
         "maxMonster": 100,
         "monsterData": [
             {
@@ -16,7 +16,7 @@
     },
     {
         "time": 60,
-"interval": 0.4,
+     "interval": 0.75,
         "maxMonster": 150,
         "monsterData":[
             {
@@ -31,7 +31,7 @@
     },
     {
         "time": 120,
-"interval": 0.4,
+     "interval": 0.75,
         "maxMonster": 200,
         "monsterData": [
             {
@@ -50,7 +50,7 @@
     },
     {
         "time": 180,
-"interval": 0.4,
+     "interval": 0.75,
         "maxMonster": 250,
         "monsterData": [
 

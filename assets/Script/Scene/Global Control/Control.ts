@@ -40,6 +40,7 @@ export default class NewClass extends cc.Component {
         GoldCoinNode.getComponent(cc.Label).string = Basic["Coin"]
 
         this.GlobalDataNote = cc.director.getScene().getChildByName("GlobalData");
+        console.log("GlobalDataNote : ", this.GlobalDataNote)
         if(!this.CheckGlobalNode())
             return;
 
