@@ -44,8 +44,8 @@
         "height": 100,
 
         "Icon":"Image/Char/HeroStay2",
-        "ID":1,
-        "image":"Image/Char/DogBig",
+        "ID":2,
+        "image":"Image/Char/dogBig",
         "initWeapon": "shit",
         "Introduction":"热爱臭臭",
 

@@ -129,6 +129,7 @@ export namespace Data {
                 this.LoadJson("itemDatas");
                 this.LoadJson("wavedrop")
                 this.LoadJson("waveEnemy")
+                this.LoadJson("ProductAttributeList")
 
             }
         }
@@ -249,9 +250,72 @@ export namespace Data {
             // console.log("deepCopyJson(Hero.HeroMap.get(CurrentHeroID)) : ",deepCopyJson(Hero.HeroMap.get(CurrentHeroID)))
             return deepCopyJson(Hero.HeroMap.get(CurrentHeroID))
         }
-
     }
 
+    /**
+     * 使用此接口来记录或者读取指定ID的英雄配置
+     */
+    export class Buffer{
+        // 存储临时对象数据
+        private static BufferLevelConfig: Map<number, Object> = null;
+        private static BufferAttrivuteConfig: Map<number, Object> = null;
+        private static IsInit: boolean = false
+        /** 单例模式，获取管理对象 */
+        public static Init() {
+            if (!this.IsInit) {
+                this.IsInit = true;
+                // 初次加载则读取本地数据
+                Config.Init();
+
+                console.log("开始预处理道具信息")
+                this.BufferLevelConfig = new Map<number, Object>();
+                // 预处理要用到的数据
+                // 获取道具配置
+                let ProductList = Config.GetConfig("ProductList")
+                // console.log("ProductList : ",ProductList)
+                let ProductKeys = Object.keys(ProductList)
+                // 将其处理为ID=>Object 的形式
+                for(let index = 0;index < ProductKeys.length; index++){
+                    let Key = parseInt(ProductKeys[index]);
+                    let Value = ProductList[Key];
+                    // console.log("Key : ",Key,"  Value : ",Value)
+                    this.BufferLevelConfig.set(ProductList[Key]["ID"], Value)
+                }
+                console.log("预处理道具信息完成")
+                // console.log("BufferLevelConfig : ", this.BufferLevelConfig)
+
+                console.log("开始预处理道具参数信息")
+                this.BufferAttrivuteConfig = new Map<number, Object>();
+                // 预处理要用到的数据
+                // 获取道具配置
+                let ProductAttributeList = Config.GetConfig("ProductAttributeList")
+                 console.log("ProductAttributeList : ",ProductAttributeList)
+                let ProductAttributeKeys = Object.keys(ProductAttributeList)
+                // 将其处理为ID=>Object 的形式
+                for(let index = 0;index < ProductAttributeKeys.length; index++){
+                    let Key = parseInt(ProductAttributeKeys[index]);
+                    let Value = ProductAttributeList[Key];
+                    console.log("Key : ",Key,"  Value : ",Value)
+                    this.BufferAttrivuteConfig.set(ProductList[Key]["ID"], Value)
+                }
+                console.log("预处理道具参数信息完成")
+                // console.log("BufferLevelConfig : ", this.BufferLevelConfig)
+
+                return true;
+            }
+            return true;
+        }
+
+        // 获取当前角色的所有配置数据
+        public static GetLevelConfig(BufferID:number){
+            Buffer.Init();
+            // console.log("Hero.HeroMap : ",Hero.HeroMap)
+            // console.log("CurrentHeroID : ",CurrentHeroID)
+            // console.log("Hero.HeroMap.get(CurrentHeroID) : ",Hero.HeroMap.get(CurrentHeroID))
+            // console.log("deepCopyJson(Hero.HeroMap.get(CurrentHeroID)) : ",deepCopyJson(Hero.HeroMap.get(CurrentHeroID)))
+            return deepCopyJson(Buffer.BufferLevelConfig.get(BufferID))
+        }
+    }
 
     /** 游戏玩家存储数据的地方 */
     export class Gamer{

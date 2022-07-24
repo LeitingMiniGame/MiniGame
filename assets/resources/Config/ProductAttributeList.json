@@ -1,0 +1,68 @@
+[
+    {
+        "ID":1,
+
+        "bulletCount": 0,
+        "coolDown":5,
+        "ExperienceGain":0,
+        "growth": 0,
+
+        "luckly":10,
+
+        "magnet": 200,
+        "maxHp":100,
+
+        "PickupRange":0,
+        "power":0,
+
+        "RateOfFire":0,
+        "Range":0,
+        "recovery":0,
+
+        "speed":140
+    },
+    {
+        "ID":2,
+
+        "bulletCount": 0,
+        "coolDown":5,
+        "ExperienceGain":0,
+        "growth": 0,
+
+        "luckly":10,
+
+        "magnet": 200,
+        "maxHp":100,
+
+        "PickupRange":0,
+        "power":0,
+
+        "RateOfFire":0,
+        "Range":0,
+        "recovery":0,
+
+        "speed":140
+    },{
+        "ID":3,
+
+        "bulletCount": 0,
+        "coolDown":5,
+        "ExperienceGain":0,
+        "growth": 0,
+
+        "luckly":10,
+
+        "magnet": 200,
+        "maxHp":100,
+
+        "PickupRange":0,
+        "power":0,
+
+        "RateOfFire":0,
+        "Range":0,
+        "recovery":0,
+
+        "speed":140
+    }
+
+]

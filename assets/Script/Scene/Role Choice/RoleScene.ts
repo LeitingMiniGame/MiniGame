@@ -165,6 +165,8 @@ export default class NewClass extends cc.Component {
 
 
     OpenGame(){
+        let GlobalDataNote = cc.director.getScene().getChildByName("GlobalData");
+
         // 在这里暂存游戏人物数据，然后跳转到游戏界面
         // 子弹、怪物、角色、
         if(this.CurrentHeroID < 0){
@@ -181,6 +183,47 @@ export default class NewClass extends cc.Component {
             // 生成临时数据
             console.log("打印需要的英雄数据")
             let CurrentHero = Data.Hero.GetAllAttribute(self.CurrentHeroID)
+            console.log("英雄数据: ",CurrentHero)
+
+            // 开始处理道具信息
+            // 先获取玩家道具信息
+            let BufferList = Data.Gamer.query("buffer")// 表示玩家身上的道具
+            if(!BufferList){
+                console.log("开始重新初始化道具")
+                GlobalDataNote.getComponent("GlobalData").InitGame()
+                console.log("初始化道具结束")
+                BufferList = Data.Gamer.query("buffer")// 表示玩家身上的道具
+            }
+            console.log("buffer : ",BufferList)
+            let BufferIDList = Object.keys(BufferList)
+            console.log("bufferIDList : ",BufferIDList)
+            // // 预处理要用到的数据
+            // // 获取道具配置
+            // let ProductList = Data.Config.GetConfig("ProductList")
+            // console.log("ProductList : ",ProductList)
+            // let ProductKeys = Object.keys(ProductList)
+            // let BufferConfigMap = new Map<number,Object>();
+            // // 将其处理为ID=>Object 的形式
+            // for(let index = 0;index < ProductKeys.length; index++){
+            //     let Key = parseInt(ProductKeys[index]);
+            //     let Value = ProductList[Key];
+            //     console.log("Key : ",Key,"  Value : ",Value)
+            //     BufferConfigMap.set(ProductList[Key]["ID"], Value)
+            // }
+
+            // 获取道具等级配置
+
+            for(let index = 0;index < BufferIDList.length; index++){
+                let CurrentID = parseInt(BufferIDList[index]);
+                let CurrentLevel = BufferList[CurrentID];
+                // console.log("CurrentID : ",CurrentID,"  CurrentLevel : ",CurrentLevel)
+
+                console.log("Buffer.BufferLevelConfig : ", Data.Buffer.GetLevelConfig(CurrentID))
+                // 现在开始获取相关数据
+            }
+
+            console.log("Hero: ",CurrentHero)
+            return;
 
             //进入游戏界面
             console.log("准备开始游戏");
