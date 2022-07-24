@@ -133,7 +133,7 @@ export default class NewClass extends cc.Component {
                 // console.log("Data : ", Data)
                 this.HeroName.getComponent(cc.Label).string = Data["Name"]
 
-                cc.loader.loadRes(Data["image"], cc.SpriteFrame, (err: any, spriteFrame) => {
+                cc.loader.loadRes(Data["IMG"], cc.SpriteFrame, (err: any, spriteFrame) => {
                     this.HeroIMG.getComponent(cc.Sprite).spriteFrame = spriteFrame;
                 });
 

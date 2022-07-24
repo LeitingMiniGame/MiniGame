@@ -11812,9 +11812,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_contentSize": {
@@ -11872,7 +11872,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "a23235d1-15db-4b95-8439-a2e005bfff91"
+      "__uuid__": "e596f1e9-e158-4305-91ce-885905f9ad71"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -11960,7 +11960,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Label",
+    "_name": "LoadingLabel",
     "_objFlags": 0,
     "_parent": {
       "__id__": 259
@@ -11976,14 +11976,14 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 0,
+      "g": 0,
+      "b": 0,
       "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 253.5,
+      "width": 215.96,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -11995,8 +11995,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        0,
-        0,
+        16.832,
+        -252.278,
         0,
         0,
         0,
@@ -12040,8 +12040,10 @@
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "7f6e8bed-44a2-4542-855c-ed1b2947564c"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_styleFlags": 0,

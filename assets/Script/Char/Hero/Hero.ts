@@ -8,7 +8,6 @@ export default class Hero extends Char {
     hpProgress: any;
     onLoad() {
         super.onLoad()
-        this.loadImage("Item/" + this.data.icon)
         if (this.data.animate) {
             this.loadAnimate(this.data.animate, true)
         }
@@ -98,7 +97,7 @@ export default class Hero extends Char {
         }
         if (state != 'stateStay') {
             let animate = this.animateLayer.getComponent(cc.Animation);
-            animate.play('HeroMove1');
+            animate.play(this.data.animate);
         }
         this.state = state
         if (typeof (this[state]) === 'function') {
@@ -109,8 +108,8 @@ export default class Hero extends Char {
     stateStay() {
         let animate = this.animateLayer.getComponent(cc.Animation);
         if (animate) {
-            animate.setCurrentTime(0, 'HeroMove1');
-            animate.stop('HeroMove1');
+            animate.setCurrentTime(0, this.data.animate);
+            animate.stop(this.data.animate);
         }
     }
 
@@ -128,7 +127,7 @@ export default class Hero extends Char {
     pause() {
         let animate = this.animateLayer.getComponent(cc.Animation)
         if(animate){
-            animate.stop('HeroMove1');
+            animate.stop(this.data.animate);
         }
         this.state = 'stateStay'
     }

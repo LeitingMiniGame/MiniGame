@@ -10,7 +10,8 @@
 
         "Icon":"Image/Char/HeroStay1",
         "ID":1,
-        "image":"Image/Char/foxBig",
+        "image":"Char/foxBig",
+        "IMG":"Image/Char/foxBig",
         "initWeapon": "magicwand",
         "Introduction":"久陷森林中而神智不清的狐狸，或许它的破树枝真可以释放魔法",
 
@@ -45,7 +46,8 @@
 
         "Icon":"Image/Char/HeroStay2",
         "ID":2,
-        "image":"Image/Char/dogBig",
+        "image":"Char/dogBig",
+        "IMG":"Image/Char/dogBig",
         "initWeapon": "shit",
         "Introduction":"修勾可以吃屎，可以吃一点点",
 

@@ -9,24 +9,8 @@ export default class CharMgr {
     private _mapCharById: Map<string, cc.Node> = new Map();
 
     //// 临时数据
-    CharData = {
-        ['HeroTest']: {
-            image: 'Char/HeroStay1',
-            animate: 'HeroMove1',
-            initWeapon: 'bow',
-            maxHp: 100,
-            recovery: 1,
-            speed: 250,
-            power: 0,
-            coolDown: 1,
-            bulletCount: 0,
-            growth: 1,
-            luckly: 20,
-            magnet: 200,
-            width: 100,
-            height: 100
-        },
-    }
+    CharData: any
+    HeroData: any
 
     public static getInstance() {
         if (!this._instance) {
@@ -43,8 +27,10 @@ export default class CharMgr {
     }
 
     protected _init() {
-        // this.CharData = {}
+        this.HeroData = deepCopyJson(Data.Gamer.query_Temp("Role"))
+
         let enemyData = Data.Config.GetConfig("enemy")
+        this.CharData = {[this.HeroData.name]:this.HeroData}
         this.CharData = Object.assign(this.CharData, enemyData);
     }
 
