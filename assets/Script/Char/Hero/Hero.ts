@@ -70,6 +70,9 @@ export default class Hero extends Char {
     // 受伤的函数
     injured(damage) {
         this.data.hp -= damage
+        if (this.data.hp < 0) {
+            cc.find('/Canvas').getComponent('GameScene').gameOver(false)
+        }
         this.updateHpProess()
     }
 
@@ -77,7 +80,6 @@ export default class Hero extends Char {
     updateHpProess() {
         let hpProgress = this.node.getChildByName('hpProgress').getComponent(cc.ProgressBar)
         if (hpProgress) {
-
             hpProgress.progress = this.data.hp / this.data.maxHp
         }
     }
