@@ -22,8 +22,8 @@ export default class GameScene extends cc.Component {
         // 开启碰撞检测
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
-        manager.enabledDebugDraw = true;
-        manager.enabledDrawBoundingBox = true;
+        // manager.enabledDebugDraw = true;
+        // manager.enabledDrawBoundingBox = true;
 
 
         var physicsManager = cc.director.getPhysicsManager();
@@ -125,11 +125,23 @@ export default class GameScene extends cc.Component {
         ).start()
     }
 
-    // 暂停
-    pauseAll(){
+    // 暂停按钮
+    onPauseButton(){
         cc.find('/UILayer/PauseButton').active = false
         cc.find('/UILayer/StartButton').active = true
+        cc.find('/UILayer/PausePanel').active = true
+        this.pauseAll()
+    }
 
+    onResumeButton(){
+        cc.find('/UILayer/PauseButton').active = true
+        cc.find('/UILayer/StartButton').active = false
+        cc.find('/UILayer/PausePanel').active = false
+        this.resumeAll()
+    }
+
+    // 暂停
+    pauseAll(){
         // 暂停时间
         this.timeTween.stop()
         // 暂停角色
@@ -146,9 +158,6 @@ export default class GameScene extends cc.Component {
 
     // 恢复
     resumeAll(){
-        cc.find('/UILayer/PauseButton').active = true
-        cc.find('/UILayer/StartButton').active = false
-
         // 恢复时间
         this.timeTween.start()
         // 恢复角色
@@ -161,5 +170,15 @@ export default class GameScene extends cc.Component {
         MonsterMgr.getInstance().resume()
         // 恢复道具移动
         ItemMgr.getInstance().resume()
+    }
+
+    quitGame(){
+        console.log('quit');
+        
+    }
+
+    openSetting(){
+        console.log('setting');
+
     }
 }

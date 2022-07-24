@@ -150,6 +150,9 @@ export default class DataMgr {
             let sprite = node.addComponent(cc.Sprite)
             sprite.spriteFrame = assets
             node.parent = parentNode
+            let levelLabel = parentNode.getChildByName('ItemLevelLabel')
+            levelLabel.active = true
+            levelLabel.getComponent(cc.Label).string = 'lv.' + 1
             node.setContentSize(25, 25)
         })
         WeaponMgr.getInstance().addWeapon(newWeapon)
@@ -183,6 +186,11 @@ export default class DataMgr {
         let level = this.bag[typeName].level
         // 处理升级的逻辑
         this.bag[typeName] = this.getData(this.bulletData[typeName][level])
+
+        let panelIndex = typeName as number + 1
+        let parentNode = this.weaponList.getChildByName('Item' + panelIndex)
+        let levelLabel = parentNode.getChildByName('ItemLevelLabel')
+        levelLabel.getComponent(cc.Label).string = 'lv.' + level
 
         WeaponMgr.getInstance().upWeapon(this.bag[typeName])
     }
