@@ -1,5 +1,5 @@
 import JsonManager from "../../Mgr/JsonManager";
-
+import {Data} from "../../Tools/Tools";
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -75,7 +75,10 @@ export default class NewClass extends cc.Component {
 
     }
 
-    /** 提供给子部件调用的，用于同步常驻节点和JsonManager中的数据 */
+    /**
+     * 暂时没用到
+     * 提供给子部件调用的，用于同步常驻节点和JsonManager中的数据
+     */
     DataSync(Key:string,Value:any){
         let SetUp = JsonManager.getInstance().query("SetUp");
         console.log("同步前:SetUp：",SetUp)
@@ -83,6 +86,22 @@ export default class NewClass extends cc.Component {
         this.GlobalDataObject["SetUp"][Key] = SetUp[Key]
         console.log("同步后:SetUp：",SetUp)
         console.log("同步后:GlobalDataObject：",this.GlobalDataObject)
+    }
+
+    ShowGlobalData(){
+        let IsShowDamage = Data.SetUp.IsShowDamage()
+        console.log("IsShowDamage : ",IsShowDamage)
+        console.log("IsFullScreen : ",Data.SetUp.IsFullScreen())
+        console.log("IsShowJoystick : ",Data.SetUp.IsShowJoystick())
+        console.log("Music : ",Data.SetUp.GetMusicNum())
+        console.log("Sound : ",Data.SetUp.GetSoundNum())
+
+
+        console.log("准备开始修改IsShowDamage")
+        IsShowDamage = true
+        console.log("修改IsShowDamage完毕")
+        console.log("IsShowDamage : ",Data.SetUp.IsShowDamage())
+
     }
 
     onDestroy(){

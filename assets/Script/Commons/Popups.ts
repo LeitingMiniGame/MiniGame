@@ -28,7 +28,7 @@ export default class NewClass extends cc.Component {
     start () {
         // 在这里检测Data数据是否初始化，若没有初始化，则说明是无效的弹窗，需要关闭
         console.log("弹窗有效性检测");
-        if(!this.ConfirmCallBack || this.PopMode < 0){
+        if(this.PopMode < 0 || (this.PopMode == 1 && !this.ConfirmCallBack)){
             console.log("弹窗未初始化,准备关闭弹窗");
             this.RootNode.destroy();
         }

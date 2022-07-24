@@ -149,7 +149,12 @@ export default class JsonManager{
         this._mapTempDBase.delete(Key);
     }
 
-    /** URL 是 resources/*.json */
+    /**
+     * URL ：相对于resources目录的路径
+     * 例如resource/Config/SetUp.json,则URL等于Config/SetUp
+     * CallBack ：获取到json数据后执行的回调函数,其参数列表为CallBack([object.json,Para(注意，这里是个数组)])
+     * Para : 不定参数，需要再回调函数中使用的参数先暂存在这里
+    */
     public LoadJson(URL:string, CallBack?:Function,Para?:any[]){
         console.log("URL:",URL);
         //URL 直接输入resources文件夹下的即可------出了点问题，无法使用了
