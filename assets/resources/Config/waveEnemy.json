@@ -262,7 +262,7 @@
         "time": 1020,
         "interval": 0.5,
         "maxMonster": 500,
-        "monsterData": ""
+        "monsterData": []
     },
     {
         "time": 1080,

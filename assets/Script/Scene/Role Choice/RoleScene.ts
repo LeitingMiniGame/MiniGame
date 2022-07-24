@@ -133,7 +133,7 @@ export default class NewClass extends cc.Component {
                 // console.log("Data : ", Data)
                 this.HeroName.getComponent(cc.Label).string = Data["Name"]
 
-                cc.loader.loadRes(Data["IMG"], cc.SpriteFrame, (err: any, spriteFrame) => {
+                cc.loader.loadRes(Data["image"], cc.SpriteFrame, (err: any, spriteFrame) => {
                     this.HeroIMG.getComponent(cc.Sprite).spriteFrame = spriteFrame;
                 });
 
@@ -144,17 +144,17 @@ export default class NewClass extends cc.Component {
                 this.PassiveEffect.getComponent(cc.RichText).string = Data["PassiveEffect"]
 
 
-                this.MaxLife.getComponent(cc.RichText).string = Data["MaxLife"].toString()
-                this.Recover.getComponent(cc.RichText).string = Data["Recover"].toString()
-                this.MovingSpeed.getComponent(cc.RichText).string = Data["MovingSpeed"].toString()
-                this.Power.getComponent(cc.RichText).string = Data["Power"].toString()
+                this.MaxLife.getComponent(cc.RichText).string = Data["maxHp"].toString()
+                this.Recover.getComponent(cc.RichText).string = Data["recovery"].toString()
+                this.MovingSpeed.getComponent(cc.RichText).string = Data["speed"].toString()
+                this.Power.getComponent(cc.RichText).string = Data["power"].toString()
                 this.RateOfFire.getComponent(cc.RichText).string = Data["RateOfFire"].toString()
                 this.Range.getComponent(cc.RichText).string = Data["Range"].toString()
-                this.Cooldowm.getComponent(cc.RichText).string = Data["Cooldown"].toString()
-                this.NumberOfBullets.getComponent(cc.RichText).string = Data["NumberOfBullets"].toString()
+                this.Cooldowm.getComponent(cc.RichText).string = Data["coolDown"].toString()
+                this.NumberOfBullets.getComponent(cc.RichText).string = Data["bulletCount"].toString()
 
                 this.PickupRange.getComponent(cc.RichText).string = Data["PickupRange"].toString()
-                this.Lucky.getComponent(cc.RichText).string = Data["Lucky"].toString()
+                this.Lucky.getComponent(cc.RichText).string = Data["luckly"].toString()
 
                 this.ExperienceGain.getComponent(cc.RichText).string = Data["ExperienceGain"].toString()
                 // console.log("修改完毕")
@@ -181,8 +181,6 @@ export default class NewClass extends cc.Component {
             // 生成临时数据
             console.log("打印需要的英雄数据")
             let CurrentHero = Data.Hero.GetAllAttribute(self.CurrentHeroID)
-            console.log("Hero : ",)
-
 
             //进入游戏界面
             console.log("准备开始游戏");
