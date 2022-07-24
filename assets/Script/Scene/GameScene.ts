@@ -177,8 +177,8 @@ export default class GameScene extends cc.Component {
     }
 
     quitGame(){
+        console.log('quit');
         OpenPopups(1, "是否退出游戏", ()=>{
-            console.log('quit');
         })
     }
 

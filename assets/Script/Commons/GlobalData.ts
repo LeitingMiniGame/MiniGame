@@ -29,6 +29,8 @@ export default class NewClass extends cc.Component {
         this.LoadJson("levelup")
         this.LoadJson("itemDatas")
         this.LoadJson("wavedrop")
+        this.LoadJson("waveEnemy")
+
 
         // 加载全局静态数据
         Data.Config.Init();

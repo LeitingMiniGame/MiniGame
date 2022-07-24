@@ -1,6 +1,6 @@
 import Char from "../Char/Char";
 import MonsterLayer from "../Layer/MonsterLayer";
-import { randByWeight } from "../Tools/Tools";
+import { Data, randByWeight } from "../Tools/Tools";
 import CharMgr from "./CharMgr";
 import DataMgr from "./DataMgr";
 
@@ -53,38 +53,7 @@ export default class MonsterMgr {
     ]
 
     // 临时数据
-    waveData = [
-        // {
-        //     time: 0,
-        //     type: 'Disperse',
-        //     monsterData: [
-        //         {
-        //             name: 'Bee',
-        //             count: 200,
-        //         }
-        //     ]
-        // },
-        // {
-        //     time: 0,
-        //     type: 'Group',
-        //     monsterData: [
-        //         {
-        //             name: 'Bee',
-        //             count: 60,
-        //         }
-        //     ]
-        // },
-        // {
-        //     time: 0,
-        //     type: 'Circle',
-        //     monsterData: [
-        //         {
-        //             name: 'Vine',
-        //             count: 40,
-        //         }
-        //     ]
-        // }
-    ]
+    waveData:any
 
     waveTypeFunc = {
         Group: 'createGroup',
@@ -105,6 +74,8 @@ export default class MonsterMgr {
 
     _init() {
         this._mapMonsterById = new Map()
+        this.randData = Data.Config.GetConfig('waveEnemy')
+        this.waveData = {}
     }
 
     public createMonster(type, name) {
@@ -168,7 +139,8 @@ export default class MonsterMgr {
     // 检测是否需要改变随机生成的逻辑
     checkRandomChange(curTime) {
         let self = MonsterMgr.getInstance()
-        for (let i = 0; i < self.randData.length; i++) {
+        let keys = Object.keys(self.randData)
+        for (let i = 0; i < keys.length; i++) {
             if (curTime != self.randData[i].time) {
                 continue
             }
@@ -196,7 +168,8 @@ export default class MonsterMgr {
     // 检测是否到达波次的时间
     checkWaveChange(curTime) {
         let self = MonsterMgr.getInstance()
-        for (let i = 0; i < self.waveData.length; i++) {
+        let keys = Object.keys(self.waveData)
+        for (let i = 0; i < keys.length; i++) {
             if (curTime != self.waveData[i].time) {
                 continue
             }
