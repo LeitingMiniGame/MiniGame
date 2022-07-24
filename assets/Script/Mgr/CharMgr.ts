@@ -8,31 +8,9 @@ export default class CharMgr {
     private _mapChar: Map<string, Char> = new Map();
     private _mapCharById: Map<string, cc.Node> = new Map();
 
-<<<<<<< HEAD
-    // 临时数据
-    CharData = {
-        ['HeroTest']: {
-            image: 'Char/HeroStay1',
-            animate: 'HeroMove1',
-            initWeapon: 'bow',
-            maxHp: 100,
-            recovery: 1,
-            speed: 250,
-            power: 0,
-            coolDown: 1,
-            bulletCount: 0,
-            growth: 1,
-            luckly: 20,
-            magnet: 200,
-            width: 100,
-            height: 100
-        },
-    }
-=======
     //// 临时数据
     CharData: any
     HeroData: any
->>>>>>> 21fd75bb71e48a2bff63098ef17b8491a0bf03c4
 
     public static getInstance() {
         if (!this._instance) {
