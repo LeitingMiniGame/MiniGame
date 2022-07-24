@@ -180,11 +180,15 @@ export default class NewClass extends cc.Component {
             console.log("this.CurrentHeroID : ",self.CurrentHeroID)
             // 生成临时数据
             console.log("打印需要的英雄数据")
-            console.log("Hero : ",Data.Hero.GetAllAttribute(self.CurrentHeroID))
+            let CurrentHero = Data.Hero.GetAllAttribute(self.CurrentHeroID)
+            console.log("Hero : ",)
 
 
             //进入游戏界面
             console.log("准备开始游戏");
+
+            Data.Gamer.set_Temp("Role", CurrentHero)
+            console.log("Data.Gamer : ",Data.Gamer.queryAllTemp())
 
             // 否则说明要回到首页
             cc.director.loadScene('Main', function(){
