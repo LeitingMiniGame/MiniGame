@@ -13,6 +13,8 @@ export default class NewClass extends cc.Component {
     CommonPop: cc.Prefab = null;
 
     onLoad () {
+        cc.debug.setDisplayStats(false);
+
         //添加DataNode为常驻节点
         this.Data = new Object();
         cc.game.addPersistRootNode(this.node);
@@ -53,7 +55,7 @@ export default class NewClass extends cc.Component {
         {
             //console.log("开始初始化玩家基础数据")
             Basic = new Object();
-            Basic["Coin"] = 100;// 初始金币设为100
+            Basic["Coin"] = 100000;// 初始金币设为100
             Data.Gamer.set("basic",Basic);
         }
 

@@ -116,6 +116,9 @@ export default class MonsterMgr {
             if (self.randTween) {
                 self.randTween.stop()
             }
+            if(self.curRandData.monsterData == 0){
+                continue
+            }
             self.randTween =
                 cc.tween(self.monsterLayer.node)
                     .repeatForever(

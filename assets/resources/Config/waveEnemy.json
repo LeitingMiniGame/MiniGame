@@ -166,7 +166,7 @@
         "time": 600,
         "interval": 0.6,
         "maxMonster": 500,
-        "monsterData": ""
+        "monsterData": []
     },
     {
         "time": 660,
@@ -191,7 +191,7 @@
         "time": 720,
         "interval": 0.6,
         "maxMonster": 500,
-        "monsterData": ""
+        "monsterData": []
     },
     {
         "time": 780,
