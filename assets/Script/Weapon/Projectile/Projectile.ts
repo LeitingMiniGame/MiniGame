@@ -56,6 +56,9 @@ export default class Projectile extends Weapon {
             return
         }
         let rigidbody = this.getComponent(cc.RigidBody)
+        if(!rigidbody){
+            return
+        }
         rigidbody.linearVelocity = cc.v2(target.mulSelf(this.data.speed))
         // 或者
         let localPoint = cc.v2();
@@ -102,11 +105,15 @@ export default class Projectile extends Weapon {
 
     pause(): void {
         let rigidbody = this.getComponent(cc.RigidBody)
-        rigidbody.active = false
+        if(rigidbody){
+            rigidbody.active = false
+        }
     }
 
     resume(): void {
         let rigidbody = this.getComponent(cc.RigidBody)
-        rigidbody.active = true
+        if(rigidbody){
+            rigidbody.active = true
+        }
     }
 }

@@ -79,7 +79,7 @@ export default class DataMgr {
 
     // 增加武器
     addWeapon(typeName) {
-        for (let i = 0; i < Math.min(6, this.bag.length); i++) {
+        for (let i = 0; i < Math.min(8, this.bag.length); i++) {
             if (this.bag[i].name == typeName) {
                 this.upWeapon(typeName)
                 return
@@ -110,7 +110,7 @@ export default class DataMgr {
             return this.bag[typeName]
         }
 
-        for (let i = 0; i < Math.min(6, this.bag.length); i++) {
+        for (let i = 0; i < Math.min(8, this.bag.length); i++) {
             if (this.bag[i].name == typeName) {
                 return this.bag[i]
             }
@@ -120,7 +120,7 @@ export default class DataMgr {
     // 升级武器
     upWeapon(typeName: string | number) {
         if (typeof (typeName) === 'string') {
-            for (let i = 0; i < Math.min(6, this.bag.length); i++) {
+            for (let i = 0; i < Math.min(8, this.bag.length); i++) {
                 if (this.bag[i].name == typeName) {
                     this.upWeapon(i)
                     return

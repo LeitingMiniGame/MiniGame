@@ -27,13 +27,11 @@ export default class GameScene extends cc.Component {
         // 开启碰撞检测
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
-        // manager.enabledDebugDraw =true
-        // manager.enabledDrawBoundingBox = true
 
         var physicsManager = cc.director.getPhysicsManager();
         physicsManager.enabled = true;
-        cc.director.getPhysicsManager().gravity = cc.v2(0, -960);
-        this.curTime = 0
+        cc.director.getPhysicsManager().gravity = cc.v2(0, -640);
+        this.curTime = 599
 
 
         this.addHero()
@@ -70,7 +68,7 @@ export default class GameScene extends cc.Component {
         cc.find('UILayer/LoadingPanel').active = false
         // 开始计时
         this.resumeAll()
-        this.startTimeCount()
+        this.startTimeCount.call(this)
     }
 
     // 添加角色
@@ -137,17 +135,21 @@ export default class GameScene extends cc.Component {
 
     // 开始计时
     startTimeCount() {
+        let self = this
+        if(this.timeTween){
+            return
+        }
         this.timeTween = cc.tween(this.node)
             .repeatForever(
                 cc.tween()
                     .delay(1)
                     .call(() => {
-                        MonsterMgr.getInstance().beginCreateMonster(this.curTime)
-                        DataMgr.getInstance().setTimeLabel(this.curTime)
-                        ItemMgr.getInstance().updateItemPool(this.curTime)
-                        this.curTime++
-                        if (this.curTime == 1500) {
-                            this.gameOver(true)
+                        MonsterMgr.getInstance().beginCreateMonster(self.curTime)
+                        DataMgr.getInstance().setTimeLabel(self.curTime)
+                        ItemMgr.getInstance().updateItemPool(self.curTime)
+                        self.curTime++
+                        if (self.curTime == 1500) {
+                            self.gameOver(true)
                         }
                     })
             ).start()
