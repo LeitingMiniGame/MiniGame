@@ -67,6 +67,12 @@ export default class DataMgr {
 
     }
 
+    public static releaseInstance() {
+        if (this._instance) {
+            this._instance = undefined
+        }
+    }
+
     getData(obj): any {
         return deepCopyJson(obj)
     }

@@ -6,7 +6,7 @@ import ItemMgr from "../Mgr/ItemMgr";
 import MapMgr from "../Mgr/MapMgr";
 import MonsterMgr from "../Mgr/MonsterMgr";
 import WeaponMgr from "../Mgr/WeaponMgr";
-import { OpenPopups } from "../Tools/Tools";
+import { Data, OpenPopups } from "../Tools/Tools";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -185,6 +185,14 @@ export default class GameScene extends cc.Component {
         // })
         this.pauseAll()
         cc.director.loadScene("SettlementSystem");
+
+        CharMgr.releaseInstance()
+        DataMgr.releaseInstance()
+        ItemMgr.releaseInstance()
+        MapMgr.releaseInstance()
+        MonsterMgr.releaseInstance()
+        WeaponMgr.releaseInstance()
+
     }
 
     openSetting() {

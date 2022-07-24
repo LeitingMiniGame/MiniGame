@@ -27,6 +27,12 @@ export default class ItemMgr {
         return this._instance;
     }
 
+    public static releaseInstance() {
+        if (this._instance) {
+            this._instance = undefined
+        }
+    }
+
     _init() {
         this.itemDatas = Data.Config.GetConfig("itemDatas")
         this.itemPool = Data.Config.GetConfig("wavedrop")

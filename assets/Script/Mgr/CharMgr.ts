@@ -36,6 +36,12 @@ export default class CharMgr {
         return this._instance;
     }
 
+    public static releaseInstance() {
+        if (this._instance) {
+            this._instance = undefined
+        }
+    }
+
     protected _init() {
         // this.CharData = {}
         let enemyData = Data.Config.GetConfig("enemy")
