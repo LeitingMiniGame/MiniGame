@@ -3,6 +3,7 @@ import CharMgr from "../../Mgr/CharMgr";
 import DataMgr from "../../Mgr/DataMgr";
 import ItemMgr from "../../Mgr/ItemMgr";
 import MonsterMgr from "../../Mgr/MonsterMgr";
+import { getRandomIntInclusive } from "../../Tools/Tools";
 import Char from "../Char";
 
 const { ccclass, property } = cc._decorator;
@@ -79,6 +80,9 @@ export default class Monster extends Char {
             cc.tween(this.node)
                 .by(0.1, { position: cc.v3(backPos.x, backPos.y, 0) })
                 .call(() => {
+                    if(this.isPause){
+                        return
+                    }
                     this.schedule(this.moveCallFunc, this.getTargetInterval, cc.macro.REPEAT_FOREVER)
                 })
                 .start()
@@ -119,21 +123,13 @@ export default class Monster extends Char {
         }
     }
 
-    // 获取随机数
-    getRandInt(min, max) {
-        var range = max - min;
-        var rand = Math.random();
-        return (min + Math.round(rand * range));
-    }
-
     // 碰撞检测
     onCollisionEnter(other, self) {
         if (other.node.group == "Weapon") {
             let weapon = other.node.getComponent('Weapon')
             let monster = self.node.getComponent(self.node.name)
             weapon.injured()
-            let damage = this.getRandInt(weapon.data.minDamage, weapon.data.maxDamage)
-
+            let damage = getRandomIntInclusive(weapon.data.minDamage, weapon.data.maxDamage)
             let char = CharMgr.getInstance().getCharByName('Hero').getComponent('Hero')
             damage = char.getAddDamage(damage)
 
@@ -145,5 +141,18 @@ export default class Monster extends Char {
             let monster = self.node.getComponent(self.node.name)
             hero.injured(monster.data.damage)
         }
+    }
+
+    pause(){
+        this.isPause= true
+        if(this.moveTween){
+            this.moveTween.stop()
+        }
+        this.unschedule(this.moveCallFunc)
+    }
+
+    resume(){
+        this.isPause= false
+        this.move()
     }
 }

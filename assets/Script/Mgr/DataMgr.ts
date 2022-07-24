@@ -15,7 +15,9 @@ export default class DataMgr {
     levelLabel: any
     expPress: cc.ProgressBar
     weaponList: cc.Node
+    level: any
 
+    //// 临时数据
     bulletData = {
         ['LineTest']: [
             {
@@ -40,6 +42,7 @@ export default class DataMgr {
                 type: 'Domain',
                 icon: 'MagicWand',
                 bulletIcon: 'Hero',
+                describe: '红红火火恍恍惚惚',
                 level: 1,
                 interval: 1,
                 preInterval: 0.05,
@@ -71,6 +74,18 @@ export default class DataMgr {
         ]
     }
 
+    //// 临时数据
+    levelExp = [
+        2,
+        4,
+        8,
+        16,
+        32,
+        64,
+        128
+    ]
+
+    //// 临时数据
     weaponIcon = [
         'Dart', 'MagicWand', 'MagicWand1'
     ]
@@ -85,30 +100,32 @@ export default class DataMgr {
 
     protected _init() {
         this.bag = []
-        this.coin = 0
-        this.kullNum = 0
 
+        this.coin = 0
         this.coinLabel = cc.find('/UILayer/CoinPanel/CoinLabel').getComponent(cc.Label)
         this.coinLabel.string = 0
 
+        this.kullNum = 0
         this.killLabel = cc.find('/UILayer/KillPanel/KillLabel').getComponent(cc.Label)
         this.killLabel.string = 0
 
-        this.timeLabel = cc.find('/UILayer/TimeLabel').getComponent(cc.Label)
-        this.timeLabel.string = '00:00'
-
+        this.level = 1
         this.levelLabel = cc.find('/UILayer/LevelBar/LevelLabel').getComponent(cc.Label)
         this.levelLabel.string = 1
+
+        this.timeLabel = cc.find('/UILayer/TimeLabel').getComponent(cc.Label)
+        this.timeLabel.string = '00:00'
 
         this.expPress = cc.find('/UILayer/LevelBar').getComponent(cc.ProgressBar)
         this.expPress.progress = 0
 
         this.weaponList = cc.find('/UILayer/WeaponList')
-
         for (let i = 0; i < this.weaponIcon.length; i++) {
             let path = 'Image/Weapon/' + this.weaponIcon[i]
             cc.resources.preload(path, cc.SpriteFrame)
         }
+
+
 
     }
 
@@ -129,11 +146,14 @@ export default class DataMgr {
 
         let iconPath = 'Image/Weapon/' + newWeapon.icon
         let parentNode = this.weaponList.getChildByName('Item' + this.bag.length)
-        cc.resources.load(iconPath, cc.SpriteFrame, (error, assets:cc.SpriteFrame)=>{
+        cc.resources.load(iconPath, cc.SpriteFrame, (error, assets: cc.SpriteFrame) => {
             let node = new cc.Node
             let sprite = node.addComponent(cc.Sprite)
             sprite.spriteFrame = assets
             node.parent = parentNode
+            let levelLabel = parentNode.getChildByName('ItemLevelLabel')
+            levelLabel.active = true
+            levelLabel.getComponent(cc.Label).string = 'lv.' + 1
             node.setContentSize(25, 25)
         })
         WeaponMgr.getInstance().addWeapon(newWeapon)
@@ -168,6 +188,11 @@ export default class DataMgr {
         // 处理升级的逻辑
         this.bag[typeName] = this.getData(this.bulletData[typeName][level])
 
+        let panelIndex = typeName as number + 1
+        let parentNode = this.weaponList.getChildByName('Item' + panelIndex)
+        let levelLabel = parentNode.getChildByName('ItemLevelLabel')
+        levelLabel.getComponent(cc.Label).string = 'lv.' + level
+
         WeaponMgr.getInstance().upWeapon(this.bag[typeName])
     }
 
@@ -182,7 +207,6 @@ export default class DataMgr {
         this.kullNum += number
         this.killLabel.string = this.kullNum
     }
-
 
     // 增加时间
     setTimeLabel(time: number) {
@@ -200,4 +224,15 @@ export default class DataMgr {
         this.timeLabel.string = minuteStr + ':' + seconStr
     }
 
+    // 增加经验
+    addExp(data) {
+        let maxExp = this.levelExp[data.level - 1]
+        while (data.exp >= maxExp) {
+            data.exp -= maxExp
+            data.level++
+            maxExp = this.levelExp[data.level - 1]
+        }
+        this.levelLabel.string = data.level
+        this.expPress.progress = data.exp / maxExp
+    }
 }

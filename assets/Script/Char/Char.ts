@@ -5,6 +5,8 @@ export default abstract class Char extends cc.Component {
     data:any
     state: string;
     animateLayer:cc.Node
+    isPause: boolean;
+
     onLoad(){
         this.animateLayer = new cc.Node()
         this.animateLayer.addComponent(cc.Sprite)

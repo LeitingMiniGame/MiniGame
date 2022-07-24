@@ -11,6 +11,8 @@ export default class Hero extends Char {
         if (this.data.animate) {
             this.loadAnimate(this.data.animate, true)
         }
+        this.data.level = 1
+        this.data.exp = 0
     }
 
     start() {
@@ -22,6 +24,7 @@ export default class Hero extends Char {
 
         if(this.data.initWeapon){
             this.addWeapon(this.data.initWeapon)
+            this.addWeapon('ProjectileTest')
         }
     }
 
@@ -47,10 +50,24 @@ export default class Hero extends Char {
         return fireCount + this.data.bulletCount
     }
 
+    // 获得武器
     addWeapon(typeName) {
         DataMgr.getInstance().addWeapon(typeName)
     }
 
+    // 受伤的函数
+    injured(damage) {
+        this.data.hp -= damage
+        console.log(this.data.hp);
+    }
+
+    // 增加经验
+    addExp(exp){
+        this.data.exp += exp
+        DataMgr.getInstance().addExp(this.data)
+    }
+
+    // 改变状态
     changeState(state) {
         if (state == this.state) {
             return
@@ -92,13 +109,15 @@ export default class Hero extends Char {
         }
     }
 
-    // 受伤的函数
-    injured(damage) {
-        this.data.hp -= damage
-        console.log(this.data.hp);
-    }
-
     move() {
     }
 
+    pause(){
+        let animate = this.animateLayer.getComponent(cc.Animation)
+        animate.stop('HeroMove1');
+        this.state = 'stateStay'
+    }
+
+    resume(){
+    }
 }

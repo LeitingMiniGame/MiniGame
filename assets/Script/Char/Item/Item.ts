@@ -4,11 +4,13 @@ import Char from "../Char";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class Item extends Char {
+export default abstract class Item extends Char {
 
     getTargetInterval: number = 0.1
     moveCallFunc: () => void;
     targetPos: cc.Vec2;
+    moveTween: cc.Tween<cc.Node>;
+    needPick: boolean;
 
 
     onLoad() {
@@ -34,6 +36,9 @@ export default class Item extends Char {
 
 
         this.moveCallFunc = () => {
+            if(this.isPause){
+                return
+            }
             let targetPos = this.getTaget()
             if (targetPos.len() < 50) {
                 this.bePickUp()
@@ -44,7 +49,7 @@ export default class Item extends Char {
             let scale = 600 * this.getTargetInterval
             this.targetPos = nor.multiply(cc.v2(scale, scale))
             this.animateLayer.scaleX = this.targetPos.x < 0 ? -1 : 1
-            cc.tween(this.node)
+            this.moveTween = cc.tween(this.node)
                 .by(this.getTargetInterval, { position: cc.v3(this.targetPos.x, this.targetPos.y) })
                 .start()
         }
@@ -53,6 +58,7 @@ export default class Item extends Char {
     //碰撞
     onCollisionEnter(other, self) {
         if (other.node.group == "Hero") {
+            this.needPick = true
             this.schedule(this.moveCallFunc, this.getTargetInterval, cc.macro.REPEAT_FOREVER)
         }
     }
@@ -64,5 +70,20 @@ export default class Item extends Char {
         }
     }
 
-    bePickUp() { }
+    abstract bePickUp() 
+
+    pause(){
+        this.isPause = true
+        this.unschedule(this.moveCallFunc)
+        if(this.moveTween){
+            this.moveTween.stop()
+        }
+    }
+
+    resume(){
+        this.isPause = false
+        if(this.needPick){
+            this.schedule(this.moveCallFunc, this.getTargetInterval, cc.macro.REPEAT_FOREVER)        
+        }
+    }
 }

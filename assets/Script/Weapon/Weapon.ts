@@ -4,8 +4,8 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default abstract class Weapon extends cc.Component {
-
-    data:any
+    moveTween: cc.Tween<cc.Node>;
+    data: any
 
     onLoad() {
         this.node.group = 'Weapon'
@@ -41,11 +41,22 @@ export default abstract class Weapon extends cc.Component {
         return targetPos.sub(worldPos).normalizeSelf()
     }
 
-    getWorldPos(){
+    getWorldPos() {
         return this.node.convertToWorldSpaceAR(cc.v2(0, 0))
     }
 
     // 子弹的移动逻辑，子类需要实现
     abstract move(): any
 
+    pause() {
+        if (this.moveTween) {
+            this.moveTween.stop()
+        }
+    }
+
+    resume() {
+        if (this.moveTween) {
+            this.moveTween.start()
+        }
+    }
 }

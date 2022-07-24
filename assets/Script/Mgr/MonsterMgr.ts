@@ -1,5 +1,6 @@
 import Char from "../Char/Char";
 import MonsterLayer from "../Layer/MonsterLayer";
+import { randByWeight } from "../Tools/Tools";
 import CharMgr from "./CharMgr";
 import DataMgr from "./DataMgr";
 
@@ -11,7 +12,6 @@ export default class MonsterMgr {
     private _mapMonsterById: Map<string, Char>
     static _instance: MonsterMgr = null
     monsterLayer: MonsterLayer
-    curTime: number
 
     randData = [
         {
@@ -101,7 +101,6 @@ export default class MonsterMgr {
     }
 
     _init() {
-        this.curTime = 0
         this._mapMonsterById = new Map()
     }
 
@@ -163,43 +162,11 @@ export default class MonsterMgr {
         this.monsterLayer = monsterLayer
     }
 
-
-    // describe: 在范围内获取随机整数值 [min, max]
-    getRandomIntInclusive(min: number, max: number): number {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    // 根据权重随机
-    randByWeight(arr): number {
-        let totalWeight: number = 0;
-        let randIndex: number;
-        for (let itemWeightMsg of arr) {
-            totalWeight += itemWeightMsg.weight;
-        }
-
-        if (totalWeight <= 0) {
-            return randIndex
-        } else {
-            let randVal: number = this.getRandomIntInclusive(1, totalWeight);
-            for (let index = 0; index < arr.length; index++) {
-                if (randVal <= arr[index].weight) {
-                    randIndex = index;
-                    break;
-                } else {
-                    randVal -= arr[index].weight;
-                }
-            }
-        }
-        return randIndex;
-    }
-
     // 检测是否需要改变随机生成的逻辑
-    checkRandomChange() {
+    checkRandomChange(curTime) {
         let self = MonsterMgr.getInstance()
         for (let i = 0; i < self.randData.length; i++) {
-            if (self.curTime != self.randData[i].time) {
+            if (curTime != self.randData[i].time) {
                 continue
             }
             self.curRandData = self.randData[i]
@@ -214,7 +181,7 @@ export default class MonsterMgr {
                                 if (self._mapMonsterById.size >= self.curRandData.maxMonster) {
                                     return
                                 }
-                                let index = self.randByWeight(self.curRandData.monsterData)
+                                let index = randByWeight(self.curRandData.monsterData)
                                 let monsterData = self.curRandData.monsterData[index]
                                 self.addMonster(monsterData.name, 1)
                             })
@@ -224,10 +191,10 @@ export default class MonsterMgr {
     }
 
     // 检测是否到达波次的时间
-    checkWaveChange() {
+    checkWaveChange(curTime) {
         let self = MonsterMgr.getInstance()
         for (let i = 0; i < self.waveData.length; i++) {
-            if (self.curTime != self.waveData[i].time) {
+            if (curTime != self.waveData[i].time) {
                 continue
             }
             self.curWaveData = self.waveData[i]
@@ -285,22 +252,25 @@ export default class MonsterMgr {
     }
 
     // 开始生成怪物
-    beginCreateMonster() {
-        cc.tween(this.monsterLayer.node)
-            .repeatForever(
-                cc.tween()
-                    .call(() => {
-                        // 定时生成怪物
-                        this.checkRandomChange()
+    beginCreateMonster(curTime) {
+        // 定时生成怪物
+        this.checkRandomChange(curTime)
+        // 按波次生成怪物
+        this.checkWaveChange(curTime)
+    }
 
-                        // 按波次生成怪物
-                        this.checkWaveChange()
-                        this.curTime++
+    pause() {
+        this.randTween.stop()
+        this._mapMonsterById.forEach((monster, key)=>{
+            monster.getComponent('Monster').pause()
+        })
+    }
 
-                        DataMgr.getInstance().setTimeLabel(this.curTime)
-                    })
-                    .delay(1)
-            ).start()
+    resume() {
+        this.randTween.start()
+        this._mapMonsterById.forEach((monster, key)=>{
+            monster.getComponent('Monster').resume()
+        })
     }
 
 }

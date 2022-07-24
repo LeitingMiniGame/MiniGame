@@ -7,6 +7,7 @@ export default class CharMgr {
     private _mapChar: Map<string, Char> = new Map();
     private _mapCharById: Map<string, cc.Node> = new Map();
 
+    //// 临时数据
     CharData = {
         ['HeroTest']: {
             image: 'Char/HeroStay1',
@@ -23,9 +24,11 @@ export default class CharMgr {
             magnet: 200,
             size: cc.size(100, 100)
         },
+
         // 怪物
         ['Bee']: {
             animate: 'BeeMove',
+            type: 'static',
             speed: 100,
             maxHp: 10,
             damage: 10,

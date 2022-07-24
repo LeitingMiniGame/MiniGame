@@ -10,6 +10,7 @@ export default class LayerRoot extends cc.Component {
     speed: number = 0
     upVec: number;
     leftVec: number;
+    isPause: boolean;
 
     // onLoad(params?: any) {
 
@@ -84,11 +85,23 @@ export default class LayerRoot extends cc.Component {
             hero.changeState(state)
         }
     }
+
     getMoveVec() {
         return { up: this.upVec, left: this.leftVec, speed: this.speed }
     }
 
+    pause(){
+        this.isPause = true
+    }
+
+    resume(){
+        this.isPause = false
+    }
+
     update(dt) {
+        if(this.isPause){
+            return
+        }
         this.moveMap(dt)
     }
 }
