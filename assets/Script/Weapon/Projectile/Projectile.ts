@@ -52,6 +52,9 @@ export default class Projectile extends Weapon {
     // 移动逻辑
     move() {
         let target = this.getTarget()
+        if(!target){
+            return
+        }
         let rigidbody = this.getComponent(cc.RigidBody)
         rigidbody.linearVelocity = cc.v2(target.mulSelf(this.data.speed))
         // 或者

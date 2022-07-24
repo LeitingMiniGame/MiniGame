@@ -13,6 +13,8 @@ export default class NewClass extends cc.Component {
     CommonPop: cc.Prefab = null;
 
     onLoad () {
+        cc.debug.setDisplayStats(false);
+
         //添加DataNode为常驻节点
         this.Data = new Object();
         cc.game.addPersistRootNode(this.node);

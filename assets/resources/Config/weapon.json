@@ -452,7 +452,7 @@
             "hp": 40,
             "minDamage": 20,
             "maxDamage": 22,
-            "speed": 100,
+            "speed": 500,
             "width": 45,
             "height": 45
         },
@@ -470,7 +470,7 @@
             "hp": 40,
             "minDamage": 20,
             "maxDamage": 22,
-            "speed": 100,
+            "speed": 500,
             "width": 45,
             "height": 45
         },
@@ -488,7 +488,7 @@
             "hp": 80,
             "minDamage": 40,
             "maxDamage": 44,
-            "speed": 100,
+            "speed": 500,
             "width": 45,
             "height": 45
         },
@@ -506,7 +506,7 @@
             "hp": 160,
             "minDamage": 40,
             "maxDamage": 44,
-            "speed": 100,
+            "speed": 500,
             "width": 45,
             "height": 45
         },
@@ -524,7 +524,7 @@
             "hp": 160,
             "minDamage": 40,
             "maxDamage": 44,
-            "speed": 100,
+            "speed": 500,
             "width": 45,
             "height": 45
         },
@@ -542,7 +542,7 @@
             "hp": 240,
             "minDamage": 60,
             "maxDamage": 64,
-            "speed": 100,
+            "speed": 500,
             "width": 45,
             "height": 45
         },
@@ -560,7 +560,7 @@
             "hp": 360,
             "minDamage": 60,
             "maxDamage": 64,
-            "speed": 100,
+            "speed": 500,
             "width": 45,
             "height": 45
         },
@@ -578,7 +578,7 @@
             "hp": 480,
             "minDamage": 80,
             "maxDamage": 88,
-            "speed": 100,
+            "speed": 500,
             "width": 45,
             "height": 45
         }
@@ -598,7 +598,7 @@
             "hp": 10,
             "minDamage": 5,
             "maxDamage": 10,
-            "speed": 150,
+            "speed": 400,
             "width": 45,
             "height": 22.5
         },
@@ -616,7 +616,7 @@
             "hp": 30,
             "minDamage": 15,
             "maxDamage": 25,
-            "speed": 150,
+            "speed": 400,
             "width": 45,
             "height": 22.5
         },
@@ -634,7 +634,7 @@
             "hp": 30,
             "minDamage": 15,
             "maxDamage": 25,
-            "speed": 187.5,
+            "speed": 500,
             "width": 49.5,
             "height": 24.75
         },
@@ -652,7 +652,7 @@
             "hp": 30,
             "minDamage": 15,
             "maxDamage": 25,
-            "speed": 187.5,
+            "speed": 500,
             "width": 49.5,
             "height": 24.75
         },
@@ -670,7 +670,7 @@
             "hp": 50,
             "minDamage": 25,
             "maxDamage": 40,
-            "speed": 187.5,
+            "speed": 500,
             "width": 49.5,
             "height": 24.75
         },
@@ -688,7 +688,7 @@
             "hp": 50,
             "minDamage": 25,
             "maxDamage": 40,
-            "speed": 225,
+            "speed": 600,
             "width": 54,
             "height": 27
         },
@@ -706,7 +706,7 @@
             "hp": 50,
             "minDamage": 25,
             "maxDamage": 40,
-            "speed": 225,
+            "speed": 600,
             "width": 54,
             "height": 27
         },
@@ -724,7 +724,7 @@
             "hp": 70,
             "minDamage": 35,
             "maxDamage": 50,
-            "speed": 225,
+            "speed": 600,
             "width": 54,
             "height": 27
         }
@@ -744,8 +744,8 @@
             "hp": 10,
             "minDamage": 10,
             "maxDamage": 12,
-            "speed": 200,
-            "width": 30,
+            "speed": 500,
+            "width": 45,
             "height": 30
         },
         {
@@ -762,8 +762,8 @@
             "hp": 10,
             "minDamage": 10,
             "maxDamage": 12,
-            "speed": 160,
-            "width": 42,
+            "speed": 500,
+            "width": 63,
             "height": 42
         },
         {
@@ -780,8 +780,8 @@
             "hp": 20,
             "minDamage": 20,
             "maxDamage": 22,
-            "speed": 160,
-            "width": 42,
+            "speed": 500,
+            "width": 63,
             "height": 42
         },
         {
@@ -798,8 +798,8 @@
             "hp": 20,
             "minDamage": 20,
             "maxDamage": 22,
-            "speed": 160,
-            "width": 42,
+            "speed": 500,
+            "width": 63,
             "height": 42
         },
         {
@@ -816,8 +816,8 @@
             "hp": 20,
             "minDamage": 20,
             "maxDamage": 22,
-            "speed": 160,
-            "width": 54,
+            "speed": 500,
+            "width": 81,
             "height": 54
         },
         {
@@ -834,8 +834,8 @@
             "hp": 20,
             "minDamage": 30,
             "maxDamage": 33,
-            "speed": 160,
-            "width": 54,
+            "speed": 500,
+            "width": 81,
             "height": 54
         },
         {
@@ -852,8 +852,8 @@
             "hp": 20,
             "minDamage": 30,
             "maxDamage": 33,
-            "speed": 160,
-            "width": 54,
+            "speed": 500,
+            "width": 81,
             "height": 54
         },
         {
@@ -870,8 +870,8 @@
             "hp": 20,
             "minDamage": 30,
             "maxDamage": 33,
-            "speed": 160,
-            "width": 66,
+            "speed": 500,
+            "width": 99,
             "height": 66
         }
     ],
