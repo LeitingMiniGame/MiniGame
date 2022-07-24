@@ -5,8 +5,8 @@
         "icon": "coin1",
         "value": "1",
 
-        "width": "10",
-        "height": "10"
+        "width": "15",
+        "height": "15"
     },
     "coin2":{
         "name": "Coin2",
@@ -14,8 +14,8 @@
         "icon": "coin1",
         "value": "10",
 
-        "width": "15",
-        "height": "15"
+        "width": "20",
+        "height": "20"
     },
     "coin3":{
         "name": "Coin3",
