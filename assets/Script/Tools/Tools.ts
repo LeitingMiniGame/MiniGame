@@ -206,7 +206,7 @@ export namespace Data {
 
 
     /**
-     * 使用此接口来记录或者读取临时数据/永久数据
+     * 使用此接口来记录或者读取指定ID的英雄配置
      */
     export class Hero{
         // 存储临时对象数据
@@ -245,6 +245,72 @@ export namespace Data {
             // console.log("deepCopyJson(Hero.HeroMap.get(CurrentHeroID)) : ",deepCopyJson(Hero.HeroMap.get(CurrentHeroID)))
             return deepCopyJson(Hero.HeroMap.get(CurrentHeroID))
         }
+
+    }
+
+
+    /** 游戏玩家存储数据的地方 */
+    export class Gamer{
+        static isExit(Key : string):boolean{
+            return JsonManager.getInstance().has(Key)
+        }
+
+        /** 查询指定内存数据
+         *
+         * 引用类型，在其返回的Object上修改即直接修改内存中的数据，无需重新set保存
+         */
+        static query(Key : string){
+            return JsonManager.getInstance().query(Key)
+        }
+
+        /** 一般用不到，用来增加新的永久字段 */
+        static set(Key : string, ClassObj:any){
+            JsonManager.getInstance().set(Key,ClassObj)
+        }
+
+        /** 清除所有内存数据 */
+        static clear(){
+            return JsonManager.getInstance().clear()
+        }
+
+        static delete(Key : string){
+            return JsonManager.getInstance().delete(Key)
+        }
+
+        /** 查询指定临时数据是否存在 */
+        static isExit_Temp(Key : string):boolean{
+            return JsonManager.getInstance().hasTemp(Key)
+        }
+
+        /** 查询指定临时内存数据
+
+        * 引用类型，在其返回的Object上修改即直接修改内存中的数据，无需重新set保存
+        */
+        static query_Temp(Key : string){
+            return JsonManager.getInstance().queryTemp(Key)
+        }
+
+
+        /** 查询所有临时内存数据 */
+        static queryAllTemp(){
+            return JsonManager.getInstance().queryAllTemp()
+        }
+
+        /** 添加临时内存数据 */
+        static set_Temp(Key : string, ClassObj:any){
+            JsonManager.getInstance().setTemp(Key,ClassObj)
+        }
+
+        /** 清除所有临时内存数据 */
+        static clear_Temp(){
+            return JsonManager.getInstance().clearTemp()
+        }
+
+        /** 删除指定临时内存数据 */
+        static delete_Temp(Key : string){
+            return JsonManager.getInstance().deleteTemp(Key)
+        }
+
 
     }
 }
