@@ -30,26 +30,6 @@ export default class MonsterMgr {
                 },
             ],
         }
-        // },
-        // {
-        //     time: 10,
-        //     interval: 0.1,
-        //     maxMonster: 200,
-        //     monsterData: [
-        //         {
-        //             name: 'Crow',
-        //             weight: 100,
-        //         },
-        //         {
-        //             name: 'Bee',
-        //             weight: 80,
-        //         },
-        //         {
-        //             name: 'Vine',
-        //             weight: 100
-        //         },
-        //     ],
-        // },
     ]
 
     // 临时数据
@@ -76,6 +56,12 @@ export default class MonsterMgr {
         this._mapMonsterById = new Map()
         this.randData = Data.Config.GetConfig('waveEnemy')
         this.waveData = {}
+    }
+
+    public static releaseInstance() {
+        if (this._instance) {
+            this._instance = undefined
+        }
     }
 
     public createMonster(type, name) {
