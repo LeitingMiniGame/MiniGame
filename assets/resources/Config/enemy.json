@@ -1,0 +1,182 @@
+﻿[
+    {
+        "name": "bcrow",
+        "animate": "CrowMove",
+        "speed": "80",
+        "maxHp": "150",
+        "damage": "10",
+        "quality": "300",
+        "width": "100",
+        "height": "100"
+    },
+    {
+        "name": "bspider",
+        "animate": "SpiderMove",
+        "speed": "130",
+        "maxHp": "200",
+        "damage": "20",
+        "quality": "400",
+        "width": "100",
+        "height": "100"
+    },
+    {
+        "name": "bvine",
+        "animate": "VineMove",
+        "speed": "80",
+        "maxHp": "250",
+        "damage": "20",
+        "quality": "500",
+        "width": "100",
+        "height": "100"
+    },
+    {
+        "name": "boss",
+        "animate": "BossMove",
+        "speed": "160",
+        "maxHp": "150",
+        "damage": "30",
+        "quality": "500",
+        "width": "100",
+        "height": "100"
+    },
+    {
+        "name": "bee1",
+        "animate": "BeeMove",
+        "speed": "140",
+        "maxHp": "1",
+        "damage": "5",
+        "quality": "100",
+        "width": "45",
+        "height": "45"
+    },
+    {
+        "name": "vine2",
+        "animate": "VineMove",
+        "speed": "80",
+        "maxHp": "500",
+        "damage": "20",
+        "quality": "500",
+        "width": "75",
+        "height": "75"
+    },
+    {
+        "name": "crow1",
+        "animate": "CrowMove",
+        "speed": "140",
+        "maxHp": "5",
+        "damage": "5",
+        "quality": "200",
+        "width": "45",
+        "height": "45"
+    },
+    {
+        "name": "spider1",
+        "animate": "SpiderMove",
+        "speed": "100",
+        "maxHp": "10",
+        "damage": "10",
+        "quality": "300",
+        "width": "45",
+        "height": "45"
+    },
+    {
+        "name": "vine1",
+        "animate": "VineMove",
+        "speed": "100",
+        "maxHp": "15",
+        "damage": "10",
+        "quality": "500",
+        "width": "60",
+        "height": "60"
+    },
+    {
+        "name": "bee2",
+        "animate": "BeeMove",
+        "speed": "200",
+        "maxHp": "10",
+        "damage": "5",
+        "quality": "100",
+        "width": "60",
+        "height": "60"
+    },
+    {
+        "name": "spider2",
+        "animate": "SpiderMove",
+        "speed": "100",
+        "maxHp": "15",
+        "damage": "10",
+        "quality": "300",
+        "width": "60",
+        "height": "60"
+    },
+    {
+        "name": "spider3",
+        "animate": "SpiderMove",
+        "speed": "100",
+        "maxHp": "70",
+        "damage": "10",
+        "quality": "300",
+        "width": "60",
+        "height": "60"
+    },
+    {
+        "name": "bee3",
+        "animate": "BeeMove",
+        "speed": "130",
+        "maxHp": "180",
+        "damage": "14",
+        "quality": "100",
+        "width": "75",
+        "height": "75"
+    },
+    {
+        "name": "crow2",
+        "animate": "CrowMove",
+        "speed": "140",
+        "maxHp": "270",
+        "damage": "10",
+        "quality": "200",
+        "width": "75",
+        "height": "75"
+    },
+    {
+        "name": "bee6",
+        "animate": "BeeMove",
+        "speed": "700",
+        "maxHp": "1",
+        "damage": "1",
+        "quality": "100",
+        "width": "30",
+        "height": "30"
+    },
+    {
+        "name": "crow1",
+        "animate": "CrowMove",
+        "speed": "700",
+        "maxHp": "10",
+        "damage": "5",
+        "quality": "100",
+        "width": "30",
+        "height": "30"
+    },
+    {
+        "name": "abee",
+        "animate": "BeeMove",
+        "speed": "140",
+        "maxHp": "50",
+        "damage": "10",
+        "quality": "200",
+        "width": "75",
+        "height": "75"
+    },
+    {
+        "name": "acrow",
+        "animate": "CrowMove",
+        "speed": "140",
+        "maxHp": "75",
+        "damage": "15",
+        "quality": "300",
+        "width": "75",
+        "height": "75"
+    }
+]
