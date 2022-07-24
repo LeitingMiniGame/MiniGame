@@ -41,12 +41,35 @@ export function randByWeight(arr): number {
 * @example
 * @log 1. vincent,2018-11-29, func、date、reg 和 err 类型不能正常拷贝
 */
-export function deepCopyJson(source: Object): Object {
-    const newObject = {};
-    for (const key of Object.keys(source)) {
-        newObject[key] = typeof source[key] === 'object' ? deepCopyJson(source[key]) : source[key];
-    }
-    return newObject;
+export function deepCopyJson(...objs: any[]): any {
+    const result = Object.create(null)
+    objs.forEach(obj => {
+        if (obj) {
+            Object.keys(obj).forEach(key => {
+                const val = obj[key]
+                if (isPlainObject(val)) {
+                    // 递归
+                    if (isPlainObject(result[key])) {
+                        result[key] = deepCopyJson(result[key], val)
+                    } else {
+                        result[key] = deepCopyJson(val)
+                    }
+                } else {
+                    if(isNaN(Number(val))){
+                        result[key] = val
+                    }else{
+                        result[key] = Number(val)
+                    }
+                }
+            })
+        }
+    })
+    return result
+}
+
+
+export function isPlainObject(val: any): val is Object {
+    return toString.call(val) === '[object Object]'
 }
 
 /**

@@ -84,7 +84,7 @@ export default class ItemMgr {
 
     tryCreateItem(wordPos) {
         let s = Math.random()
-        if (s >= 0) {
+        if (s <= 0.6) {
             let index = randByWeight(this.curItemWeight)
             let itemName = this.curItemWeight[index].name
             let itemData = this.itemDatas[itemName]
