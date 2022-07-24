@@ -59,6 +59,9 @@ export default class JsonManager{
         console.log("load start");
         let ObjNameArray:Array<string> = JSON.parse(cc.sys.localStorage.getItem("ObjNameArray"));
         console.log("ObjNameArray:", ObjNameArray);
+
+        if(!ObjNameArray) return;
+
         let JsonStr:string = "";
         let json:Object;
         for(let index = 0 ;index < ObjNameArray.length ; index++)
