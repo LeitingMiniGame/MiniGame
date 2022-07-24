@@ -204,14 +204,18 @@ export default class MonsterMgr {
     }
 
     pause() {
-        this.randTween.stop()
+        if(this.randTween){
+            this.randTween.stop()
+        }
         this._mapMonsterById.forEach((monster, key)=>{
             monster.getComponent('Monster').pause()
         })
     }
 
     resume() {
-        this.randTween.start()
+        if(this.randTween){
+            this.randTween.start()
+        }
         this._mapMonsterById.forEach((monster, key)=>{
             monster.getComponent('Monster').resume()
         })

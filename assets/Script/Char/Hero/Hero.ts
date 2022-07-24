@@ -127,7 +127,9 @@ export default class Hero extends Char {
 
     pause() {
         let animate = this.animateLayer.getComponent(cc.Animation)
-        animate.stop('HeroMove1');
+        if(animate){
+            animate.stop('HeroMove1');
+        }
         this.state = 'stateStay'
     }
 

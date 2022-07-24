@@ -26,8 +26,8 @@ export default class GameScene extends cc.Component {
         // 开启碰撞检测
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
-        manager.enabledDebugDraw =true
-        manager.enabledDrawBoundingBox = true
+        // manager.enabledDebugDraw =true
+        // manager.enabledDrawBoundingBox = true
 
         var physicsManager = cc.director.getPhysicsManager();
         physicsManager.enabled = true;
@@ -39,17 +39,19 @@ export default class GameScene extends cc.Component {
         this.addBulletLayer()
         this.addMonsterLayer()
         this.addItemLayer()
+
+        this.pauseAll()
     }
 
     start() {
-        // this.addHero()
-        // this.addMapLayer()
-        // this.addBulletLayer()
-        // this.addMonsterLayer()
-        // this.addItemLayer()
-
-        // 开始计时
-        this.startTimeCount()
+        cc.tween(this.node)
+            .delay(0.5)
+            .call(() => {
+                cc.find('UILayer/LoadingPanel').active = false
+                // 开始计时
+                this.resumeAll()
+                this.startTimeCount()
+            }).start()
     }
 
     // 添加角色
@@ -149,7 +151,9 @@ export default class GameScene extends cc.Component {
     // 暂停
     pauseAll() {
         // 暂停时间
-        this.timeTween.stop()
+        if (this.timeTween) {
+            this.timeTween.stop()
+        }
         // 暂停角色
         CharMgr.getInstance().getCharByName('Hero').getComponent('Hero').pause()
         // 暂停地图移动
@@ -165,7 +169,9 @@ export default class GameScene extends cc.Component {
     // 恢复
     resumeAll() {
         // 恢复时间
-        this.timeTween.start()
+        if (this.timeTween) {
+            this.timeTween.start()
+        }
         // 恢复角色
         CharMgr.getInstance().getCharByName('Hero').getComponent('Hero').resume()
         // 恢复地图移动
@@ -205,7 +211,6 @@ export default class GameScene extends cc.Component {
         if (isWin) {
             cc.find('GoodGameImage', gameOverPanel).active = true
             cc.find('GameOverImage', gameOverPanel).active = false
-
         } else {
             cc.find('GoodGameImage', gameOverPanel).active = false
             cc.find('GameOverImage', gameOverPanel).active = true

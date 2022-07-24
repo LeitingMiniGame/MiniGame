@@ -54,12 +54,7 @@ export default class Monster extends Char {
     }
 
     // 怪物移动逻辑
-    move(clip?) {
-        if(clip){
-            let orgSize = clip.curveData.comps['cc.Sprite'].spriteFrame[0].value.getOriginalSize()
-            this.node.scaleX = this.data.size.width / orgSize.width
-            this.node.scaleY = this.data.size.height / orgSize.height
-        }
+    move() {
         this.schedule(this.moveCallFunc, this.getTargetInterval, cc.macro.REPEAT_FOREVER)
     }
 
