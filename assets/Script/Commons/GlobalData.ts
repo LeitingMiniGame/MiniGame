@@ -21,6 +21,7 @@ export default class NewClass extends cc.Component {
         this.LoadJson("RoleList");
         this.LoadJson("LevelList");
         this.LoadJson("ProductList");
+        this.LoadJson("lineweapon");
     }
 
     start () {
