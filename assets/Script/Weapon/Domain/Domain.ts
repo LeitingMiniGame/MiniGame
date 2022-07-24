@@ -6,7 +6,8 @@ export default class Domain extends Weapon {
 
     start() {
         let boxCollider = this.addComponent(cc.CircleCollider)
-        boxCollider.radius = this.data.size.width / 2
+        boxCollider.radius = this.data.width / 2
+        this.data.maxSize = cc.size(this.data.maxWidth, this.data.maxHeight)
     }
 
     move() {
@@ -17,6 +18,4 @@ export default class Domain extends Weapon {
             .removeSelf()
             .start()
     }
-
-
 }
