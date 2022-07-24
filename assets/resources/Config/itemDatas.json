@@ -1,0 +1,65 @@
+﻿{
+    "coin1":{
+        "name": "Coin1",
+        "comType": "Coin",
+        "icon": "coin1",
+        "value": "1",
+        "size": "1",
+        "width": "50",
+        "high": "50"
+    },
+    "coin2":{
+        "name": "Coin2",
+        "comType": "Coin",
+        "icon": "coin1",
+        "value": "10",
+        "size": "1",
+        "width": "50",
+        "high": "50"
+    },
+    "coin3":{
+        "name": "Coin3",
+        "comType": "Coin",
+        "icon": "coin2",
+        "value": "25",
+        "size": "1",
+        "width": "50",
+        "high": "50"
+    },
+    "coin4":{
+        "name": "Coin4",
+        "comType": "Coin",
+        "icon": "coin3",
+        "value": "100",
+        "size": "1",
+        "width": "50",
+        "high": "50"
+    },
+    "exp1":{
+        "name": "Exp1",
+        "comType": "Exp",
+        "icon": "exp1",
+        "value": "1",
+        "size": "1",
+        "width": "50",
+        "high": "50"
+    },
+    "exp2":{
+        "name": "Exp2",
+        "comType": "Exp",
+        "icon": "exp2",
+        "value": "25",
+        "size": "1",
+        "width": "50",
+        "high": "50"
+    },
+    "exp3":{
+        "name": "Exp3",
+        "comType": "Exp",
+        "icon": "exp3",
+        "value": "40",
+        "size": "1",
+        "width": "50",
+        "high": "50"
+    }
+}
