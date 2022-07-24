@@ -316,5 +316,11 @@ export namespace Data {
         }
 
 
+        /** 将所有数据保存到本地 */
+        static save(){
+
+            return JsonManager.getInstance().SaveDB()
+        }
+
     }
 }

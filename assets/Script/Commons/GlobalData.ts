@@ -37,8 +37,46 @@ export default class NewClass extends cc.Component {
 
         // Data.Hero.Init();
     }
+    InitGame(){
+        // 玩家基础数据
+        let Basic = Data.Gamer.query("basic");
+        if(!Basic)
+        {
+            console.log("开始初始化玩家基础数据")
+            Basic = new Object();
+            Basic["Coin"] = 100;// 初始金币设为100
+            Data.Gamer.set("basic",Basic);
+        }
 
+        // 玩家道具信息
+        let BufferList = Data.Gamer.query("buffer");
+        if(!BufferList){
+            // 初始化道具
+            console.log("开始初始化道具")
+            let ProductList = Data.Config.GetConfig("ProductList");
+            if(!ProductList){
+                console.log("初始化道具失败，道具配置未加载完成")
+                return
+            }
+            console.log("重新生成用户道具信息")
+            BufferList = new Object();
+
+            console.log("ProductList",ProductList)
+            console.log("Typeof ProductList",typeof ProductList)
+            let bufferConfigArray = Object.values(ProductList)
+            // 初始化用户拥有的道具配置
+            for(let index = 0;index < bufferConfigArray.length ;index++){
+                // 标记道具ID的等级
+                BufferList[bufferConfigArray[index]["ID"]] = 0;// 设置等级为0
+            }
+
+            console.log("BufferList：",BufferList)
+            Data.Gamer.set("buffer",BufferList);
+        }
+
+    }
     start () {
+        this.InitGame();
     }
 
     LoadJson(para:string){

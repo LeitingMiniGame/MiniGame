@@ -1,7 +1,7 @@
 import JsonManager from "../Mgr/JsonManager";
 import PopupManager from "../Mgr/PopupManager";
 import ConfirmPopup, { ConfirmPopupOptions } from "./ConfirmPopup"
-import { OpenPopups } from "../Tools/Tools";
+import { OpenPopups, Data } from "../Tools/Tools";
 
 const {ccclass, property} = cc._decorator;
 
@@ -17,6 +17,7 @@ export default class NewClass extends cc.Component {
         // cc.director.preloadScene("ControlSystem", function () {
         //     console.log("控制界面预加载好了");
         // });
+
     }
 
     SwitchToSettlement(){
