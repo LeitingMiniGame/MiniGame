@@ -31,7 +31,6 @@ export default class NewClass extends cc.Component {
     }
 
     start () {
-
     }
 
     LoadJson(para:string){

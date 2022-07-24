@@ -102,6 +102,7 @@ export default class NewClass extends cc.Component {
         // console.log("修改IsShowDamage完毕")
         // console.log("IsShowDamage : ",Data.SetUp.IsShowDamage())
 
+        let RoleList =Data.Config.GetConfig("RoleList")
         // let SetUp =Data.Config.GetConfig("SetUp")
         // let AchieveList =Data.Config.GetConfig("AchieveList")
         // let LevelList =Data.Config.GetConfig("RoleList")
@@ -109,6 +110,7 @@ export default class NewClass extends cc.Component {
         // let lineweapon =Data.Config.GetConfig("lineweapon")
         // let weapon =Data.Config.GetConfig("weapon")
         // Data
+        console.log("RoleList : ",RoleList)
         // console.log("SetUp : ",SetUp)
         // console.log("AchieveList : ",AchieveList)
         // console.log("LevelList : ",LevelList)
