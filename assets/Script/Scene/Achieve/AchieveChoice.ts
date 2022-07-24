@@ -20,7 +20,7 @@ export default class NewClass extends cc.Component {
     }
 
     ShowAchieveDetail (event) {
-        console.log("选择的成就ID:"+this.AchieveID);
+        //console.log("选择的成就ID:"+this.AchieveID);
         // 得到全局控制脚本
         let AchieveScene = cc.find("Canvas/Main Layout/AchieveSystem/Data").getComponent("AchieveScene");
         AchieveScene.LoadAchieveData(this.AchieveID)

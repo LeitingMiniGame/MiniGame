@@ -29,30 +29,30 @@ export default class NewClass extends cc.Component {
 
 
     onLoad(){
-        console.log("AchieveScene要onLoad啦")
+        //console.log("AchieveScene要onLoad啦")
 
     }
 
 
     onEnable(){
-        console.log("AchieveScene要onEnable啦")
+        //console.log("AchieveScene要onEnable啦")
     }
 
     start () {
-        console.log("AchieveScene要start啦")
+        //console.log("AchieveScene要start啦")
 
         let GlobalDataNote = cc.director.getScene().getChildByName("GlobalData");
         let GlobalDataObject = GlobalDataNote.getComponent("GlobalData").Data;
-        console.log("GlobalDataObject : ", GlobalDataObject)
+        //console.log("GlobalDataObject : ", GlobalDataObject)
 
-        console.log("GlobalDataObject[AchieveList] : ",GlobalDataObject["AchieveList"])
+        //console.log("GlobalDataObject[AchieveList] : ",GlobalDataObject["AchieveList"])
         let AchieveConfigList = GlobalDataObject["AchieveList"];
         let size = AchieveConfigList.length;
-        // console.log("原本的高度为:",this.AchieveList.node.height)
-        // console.log("achieve layout的高度为:",this.Achieve.data.getContentSize().height)
+        // //console.log("原本的高度为:",this.AchieveList.node.height)
+        // //console.log("achieve layout的高度为:",this.Achieve.data.getContentSize().height)
         // 每个组件间间隔5 上下隔开5 所以一共增加了size+1个5
         this.AchieveList.node.height = (this.Achieve.data.getContentSize().height+5) * size +5;
-        // console.log("修改后的的高度为:",this.AchieveList.node.height)
+        // //console.log("修改后的的高度为:",this.AchieveList.node.height)
 
         // this.CurrentNum // 需要获取玩家数据
         this.TotalNum.getComponent(cc.RichText).string = AchieveConfigList.length.toString()
@@ -60,9 +60,9 @@ export default class NewClass extends cc.Component {
         for(let index = 0;index < size ;index++){
             let Achieve = cc.instantiate(this.Achieve)
             let Data = AchieveConfigList[index];
-            console.log("Data:",Data)
+            //console.log("Data:",Data)
 
-            console.log("Achieve:",Achieve)
+            //console.log("Achieve:",Achieve)
             cc.find("Situation",Achieve).getComponent(cc.RichText).string = Data["IsLock"]==true?"未解锁":"已解锁";
 
             cc.find("Describe",Achieve).getComponent(cc.Label).string = Data["Describe"]
@@ -78,11 +78,11 @@ export default class NewClass extends cc.Component {
     }
 
     onDisable(){
-        console.log("AchieveScene要被关闭啦")
+        //console.log("AchieveScene要被关闭啦")
     }
 
     onDestroy(){
-        console.log("AchieveScene要被销毁啦")
+        //console.log("AchieveScene要被销毁啦")
     }
 
     LoadAchieveData(AchieveID:number){
@@ -93,12 +93,12 @@ export default class NewClass extends cc.Component {
         for(let index = 0;index<AchieveConfigList.length;index++){
             if(AchieveConfigList[index]["ID"] == AchieveID){
                 let Data = AchieveConfigList[index];
-                console.log("Data:",Data)
+                //console.log("Data:",Data)
 
                 cc.loader.loadRes(Data["Icon"], cc.SpriteFrame, (err: any, spriteFrame) => {
                     this.AchieveIcon.getComponent(cc.Sprite).spriteFrame = spriteFrame;
                 });
-                // console.log("RoleConfigList[index]:",RoleConfigList[index])
+                // //console.log("RoleConfigList[index]:",RoleConfigList[index])
                 this.AchieveName.getComponent(cc.RichText).string = Data["Name"]
                 this.AchieveCondition.getComponent(cc.RichText).string = Data["Condition"]
                 this.AchieveContent.getComponent(cc.RichText).string = Data["Content"]

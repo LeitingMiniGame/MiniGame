@@ -87,7 +87,7 @@ export function OpenPopups(Mode: number = 1, Message: string, Confirm: Function,
     let Pop = cc.instantiate(PopTemplate);
     let Root = cc.find("Canvas");
     let Script = cc.find("Data", Pop).getComponent("Popups");
-    console.log("准备开始初始化弹窗")
+    //console.log("准备开始初始化弹窗")
     Script.Init(Mode, Message, Confirm, Cancel);
     Pop.parent = Root;
     Pop.zIndex = 1000
@@ -111,7 +111,7 @@ export namespace Data {
         /** 初始化获取静态资源 */
         public static Init() {
             if (!this.IsInit) {
-                console.log("准备开始初始化Config")
+                //console.log("准备开始初始化Config")
                 this.IsInit = true;
                 // 初次加载则读取本地数据
                 this.ConfigMap = new Map<string, Object>();
@@ -143,20 +143,20 @@ export namespace Data {
         private static AddJson(Paras: any[]) {
             let JsonName: string = Paras[1][0]
             let JsonObj: Object = Paras[0]
-            // console.log("JsonName:",JsonName)
-            // console.log("JsonObj:",JsonObj)
+            // //console.log("JsonName:",JsonName)
+            // //console.log("JsonObj:",JsonObj)
             // GlobalDataObject[JsonName] = JsonObj
             Config.ConfigMap.set(JsonName, JsonObj);
-            // console.log("ConfigMap : ",Config.ConfigMap)
+            // //console.log("ConfigMap : ",Config.ConfigMap)
         }
 
         /** 根据输入的配置文件名称返回对应的静态资源 */
         public static GetConfig(JsonName: string) {
             Config.Init();
-            // console.log("ConfigMap : ",Config.ConfigMap)
-            // console.log("准备开始获取[",JsonName,"]")
+            // //console.log("ConfigMap : ",Config.ConfigMap)
+            // //console.log("准备开始获取[",JsonName,"]")
             // if(!Config.ConfigMap.has(JsonName))
-            //     console.log("ConfigMap[",JsonName,"]:",deepCopyJson(Config.ConfigMap.get(JsonName)))
+            //     //console.log("ConfigMap[",JsonName,"]:",deepCopyJson(Config.ConfigMap.get(JsonName)))
 
             if (!Config.ConfigMap.has(JsonName))
                 return null;
@@ -226,16 +226,16 @@ export namespace Data {
                 Config.Init();
                 this.HeroMap = new Map<number,Object>();
                 let RoleList = Object.values(Config.GetConfig("RoleList"))
-                console.log("Hero Init RoleList : ",RoleList)
+                //console.log("Hero Init RoleList : ",RoleList)
                 for(let index = 0; index < RoleList.length; index++){
-                    // console.log("index: " ,index);
-                    // console.log("RoleList[",index,"] : ",RoleList[index]); // key['1'] key[1]
+                    // //console.log("index: " ,index);
+                    // //console.log("RoleList[",index,"] : ",RoleList[index]); // key['1'] key[1]
 
                     let obj = deepCopyJson(RoleList[index])
                     // let obj = RoleList[Keys[index]]
                     this.HeroMap.set(obj["ID"],obj)
 
-                    // console.log(" this.HeroMap : ",  this.HeroMap)
+                    // //console.log(" this.HeroMap : ",  this.HeroMap)
                 }
                 return true;
             }
@@ -245,10 +245,10 @@ export namespace Data {
         // 获取当前角色的所有配置数据
         public static GetAllAttribute(CurrentHeroID:number){
             Hero.Init();
-            // console.log("Hero.HeroMap : ",Hero.HeroMap)
-            // console.log("CurrentHeroID : ",CurrentHeroID)
-            // console.log("Hero.HeroMap.get(CurrentHeroID) : ",Hero.HeroMap.get(CurrentHeroID))
-            // console.log("deepCopyJson(Hero.HeroMap.get(CurrentHeroID)) : ",deepCopyJson(Hero.HeroMap.get(CurrentHeroID)))
+            // //console.log("Hero.HeroMap : ",Hero.HeroMap)
+            // //console.log("CurrentHeroID : ",CurrentHeroID)
+            // //console.log("Hero.HeroMap.get(CurrentHeroID) : ",Hero.HeroMap.get(CurrentHeroID))
+            // //console.log("deepCopyJson(Hero.HeroMap.get(CurrentHeroID)) : ",deepCopyJson(Hero.HeroMap.get(CurrentHeroID)))
             return deepCopyJson(Hero.HeroMap.get(CurrentHeroID))
         }
     }
@@ -268,40 +268,40 @@ export namespace Data {
                 // 初次加载则读取本地数据
                 Config.Init();
 
-                console.log("开始预处理道具信息")
+                //console.log("开始预处理道具信息")
                 this.BufferLevelConfig = new Map<number, Object>();
                 // 预处理要用到的数据
                 // 获取道具配置
                 let ProductList = Config.GetConfig("ProductList")
-                // console.log("ProductList : ",ProductList)
+                // //console.log("ProductList : ",ProductList)
                 let ProductKeys = Object.keys(ProductList)
                 // 将其处理为ID=>Object 的形式
                 for(let index = 0;index < ProductKeys.length; index++){
                     let Key = parseInt(ProductKeys[index]);
                     let Value = ProductList[Key];
-                    // console.log("Key : ",Key,"  Value : ",Value)
+                    // //console.log("Key : ",Key,"  Value : ",Value)
                     this.BufferLevelConfig.set(ProductList[Key]["ID"], Value)
                 }
-                console.log("预处理道具信息完成")
-                console.log("BufferLevelConfig : ", this.BufferLevelConfig)
+                //console.log("预处理道具信息完成")
+                //console.log("BufferLevelConfig : ", this.BufferLevelConfig)
 
-                console.log("开始预处理道具参数信息")
+                //console.log("开始预处理道具参数信息")
                 this.BufferAttrivuteConfig = new Map<number, Object>();
                 // 预处理要用到的数据
                 // 获取道具配置
                 let ProductAttributeList = Config.GetConfig("attribute")
-                //  console.log("ProductAttributeList : ",ProductAttributeList)
+                //  //console.log("ProductAttributeList : ",ProductAttributeList)
                 let ProductAttributeKeys = Object.keys(ProductAttributeList)
-                // console.log("ProductAttributeKeys : ",ProductAttributeKeys)
+                // //console.log("ProductAttributeKeys : ",ProductAttributeKeys)
                 // 将其处理为ID=>Object 的形式
                 for(let index = 0;index < ProductAttributeKeys.length; index++){
                     let Key = parseInt(ProductAttributeKeys[index]);
                     let Value = ProductAttributeList[Key];
-                    // console.log("Key : ",Key,"  Value : ",Value)
+                    // //console.log("Key : ",Key,"  Value : ",Value)
                     this.BufferAttrivuteConfig.set(ProductAttributeList[Key]["ID"], Value)
                 }
-                console.log("预处理道具参数信息完成")
-                console.log("BufferAttrivuteConfig : ", this.BufferAttrivuteConfig)
+                //console.log("预处理道具参数信息完成")
+                //console.log("BufferAttrivuteConfig : ", this.BufferAttrivuteConfig)
 
                 return true;
             }
@@ -311,18 +311,18 @@ export namespace Data {
         // 获取指定道具的配置数据
         public static GetLevelConfig(BufferID:number){
             Buffer.Init();
-            // console.log("Hero.HeroMap : ",Hero.HeroMap)
-            // console.log("CurrentHeroID : ",CurrentHeroID)
-            // console.log("Hero.HeroMap.get(CurrentHeroID) : ",Hero.HeroMap.get(CurrentHeroID))
-            // console.log("deepCopyJson(Hero.HeroMap.get(CurrentHeroID)) : ",deepCopyJson(Hero.HeroMap.get(CurrentHeroID)))
+            // //console.log("Hero.HeroMap : ",Hero.HeroMap)
+            // //console.log("CurrentHeroID : ",CurrentHeroID)
+            // //console.log("Hero.HeroMap.get(CurrentHeroID) : ",Hero.HeroMap.get(CurrentHeroID))
+            // //console.log("deepCopyJson(Hero.HeroMap.get(CurrentHeroID)) : ",deepCopyJson(Hero.HeroMap.get(CurrentHeroID)))
             return deepCopyJson(Buffer.BufferLevelConfig.get(BufferID))
         }
 
         // 获取指定道具的配置数据
         public static GetLevelAttributeConfig(BufferID:number){
             Buffer.Init();
-            // console.log("BufferID : ",BufferID)
-            // console.log("Buffer.BufferAttrivuteConfig.get(BufferID) : ",Buffer.BufferAttrivuteConfig.get(BufferID))
+            // //console.log("BufferID : ",BufferID)
+            // //console.log("Buffer.BufferAttrivuteConfig.get(BufferID) : ",Buffer.BufferAttrivuteConfig.get(BufferID))
             return deepCopyJson(Buffer.BufferAttrivuteConfig.get(BufferID))
         }
 
@@ -330,11 +330,11 @@ export namespace Data {
             Buffer.Init();
             // 通过ID查找道具
             let BufferData = Buffer.GetLevelConfig(BufferID);
-            // console.log("BufferID : ", BufferID," Level: ",Level)
-            // console.log("BufferData : ", BufferData)
+            // //console.log("BufferID : ", BufferID," Level: ",Level)
+            // //console.log("BufferData : ", BufferData)
 
             let NextAttributeID = BufferData["Attribute"][Level]
-            // console.log("NextAttributeID : ",NextAttributeID)
+            // //console.log("NextAttributeID : ",NextAttributeID)
 
             return Buffer.GetLevelAttributeConfig(NextAttributeID);
         }
