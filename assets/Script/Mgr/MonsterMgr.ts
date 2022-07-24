@@ -13,26 +13,8 @@ export default class MonsterMgr {
     static _instance: MonsterMgr = null
     monsterLayer: MonsterLayer
 
-    // 临时数据
-    randData = [
-        {
-            time: 0,
-            interval: 0.3,
-            maxMonster: 100,
-            monsterData: [
-                {
-                    name: 'bcrow',
-                    weight: 80,
-                },
-                {
-                    name: 'bspider',
-                    weight: 100
-                },
-            ],
-        }
-    ]
+    randData:any
 
-    // 临时数据
     waveData:any
 
     waveTypeFunc = {
@@ -55,7 +37,7 @@ export default class MonsterMgr {
     _init() {
         this._mapMonsterById = new Map()
         this.randData = Data.Config.GetConfig('waveEnemy')
-        this.waveData = {}
+        this.waveData = Data.Config.GetConfig('event')
     }
 
     public static releaseInstance() {

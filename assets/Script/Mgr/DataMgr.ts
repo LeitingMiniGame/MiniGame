@@ -21,7 +21,7 @@ export default class DataMgr {
     selectItemPanel: any
     randWeapon: any
     bulletData: any
-    levelExp:any
+    levelExp: any
 
     public static getInstance() {
         if (!this._instance) {
@@ -63,7 +63,7 @@ export default class DataMgr {
 
 
         this.bulletData = Data.Config.GetConfig("weapon")
-        this.levelExp =  Data.Config.GetConfig("levelup")
+        this.levelExp = Data.Config.GetConfig("levelup")
 
     }
 
@@ -130,6 +130,10 @@ export default class DataMgr {
 
         let curWeapon = this.bag[typeName]
         let level = curWeapon.level
+
+        if (!this.bulletData[curWeapon.name][level]) {
+            return
+        }
         // 处理升级的逻辑
         this.bag[typeName] = this.getData(this.bulletData[curWeapon.name][level])
 
