@@ -20,19 +20,8 @@ export default class DataMgr {
     level: any
     selectItemPanel: any
     randWeapon: any
-
     bulletData: any
-
-    //// 临时数据
-    levelExp = [
-        2,
-        4,
-        8,
-        16,
-        32,
-        64,
-        128
-    ]
+    levelExp:any
 
     public static getInstance() {
         if (!this._instance) {
@@ -74,7 +63,14 @@ export default class DataMgr {
 
 
         this.bulletData = Data.Config.GetConfig("weapon")
+        this.levelExp =  Data.Config.GetConfig("levelup")
 
+    }
+
+    public static releaseInstance() {
+        if (this._instance) {
+            this._instance = undefined
+        }
     }
 
     getData(obj): any {
@@ -228,8 +224,6 @@ export default class DataMgr {
             iconNode.removeAllChildren()
 
             itemNode.getChildByName('NameLabel').getComponent(cc.Label).string = weaponData.name
-
-
             itemNode.getChildByName('InfoLabel').getComponent(cc.Label).string = weaponData.describe
 
             cc.resources.load(iconPath, cc.SpriteFrame, (error, assets: cc.SpriteFrame) => {

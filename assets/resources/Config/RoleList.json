@@ -5,13 +5,13 @@
         "bulletCount": 0,
         "coolDown":5,
         "ExperienceGain":0,
-        "growth": 1,
+        "growth": 0,
         "height": 100,
 
         "Icon":"Image/Char/HeroStay1",
         "ID":1,
         "image":"Image/Char/foxBig",
-        "initWeapon": "shit",
+        "initWeapon": "magicwand",
         "Introduction":"这是个呆瓜狐狸",
 
         "luckly":10,
@@ -29,9 +29,44 @@
         "Range":0,
         "recovery":0,
 
-        "speed":0,
+        "speed":140,
 
         "WeaponIcon":"Image/Weapon/MagicWand",
+        "width": 100
+    },
+    {
+        "animate": "HeroMove2",
+
+        "bulletCount": 0,
+        "coolDown":0,
+        "ExperienceGain":0,
+        "growth": 0,
+        "height": 100,
+
+        "Icon":"Image/Char/HeroStay2",
+        "ID":1,
+        "image":"Image/Char/DogBig",
+        "initWeapon": "shit",
+        "Introduction":"热爱臭臭",
+
+        "luckly":0,
+
+        "magnet": 200,
+        "maxHp":130,
+
+        "Name":"绅士修狗",
+
+        "PassiveEffect":"暂无",
+        "PickupRange":0,
+        "power":10,
+
+        "RateOfFire":0,
+        "Range":0,
+        "recovery":0,
+
+        "speed":140,
+
+        "WeaponIcon":"Image/Weapon/shit",
         "width": 100
     }
 

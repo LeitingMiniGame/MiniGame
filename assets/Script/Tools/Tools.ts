@@ -90,6 +90,7 @@ export function OpenPopups(Mode: number = 1, Message: string, Confirm: Function,
     console.log("准备开始初始化弹窗")
     Script.Init(Mode, Message, Confirm, Cancel);
     Pop.parent = Root;
+    Pop.zIndex = 1000
 }
 
 /** 所有的配置数据由这里获取 */
@@ -124,8 +125,11 @@ export namespace Data {
                 this.LoadJson("lineweapon");
                 this.LoadJson("weapon");
                 this.LoadJson("enemy");
+                this.LoadJson("levelup");
+                this.LoadJson("itemDatas");
+                this.LoadJson("wavedrop")
+                this.LoadJson("waveEnemy")
 
-                // Hero.Init();
             }
         }
 

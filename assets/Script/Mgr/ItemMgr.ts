@@ -1,5 +1,5 @@
 import Item from "../Char/Item/Item";
-import { randByWeight } from "../Tools/Tools";
+import { Data, randByWeight } from "../Tools/Tools";
 import CharMgr from "./CharMgr";
 import MapMgr from "./MapMgr";
 
@@ -11,61 +11,9 @@ export default class ItemMgr {
     protected static _instance: ItemMgr = null;
     private _mapItemById: Map<string, Item> = new Map();
 
+    itemDatas:any
     //// 临时数据
-    itemDatas = {
-        ['Coin1']: {
-            comType: 'Coin',
-            icon: 'Grapes',
-            value: 1,
-            size: cc.size(40, 20)
-        },
-        ['Coin2']: {
-            comType: 'Coin',
-            icon: 'Grapes',
-            value: 10,
-            size: cc.size(40, 20)
-        },
-        ['Exp1']: {
-            comType: 'Exp',
-            icon: 'Clover',
-            value: 1,
-            size: cc.size(40, 20)
-        }
-    }
-
-    //// 临时数据
-    itemPool = [
-        {
-            time: 0,
-            itemWeights: [
-                {
-                    name: 'Coin1',
-                    weight: 100,
-                },
-                {
-                    name: 'Exp1',
-                    weight: 100
-                }
-            ],
-        },
-        {
-            time: 60,
-            itemWeights: [
-                {
-                    name: 'Coin1',
-                    weight: 100,
-                },
-                {
-                    name: 'Coin2',
-                    weight: 100,
-                },
-                {
-                    name: 'Exp1',
-                    weight: 100
-                }
-            ],
-        },
-    ]
+    itemPool:any
 
 
     isPause: boolean;
@@ -79,7 +27,15 @@ export default class ItemMgr {
         return this._instance;
     }
 
+    public static releaseInstance() {
+        if (this._instance) {
+            this._instance = undefined
+        }
+    }
+
     _init() {
+        this.itemDatas = Data.Config.GetConfig("itemDatas")
+        this.itemPool = Data.Config.GetConfig("wavedrop")
     }
 
     tryCreateItem(wordPos) {
@@ -127,7 +83,8 @@ export default class ItemMgr {
     }
 
     updateItemPool(time) {
-        for (let i = 0; i < this.itemPool.length; i++) {
+        let  keys = Object.keys(this.itemPool)
+        for (let i = 0; i < keys.length; i++) {
             let itemData = this.itemPool[i]
             if (time == itemData.time) {
                 this.curItemWeight = itemData.itemWeights

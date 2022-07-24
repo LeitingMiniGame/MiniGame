@@ -1,0 +1,388 @@
+[
+    {
+        "time": 0,
+        "interval": 1.2,
+        "maxMonster": 100,
+        "monsterData": [
+            {
+                "name":"bee1",
+                "weight":100
+            }
+        ]
+    },
+    {
+        "time": 60,
+        "interval": 1.2,
+        "maxMonster": 150,
+        "monsterData":[
+            {
+                "name":"bee1",
+                "weight":80
+            },
+            {
+                "name":"crow1",
+                "weight":20
+            }
+        ]
+    },
+    {
+        "time": 120,
+        "interval": 1.2,
+        "maxMonster": 200,
+        "monsterData": [
+            {
+                "name":"bee1",
+                "weight":20
+            },
+            {
+                "name":"crow1",
+                "weight":60
+            },
+            {
+                "name":"spider1",
+                "weight":40
+            }
+        ]
+    },
+    {
+        "time": 180,
+        "interval": 1.2,
+        "maxMonster": 250,
+        "monsterData": [
+
+            {
+                "name":"crow1",
+                "weight":20
+            },
+            {
+                "name":"spider1",
+                "weight":80
+            }
+        ]
+    },
+    {
+        "time": 240,
+        "interval": 1,
+        "maxMonster": 300,
+        "monsterData": [
+            {
+                "name":"crow1",
+                "weight":20
+            },
+            {
+                "name":"spider1",
+                "weight":20
+            },
+            {
+                "name":"vine1",
+                "weight":60
+            }
+        ]
+    },
+    {
+        "time": 300,
+        "interval": 1,
+        "maxMonster": 350,
+        "monsterData": [
+            {
+                "name":"spider1",
+                "weight":50
+            },
+            {
+                "name":"vine1",
+                "weight":50
+            }
+        ]
+    },
+    {
+        "time": 360,
+        "interval": 1,
+        "maxMonster": 400,
+        "monsterData": [
+            {
+                "name":"vine1",
+                "weight":50
+            },
+            {
+                "name":"bee2",
+                "weight":50
+            }
+        ]
+    },
+    {
+        "time": 420,
+        "interval": 1,
+        "maxMonster": 450,
+        "monsterData": [
+            {
+                "name":"vine1",
+                "weight":20
+            },
+            {
+                "name":"bee2",
+                "weight":80
+            }
+        ]
+    },
+    {
+        "time": 480,
+        "interval": 1,
+        "maxMonster": 500,
+        "monsterData": [
+            {
+                "name":"vine1",
+                "weight":20
+            },
+            {
+                "name":"bee2",
+                "weight":80
+            }
+        ]
+    },
+    {
+        "time": 540,
+        "interval": 0.8,
+        "maxMonster": 500,
+        "monsterData": [
+            {
+                "name":"spider1",
+                "weight":20
+            },
+            {
+                "name":"vine1",
+                "weight":20
+            },
+            {
+                "name":"bee2",
+                "weight":60
+            }
+        ]
+    },
+    {
+        "time": 600,
+        "interval": 0.8,
+        "maxMonster": 500,
+        "monsterData": ""
+    },
+    {
+        "time": 660,
+        "interval": 0.8,
+        "maxMonster": 500,
+        "monsterData": [
+            {
+                "name":"spider1",
+                "weight":20
+            },
+            {
+                "name":"vine1",
+                "weight":20
+            },
+            {
+                "name":"bee2",
+                "weight":60
+            }
+        ]
+    },
+    {
+        "time": 720,
+        "interval": 0.8,
+        "maxMonster": 500,
+        "monsterData": ""
+    },
+    {
+        "time": 780,
+        "interval": 0.7,
+        "maxMonster": 500,
+        "monsterData": [
+            {
+                "name":"spider1",
+                "weight":40
+            },
+            {
+                "name":"vine1",
+                "weight":40
+            },
+            {
+                "name":"bee2",
+                "weight":80
+            }
+        ]
+    },
+    {
+        "time": 840,
+        "interval": 0.7,
+        "maxMonster": 500,
+        "monsterData": [
+
+            {
+                "name":"bee2",
+                "weight":80
+            },
+            {
+                "name":"spider2",
+                "weight":20
+            }
+        ]
+    },
+    {
+        "time": 900,
+        "interval": 0.7,
+        "maxMonster": 500,
+        "monsterData": [
+            {
+                "name":"bee2",
+                "weight":40
+            },
+            {
+                "name":"spider2",
+                "weight":80
+            }
+        ]
+    },
+    {
+        "time": 960,
+        "interval": 0.7,
+        "maxMonster": 500,
+        "monsterData": [
+            {
+                "name":"vine1",
+                "weight":20
+            },
+            {
+                "name":"bee2",
+                "weight":40
+            },
+            {
+                "name":"spider2",
+                "weight":60
+            }
+        ]
+    },
+    {
+        "time": 1020,
+        "interval": 0.5,
+        "maxMonster": 500,
+        "monsterData": []
+    },
+    {
+        "time": 1080,
+        "interval": 0.5,
+        "maxMonster": 500,
+        "monsterData": [
+            {
+                "name":"spider2",
+                "weight":20
+            },
+            {
+                "name":"spider3",
+                "weight":40
+            },
+            {
+                "name":"bee3",
+                "weight":60
+            }
+        ]
+    },
+    {
+        "time": 1140,
+        "interval": 0.5,
+        "maxMonster": 500,
+        "monsterData": [
+            {
+                "name":"spider2",
+                "weight":30
+            },
+            {
+                "name":"spider3",
+                "weight":60
+            },
+            {
+                "name":"bee3",
+                "weight":30
+            }
+        ]
+    },
+    {
+        "time": 1200,
+        "interval": 0.5,
+        "maxMonster": 500,
+        "monsterData": [
+            {
+                "name":"spider2",
+                "weight":20
+            },
+            {
+                "name":"spider3",
+                "weight":30
+            },
+            {
+                "name":"bee3",
+                "weight":60
+            }
+        ]
+    },
+    {
+        "time": 1260,
+        "interval": 0.5,
+        "maxMonster": 500,
+        "monsterData": [
+            {
+                "name":"spider3",
+                "weight":20
+            },
+            {
+                "name":"bee3",
+                "weight":20
+            },
+            {
+                "name":"crow2",
+                "weight":20
+            }
+        ]
+    },
+    {
+        "time": 1320,
+        "interval": 0.5,
+        "maxMonster": 500,
+        "monsterData": [
+            {
+                "name":"spider3",
+                "weight":20
+            },
+            {
+                "name":"bee3",
+                "weight":20
+            },
+            {
+                "name":"crow2",
+                "weight":20
+            }
+        ]
+    },
+    {
+        "time": 1380,
+        "interval": 0.5,
+        "maxMonster": 500,
+        "monsterData": [
+            {
+                "name":"abee",
+                "weight":100
+            }
+        ]
+    },
+    {
+        "time": 1440,
+        "interval": 0.5,
+        "maxMonster": 500,
+        "monsterData": [
+            {
+                "name":"abee",
+                "weight":40
+            },
+            {
+                "name":"acrow",
+                "weight":60
+            }
+        ]
+    }
+]

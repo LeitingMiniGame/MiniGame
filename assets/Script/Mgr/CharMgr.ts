@@ -1,5 +1,5 @@
 import Char from "../Char/Char";
-import { Data } from "../Tools/Tools";
+import { Data, deepCopyJson } from "../Tools/Tools";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -13,7 +13,7 @@ export default class CharMgr {
         ['HeroTest']: {
             image: 'Char/HeroStay1',
             animate: 'HeroMove1',
-            initWeapon: 'shit',
+            initWeapon: 'magicwand',
             maxHp: 100,
             recovery: 1,
             speed: 250,
@@ -23,35 +23,9 @@ export default class CharMgr {
             growth: 1,
             luckly: 20,
             magnet: 200,
-            size: cc.size(100, 100)
+            width: 100,
+            height: 100
         },
-
-        // 怪物
-        ['Bee']: {
-            animate: 'BeeMove',
-            type: 'static',
-            speed: 100,
-            maxHp: 10,
-            damage: 10,
-            quality: 20,
-            size: cc.size(46, 45),
-        },
-        ['Crow']: {
-            animate: 'CrowMove',
-            speed: 100,
-            maxHp: 10,
-            damage: 10,
-            quality: 20,
-            size: cc.size(68, 68),
-        },
-        ['Vine']: {
-            animate: 'VineMove',
-            speed: 100,
-            maxHp: 10,
-            damage: 10,
-            quality: 20,
-            size: cc.size(68, 68),
-        }
     }
 
     public static getInstance() {
@@ -60,6 +34,12 @@ export default class CharMgr {
             this._instance._init();
         }
         return this._instance;
+    }
+
+    public static releaseInstance() {
+        if (this._instance) {
+            this._instance = undefined
+        }
     }
 
     protected _init() {
@@ -72,7 +52,7 @@ export default class CharMgr {
         let node = new cc.Node(name)
         let char = node.addComponent(name)
         if (this.CharData[charType]) {
-            let newData = Object.create(this.CharData[charType])
+            let newData = deepCopyJson(this.CharData[charType])
             char.data = newData
         }
         char.name = name

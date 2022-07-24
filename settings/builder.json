@@ -7,7 +7,7 @@
     "upsideDown": false
   },
   "packageName": "org.cocos2d.helloworld",
-  "startScene": "b8677bbf-dc52-43f3-ace6-7f8fb2dd0fea",
+  "startScene": "4725ea9d-453e-460c-bda1-6bb18ad15a75",
   "title": "hello_world",
   "webOrientation": "auto",
   "inlineSpriteFrames": true,
@@ -17,7 +17,7 @@
   "optimizeHotUpdate": true,
   "md5Cache": true,
   "nativeMd5Cache": true,
-  "encryptJs": true,
+  "encryptJs": false,
   "xxteaKey": "85881022-60a8-4d",
   "zipCompressJs": true,
   "fb-instant-games": {},
@@ -38,8 +38,8 @@
   },
   "win32": {
     "REMOTE_SERVER_ROOT": "",
-    "width": 1280,
-    "height": 720
+    "width": 960,
+    "height": 640
   },
   "android-instant": {
     "packageName": "org.cocos2d.demo",

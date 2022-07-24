@@ -16,7 +16,6 @@ export default abstract class Item extends Char {
     onLoad() {
         super.onLoad()
         this.loadImage("Item/" + this.data.icon)
-
     }
 
     // 获取目标位置
