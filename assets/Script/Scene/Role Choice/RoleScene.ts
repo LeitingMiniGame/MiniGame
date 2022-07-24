@@ -1,3 +1,6 @@
+
+import {Data, OpenPopups} from "../../Tools/Tools";
+
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -57,6 +60,11 @@ export default class NewClass extends cc.Component {
     @property(cc.RichText)
     ExperienceGain: cc.RichText = null;
 
+    @property(cc.Node)
+    OpenGameBtn: cc.Node = null;
+
+
+    CurrentHeroID:number = -1;
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {}
@@ -100,7 +108,16 @@ export default class NewClass extends cc.Component {
             // HeroCoin.opacity = 255
 
             HeroCoin.getComponent('RoleChoice').init(String(Data["ID"]));
+
+            if(index == 0){
+                this.LoadHeroData(Data["ID"])
+            }
         }
+
+
+        // 开启游戏按钮监听
+        this.OpenGameBtn.on(cc.Node.EventType.MOUSE_DOWN, this.OpenGame, this);
+
     }
 
     LoadHeroData(HeroID:number){
@@ -109,6 +126,8 @@ export default class NewClass extends cc.Component {
         let RoleConfigList = GlobalDataObject["RoleList"];
         for(let index = 0;index<RoleConfigList.length;index++){
             if(RoleConfigList[index]["ID"] == HeroID){
+                this.CurrentHeroID = HeroID
+
                 let Data = RoleConfigList[index];
                 // console.log("Data : ", Data)
                 this.HeroName.getComponent(cc.Label).string = Data["Name"]
@@ -143,5 +162,36 @@ export default class NewClass extends cc.Component {
         }
     }
 
+
+    OpenGame(){
+        // 在这里暂存游戏人物数据，然后跳转到游戏界面
+        // 子弹、怪物、角色、
+        if(this.CurrentHeroID < 0){
+            OpenPopups(2, "发生错误，还未选择英雄",function(){
+                //不做处理
+                return;
+            });
+            return;
+        }
+
+        OpenPopups(1, "你确定使用此英雄开始游戏吗",function(){
+            // 设置当前选择的英雄
+            Data.Hero.SetCurrentHeroID(this.CurrentHeroID)
+            // 生成临时数据
+            console.log("打印需要的英雄数据")
+            console.log("Hero : ",Data.Hero.GetAllAttribute())
+
+
+            //进入游戏界面
+            console.log("准备开始游戏");
+
+            // 否则说明要回到首页
+            cc.director.loadScene('Main', function(){
+                console.log("切换到游戏界面啦");
+            });
+            return;
+        });
+
+    }
     // update (dt) {}
 }
