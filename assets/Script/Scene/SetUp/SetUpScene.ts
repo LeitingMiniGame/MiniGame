@@ -108,6 +108,7 @@ export default class NewClass extends cc.Component {
         let ProductList =Data.Config.GetConfig("ProductList")
         let lineweapon =Data.Config.GetConfig("lineweapon")
         let weapon =Data.Config.GetConfig("weapon")
+        Data
         console.log("SetUp : ",SetUp)
         console.log("AchieveList : ",AchieveList)
         console.log("LevelList : ",LevelList)
