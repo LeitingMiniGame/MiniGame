@@ -15,12 +15,6 @@ export default class NewClass extends cc.Component {
     @property(cc.Prefab)
     CommodityCoin: cc.Prefab = null;
 
-    @property(cc.Prefab)
-    LevelYes: cc.Prefab = null;
-
-    @property(cc.Prefab)
-    LevelNo: cc.Prefab = null;
-
     @property(cc.Label)
     ProductName: cc.Label = null;
 
@@ -79,36 +73,41 @@ export default class NewClass extends cc.Component {
 
             console.log("开始设置等级")
             // 获取组件的layout
-            let ProductLevelList = cc.find("Buttom Layout/Product Level List", CommodityCoin);;
+            let Level = cc.find("Buttom Layout/Level", CommodityCoin).getComponent(cc.Label);
 
             // 先获取等级
-            let MaxLevel = Data["Level"] // 这里是配置的道具等级上限
+            // let MaxLevel = Data["Level"] // 这里是配置的道具等级上限
             let CurLevel = ProductList[Data["ID"]] // 获取玩家拥有对应道具的等级
             console.log("开始设置等级2")
             // console.log("level为:",level )
             // console.log("原本的宽度为:",ProductLevelList.width )
             // 加载等级图标前先修改layout的宽度
-            console.log("ProductLevelList: ",ProductLevelList)
-            ProductLevelList.width = this.LevelYes.data.width * MaxLevel + 8;
+            // console.log("ProductLevelList: ",ProductLevelList)
+            // ProductLevelList.width = this.LevelYes.data.width * MaxLevel + 8;
             // console.log("LevelIcon的宽度为:",this.LevelIcon.data.width )
             // console.log("现在的宽度为:",ProductLevelList.width )
             // console.log("-----------------next-----------------")
 
             // cc.find("Buttom Layout/Product Level",CommodityCoin).getComponent(cc.Label).string =
             // 开始处理等级图标
-            for(let NowLevel = 1 ; NowLevel <= MaxLevel ;NowLevel ++){
-                console.log(`NowLevel : ${NowLevel} ,CurLevel : ${CurLevel} ,MaxLevel : ${MaxLevel} , `)
-                let LevelIcon = NowLevel <= CurLevel ? cc.instantiate(this.LevelYes):cc.instantiate(this.LevelNo)
-                LevelIcon.parent = ProductLevelList
-            }
+            // for(let NowLevel = 1 ; NowLevel <= MaxLevel ;NowLevel ++){
+            //     console.log(`NowLevel : ${NowLevel} ,CurLevel : ${CurLevel} ,MaxLevel : ${MaxLevel} , `)
+            //     let LevelIcon = NowLevel <= CurLevel ? cc.instantiate(this.LevelYes):cc.instantiate(this.LevelNo)
+            //     LevelIcon.parent = ProductLevelList
+            // }
+            Level.string = CurLevel.toString();
 
             CommodityCoin.parent = this.ProductList.node
 
-            CommodityCoin.getComponent('ProductChoice').init(Data["ID"]);
+            CommodityCoin.getComponent('ProductChoice').init(Data["ID"], 0);
+
+            if(index == 0){
+                this.LoadproductData(Data["ID"], 0);
+            }
         }
     }
 
-    LoadproductData(ProductID:number){
+    LoadproductData(ProductID:number, LevelNum:number){
         console.log("准备开始加载商品（ID:",ProductID,"）的数据")
 
 
@@ -120,7 +119,7 @@ export default class NewClass extends cc.Component {
                 // console.log("LevelConfigList[index]:",LevelConfigList[index])
                 this.ProductName.getComponent(cc.Label).string = ProductConfigList[index]["Name"]
                 this.SkillDescription.getComponent(cc.Label).string = ProductConfigList[index]["Description"]
-                this.MoneyNum.getComponent(cc.Label).string = ProductConfigList[index]["Money"]
+                this.MoneyNum.getComponent(cc.Label).string = ProductConfigList[index]["Money"][LevelNum]
 
                 cc.loader.loadRes(ProductConfigList[index]["Icon"], cc.SpriteFrame, (err: any, spriteFrame) => {
                     this.ProductIcon.getComponent(cc.Sprite).spriteFrame = spriteFrame;

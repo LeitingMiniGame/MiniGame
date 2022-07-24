@@ -25,14 +25,18 @@ export default class NewClass extends cc.Component {
         console.log("选择的商品ID为"+this.ProductID);
         // 得到全局控制脚本
         let ShopScene = cc.find("Canvas/Main Layout/ShopSystem/Data").getComponent("ShopScene");
-        ShopScene.LoadproductData(parseInt(this.ProductID))
+        let LevelNode = cc.find("Buttom Layout/Level", this.node).getComponent(cc.Label);
+        ShopScene.LoadproductData(parseInt(this.ProductID),parseInt(LevelNode.string))
     }
 
     onDestroy(){
         this.node.off(cc.Node.EventType.MOUSE_UP, this.ShowProductDetail, this);
     }
 
-    init(ID:number){
+    init(ID:number,Level:number){
         this.ProductID = String(ID)
+
+        let LevelNode = cc.find("Buttom Layout/Level", this.node).getComponent(cc.Label);
+        LevelNode.string = Level.toString();
     }
 }

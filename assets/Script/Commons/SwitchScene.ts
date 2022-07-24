@@ -18,6 +18,17 @@ export default class NewClass extends cc.Component {
         // });
     }
 
+    SwitchToSettlement(){
+
+
+        console.log("运行到SwitchToSettlement");
+
+        // 否则说明要回到首页
+        cc.director.loadScene('SettlementSystem', function(){
+            console.log("切换到结算界面啦");
+        });
+    }
+
     SwitchToSetUp(){
 
         this.SwitchToControl("SetUp")

@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "8e9eb3bf-fac4-464b-bf01-00d45a38b4a8",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1793,
+  "height": 911,
+  "platformSettings": {},
+  "subMetas": {
+    "边框花鸟装饰22": {
+      "ver": "1.0.6",
+      "uuid": "88dbb714-bfef-4196-8336-a737af50a3ae",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "8e9eb3bf-fac4-464b-bf01-00d45a38b4a8",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 3,
+      "trimY": 2,
+      "width": 1787,
+      "height": 907,
+      "rawWidth": 1793,
+      "rawHeight": 911,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

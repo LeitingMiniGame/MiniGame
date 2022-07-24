@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "5e5444f3-3180-4723-9765-1271fc6edd90",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 776,
+  "height": 385,
+  "platformSettings": {},
+  "subMetas": {
+    "伤害统计面板": {
+      "ver": "1.0.6",
+      "uuid": "2f644d81-28df-4a78-913c-8b4a886e05a2",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "5e5444f3-3180-4723-9765-1271fc6edd90",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 772,
+      "height": 381,
+      "rawWidth": 776,
+      "rawHeight": 385,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
