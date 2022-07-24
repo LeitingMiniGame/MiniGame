@@ -1,5 +1,5 @@
 import JsonManager from "../../Mgr/JsonManager";
-import {Data, deepCopyJson} from "../../Tools/Tools";
+import {Data, deepCopyJson, OpenPopups} from "../../Tools/Tools";
 
 const {ccclass, property} = cc._decorator;
 
@@ -162,16 +162,18 @@ export default class NewClass extends cc.Component {
                 break;
             }
         }
-        // //console.log("TargetProduct: ", TargetProduct)
+        // console.log("TargetProduct: ", TargetProduct)
         if(!TargetProduct){
-            //console.log("不存在相对应的道具")
+            console.log("不存在相对应的道具")
             return;
         }
-        // //console.log("BufferList : ", BufferList)
+        // console.log("BufferList : ", BufferList)
 
         // 判断是否超出了等级上限
         if(BufferList[this.ProductID] >= TargetProduct["Level"]){
-            //console.log("已到达道具等级上限");
+            OpenPopups(2, "已到达道具等级上限",function () {
+                return;
+            })
             return;
         }
 
@@ -180,13 +182,15 @@ export default class NewClass extends cc.Component {
         // 判断金币数是否足够
         let Basic = Data.Gamer.query("basic")
         if(!Basic){
-            //console.log("开始重新初始化玩家基础数据")
+            // console.log("开始重新初始化玩家基础数据")
             GlobalDataNote.getComponent("GlobalData").InitGame()
-            //console.log("初始化玩家基础数据结束")
+            // console.log("初始化玩家基础数据结束")
             BufferList = Data.Gamer.query("basic")// 表示玩家身上的道具
         }
         if(Basic["Coin"] < Money){
-            //console.log("不好意思，你的金币数不足，请继续努力");
+            OpenPopups(2, "不好意思，你的金币数不足，请继续努力",function () {
+                return;
+            })
             return ;
         }
         // 开始扣除金币
@@ -194,19 +198,23 @@ export default class NewClass extends cc.Component {
 
         // 开始修改金币显示
         let GoldCoinNode = cc.find("Canvas/Main Layout/Top Layout/Gold coin/Coin Num");
-        // //console.log("GoldCoinNode:",GoldCoinNode)
+        // console.log("GoldCoinNode:",GoldCoinNode)
         GoldCoinNode.getComponent(cc.Label).string = Basic["Coin"]
-        // //console.log("this.Product:",this.Product)
+        // console.log("Basic[Coin]:",Basic["Coin"])
         // 开始修改当前道具等级
         // 获取组件的layout
         let Level = cc.find("Buttom Layout/Level", this.Product).getComponent(cc.Label);
-        // //console.log("Level:",Level)
+        // console.log("Level:",Level)
         // 开始修改玩家身上的道具数据
-        BufferList[this.ProductID] +=1
-        // //console.log("BufferList : ", BufferList)
+        BufferList[this.ProductID] += 1
+        // console.log("BufferList : ", BufferList)
+
+        // 开始修改当前道具价格
+        this.MoneyNum.string = TargetProduct["Money"][BufferList[this.ProductID]];
+
         Data.Gamer.set("buffer",BufferList)
         Level.string = String( BufferList[this.ProductID]);
-        //console.log("购买成功")
+        // console.log("购买成功")
         // 结束
         return;
     }

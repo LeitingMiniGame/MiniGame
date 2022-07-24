@@ -55,7 +55,10 @@ export default class NewClass extends cc.Component {
         {
             //console.log("开始初始化玩家基础数据")
             Basic = new Object();
-            Basic["Coin"] = 100000;// 初始金币设为100
+            Basic["Coin"] = 10000;// 初始金币设为100
+            Data.Gamer.set("basic",Basic);
+        }else{
+            Basic["Coin"] = 10000;// 初始金币设为100
             Data.Gamer.set("basic",Basic);
         }
 

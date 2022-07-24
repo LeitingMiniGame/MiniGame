@@ -194,7 +194,7 @@ export default class NewClass extends cc.Component {
                 //console.log("初始化道具结束")
                 BufferList = Data.Gamer.query("buffer")// 表示玩家身上的道具
             }
-            //console.log("buffer : ",BufferList)
+            // console.log("buffer : ",BufferList)
             let BufferIDList = Object.keys(BufferList)
             //console.log("bufferIDList : ",BufferIDList)
             // // 预处理要用到的数据
@@ -213,30 +213,43 @@ export default class NewClass extends cc.Component {
 
             // 获取道具等级配置
 
+            // console.log("BufferIDList : ",BufferIDList.length)
             for(let index = 0;index < BufferIDList.length; index++){
                 let CurrentID = parseInt(BufferIDList[index]);
                 let CurrentLevel = BufferList[CurrentID];
                 // //console.log("CurrentID : ",CurrentID,"  CurrentLevel : ",CurrentLevel)
                 let TempBuffer = Data.Buffer.GetBufferAttribute(CurrentID, CurrentLevel )
                 TempBuffer["ID"] = undefined
-                //console.log("TempBuffer: ",TempBuffer )
-                // //console.log("CurrentHero: ",CurrentHero )
                 // CurrentHero+=TempBuffer
                 // this.SetBuffer(CurrentHero, TempBuffer)
-                {
-                    CurrentHero["bulletCount"]+=TempBuffer["bulletCount"]
-                    CurrentHero["coolDown"]+=TempBuffer["coolDown"]
+                // if(index == 0 ){
+                //     console.log("修改前")
+                //     console.log("TempBuffer.maxHp ", TempBuffer.maxHp)
+                //     console.log("TempBuffer.maxHp Type",typeof TempBuffer.maxHp)
+                //     console.log("TempBuffer: ",TempBuffer )
+                //     console.log("CurrentHero: ",CurrentHero )
+                //     console.log("CurrentHero.maxHp ", CurrentHero.maxHp)
+                //     console.log("CurrentHero.maxHp Type",typeof CurrentHero.maxHp)
+                // }
+                // {
+                    CurrentHero.bulletCount += TempBuffer.bulletCount
+                    CurrentHero["coolDown"] += TempBuffer["coolDown"]
                     CurrentHero["ExperienceGain"]+=TempBuffer["ExperienceGain"]
-                    CurrentHero["growth"]+=TempBuffer["growth"]
+                    CurrentHero["growth"] += TempBuffer["growth"]
                     CurrentHero["luckly"]+=TempBuffer["luckly"]
                     CurrentHero["magnet"]+=TempBuffer["magnet"]
-                    CurrentHero["maxHp"]+=TempBuffer["maxHp"]
+                    CurrentHero.maxHp = parseInt(CurrentHero.maxHp) + parseInt(TempBuffer.maxHp)
                     CurrentHero["power"]+=TempBuffer["power"]
                     CurrentHero["RateOfFire"]+=TempBuffer["RateOfFire"]
                     CurrentHero["Range"]+=TempBuffer["Range"]
                     CurrentHero["recovery"]+=TempBuffer["recovery"]
                     CurrentHero["speed"]+=TempBuffer["speed"]
-                }
+                // }
+                // if(index == 0 ){
+                //     console.log("修改后")
+                //     console.log("TempBuffer: ",TempBuffer )
+                //     console.log("CurrentHero: ",CurrentHero )
+                // }
                 // 现在开始获取相关数据
             }
 
@@ -247,7 +260,7 @@ export default class NewClass extends cc.Component {
             //console.log("准备开始游戏");
 
             Data.Gamer.set_Temp("Role", CurrentHero)
-            //console.log("Data.Gamer : ",Data.Gamer.queryAllTemp())
+            console.log("Data.Gamer : ",Data.Gamer.queryAllTemp())
 
             // 否则说明要回到首页
             cc.director.loadScene('Main', function(){
