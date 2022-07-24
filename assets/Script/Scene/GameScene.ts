@@ -6,6 +6,7 @@ import ItemMgr from "../Mgr/ItemMgr";
 import MapMgr from "../Mgr/MapMgr";
 import MonsterMgr from "../Mgr/MonsterMgr";
 import WeaponMgr from "../Mgr/WeaponMgr";
+import { OpenPopups } from "../Tools/Tools";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -177,7 +178,8 @@ export default class GameScene extends cc.Component {
 
     quitGame(){
         console.log('quit');
-        
+        // OpenPopups(1, "是否退出游戏", ()=>{
+        // })
     }
 
     openSetting(){
