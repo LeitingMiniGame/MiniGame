@@ -28,6 +28,7 @@ export default class CharMgr {
         // 怪物
         ['Bee']: {
             animate: 'BeeMove',
+            type: 'static',
             speed: 100,
             maxHp: 10,
             damage: 10,

@@ -1,4 +1,5 @@
 
+import Item from "../Char/Item/Item";
 import NumImage from "../Control/NumImage";
 import CharMgr from "../Mgr/CharMgr";
 import DataMgr from "../Mgr/DataMgr";
@@ -120,6 +121,7 @@ export default class GameScene extends cc.Component {
                 .call(() => {
                     MonsterMgr.getInstance().beginCreateMonster(this.curTime)
                     DataMgr.getInstance().setTimeLabel(this.curTime)
+                    ItemMgr.getInstance().updateItemPool(this.curTime)
                     this.curTime++
                 })
         ).start()

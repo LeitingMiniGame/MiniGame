@@ -42,6 +42,7 @@ export default class DataMgr {
                 type: 'Domain',
                 icon: 'MagicWand',
                 bulletIcon: 'Hero',
+                describe: '红红火火恍恍惚惚',
                 level: 1,
                 interval: 1,
                 preInterval: 0.05,

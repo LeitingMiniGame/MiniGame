@@ -19,25 +19,57 @@ export default class ItemMgr {
             value: 1,
             size: cc.size(40, 20)
         },
-        ['Exp1']:{
+        ['Coin2']: {
+            comType: 'Coin',
+            icon: 'Grapes',
+            value: 10,
+            size: cc.size(40, 20)
+        },
+        ['Exp1']: {
             comType: 'Exp',
             icon: 'Clover',
             value: 1,
             size: cc.size(40, 20)
         }
     }
+
     //// 临时数据
-    itemWeight = [
+    itemPool = [
         {
-            name: 'Coin1',
-            weight: 100,
+            time: 0,
+            itemWeights: [
+                {
+                    name: 'Coin1',
+                    weight: 100,
+                },
+                {
+                    name: 'Exp1',
+                    weight: 100
+                }
+            ],
         },
         {
-            name: 'Exp1',
-            weight: 100
-        }
+            time: 60,
+            itemWeights: [
+                {
+                    name: 'Coin1',
+                    weight: 100,
+                },
+                {
+                    name: 'Coin2',
+                    weight: 100,
+                },
+                {
+                    name: 'Exp1',
+                    weight: 100
+                }
+            ],
+        },
     ]
+
+
     isPause: boolean;
+    curItemWeight: any
 
     public static getInstance() {
         if (!this._instance) {
@@ -48,14 +80,13 @@ export default class ItemMgr {
     }
 
     _init() {
-
     }
 
     tryCreateItem(wordPos) {
         let s = Math.random()
         if (s >= 0) {
-            let index = randByWeight(this.itemWeight)
-            let itemName = this.itemWeight[index].name
+            let index = randByWeight(this.curItemWeight)
+            let itemName = this.curItemWeight[index].name
             let itemData = this.itemDatas[itemName]
             let itemLayer = MapMgr.getInstance().getLayerByName('ItemLayer')
             let item = this.createItem(itemData.comType, itemData.comType)
@@ -81,17 +112,27 @@ export default class ItemMgr {
         return this._mapItemById.get(name)
     }
 
-    pause(){
+    pause() {
         this.isPause = true
         this._mapItemById.forEach((item, key) => {
             item.getComponent('Item').pause()
         });
     }
 
-    resume(){
+    resume() {
         this.isPause = false
         this._mapItemById.forEach((item, key) => {
             item.getComponent('Item').resume()
         });
+    }
+
+    updateItemPool(time) {
+        for (let i = 0; i < this.itemPool.length; i++) {
+            let itemData = this.itemPool[i]
+            if (time == itemData.time) {
+                this.curItemWeight = itemData.itemWeights
+                break
+            }
+        }
     }
 }
