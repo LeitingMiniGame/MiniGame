@@ -1,33 +1,37 @@
 [
     {
         "time": 0,
-        "interval": 1.2,
+        "interval": 1,
         "maxMonster": 100,
         "monsterData": [
             {
                 "name":"bee1",
+                "weight":100
+            },
+            {
+                "name":"crow1",
                 "weight":100
             }
         ]
     },
     {
         "time": 60,
-        "interval": 1.2,
+     "interval": 0.75,
         "maxMonster": 150,
         "monsterData":[
             {
                 "name":"bee1",
-                "weight":80
+                "weight":20
             },
             {
                 "name":"crow1",
-                "weight":20
+                "weight":80
             }
         ]
     },
     {
         "time": 120,
-        "interval": 1.2,
+     "interval": 0.75,
         "maxMonster": 200,
         "monsterData": [
             {
@@ -46,7 +50,7 @@
     },
     {
         "time": 180,
-        "interval": 1.2,
+     "interval": 0.75,
         "maxMonster": 250,
         "monsterData": [
 
@@ -62,7 +66,7 @@
     },
     {
         "time": 240,
-        "interval": 1,
+     "interval": 0.8,
         "maxMonster": 300,
         "monsterData": [
             {
@@ -81,7 +85,7 @@
     },
     {
         "time": 300,
-        "interval": 1,
+     "interval": 0.8,
         "maxMonster": 350,
         "monsterData": [
             {
@@ -96,7 +100,7 @@
     },
     {
         "time": 360,
-        "interval": 1,
+     "interval": 0.8,
         "maxMonster": 400,
         "monsterData": [
             {
@@ -111,7 +115,7 @@
     },
     {
         "time": 420,
-        "interval": 1,
+     "interval": 0.8,
         "maxMonster": 450,
         "monsterData": [
             {
@@ -126,7 +130,7 @@
     },
     {
         "time": 480,
-        "interval": 1,
+     "interval": 0.8,
         "maxMonster": 500,
         "monsterData": [
             {
@@ -160,13 +164,13 @@
     },
     {
         "time": 600,
-        "interval": 0.8,
+        "interval": 0.6,
         "maxMonster": 500,
         "monsterData": ""
     },
     {
         "time": 660,
-        "interval": 0.8,
+        "interval": 0.6,
         "maxMonster": 500,
         "monsterData": [
             {
@@ -185,13 +189,13 @@
     },
     {
         "time": 720,
-        "interval": 0.8,
+        "interval": 0.6,
         "maxMonster": 500,
         "monsterData": ""
     },
     {
         "time": 780,
-        "interval": 0.7,
+        "interval": 0.6,
         "maxMonster": 500,
         "monsterData": [
             {
