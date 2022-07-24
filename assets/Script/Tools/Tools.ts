@@ -124,6 +124,8 @@ export namespace Data {
                 this.LoadJson("lineweapon");
                 this.LoadJson("weapon");
                 this.LoadJson("enemy");
+
+                // Hero.Init();
             }
         }
 
@@ -210,7 +212,6 @@ export namespace Data {
         // 存储临时对象数据
         private static HeroMap: Map<number, Object> = null;
         private static IsInit: boolean = false
-        private static CurrentHeroID:number = -1;
         /** 单例模式，获取管理对象 */
         public static Init() {
             if (!this.IsInit) {
@@ -218,41 +219,31 @@ export namespace Data {
                 // 初次加载则读取本地数据
                 Config.Init();
                 this.HeroMap = new Map<number,Object>();
-                let RoleList = Config.GetConfig("RoleList")
+                let RoleList = Object.values(Config.GetConfig("RoleList"))
                 console.log("Hero Init RoleList : ",RoleList)
-                let Keys = Object.keys(RoleList)
-                for(let index = 0; index < Keys.length; index++){
+                for(let index = 0; index < RoleList.length; index++){
                     console.log("index: " ,index);
-                    console.log("Keys : ",Keys)
-                    console.log("Keys[index] : ",Keys[index])
-                    console.log("RoleList[Keys[index]] : ",RoleList[Keys[index]])
-                    console.log(typeof(Keys[index])); // key['1'] key[1]
+                    console.log("RoleList[",index,"] : ",RoleList[index]); // key['1'] key[1]
 
-                    let obj = RoleList[Number(Keys[index])]
+                    let obj = deepCopyJson(RoleList[index])
                     // let obj = RoleList[Keys[index]]
                     this.HeroMap.set(obj["ID"],obj)
+
+                    console.log(" this.HeroMap : ",  this.HeroMap)
                 }
+                return true;
             }
-
-        }
-
-        private static HasCurrentHero():boolean{
-            if(Hero.CurrentHeroID < 0)
-                return false;
             return true;
         }
 
         // 获取当前角色的所有配置数据
-        public static GetAllAttribute(){
+        public static GetAllAttribute(CurrentHeroID:number){
             Hero.Init();
-            if(!Hero.HasCurrentHero())
-                return;
-            return deepCopyJson(Hero.HeroMap.get(Hero.CurrentHeroID))
-        }
-
-        // 获取当前角色的所有配置数据
-        public static SetCurrentHeroID(HeroID:number){
-            this.CurrentHeroID = HeroID
+            // console.log("Hero.HeroMap : ",Hero.HeroMap)
+            // console.log("CurrentHeroID : ",CurrentHeroID)
+            // console.log("Hero.HeroMap.get(CurrentHeroID) : ",Hero.HeroMap.get(CurrentHeroID))
+            // console.log("deepCopyJson(Hero.HeroMap.get(CurrentHeroID)) : ",deepCopyJson(Hero.HeroMap.get(CurrentHeroID)))
+            return deepCopyJson(Hero.HeroMap.get(CurrentHeroID))
         }
 
     }

@@ -29,6 +29,8 @@ export default class NewClass extends cc.Component {
 
         // 加载全局静态数据
         Data.Config.Init();
+
+        // Data.Hero.Init();
     }
 
     start () {

@@ -127,6 +127,7 @@ export default class NewClass extends cc.Component {
         for(let index = 0;index<RoleConfigList.length;index++){
             if(RoleConfigList[index]["ID"] == HeroID){
                 this.CurrentHeroID = HeroID
+                console.log("this.CurrentHeroID : ",this.CurrentHeroID)
 
                 let Data = RoleConfigList[index];
                 // console.log("Data : ", Data)
@@ -173,13 +174,13 @@ export default class NewClass extends cc.Component {
             });
             return;
         }
-
+        let self = this
         OpenPopups(1, "你确定使用此英雄开始游戏吗",function(){
-            // 设置当前选择的英雄
-            Data.Hero.SetCurrentHeroID(this.CurrentHeroID)
+            // 绑定英雄ID
+            console.log("this.CurrentHeroID : ",self.CurrentHeroID)
             // 生成临时数据
             console.log("打印需要的英雄数据")
-            console.log("Hero : ",Data.Hero.GetAllAttribute())
+            console.log("Hero : ",Data.Hero.GetAllAttribute(self.CurrentHeroID))
 
 
             //进入游戏界面
