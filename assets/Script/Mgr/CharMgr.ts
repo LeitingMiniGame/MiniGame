@@ -1,4 +1,5 @@
 import Char from "../Char/Char";
+import { Data } from "../Tools/Tools";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -62,6 +63,7 @@ export default class CharMgr {
     }
 
     protected _init() {
+        this.CharData = Data.Config.GetConfig("enemy")
     }
 
     public createChar(charType: string, name: string) {
