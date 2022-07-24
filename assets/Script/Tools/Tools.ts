@@ -330,8 +330,8 @@ export namespace Data {
             Buffer.Init();
             // 通过ID查找道具
             let BufferData = Buffer.GetLevelConfig(BufferID);
-            // //console.log("BufferID : ", BufferID," Level: ",Level)
-            // //console.log("BufferData : ", BufferData)
+            // console.log("BufferID : ", BufferID," Level: ",Level)
+            // console.log("BufferData : ", BufferData)
 
             let NextAttributeID = BufferData["Attribute"][Level]
             // //console.log("NextAttributeID : ",NextAttributeID)
