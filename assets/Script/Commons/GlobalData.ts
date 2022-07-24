@@ -38,6 +38,13 @@ export default class NewClass extends cc.Component {
         Data.Config.Init();
 
         // Data.Hero.Init();
+
+        cc.resources.load("Radio/Home", cc.AudioClip, (error, assets:cc.AudioClip)=>{
+            if(error){
+                return
+            }
+            cc.audioEngine.playMusic(assets, true);
+        })
     }
     InitGame(){
         // 玩家基础数据

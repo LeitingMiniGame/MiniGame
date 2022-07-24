@@ -8,6 +8,7 @@ export default class CharMgr {
     private _mapChar: Map<string, Char> = new Map();
     private _mapCharById: Map<string, cc.Node> = new Map();
 
+<<<<<<< HEAD
     // 临时数据
     CharData = {
         ['HeroTest']: {
@@ -27,6 +28,11 @@ export default class CharMgr {
             height: 100
         },
     }
+=======
+    //// 临时数据
+    CharData: any
+    HeroData: any
+>>>>>>> 21fd75bb71e48a2bff63098ef17b8491a0bf03c4
 
     public static getInstance() {
         if (!this._instance) {
@@ -43,8 +49,10 @@ export default class CharMgr {
     }
 
     protected _init() {
-        // this.CharData = {}
+        this.HeroData = deepCopyJson(Data.Gamer.query_Temp("Role"))
+
         let enemyData = Data.Config.GetConfig("enemy")
+        this.CharData = {[this.HeroData.name]:this.HeroData}
         this.CharData = Object.assign(this.CharData, enemyData);
     }
 

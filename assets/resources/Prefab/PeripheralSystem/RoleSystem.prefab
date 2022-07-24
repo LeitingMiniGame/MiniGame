@@ -1960,7 +1960,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 300,
-      "height": 63
+      "height": 65.19999999999999
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1972,7 +1972,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        3.5,
+        3.5000000000000284,
         0,
         0,
         0,
@@ -2006,13 +2006,13 @@
     "_enabled": true,
     "_fontFamily": "Arial",
     "_isSystemFontUsed": true,
-    "_N$string": "这里是简介简介",
+    "_N$string": "因为久陷森林之中而神智不清的狐狸，或许它的破树枝真的可以释放魔法。",
     "_N$horizontalAlign": 0,
     "_N$fontSize": 20.4,
     "_N$font": null,
     "_N$cacheMode": 0,
     "_N$maxWidth": 300,
-    "_N$lineHeight": 50,
+    "_N$lineHeight": 20,
     "_N$imageAtlas": null,
     "_N$handleTouchEvent": true,
     "_id": ""
@@ -2030,7 +2030,7 @@
     "_alignFlags": 41,
     "_left": 20,
     "_right": 20,
-    "_top": 5,
+    "_top": 3.8999999999999773,
     "_bottom": 8.5,
     "_verticalCenter": 0,
     "_horizontalCenter": 0,
