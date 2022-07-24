@@ -1,4 +1,5 @@
 import JsonManager from "../Mgr/JsonManager";
+import {Data} from "../Tools/Tools";
 
 const {ccclass, property} = cc._decorator;
 
@@ -16,11 +17,17 @@ export default class NewClass extends cc.Component {
         this.Data = new Object();
         cc.game.addPersistRootNode(this.node);
 
+        // 加载全局可修改数据
         this.LoadJson("SetUp");
         this.LoadJson("AchieveList");
         this.LoadJson("RoleList");
         this.LoadJson("LevelList");
         this.LoadJson("ProductList");
+        this.LoadJson("lineweapon");
+        this.LoadJson("weapon");
+
+        // 加载全局静态数据
+        Data.Config.Init();
     }
 
     start () {
