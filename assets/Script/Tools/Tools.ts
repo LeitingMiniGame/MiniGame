@@ -1,3 +1,5 @@
+import JsonManager from "../Mgr/JsonManager";
+
 // describe: 在范围内获取随机整数值 [min, max]
 export function getRandomIntInclusive(min: number, max: number): number {
     min = Math.ceil(min);
@@ -48,4 +50,53 @@ export function OpenPopups(Mode:number = 1, Message:string, Confirm:Function, Ca
     console.log("准备开始初始化弹窗")
     Script.Init(Mode, Message, Confirm, Cancel);
     Pop.parent = Root;
+}
+
+export namespace Data{
+
+/**
+ * 获取关于设置的接口
+ */
+export class SetUp{
+    // 存储临时对象数据
+    private SetUpObj: Object = null;
+    private static _instance : SetUp = null
+
+    /** 单例模式，获取管理对象 */
+    private static getInstance() {
+        if (!this._instance) {
+            this._instance = new SetUp();
+            // 初次加载则读取本地数据
+            this._instance.SetUpObj = JsonManager.getInstance().query("SetUp")
+        }
+        return this._instance;
+    }
+
+    /** 返回是否全屏 */
+    static IsFullScreen():boolean{
+        return Object.assign(this.getInstance().SetUpObj["IsFullScreen"])
+    }
+
+    /** 返回是否显示伤害 */
+    static IsShowDamage():boolean{
+        return Object.assign(this.getInstance().SetUpObj["IsShowDamage"])
+    }
+
+    /** 返回是否显示摇杆 */
+    static IsShowJoystick():boolean{
+        return Object.assign(this.getInstance().SetUpObj["IsShowJoystick"])
+    }
+
+    /** 返回声音大小 */
+    static GetMusicNum():number{
+        return Object.assign(this.getInstance().SetUpObj["Music"])
+    }
+
+    /** 返回音乐大小 */
+    static GetSoundNum():boolean{
+        return Object.assign(this.getInstance().SetUpObj["Sound"])
+    }
+}
+
+
 }
