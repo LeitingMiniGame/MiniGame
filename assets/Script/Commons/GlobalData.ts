@@ -44,10 +44,10 @@ export default class NewClass extends cc.Component {
         let GlobalDataObject = GlobalDataNote.getComponent("GlobalData").Data;
         let JsonName:string = Paras[1][0]
         let JsonObj:Object = Paras[0]
-        console.log("JsonName:",JsonName)
-        console.log("JsonObj:",JsonObj)
+        // console.log("JsonName:",JsonName)
+        // console.log("JsonObj:",JsonObj)
         GlobalDataObject[JsonName] = JsonObj
-        console.log("GlobalDataObject:",GlobalDataObject)
+        // console.log("GlobalDataObject:",GlobalDataObject)
     }
 
     onDestroy(){

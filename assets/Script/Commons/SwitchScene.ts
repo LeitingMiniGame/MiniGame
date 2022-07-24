@@ -30,6 +30,15 @@ export default class NewClass extends cc.Component {
         });
     }
 
+    SwitchToGame(){
+        console.log("准备开始游戏");
+
+        // 否则说明要回到首页
+        cc.director.loadScene('Main', function(){
+            console.log("切换到游戏界面啦");
+        });
+    }
+
     TestPop1(){
         OpenPopups(1,"测试弹窗1",this.show,null);
     }
