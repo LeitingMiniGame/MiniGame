@@ -1,0 +1,38 @@
+﻿{
+    "magicwand":[
+        {
+            "name": "magicwand",
+            "type": "Line",
+            "icon": "MagicWand",
+            "bulletIcon": "magicbullet1",
+            "describe": "向最近的敌人开火",
+            "level": 1,
+            "interval": 1.2,
+            "preinterval": 0.1,
+            "preCount": 1,
+            "hp": 10,
+            "mindamage": 10,
+            "maxdamage": 12,
+            "speed": 200,
+            "width": 40,
+            "height": 20
+        },
+        {
+            "name": "magicwand",
+            "type": "Line",
+            "icon": "MagicWand",
+            "bulletIcon": "magicbullet2",
+            "describe": "射弹+1",
+            "level": 2,
+            "interval": 1.2,
+            "preinterval": 0.1,
+            "preCount": 2,
+            "hp": 10,
+            "mindamage": 10,
+            "maxdamage": 12,
+            "speed": 200,
+            "width": 40,
+            "height": 20
+        }
+    ]
+}

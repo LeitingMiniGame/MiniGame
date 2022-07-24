@@ -1,5 +1,4 @@
 
-import Item from "../Char/Item/Item";
 import NumImage from "../Control/NumImage";
 import CharMgr from "../Mgr/CharMgr";
 import DataMgr from "../Mgr/DataMgr";
@@ -17,6 +16,10 @@ export default class GameScene extends cc.Component {
     timeTween: cc.Tween<cc.Node>;
 
     onLoad() {
+
+        DataMgr.getInstance()
+        NumImage.getInstance()
+
         this.addLayerRoot()
 
 
@@ -35,8 +38,6 @@ export default class GameScene extends cc.Component {
         // cc.PhysicsManager.DrawBits.e_jointBit |
         // cc.PhysicsManager.DrawBits.e_shapeBit
         cc.director.getPhysicsManager().gravity = cc.v2(0, -960);
-
-        NumImage.getInstance()
         this.curTime = 0
     }
 

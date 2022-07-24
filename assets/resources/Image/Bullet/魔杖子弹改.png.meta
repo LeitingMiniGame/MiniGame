@@ -1,6 +1,10 @@
 {
   "ver": "2.3.7",
+<<<<<<< HEAD
   "uuid": "0a8c8b47-f6d6-4f43-a351-de70783f4b91",
+=======
+  "uuid": "67332a98-5e4d-44e5-9e11-914acf3f4af9",
+>>>>>>> 05c185dfeaf46ce829e2f5ba4452a68d40fb256e
   "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
@@ -14,9 +18,15 @@
   "subMetas": {
     "魔杖子弹改": {
       "ver": "1.0.6",
+<<<<<<< HEAD
       "uuid": "6a8a0874-ae57-411e-a59e-9e36f671d29a",
       "importer": "sprite-frame",
       "rawTextureUuid": "0a8c8b47-f6d6-4f43-a351-de70783f4b91",
+=======
+      "uuid": "d4bf50f3-aedb-4096-9cce-369f167aea80",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "67332a98-5e4d-44e5-9e11-914acf3f4af9",
+>>>>>>> 05c185dfeaf46ce829e2f5ba4452a68d40fb256e
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
