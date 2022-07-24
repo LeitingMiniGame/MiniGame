@@ -2,10 +2,11 @@
     {
         "ID":1,
         "Name":"普通子弹",
-        "Icon":"Image/Bullet/Hero",
+        "Icon":"Image/Bullet/shit",
         "Level":3,
         "Description":"这是个普通的子弹",
-        "Money":[100,200,300,999990]
+        "Money":[100,200,300,999990],
+        "Key":[1,2,3,4]
     },
     {
         "ID":2,
@@ -18,7 +19,7 @@
     {
         "ID":3,
         "Name":"普通子弹",
-        "Icon":"Image/Bullet/Hero",
+        "Icon":"Image/Bullet/shit",
         "Level":3,
         "Description":"这是个普通的子弹",
         "Money":[100,200,300,999990]
@@ -34,7 +35,7 @@
     {
         "ID":5,
         "Name":"普通子弹",
-        "Icon":"Image/Bullet/Hero",
+        "Icon":"Image/Bullet/shit",
         "Level":3,
         "Description":"这是个普通的子弹",
         "Money":[100,200,300,999990]
@@ -50,7 +51,7 @@
     {
         "ID":7,
         "Name":"普通子弹",
-        "Icon":"Image/Bullet/Hero",
+        "Icon":"Image/Bullet/shit",
         "Level":3,
         "Description":"这是个普通的子弹",
         "Money":[100,200,300,999990]
@@ -66,7 +67,7 @@
     {
         "ID":9,
         "Name":"普通子弹",
-        "Icon":"Image/Bullet/Hero",
+        "Icon":"Image/Bullet/shit",
         "Level":3,
         "Description":"这是个普通的子弹",
         "Money":[100,200,300,999990]
@@ -82,7 +83,7 @@
     {
         "ID":11,
         "Name":"普通子弹",
-        "Icon":"Image/Bullet/Hero",
+        "Icon":"Image/Bullet/shit",
         "Level":3,
         "Description":"这是个普通的子弹",
         "Money":[100,200,300,999990]
@@ -98,7 +99,7 @@
     {
         "ID":13,
         "Name":"普通子弹",
-        "Icon":"Image/Bullet/Hero",
+        "Icon":"Image/Bullet/shit",
         "Level":3,
         "Description":"这是个普通的子弹",
         "Money":[100,200,300,999990]
@@ -114,7 +115,7 @@
     {
         "ID":15,
         "Name":"普通子弹",
-        "Icon":"Image/Bullet/Hero",
+        "Icon":"Image/Bullet/shit",
         "Level":3,
         "Description":"这是个普通的子弹",
         "Money":[100,200,300,999990]

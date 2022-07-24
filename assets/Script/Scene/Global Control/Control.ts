@@ -1,4 +1,5 @@
 const {ccclass, property} = cc._decorator;
+import { OpenPopups, Data } from "../../Tools/Tools";
 
 @ccclass
 export default class NewClass extends cc.Component {
@@ -31,6 +32,13 @@ export default class NewClass extends cc.Component {
         console.log("Control要onLoad啦")
         console.log("准备开始获取常驻节点")
 
+
+        // 在这里寻找金币的数量
+        let GoldCoinNode = cc.find("Canvas/Main Layout/Top Layout/Gold coin/Coin Num");
+        console.log("金币数节点： ", GoldCoinNode);
+        let Basic = Data.Gamer.query("basic");
+        GoldCoinNode.getComponent(cc.Label).string = Basic["Coin"]
+
         this.GlobalDataNote = cc.director.getScene().getChildByName("GlobalData");
         if(!this.CheckGlobalNode())
             return;
@@ -41,6 +49,8 @@ export default class NewClass extends cc.Component {
 
         if(!this.CheckGlobalObjectScenePara())
             return;
+
+
     }
 
 

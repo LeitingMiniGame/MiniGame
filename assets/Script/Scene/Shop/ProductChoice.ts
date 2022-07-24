@@ -26,7 +26,7 @@ export default class NewClass extends cc.Component {
         // 得到全局控制脚本
         let ShopScene = cc.find("Canvas/Main Layout/ShopSystem/Data").getComponent("ShopScene");
         let LevelNode = cc.find("Buttom Layout/Level", this.node).getComponent(cc.Label);
-        ShopScene.LoadproductData(parseInt(this.ProductID),parseInt(LevelNode.string))
+        ShopScene.LoadproductData(parseInt(this.ProductID),parseInt(LevelNode.string), this.node)
     }
 
     onDestroy(){
