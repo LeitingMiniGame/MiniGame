@@ -1,42 +1,72 @@
 [
     {
-        "ID":1,
+        "animate": "HeroMove1",
+
+        "bulletCount": 0,
+        "coolDown":5,
+        "ExperienceGain":0,
+        "growth": 0,
+        "height": 100,
+
         "Icon":"Image/Char/HeroStay1",
-        "Name":"覆盆子狐",
-        "IMG":"Image/Char/foxBig",
-        "WeaponIcon":"Image/Weapon/MagicWand",
+        "ID":1,
+        "image":"Image/Char/foxBig",
+        "initWeapon": "magicwand",
         "Introduction":"这是个呆瓜狐狸",
+
+        "luckly":10,
+
+        "magnet": 200,
+        "maxHp":100,
+
+        "Name":"覆盆子狐",
+
         "PassiveEffect":"暂无",
-        "MaxLife":100,
-        "Recover":0,
-        "MovingSpeed":0,
-        "Power":0,
+        "PickupRange":0,
+        "power":0,
+
         "RateOfFire":0,
         "Range":0,
-        "Cooldown":5,
-        "NumberOfBullets":0,
-        "PickupRange":0,
-        "Lucky":10,
-        "ExperienceGain":0
+        "recovery":0,
+
+        "speed":140,
+
+        "WeaponIcon":"Image/Weapon/MagicWand",
+        "width": 100
     },
     {
-        "ID":2,
-        "Icon":"Image/Item/Grapes",
+        "animate": "HeroMove2",
+
+        "bulletCount": 0,
+        "coolDown":0,
+        "ExperienceGain":0,
+        "growth": 0,
+        "height": 100,
+
+        "Icon":"Image/Char/HeroStay2",
+        "ID":1,
+        "image":"Image/Char/DogBig",
+        "initWeapon": "shit",
+        "Introduction":"热爱臭臭",
+
+        "luckly":0,
+
+        "magnet": 200,
+        "maxHp":100,
+
         "Name":"绅士修狗",
-        "IMG":"Image/Item/Grapes",
-        "WeaponIcon":"Image/Weapon/Dart",
-        "Introduction":"喜欢臭臭",
+
         "PassiveEffect":"暂无",
-        "MaxLife":100,
-        "Recover":0,
-        "MovingSpeed":0,
-        "Power":10,
+        "PickupRange":0,
+        "power":10,
+
         "RateOfFire":0,
         "Range":0,
-        "Cooldown":0,
-        "NumberOfBullets":0,
-        "PickupRange":0,
-        "Lucky":0,
-        "ExperienceGain":0
+        "recovery":0,
+
+        "speed":140,
+
+        "WeaponIcon":"Image/Weapon/shit",
+        "width": 100
     }
 ]
