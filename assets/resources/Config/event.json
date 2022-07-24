@@ -44,7 +44,7 @@
         "type": "Group",
         "monsterData": [
             {
-                "name":"sbee",
+                "name":"scrow",
                 "count":40
             }
         ]
@@ -114,7 +114,7 @@
         "type": "Disperse",
         "monsterData": [
             {
-                "name":"bspider",
+                "name":"boss",
                 "count":1
             }
         ]
