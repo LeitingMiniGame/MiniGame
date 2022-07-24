@@ -1,21 +1,12 @@
 [
     {
         "ID":1,
-<<<<<<< HEAD
-        "Name":"普通子弹",
-        "Icon":"Image/Bullet/shit",
-        "Level":3,
-        "Description":"这是个普通的子弹",
-        "Money":[100,200,300,999990],
-        "Key":[1,2,3,4]
-=======
         "Name":"最大生命",
         "Icon":"Image/Bullet/Hero",
         "Level":10,
         "Description":"每级增加10%最大生命值",
         "Money":[100,500,1000,2000,2500,4000,5000,8000,12000,18000,999990]
 
->>>>>>> f5c518e73cf15909dff2b31361e218f1cc2af607
     },
     {
         "ID":2,
@@ -27,19 +18,11 @@
     },
     {
         "ID":3,
-<<<<<<< HEAD
-        "Name":"普通子弹",
-        "Icon":"Image/Bullet/shit",
-        "Level":3,
-        "Description":"这是个普通的子弹",
-        "Money":[100,200,300,999990]
-=======
         "Name":"力量提升",
         "Icon":"Image/Bullet/Hero",
         "Level":10,
         "Description":"每级增加5%伤害",
         "Money":[100,500,1000,2000,2500,4000,5000,8000,12000,18000,999990]
->>>>>>> f5c518e73cf15909dff2b31361e218f1cc2af607
     },
     {
         "ID":4,
@@ -51,19 +34,11 @@
     },
     {
         "ID":5,
-<<<<<<< HEAD
-        "Name":"普通子弹",
-        "Icon":"Image/Bullet/shit",
-        "Level":3,
-        "Description":"这是个普通的子弹",
-        "Money":[100,200,300,999990]
-=======
         "Name":"伤害范围",
         "Icon":"Image/Bullet/Hero",
         "Level":6,
         "Description":"每级增加5%伤害范围",
         "Money":[100,500,1000,2000,5000,10000,999990]
->>>>>>> f5c518e73cf15909dff2b31361e218f1cc2af607
     },
     {
         "ID":6,
@@ -75,13 +50,8 @@
     },
     {
         "ID":7,
-<<<<<<< HEAD
-        "Name":"普通子弹",
-        "Icon":"Image/Bullet/shit",
-=======
         "Name":"子弹分裂",
         "Icon":"Image/Bullet/Hero",
->>>>>>> f5c518e73cf15909dff2b31361e218f1cc2af607
         "Level":3,
         "Description":"每级多发射一发子弹",
         "Money":[1000,2000,5000,999990]
@@ -96,70 +66,6 @@
     },
     {
         "ID":9,
-<<<<<<< HEAD
-        "Name":"普通子弹",
-        "Icon":"Image/Bullet/shit",
-        "Level":3,
-        "Description":"这是个普通的子弹",
-        "Money":[100,200,300,999990]
-    },
-    {
-        "ID":10,
-        "Name":"魔法杖子弹",
-        "Icon":"Image/Bullet/魔法杖子弹",
-        "Level":2,
-        "Description":"这是个神奇的魔法杖子弹",
-        "Money":[1000,2000,999990]
-    },
-    {
-        "ID":11,
-        "Name":"普通子弹",
-        "Icon":"Image/Bullet/shit",
-        "Level":3,
-        "Description":"这是个普通的子弹",
-        "Money":[100,200,300,999990]
-    },
-    {
-        "ID":12,
-        "Name":"魔法杖子弹",
-        "Icon":"Image/Bullet/魔法杖子弹",
-        "Level":2,
-        "Description":"这是个神奇的魔法杖子弹",
-        "Money":[1000,2000,999990]
-    },
-    {
-        "ID":13,
-        "Name":"普通子弹",
-        "Icon":"Image/Bullet/shit",
-        "Level":3,
-        "Description":"这是个普通的子弹",
-        "Money":[100,200,300,999990]
-    },
-    {
-        "ID":14,
-        "Name":"魔法杖子弹",
-        "Icon":"Image/Bullet/魔法杖子弹",
-        "Level":2,
-        "Description":"这是个神奇的魔法杖子弹",
-        "Money":[1000,2000,999990]
-    },
-    {
-        "ID":15,
-        "Name":"普通子弹",
-        "Icon":"Image/Bullet/shit",
-        "Level":3,
-        "Description":"这是个普通的子弹",
-        "Money":[100,200,300,999990]
-    },
-    {
-        "ID":16,
-        "Name":"魔法杖子弹",
-        "Icon":"Image/Bullet/魔法杖子弹",
-        "Level":2,
-        "Description":"这是个神奇的魔法杖子弹",
-        "Money":[1000,2000,999990]
-    }
-=======
         "Name":"拾取范围",
         "Icon":"Image/Bullet/Hero",
         "Level":2,
@@ -167,5 +73,4 @@
         "Money":[1000,5000,999990]
     },
 
->>>>>>> f5c518e73cf15909dff2b31361e218f1cc2af607
 ]
