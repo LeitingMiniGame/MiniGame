@@ -1,6 +1,10 @@
 {
   "ver": "1.0.2",
+<<<<<<< HEAD
   "uuid": "1cd77d29-7e69-444a-91e2-26aced3855f5",
+=======
+  "uuid": "99ec8a10-19d0-4454-b02a-52e0db768ae9",
+>>>>>>> 64b5142c292172a703bfa9b1f3c5fcfb14da1213
   "importer": "json",
   "subMetas": {}
 }

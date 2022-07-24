@@ -52,11 +52,16 @@ export default abstract class Char extends cc.Component {
             if(!notNeedPlayOnLoad){
                 anim.play(animateName);            
             }
-            this.move(clip)
+            if(clip){
+                let orgSize = clip.curveData.comps['cc.Sprite'].spriteFrame[0].value.getOriginalSize()
+                this.node.scaleX = this.data.size.width / orgSize.width
+                this.node.scaleY = this.data.size.height / orgSize.height
+            }
+            this.move()
         })
     }
 
-    move(clip?) {}
+    move() {}
 
     getWorldPos() {
         return this.node.convertToWorldSpaceAR(cc.v2(0, 0))
