@@ -24,7 +24,6 @@ export default class Hero extends Char {
 
         if(this.data.initWeapon){
             this.addWeapon(this.data.initWeapon)
-            this.addWeapon('ProjectileTest')
         }
     }
 

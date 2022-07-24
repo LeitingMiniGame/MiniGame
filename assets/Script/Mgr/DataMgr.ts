@@ -287,7 +287,7 @@ export default class DataMgr {
     }
 
     onSelectItem(button) {
-        this.addWeapon(this.randWeapon[button.node.index])
+        this.addWeapon(this.randWeapon[button.node.index - 1])
         this.levelUp(button.node.num - 1)
     }
 
