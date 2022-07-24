@@ -42,6 +42,7 @@ export default class GameScene extends cc.Component {
         this.addMonsterLayer()
         this.addItemLayer()
         this.pauseAll()
+
     }
 
     start() {
@@ -60,6 +61,12 @@ export default class GameScene extends cc.Component {
     }
 
     startGame(){
+        cc.resources.load("Radio/Fight", cc.AudioClip, (error, assets:cc.AudioClip)=>{
+            if(error){
+                return
+            }
+            cc.audioEngine.playMusic(assets, true);
+        })
         cc.find('UILayer/LoadingPanel').active = false
         // 开始计时
         this.resumeAll()
