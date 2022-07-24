@@ -2,7 +2,7 @@
     {
         "ID":1,
         "Name":"最大生命",
-        "Icon":"Image/Bullet/Hero",
+        "Icon":"Image/Item/maxHp",
         "Level":5,
         "Description":"每级增加10%最大生命值",
         "Money":[100,500,2000,5000,8000,999990]
@@ -11,7 +11,7 @@
     {
         "ID":2,
         "Name":"自愈能力",
-        "Icon":"Image/Bullet/魔法杖子弹",
+        "Icon":"Image/Item/recovery",
         "Level":5,
         "Description":"每级提供每秒回复0.1生命值",
         "Money":[2001,2002,2003,2004,2005,999990]
@@ -19,7 +19,7 @@
     {
         "ID":3,
         "Name":"力量提升",
-        "Icon":"Image/Bullet/Hero",
+        "Icon":"Image/Item/power",
         "Level":5,
         "Description":"每级增加5%伤害",
         "Money":[3001,3002,3003,3004,3005,999990]
@@ -27,7 +27,7 @@
     {
         "ID":4,
         "Name":"冷却时间",
-        "Icon":"Image/Bullet/魔法杖子弹",
+        "Icon":"Image/Item/coolDown",
         "Level":4,
         "Description":"每级缩短2.5%冷却时间",
         "Money":[4001,4002,4003,4004,999990]
@@ -35,7 +35,7 @@
     {
         "ID":5,
         "Name":"伤害范围",
-        "Icon":"Image/Bullet/Hero",
+        "Icon":"Image/Item/area",
         "Level":4,
         "Description":"每级增加5%伤害范围",
         "Money":[5001,5002,5003,5004,999990]
@@ -43,7 +43,7 @@
     {
         "ID":6,
         "Name":"子弹速度",
-        "Icon":"Image/Bullet/魔法杖子弹",
+        "Icon":"Image/Item/RateOfFire",
         "Level":2,
         "Description":"每级增加10%子弹速度",
         "Money":[6001,6002,999990]
@@ -51,7 +51,7 @@
     {
         "ID":7,
         "Name":"子弹分裂",
-        "Icon":"Image/Bullet/Hero",
+        "Icon":"Image/Item/bulletCount",
         "Level":3,
         "Description":"每级多发射一发子弹",
         "Money":[7001,7002,7003,999990]
@@ -59,7 +59,7 @@
     {
         "ID":8,
         "Name":"移动速度",
-        "Icon":"Image/Bullet/魔法杖子弹",
+        "Icon":"Image/Item/speed",
         "Level":3,
         "Description":"每级增加5%移动速度",
         "Money":[8001,8002,8003,999990]
@@ -67,10 +67,10 @@
     {
         "ID":9,
         "Name":"拾取范围",
-        "Icon":"Image/Bullet/Hero",
+        "Icon":"Image/Item/magnet",
         "Level":2,
         "Description":"每级增加25%拾取范围",
         "Money":[9001,9002,999990]
-    },
+    }
 
 ]
