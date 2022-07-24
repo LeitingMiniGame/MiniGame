@@ -147,7 +147,7 @@ export namespace Data {
             // console.log("JsonObj:",JsonObj)
             // GlobalDataObject[JsonName] = JsonObj
             Config.ConfigMap.set(JsonName, JsonObj);
-            console.log("ConfigMap : ",Config.ConfigMap)
+            // console.log("ConfigMap : ",Config.ConfigMap)
         }
 
         /** 根据输入的配置文件名称返回对应的静态资源 */
@@ -228,14 +228,14 @@ export namespace Data {
                 let RoleList = Object.values(Config.GetConfig("RoleList"))
                 console.log("Hero Init RoleList : ",RoleList)
                 for(let index = 0; index < RoleList.length; index++){
-                    console.log("index: " ,index);
-                    console.log("RoleList[",index,"] : ",RoleList[index]); // key['1'] key[1]
+                    // console.log("index: " ,index);
+                    // console.log("RoleList[",index,"] : ",RoleList[index]); // key['1'] key[1]
 
                     let obj = deepCopyJson(RoleList[index])
                     // let obj = RoleList[Keys[index]]
                     this.HeroMap.set(obj["ID"],obj)
 
-                    console.log(" this.HeroMap : ",  this.HeroMap)
+                    // console.log(" this.HeroMap : ",  this.HeroMap)
                 }
                 return true;
             }
@@ -283,25 +283,25 @@ export namespace Data {
                     this.BufferLevelConfig.set(ProductList[Key]["ID"], Value)
                 }
                 console.log("预处理道具信息完成")
-                // console.log("BufferLevelConfig : ", this.BufferLevelConfig)
+                console.log("BufferLevelConfig : ", this.BufferLevelConfig)
 
                 console.log("开始预处理道具参数信息")
                 this.BufferAttrivuteConfig = new Map<number, Object>();
                 // 预处理要用到的数据
                 // 获取道具配置
                 let ProductAttributeList = Config.GetConfig("attribute")
-                 console.log("ProductAttributeList : ",ProductAttributeList)
+                //  console.log("ProductAttributeList : ",ProductAttributeList)
                 let ProductAttributeKeys = Object.keys(ProductAttributeList)
-                console.log("ProductAttributeKeys : ",ProductAttributeKeys)
+                // console.log("ProductAttributeKeys : ",ProductAttributeKeys)
                 // 将其处理为ID=>Object 的形式
                 for(let index = 0;index < ProductAttributeKeys.length; index++){
                     let Key = parseInt(ProductAttributeKeys[index]);
                     let Value = ProductAttributeList[Key];
-                    console.log("Key : ",Key,"  Value : ",Value)
+                    // console.log("Key : ",Key,"  Value : ",Value)
                     this.BufferAttrivuteConfig.set(ProductAttributeList[Key]["ID"], Value)
                 }
                 console.log("预处理道具参数信息完成")
-                // console.log("BufferLevelConfig : ", this.BufferLevelConfig)
+                console.log("BufferAttrivuteConfig : ", this.BufferAttrivuteConfig)
 
                 return true;
             }
@@ -318,14 +318,25 @@ export namespace Data {
             return deepCopyJson(Buffer.BufferLevelConfig.get(BufferID))
         }
 
+        // 获取指定道具的配置数据
+        public static GetLevelAttributeConfig(BufferID:number){
+            Buffer.Init();
+            // console.log("BufferID : ",BufferID)
+            // console.log("Buffer.BufferAttrivuteConfig.get(BufferID) : ",Buffer.BufferAttrivuteConfig.get(BufferID))
+            return deepCopyJson(Buffer.BufferAttrivuteConfig.get(BufferID))
+        }
+
         public static GetBufferAttribute(BufferID:number,Level:number){
             Buffer.Init();
             // 通过ID查找道具
             let BufferData = Buffer.GetLevelConfig(BufferID);
-            console.log("BufferID : ", BufferID," Level: ",Level)
-            console.log("BufferData : ", BufferData)
+            // console.log("BufferID : ", BufferID," Level: ",Level)
+            // console.log("BufferData : ", BufferData)
 
+            let NextAttributeID = BufferData["Attribute"][Level]
+            // console.log("NextAttributeID : ",NextAttributeID)
 
+            return Buffer.GetLevelAttributeConfig(NextAttributeID);
         }
     }
 
