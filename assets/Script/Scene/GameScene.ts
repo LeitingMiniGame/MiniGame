@@ -19,6 +19,7 @@ export default class GameScene extends cc.Component {
 
         DataMgr.getInstance()
         NumImage.getInstance()
+        CharMgr.getInstance()
 
         this.addLayerRoot()
 
@@ -34,12 +35,12 @@ export default class GameScene extends cc.Component {
         cc.director.getPhysicsManager().gravity = cc.v2(0, -960);
         this.curTime = 0
 
+
         this.addHero()
         this.addMapLayer()
         this.addBulletLayer()
         this.addMonsterLayer()
         this.addItemLayer()
-
         this.pauseAll()
     }
 
@@ -49,6 +50,8 @@ export default class GameScene extends cc.Component {
             .call(()=>{
                 this.pauseAll()
                 cc.find('UILayer/LoadingPanel/BackGround').on('click', this.startGame, this);
+                cc.find('UILayer/LoadingPanel/LoadingLabel').getComponent(cc.Label).string = "按 W/A/S/D 控制角色移动\n 点击任意位置继续"
+
             })
             .delay(2)
             .call(() => {
@@ -65,7 +68,8 @@ export default class GameScene extends cc.Component {
 
     // 添加角色
     addHero() {
-        let hero = CharMgr.getInstance().createChar("HeroTest", "Hero")
+        let roleName = CharMgr.getInstance().HeroData.name
+        let hero = CharMgr.getInstance().createChar(roleName, "Hero")
         let layerRoot = MapMgr.getInstance().getLayerByName('LayerRoot')
         hero.node.parent = layerRoot
         hero.node.zIndex = 400

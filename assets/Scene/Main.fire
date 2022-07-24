@@ -11960,7 +11960,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Label",
+    "_name": "LoadingLabel",
     "_objFlags": 0,
     "_parent": {
       "__id__": 259

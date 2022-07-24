@@ -39,25 +39,27 @@ export default abstract class Char extends cc.Component {
 
     loadAnimate(animateName, notNeedPlayOnLoad?) {
         let path = "Animate/" + animateName
+        let self = this
         cc.resources.load(path, cc.AnimationClip, (error, clip: cc.AnimationClip) => {
             if (error) {
                 return
             }
 
-            let anim = this.animateLayer.getComponent(cc.Animation);
+            let anim = self.animateLayer.getComponent(cc.Animation);
             if(!anim){
-                anim = this.animateLayer.addComponent(cc.Animation);
+                anim = self.animateLayer.addComponent(cc.Animation);
             }
             anim.addClip(clip);
             if(!notNeedPlayOnLoad){
                 anim.play(animateName);            
             }
+            
             if(clip){
                 let orgSize = clip.curveData.comps['cc.Sprite'].spriteFrame[0].value.getOriginalSize()
-                this.node.scaleX = this.data.size.width / orgSize.width
-                this.node.scaleY = this.data.size.height / orgSize.height
+                self.node.scaleX = self.data.size.width / orgSize.width
+                self.node.scaleY = self.data.size.height / orgSize.height
             }
-            this.move()
+            self.move()
         })
     }
 
