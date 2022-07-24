@@ -827,7 +827,7 @@
             "height": "44"
         }
     ],
-    "shit": [
+    "shit":[
         {
             "name": "shit",
             "type": "Domain",
@@ -843,6 +843,7 @@
             "maxDamage": "6",
             "width": "75",
             "height": "75",
+            "speed": "150",
             "maxWidth": "125",
             "maxHeight": "125"
         },
@@ -861,6 +862,7 @@
             "maxDamage": "9",
             "width": "105",
             "height": "105",
+            "speed": "150",
             "maxWidth": "175",
             "maxHeight": "175"
         },
@@ -879,6 +881,7 @@
             "maxDamage": "10",
             "width": "105",
             "height": "105",
+            "speed": "150",
             "maxWidth": "175",
             "maxHeight": "175"
         },
@@ -897,6 +900,7 @@
             "maxDamage": "12",
             "width": "120",
             "height": "120",
+            "speed": "150",
             "maxWidth": "200",
             "maxHeight": "200"
         },
@@ -915,6 +919,7 @@
             "maxDamage": "14",
             "width": "120",
             "height": "120",
+            "speed": "150",
             "maxWidth": "200",
             "maxHeight": "200"
         },
@@ -933,6 +938,7 @@
             "maxDamage": "15",
             "width": "135",
             "height": "135",
+            "speed": "150",
             "maxWidth": "225",
             "maxHeight": "225"
         },
@@ -951,6 +957,7 @@
             "maxDamage": "16",
             "width": "135",
             "height": "135",
+            "speed": "150",
             "maxWidth": "225",
             "maxHeight": "225"
         },
@@ -969,11 +976,12 @@
             "maxDamage": "17",
             "width": "150",
             "height": "150",
+            "speed": "150",
             "maxWidth": "250",
             "maxHeight": "250"
         }
     ],
-    "snow": [
+    "snow":[
         {
             "name": "snow",
             "type": "Domain",
@@ -989,6 +997,7 @@
             "maxDamage": "12",
             "width": "75",
             "height": "75",
+            "speed": "200",
             "maxWidth": "125",
             "maxHeight": "125"
         },
@@ -1007,6 +1016,7 @@
             "maxDamage": "12",
             "width": "90",
             "height": "90",
+            "speed": "200",
             "maxWidth": "150",
             "maxHeight": "150"
         },
@@ -1025,6 +1035,7 @@
             "maxDamage": "22",
             "width": "90",
             "height": "90",
+            "speed": "200",
             "maxWidth": "150",
             "maxHeight": "150"
         },
@@ -1043,6 +1054,7 @@
             "maxDamage": "22",
             "width": "105",
             "height": "105",
+            "speed": "200",
             "maxWidth": "175",
             "maxHeight": "175"
         },
@@ -1061,6 +1073,7 @@
             "maxDamage": "33",
             "width": "105",
             "height": "105",
+            "speed": "200",
             "maxWidth": "175",
             "maxHeight": "175"
         },
@@ -1079,6 +1092,7 @@
             "maxDamage": "33",
             "width": "120",
             "height": "120",
+            "speed": "200",
             "maxWidth": "200",
             "maxHeight": "200"
         },
@@ -1097,6 +1111,7 @@
             "maxDamage": "38",
             "width": "120",
             "height": "120",
+            "speed": "200",
             "maxWidth": "200",
             "maxHeight": "200"
         },
@@ -1115,6 +1130,7 @@
             "maxDamage": "45",
             "width": "135",
             "height": "135",
+            "speed": "200",
             "maxWidth": "225",
             "maxHeight": "225"
         }
