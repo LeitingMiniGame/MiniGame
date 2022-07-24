@@ -14,7 +14,7 @@ export default class Line extends Weapon {
         let time = targetPos.len() / this.data.speed
 
         let ang = targetPos.angle(cc.v2(0, 1)) / Math.PI * 360
-        this.node.rotation=ang
+        this.node.angle = ang
 
         this.moveTween = cc.tween(this.node)
             .by(time, { position: cc.v3(targetPos.x, targetPos.y) })
