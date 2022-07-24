@@ -184,6 +184,5 @@ export default class GameScene extends cc.Component {
 
     openSetting(){
         console.log('setting');
-
     }
 }
