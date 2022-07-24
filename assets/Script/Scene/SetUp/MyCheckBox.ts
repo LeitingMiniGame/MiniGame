@@ -39,7 +39,7 @@ export default class MyCheckBox extends cc.Component {
     }
 
     UpdateCheckStatus(){
-        console.log(this.node.name,"勾选框被改变了:",this.my_toggle.isChecked);
+        //console.log(this.node.name,"勾选框被改变了:",this.my_toggle.isChecked);
         this.SetStatus(this.my_toggle.isChecked)
     }
 
@@ -48,9 +48,9 @@ export default class MyCheckBox extends cc.Component {
         let SetUp = this.DB.query("SetUp");
         SetUp[this.key] = IsCheck;
 
-        console.log("SetUp[",this.key,"]:",SetUp[this.key]);
+        //console.log("SetUp[",this.key,"]:",SetUp[this.key]);
 
-        console.log("Data.SetUp[",this.key,"]",cc.director.getScene().getChildByName("GlobalData").getComponent("GlobalData").Data.SetUp[this.key])
+        //console.log("Data.SetUp[",this.key,"]",cc.director.getScene().getChildByName("GlobalData").getComponent("GlobalData").Data.SetUp[this.key])
 
     }
     start () {

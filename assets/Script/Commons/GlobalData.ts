@@ -44,7 +44,7 @@ export default class NewClass extends cc.Component {
         let Basic = Data.Gamer.query("basic");
         if(!Basic)
         {
-            console.log("开始初始化玩家基础数据")
+            //console.log("开始初始化玩家基础数据")
             Basic = new Object();
             Basic["Coin"] = 100;// 初始金币设为100
             Data.Gamer.set("basic",Basic);
@@ -54,17 +54,17 @@ export default class NewClass extends cc.Component {
         let BufferList = Data.Gamer.query("buffer");
         if(!BufferList){
             // 初始化道具
-            console.log("开始初始化道具")
+            //console.log("开始初始化道具")
             let ProductList = Data.Config.GetConfig("ProductList");
             if(!ProductList){
-                console.log("初始化道具失败，道具配置未加载完成")
+                //console.log("初始化道具失败，道具配置未加载完成")
                 return
             }
-            console.log("重新生成用户道具信息")
+            //console.log("重新生成用户道具信息")
             BufferList = new Object();
 
-            console.log("ProductList",ProductList)
-            console.log("Typeof ProductList",typeof ProductList)
+            //console.log("ProductList",ProductList)
+            //console.log("Typeof ProductList",typeof ProductList)
             let bufferConfigArray = Object.values(ProductList)
             // 初始化用户拥有的道具配置
             for(let index = 0;index < bufferConfigArray.length ;index++){
@@ -72,7 +72,7 @@ export default class NewClass extends cc.Component {
                 BufferList[bufferConfigArray[index]["ID"]] = 0;// 设置等级为0
             }
 
-            console.log("BufferList：",BufferList)
+            //console.log("BufferList：",BufferList)
             Data.Gamer.set("buffer",BufferList);
         }
 
@@ -91,10 +91,10 @@ export default class NewClass extends cc.Component {
         let GlobalDataObject = GlobalDataNote.getComponent("GlobalData").Data;
         let JsonName:string = Paras[1][0]
         let JsonObj:Object = Paras[0]
-        // console.log("JsonName:",JsonName)
-        // console.log("JsonObj:",JsonObj)
+        // //console.log("JsonName:",JsonName)
+        // //console.log("JsonObj:",JsonObj)
         GlobalDataObject[JsonName] = JsonObj
-        // console.log("GlobalDataObject:",GlobalDataObject)
+        // //console.log("GlobalDataObject:",GlobalDataObject)
     }
 
     onDestroy(){

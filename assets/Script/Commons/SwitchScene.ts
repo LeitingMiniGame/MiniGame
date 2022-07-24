@@ -19,7 +19,7 @@ export default class NewClass extends cc.Component {
 
     start () {
         // cc.director.preloadScene("ControlSystem", function () {
-        //     console.log("控制界面预加载好了");
+        //     //console.log("控制界面预加载好了");
         // });
 
     }
@@ -27,20 +27,20 @@ export default class NewClass extends cc.Component {
     SwitchToSettlement(){
 
 
-        console.log("运行到SwitchToSettlement");
+        //console.log("运行到SwitchToSettlement");
 
         // 否则说明要回到首页
         cc.director.loadScene('SettlementSystem', function(){
-            console.log("切换到结算界面啦");
+            //console.log("切换到结算界面啦");
         });
     }
 
     SwitchToGame(){
-        console.log("准备开始游戏");
+        //console.log("准备开始游戏");
 
         // 否则说明要回到首页
         cc.director.loadScene('Main', function(){
-            console.log("切换到游戏界面啦");
+            //console.log("切换到游戏界面啦");
         });
     }
 
@@ -49,7 +49,7 @@ export default class NewClass extends cc.Component {
     }
 
     show(){
-        console.log("弹窗确认内容")
+        //console.log("弹窗确认内容")
     }
 
     TestPop2(){
@@ -61,7 +61,7 @@ export default class NewClass extends cc.Component {
 
         this.SwitchToControl("SetUp")
         // cc.director.loadScene('SetUp', function(){
-        //     console.log("切换到设置界面啦");
+        //     //console.log("切换到设置界面啦");
         // });
     }
 
@@ -86,11 +86,11 @@ export default class NewClass extends cc.Component {
         let GlobalDataObj:object = GlobalData.Data;
         //设置DataNode要传递的数据
         if(!GlobalDataObj){
-            console.log("GlobalData.Data为空");
+            //console.log("GlobalData.Data为空");
             return;
         }
         GlobalDataObj["FunctionalScene"] = Para;
-        console.log("SwitchToControl GlobalDataObj : ",GlobalDataObj)
+        //console.log("SwitchToControl GlobalDataObj : ",GlobalDataObj)
 
         // 切换到系统
         cc.director.loadScene("ControlSystem");
@@ -99,18 +99,18 @@ export default class NewClass extends cc.Component {
     /** 根据数据Temp数据库中记录的PreviousScene标记返回上一个场景 */
     SwitchToPreviousScene(){
         if(this.IsGaming()){
-            ////------------- 玩家正在游戏中，需要判断返回哪个场景，后续完成
+            //------------- 玩家正在游戏中，需要判断返回哪个场景，后续完成
             cc.director.loadScene('Main', function(){
-                console.log("切换到游戏界面啦");
+                //console.log("切换到游戏界面啦");
             });
             return;
         }
 
-        console.log("运行到SwitchToPreviousScene");
+        //console.log("运行到SwitchToPreviousScene");
 
         // 否则说明要回到首页
         cc.director.loadScene('HomePage', function(){
-            console.log("切换到初始界面啦");
+            //console.log("切换到初始界面啦");
         });
     }
 
@@ -122,7 +122,7 @@ export default class NewClass extends cc.Component {
     /** 删除存档，慎重使用 */
     DeleteArchive(){
         // 旧代码，不需要再使用
-        // console.log("准备跳出删除存档确认框1")
+        // //console.log("准备跳出删除存档确认框1")
         // let ConfirmPopupOp:ConfirmPopupOptions = {
         //     title: "删除存档",
         //     content: "你确定要删除存档数据嘛(一旦删除无法恢复)",
@@ -130,18 +130,18 @@ export default class NewClass extends cc.Component {
         //     cancelCallback: this.do_DeleteArchive_Cancel,
         // };
 
-        // console.log("准备跳出删除存档确认框2")
+        // //console.log("准备跳出删除存档确认框2")
         // const params = {
         //     mode: PopupManager.CacheMode.Once,
         //     /** 立刻展示（将会挂起当前展示中的弹窗） */
         //     immediately : true
         // };
 
-        // console.log("准备跳出删除存档确认框3")
+        // //console.log("准备跳出删除存档确认框3")
         // PopupManager.show('Prefab/UI/Popup', ConfirmPopupOp, params);
-        // console.log("准备跳出删除存档确认框4")
+        // //console.log("准备跳出删除存档确认框4")
         // let ShowResult:
-        // console.log("准备跳出删除存档确认框结果:",PopupManager.ShowResult())
+        // //console.log("准备跳出删除存档确认框结果:",PopupManager.ShowResult())
 
 
 
@@ -150,21 +150,21 @@ export default class NewClass extends cc.Component {
 
     /** 执行确认删除存档逻辑 */
     do_DeleteArchive_OK(){
-        console.log("开始删除存档")
+        //console.log("开始删除存档")
         let GlobalDataNote = cc.director.getScene().getChildByName("GlobalData");
         let GlobalDataObject = GlobalDataNote.getComponent("GlobalData").Data;
-        console.log("存档删除前 GlobalDataObject : ",GlobalDataObject)
-        console.log("存档删除前 JsonManager : ",JsonManager.getInstance().queryAll())
+        //console.log("存档删除前 GlobalDataObject : ",GlobalDataObject)
+        //console.log("存档删除前 JsonManager : ",JsonManager.getInstance().queryAll())
         GlobalDataObject = null
         JsonManager.getInstance().clear();
-        console.log("存档已删除,开始保存数据")
-        console.log("存档删除后 GlobalDataObject : ",GlobalDataObject)
-        console.log("存档删除后 JsonManager : ",JsonManager.getInstance().queryAll())
+        //console.log("存档已删除,开始保存数据")
+        //console.log("存档删除后 GlobalDataObject : ",GlobalDataObject)
+        //console.log("存档删除后 JsonManager : ",JsonManager.getInstance().queryAll())
         JsonManager.getInstance().SaveDB();
 
         OpenPopups(2,"存档删除成功",function(){
             cc.director.loadScene('HomePage', function(){
-                console.log("切换到初始界面啦");
+                //console.log("切换到初始界面啦");
             });
         });
 
@@ -173,7 +173,7 @@ export default class NewClass extends cc.Component {
     OpenZhiZuoRen(){
         // this.ZZRNode.active = true
         cc.find("Canvas/CommonPopups").active = true;
-        console.log("cc.find(Canvas/CommonPopups):",cc.find("Canvas/CommonPopups"))
+        //console.log("cc.find(Canvas/CommonPopups):",cc.find("Canvas/CommonPopups"))
     }
     CloseZhiZuoRen(){
         // this.ZZRNode.active = false;
@@ -182,7 +182,7 @@ export default class NewClass extends cc.Component {
 
     /** 执行取消删除存档逻辑 */
     do_DeleteArchive_Cancel(){
-        console.log("取消删除存档")
+        //console.log("取消删除存档")
     }
 
     // update (dt) {}

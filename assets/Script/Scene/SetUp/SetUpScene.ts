@@ -32,7 +32,7 @@ export default class NewClass extends cc.Component {
             console.warn("SetUp start 中 GlobalData 不存在")
             // 切换回主界面
             cc.director.loadScene('HomePage', function(){
-                console.log("切换到初始界面啦");
+                //console.log("切换到初始界面啦");
             });
         }
         this.GlobalDataObject = GlobalDataNote.getComponent("GlobalData").Data;
@@ -40,7 +40,7 @@ export default class NewClass extends cc.Component {
             console.warn("SetUp start 中 GlobalDataObject 不存在")
             // 切换回主界面
             cc.director.loadScene('HomePage', function(){
-                console.log("切换到初始界面啦");
+                //console.log("切换到初始界面啦");
             });
         }
         console.warn(this.GlobalDataObject["SetUp"]);
@@ -49,10 +49,10 @@ export default class NewClass extends cc.Component {
 
         //     // 切换回主界面
         //     cc.director.loadScene('HomePage', function(){
-        //         console.log("切换到初始界面啦");
+        //         //console.log("切换到初始界面啦");
         //     });
         // }
-        // console.log(this.GlobalDataObject);
+        // //console.log(this.GlobalDataObject);
 
         // 需要从用户数据中查找是否存在SetUp相关配置,若不存在则初始化用户数据
         if(!JsonManager.getInstance().has("SetUp")){
@@ -69,8 +69,8 @@ export default class NewClass extends cc.Component {
         // 运行到这里说明用户身上有过相关配置，无论是否与配置有出入，都将常驻节点中的配置信息更新为用户身上的配置
         // 这里是引用，所以以后更新常驻节点数据只需要调用JsonManager即可
         this.GlobalDataObject["SetUp"] = JsonManager.getInstance().query("SetUp");
-        // console.log("SetUp：",JsonManager.getInstance().query("SetUp"))
-        // console.log("GlobalDataObject：",this.GlobalDataObject)
+        // //console.log("SetUp：",JsonManager.getInstance().query("SetUp"))
+        // //console.log("GlobalDataObject：",this.GlobalDataObject)
         // 现在开始初始化界面
 
     }
@@ -81,26 +81,26 @@ export default class NewClass extends cc.Component {
      */
     DataSync(Key:string,Value:any){
         let SetUp = JsonManager.getInstance().query("SetUp");
-        console.log("同步前:SetUp：",SetUp)
-        console.log("同步前:GlobalDataObject：",this.GlobalDataObject)
+        //console.log("同步前:SetUp：",SetUp)
+        //console.log("同步前:GlobalDataObject：",this.GlobalDataObject)
         this.GlobalDataObject["SetUp"][Key] = SetUp[Key]
-        console.log("同步后:SetUp：",SetUp)
-        console.log("同步后:GlobalDataObject：",this.GlobalDataObject)
+        //console.log("同步后:SetUp：",SetUp)
+        //console.log("同步后:GlobalDataObject：",this.GlobalDataObject)
     }
 
     ShowGlobalData(){
         // let IsShowDamage = Data.SetUp.IsShowDamage()
-        // console.log("IsShowDamage : ",IsShowDamage)
-        // console.log("IsFullScreen : ",Data.SetUp.IsFullScreen())
-        // console.log("IsShowJoystick : ",Data.SetUp.IsShowJoystick())
-        // console.log("Music : ",Data.SetUp.GetMusicNum())
-        // console.log("Sound : ",Data.SetUp.GetSoundNum())
+        // //console.log("IsShowDamage : ",IsShowDamage)
+        // //console.log("IsFullScreen : ",Data.SetUp.IsFullScreen())
+        // //console.log("IsShowJoystick : ",Data.SetUp.IsShowJoystick())
+        // //console.log("Music : ",Data.SetUp.GetMusicNum())
+        // //console.log("Sound : ",Data.SetUp.GetSoundNum())
 
 
-        // console.log("准备开始修改IsShowDamage")
+        // //console.log("准备开始修改IsShowDamage")
         // IsShowDamage = true
-        // console.log("修改IsShowDamage完毕")
-        // console.log("IsShowDamage : ",Data.SetUp.IsShowDamage())
+        // //console.log("修改IsShowDamage完毕")
+        // //console.log("IsShowDamage : ",Data.SetUp.IsShowDamage())
 
         let RoleList =Data.Config.GetConfig("RoleList")
         // let SetUp =Data.Config.GetConfig("SetUp")
@@ -110,13 +110,13 @@ export default class NewClass extends cc.Component {
         // let lineweapon =Data.Config.GetConfig("lineweapon")
         // let weapon =Data.Config.GetConfig("weapon")
         // Data
-        console.log("RoleList : ",RoleList)
-        // console.log("SetUp : ",SetUp)
-        // console.log("AchieveList : ",AchieveList)
-        // console.log("LevelList : ",LevelList)
-        // console.log("ProductList : ",ProductList)
-        // console.log("lineweapon : ",lineweapon)
-        // console.log("weapon : ",weapon)
+        //console.log("RoleList : ",RoleList)
+        // //console.log("SetUp : ",SetUp)
+        // //console.log("AchieveList : ",AchieveList)
+        // //console.log("LevelList : ",LevelList)
+        // //console.log("ProductList : ",ProductList)
+        // //console.log("lineweapon : ",lineweapon)
+        // //console.log("weapon : ",weapon)
     }
 
     onDestroy(){

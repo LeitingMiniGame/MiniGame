@@ -53,15 +53,15 @@ export default class MyScrollBar extends cc.Component {
         //console.log("被滑动了:",this.my_slider.progress);
         //console.log("Label:",this.my_label);
         //this.music.volume = this.my_slider.progress;
-        console.log(this.node.name,"滑动条被改变了:",this.my_slider.progress);
+        //console.log(this.node.name,"滑动条被改变了:",this.my_slider.progress);
         this.SetNum(this.my_slider.progress * 100);
 
         let SetUp = this.DB.query("SetUp");
         SetUp[this.key] = this.my_slider.progress.toFixed(2);
 
-        console.log("SetUp[",this.key,"]:",SetUp[this.key]);
+        //console.log("SetUp[",this.key,"]:",SetUp[this.key]);
 
-        console.log("Data.SetUp[",this.key,"]",cc.director.getScene().getChildByName("GlobalData").getComponent("GlobalData").Data.SetUp[this.key])
+        //console.log("Data.SetUp[",this.key,"]",cc.director.getScene().getChildByName("GlobalData").getComponent("GlobalData").Data.SetUp[this.key])
 
 
     }

@@ -27,9 +27,9 @@ export default class NewClass extends cc.Component {
 
     start () {
         // 在这里检测Data数据是否初始化，若没有初始化，则说明是无效的弹窗，需要关闭
-        console.log("弹窗有效性检测");
+        //console.log("弹窗有效性检测");
         if(this.PopMode < 0 || (this.PopMode == 1 && !this.ConfirmCallBack)){
-            console.log("弹窗未初始化,准备关闭弹窗");
+            //console.log("弹窗未初始化,准备关闭弹窗");
             this.RootNode.destroy();
         }
 
@@ -52,7 +52,7 @@ export default class NewClass extends cc.Component {
      * Cancel  : 取消按钮的回调函数
     */
     Init(Mode:number = 1, Message:string, Confirm:Function, Cancel?:Function){
-        console.log("进入弹窗初始化")
+        //console.log("进入弹窗初始化")
         this.Message.string = Message
         this.ConfirmCallBack = Confirm
         this.CancelCallBack = Cancel
@@ -60,14 +60,14 @@ export default class NewClass extends cc.Component {
     }
 
     CallConfirm(){
-        console.log("弹窗确认按钮被按下，准备开始执行");
+        //console.log("弹窗确认按钮被按下，准备开始执行");
         this.ConfirmCallBack&&this.ConfirmCallBack()
         // 执行完毕后关闭弹窗
         this.RootNode.destroy();
     }
 
     CallCancel(){
-        console.log("弹窗取消按钮被按下，准备开始执行");
+        //console.log("弹窗取消按钮被按下，准备开始执行");
         this.CancelCallBack&&this.CancelCallBack()
         // 执行完毕后关闭弹窗
         this.RootNode.destroy();

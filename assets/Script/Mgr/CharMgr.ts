@@ -8,7 +8,7 @@ export default class CharMgr {
     private _mapChar: Map<string, Char> = new Map();
     private _mapCharById: Map<string, cc.Node> = new Map();
 
-    //// 临时数据
+    // 临时数据
     CharData = {
         ['HeroTest']: {
             image: 'Char/HeroStay1',

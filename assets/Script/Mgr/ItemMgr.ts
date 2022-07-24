@@ -12,7 +12,7 @@ export default class ItemMgr {
     private _mapItemById: Map<string, Item> = new Map();
 
     itemDatas:any
-    //// 临时数据
+    // 临时数据
     itemPool:any
 
 
