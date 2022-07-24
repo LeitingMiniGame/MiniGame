@@ -1,5 +1,5 @@
 import Item from "../Char/Item/Item";
-import { randByWeight } from "../Tools/Tools";
+import { Data, randByWeight } from "../Tools/Tools";
 import CharMgr from "./CharMgr";
 import MapMgr from "./MapMgr";
 
@@ -11,39 +11,18 @@ export default class ItemMgr {
     protected static _instance: ItemMgr = null;
     private _mapItemById: Map<string, Item> = new Map();
 
-    //// 临时数据
-    itemDatas = {
-        ['Coin1']: {
-            comType: 'Coin',
-            icon: 'Grapes',
-            value: 1,
-            size: cc.size(40, 20)
-        },
-        ['Coin2']: {
-            comType: 'Coin',
-            icon: 'Grapes',
-            value: 10,
-            size: cc.size(40, 20)
-        },
-        ['Exp1']: {
-            comType: 'Exp',
-            icon: 'Clover',
-            value: 1,
-            size: cc.size(40, 20)
-        }
-    }
-
+    itemDatas:any
     //// 临时数据
     itemPool = [
         {
             time: 0,
             itemWeights: [
                 {
-                    name: 'Coin1',
+                    name: 'coin1',
                     weight: 100,
                 },
                 {
-                    name: 'Exp1',
+                    name: 'exp1',
                     weight: 100
                 }
             ],
@@ -52,15 +31,15 @@ export default class ItemMgr {
             time: 60,
             itemWeights: [
                 {
-                    name: 'Coin1',
+                    name: 'coin1',
                     weight: 100,
                 },
                 {
-                    name: 'Coin2',
+                    name: 'coin2',
                     weight: 100,
                 },
                 {
-                    name: 'Exp1',
+                    name: 'exp1',
                     weight: 100
                 }
             ],
@@ -80,6 +59,7 @@ export default class ItemMgr {
     }
 
     _init() {
+        this.itemDatas = Data.Config.GetConfig("itemDatas")
     }
 
     tryCreateItem(wordPos) {

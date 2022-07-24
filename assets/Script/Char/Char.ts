@@ -17,6 +17,7 @@ export default abstract class Char extends cc.Component {
         if(this.data.maxHp){
             this.data.hp = this.data.maxHp
         }
+        this.data.size = cc.size(this.data.width, this.data.height)
     }
 
     loadImage(imagePath) {

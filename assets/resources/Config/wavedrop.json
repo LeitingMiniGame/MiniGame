@@ -1,0 +1,160 @@
+[
+    {
+        "time": 0,
+        "itemWeights": [
+            {
+                "name": "Coin1",
+                "weight": 89
+            },
+            {
+                "name": "Coin2",
+                "weight": 11
+            },
+            {
+                "name": "Exp1",
+                "weight": 474
+            },
+            {
+                "name": "Exp2",
+                "weight": 26
+            }
+        ]
+    },
+    {
+        "time": 240,
+        "itemWeights": [
+            {
+                "name": "Coin1",
+                "weight": 87
+            },
+            {
+                "name": "Coin2",
+                "weight": 13
+            },
+            {
+                "name": "Exp1",
+                "weight": 445
+            },
+            {
+                "name": "Exp2",
+                "weight": 55
+            }
+        ]
+    },
+    {
+        "time": 540,
+        "itemWeights": [
+            {
+                "name": "Coin1",
+                "weight": 86
+            },
+            {
+                "name": "Coin2",
+                "weight": 13
+            },
+            {
+                "name": "Coin4",
+                "weight": 1
+            },
+            {
+                "name": "Exp1",
+                "weight": 440
+            },
+            {
+                "name": "Exp2",
+                "weight": 49
+            },
+            {
+                "name": "Exp3",
+                "weight": 11
+            }
+        ]
+    },
+    {
+        "time": 780,
+        "itemWeights": [
+            {
+                "name": "Coin1",
+                "weight": 86
+            },
+            {
+                "name": "Coin2",
+                "weight": 13
+            },
+            {
+                "name": "Coin4",
+                "weight": 1
+            },
+            {
+                "name": "Exp1",
+                "weight": 440
+            },
+            {
+                "name": "Exp2",
+                "weight": 43
+            },
+            {
+                "name": "Exp3",
+                "weight": 17
+            }
+        ]
+    },
+    {
+        "time": 1020,
+        "itemWeights": [
+            {
+                "name": "Coin1",
+                "weight": 86
+            },
+            {
+                "name": "Coin2",
+                "weight": 13
+            },
+            {
+                "name": "Coin4",
+                "weight": 1
+            },
+            {
+                "name": "Exp1",
+                "weight": 440
+            },
+            {
+                "name": "Exp2",
+                "weight": 43
+            },
+            {
+                "name": "Exp3",
+                "weight": 17
+            }
+        ]
+    },
+    {
+        "time": 1200,
+        "itemWeights": [
+            {
+                "name": "Coin1",
+                "weight": 86
+            },
+            {
+                "name": "Coin2",
+                "weight": 13
+            },
+            {
+                "name": "Coin4",
+                "weight": 1
+            },
+            {
+                "name": "Exp1",
+                "weight": 440
+            },
+            {
+                "name": "Exp2",
+                "weight": 43
+            },
+            {
+                "name": "Exp3",
+                "weight": 17
+            }
+        ]
+    }
+]

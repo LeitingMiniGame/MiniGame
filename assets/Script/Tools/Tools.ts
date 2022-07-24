@@ -90,6 +90,7 @@ export function OpenPopups(Mode: number = 1, Message: string, Confirm: Function,
     console.log("准备开始初始化弹窗")
     Script.Init(Mode, Message, Confirm, Cancel);
     Pop.parent = Root;
+    Pop.zIndex = 1000
 }
 
 /** 所有的配置数据由这里获取 */
@@ -124,6 +125,9 @@ export namespace Data {
                 this.LoadJson("lineweapon");
                 this.LoadJson("weapon");
                 this.LoadJson("enemy");
+                this.LoadJson("levelup");
+                this.LoadJson("itemDatas");
+                this.LoadJson("wavedrop")
             }
         }
 
@@ -204,13 +208,12 @@ export namespace Data {
 
 
     /**
-     * 使用此接口来记录或者读取临时数据/永久数据
+     * 使用此接口来记录或者读取指定ID的英雄配置
      */
     export class Hero{
         // 存储临时对象数据
         private static HeroMap: Map<number, Object> = null;
         private static IsInit: boolean = false
-        private static CurrentHeroID:number = -1;
         /** 单例模式，获取管理对象 */
         public static Init() {
             if (!this.IsInit) {
@@ -218,42 +221,98 @@ export namespace Data {
                 // 初次加载则读取本地数据
                 Config.Init();
                 this.HeroMap = new Map<number,Object>();
-                let RoleList = Config.GetConfig("RoleList")
+                let RoleList = Object.values(Config.GetConfig("RoleList"))
                 console.log("Hero Init RoleList : ",RoleList)
-                let Keys = Object.keys(RoleList)
-                for(let index = 0; index < Keys.length; index++){
+                for(let index = 0; index < RoleList.length; index++){
                     console.log("index: " ,index);
-                    console.log("Keys : ",Keys)
-                    console.log("Keys[index] : ",Keys[index])
-                    console.log("RoleList[Keys[index]] : ",RoleList[Keys[index]])
-                    console.log(typeof(Keys[index])); // key['1'] key[1]
+                    console.log("RoleList[",index,"] : ",RoleList[index]); // key['1'] key[1]
 
-                    let obj = RoleList[Number(Keys[index])]
+                    let obj = deepCopyJson(RoleList[index])
                     // let obj = RoleList[Keys[index]]
                     this.HeroMap.set(obj["ID"],obj)
+
+                    console.log(" this.HeroMap : ",  this.HeroMap)
                 }
+                return true;
             }
-
-        }
-
-        private static HasCurrentHero():boolean{
-            if(Hero.CurrentHeroID < 0)
-                return false;
             return true;
         }
 
         // 获取当前角色的所有配置数据
-        public static GetAllAttribute(){
+        public static GetAllAttribute(CurrentHeroID:number){
             Hero.Init();
-            if(!Hero.HasCurrentHero())
-                return;
-            return deepCopyJson(Hero.HeroMap.get(Hero.CurrentHeroID))
+            // console.log("Hero.HeroMap : ",Hero.HeroMap)
+            // console.log("CurrentHeroID : ",CurrentHeroID)
+            // console.log("Hero.HeroMap.get(CurrentHeroID) : ",Hero.HeroMap.get(CurrentHeroID))
+            // console.log("deepCopyJson(Hero.HeroMap.get(CurrentHeroID)) : ",deepCopyJson(Hero.HeroMap.get(CurrentHeroID)))
+            return deepCopyJson(Hero.HeroMap.get(CurrentHeroID))
         }
 
-        // 获取当前角色的所有配置数据
-        public static SetCurrentHeroID(HeroID:number){
-            this.CurrentHeroID = HeroID
+    }
+
+
+    /** 游戏玩家存储数据的地方 */
+    export class Gamer{
+        static isExit(Key : string):boolean{
+            return JsonManager.getInstance().has(Key)
         }
+
+        /** 查询指定内存数据
+         *
+         * 引用类型，在其返回的Object上修改即直接修改内存中的数据，无需重新set保存
+         */
+        static query(Key : string){
+            return JsonManager.getInstance().query(Key)
+        }
+
+        /** 一般用不到，用来增加新的永久字段 */
+        static set(Key : string, ClassObj:any){
+            JsonManager.getInstance().set(Key,ClassObj)
+        }
+
+        /** 清除所有内存数据 */
+        static clear(){
+            return JsonManager.getInstance().clear()
+        }
+
+        static delete(Key : string){
+            return JsonManager.getInstance().delete(Key)
+        }
+
+        /** 查询指定临时数据是否存在 */
+        static isExit_Temp(Key : string):boolean{
+            return JsonManager.getInstance().hasTemp(Key)
+        }
+
+        /** 查询指定临时内存数据
+
+        * 引用类型，在其返回的Object上修改即直接修改内存中的数据，无需重新set保存
+        */
+        static query_Temp(Key : string){
+            return JsonManager.getInstance().queryTemp(Key)
+        }
+
+
+        /** 查询所有临时内存数据 */
+        static queryAllTemp(){
+            return JsonManager.getInstance().queryAllTemp()
+        }
+
+        /** 添加临时内存数据 */
+        static set_Temp(Key : string, ClassObj:any){
+            JsonManager.getInstance().setTemp(Key,ClassObj)
+        }
+
+        /** 清除所有临时内存数据 */
+        static clear_Temp(){
+            return JsonManager.getInstance().clearTemp()
+        }
+
+        /** 删除指定临时内存数据 */
+        static delete_Temp(Key : string){
+            return JsonManager.getInstance().deleteTemp(Key)
+        }
+
 
     }
 }
