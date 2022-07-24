@@ -1,4 +1,4 @@
-import { Data, deepCopyJson } from "../Tools/Tools";
+import { Data, deepCopyJson, getRandomIntInclusive } from "../Tools/Tools";
 import JsonManager from "./JsonManager";
 import WeaponMgr from "./WeaponMgr";
 
@@ -21,65 +21,7 @@ export default class DataMgr {
     selectItemPanel: any
     randWeapon: any
 
-    bulletData:any
-    //// 临时数据
-    // bulletData = {
-    //     ['magicwand']: [
-    //         {
-    //             name: 'magicwand',
-    //             type: 'Line',
-    //             icon: 'Dart',
-    //             bulletIcon: 'Hero',
-    //             describe: '红红火火恍恍惚惚',
-    //             level: 1,
-    //             interval: 1,
-    //             preInterval: 0.05,
-    //             preCount: 1,
-    //             hp: 10,
-    //             minDamage: 5,
-    //             maxDamage: 10,
-    //             speed: 600,
-    //             size: cc.size(20, 20)
-    //         }
-    //     ],
-    //     ['DomainTest']: [
-    //         {
-    //             name: 'DomainTest',
-    //             type: 'Domain',
-    //             icon: 'MagicWand',
-    //             bulletIcon: 'Hero',
-    //             describe: '红红火火恍恍惚惚',
-    //             level: 1,
-    //             interval: 1,
-    //             preInterval: 0.05,
-    //             preCount: 1,
-    //             hp: 100000000,
-    //             minDamage: 5,
-    //             maxDamage: 5,
-    //             speed: 100,
-    //             maxSize: cc.size(800, 800), // 领域型武器 领域的最大值
-    //             size: cc.size(20, 20)
-    //         }
-    //     ],
-    //     ['ProjectileTest']: [
-    //         {
-    //             name: 'ProjectileTest',
-    //             type: 'Projectile',
-    //             icon: 'MagicWand1',
-    //             bulletIcon: 'Hero',
-    //             describe: '红红火火恍恍惚惚',
-    //             level: 1,
-    //             interval: 1,
-    //             preInterval: 0.05,
-    //             preCount: 1,
-    //             hp: 1000000,
-    //             minDamage: 5,
-    //             maxDamage: 5,
-    //             speed: 600,
-    //             size: cc.size(20, 20)
-    //         }
-    //     ]
-    // }
+    bulletData: any
 
     //// 临时数据
     levelExp = [
@@ -131,10 +73,11 @@ export default class DataMgr {
         this.weaponList = cc.find('/UILayer/WeaponList')
 
 
-        this.bulletData = Data.Config.GetConfig("weapon")   
+        this.bulletData = Data.Config.GetConfig("weapon")
+
     }
 
-    getData(obj):any {
+    getData(obj): any {
         return deepCopyJson(obj)
     }
 
@@ -142,7 +85,7 @@ export default class DataMgr {
     addWeapon(typeName) {
         for (let i = 0; i < Math.min(6, this.bag.length); i++) {
             if (this.bag[i].name == typeName) {
-                this.upWeapon(i)
+                this.upWeapon(typeName)
                 return
             }
         }
@@ -179,15 +122,6 @@ export default class DataMgr {
 
     // 升级武器
     upWeapon(typeName: string | number) {
-        if (typeof (typeName) === 'string') {
-            for (let i = 0; i < Math.min(6, this.bag.length); i++) {
-                if (this.bag[i].name == typeName) {
-                    this.upWeapon(i)
-                    return
-                }
-            }
-
-        }
 
         let level = this.bag[typeName].level
         // 处理升级的逻辑
@@ -255,7 +189,14 @@ export default class DataMgr {
             return
         }
 
-        this.randWeapon = ['LineTest', 'DomainTest', 'ProjectileTest']
+        let allBulletName = Object.keys(this.bulletData)
+        this.randWeapon = []
+
+        for (let i = 1; i <= 3; i++) {
+            let index = getRandomIntInclusive(0, allBulletName.length - 1)
+            this.randWeapon.push(allBulletName[index])
+            allBulletName.splice(index, 1)
+        }
 
         for (let i = 1; i <= 3; i++) {
             let self = DataMgr.getInstance()
@@ -287,7 +228,7 @@ export default class DataMgr {
                 node.parent = iconNode
                 node.setContentSize(25, 25)
             })
-            
+
 
         }
     }
