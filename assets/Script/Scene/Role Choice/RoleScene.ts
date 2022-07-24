@@ -223,7 +223,7 @@ export default class NewClass extends cc.Component {
             }
 
             console.log("Hero: ",CurrentHero)
-            return;
+            // return;
 
             //进入游戏界面
             console.log("准备开始游戏");

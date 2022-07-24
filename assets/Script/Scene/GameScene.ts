@@ -46,12 +46,21 @@ export default class GameScene extends cc.Component {
     start() {
         cc.tween(this.node)
             .delay(0.5)
+            .call(()=>{
+                this.pauseAll()
+                cc.find('UILayer/LoadingPanel/BackGround').on('click', this.startGame, this);
+            })
+            .delay(2)
             .call(() => {
-                cc.find('UILayer/LoadingPanel').active = false
-                // 开始计时
-                this.resumeAll()
-                this.startTimeCount()
+                this.startGame()
             }).start()
+    }
+
+    startGame(){
+        cc.find('UILayer/LoadingPanel').active = false
+        // 开始计时
+        this.resumeAll()
+        this.startTimeCount()
     }
 
     // 添加角色
@@ -189,7 +198,7 @@ export default class GameScene extends cc.Component {
         // OpenPopups(1, "是否退出游戏", () => {
         // })
         this.pauseAll()
-        cc.director.loadScene("SettlementSystem");
+        cc.director.loadScene("HomePage");
 
         CharMgr.releaseInstance()
         DataMgr.releaseInstance()
