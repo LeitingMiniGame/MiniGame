@@ -63,7 +63,9 @@ export default class CharMgr {
     }
 
     protected _init() {
-        this.CharData = Data.Config.GetConfig("enemy")
+        // this.CharData = {}
+        let enemyData = Data.Config.GetConfig("enemy")
+        this.CharData = Object.assign(this.CharData, enemyData);
     }
 
     public createChar(charType: string, name: string) {
