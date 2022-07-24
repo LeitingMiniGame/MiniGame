@@ -1,4 +1,4 @@
-import { Data } from "../Tools/Tools";
+import { Data, deepCopyJson } from "../Tools/Tools";
 import JsonManager from "./JsonManager";
 import WeaponMgr from "./WeaponMgr";
 
@@ -131,12 +131,11 @@ export default class DataMgr {
         this.weaponList = cc.find('/UILayer/WeaponList')
 
 
-        this.bulletData = Data.Config.GetConfig("weapon")
-        
+        this.bulletData = Data.Config.GetConfig("weapon")   
     }
 
-    getData(obj) {
-        return Object.assign(obj)
+    getData(obj):any {
+        return deepCopyJson(obj)
     }
 
     // 增加武器
