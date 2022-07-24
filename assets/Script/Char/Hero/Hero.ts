@@ -5,6 +5,7 @@ const { ccclass, property } = cc._decorator;
 @ccclass
 export default class Hero extends Char {
     state: string
+    hpProgress: any;
     onLoad() {
         super.onLoad()
         this.loadImage("Item/" + this.data.icon)
@@ -13,6 +14,17 @@ export default class Hero extends Char {
         }
         this.data.level = 1
         this.data.exp = 0
+
+        cc.resources.load('Prefab/MapPrefab/CharHpBar', cc.Prefab, (err, assets: cc.Prefab) => {
+            if (err) {
+                return
+            }
+
+            let hpProgress = cc.instantiate(assets)
+            hpProgress.name = 'hpProgress'
+            hpProgress.parent = this.node
+            hpProgress.y = -this.data.size.height / 2 - 5
+        })
     }
 
     start() {
@@ -22,7 +34,7 @@ export default class Hero extends Char {
         this.state = 'stateStay'
         this.startRecovery()
 
-        if(this.data.initWeapon){
+        if (this.data.initWeapon) {
             this.addWeapon(this.data.initWeapon)
         }
     }
@@ -31,6 +43,7 @@ export default class Hero extends Char {
     startRecovery() {
         this.schedule(() => {
             this.data.hp = Math.min(this.data.hp + this.data.recovery, this.data.maxHp)
+            this.updateHpProess()
         }, 1, cc.macro.REPEAT_FOREVER)
     }
 
@@ -57,11 +70,20 @@ export default class Hero extends Char {
     // 受伤的函数
     injured(damage) {
         this.data.hp -= damage
-        console.log(this.data.hp);
+        this.updateHpProess()
+    }
+
+    // 更新血量进度
+    updateHpProess() {
+        let hpProgress = this.node.getChildByName('hpProgress').getComponent(cc.ProgressBar)
+        if (hpProgress) {
+
+            hpProgress.progress = this.data.hp / this.data.maxHp
+        }
     }
 
     // 增加经验
-    addExp(exp){
+    addExp(exp) {
         this.data.exp += exp
         DataMgr.getInstance().addExp(this.data)
     }
@@ -90,33 +112,22 @@ export default class Hero extends Char {
     }
 
     moveLeft() {
-        this.node.scaleX = -1
+        this.animateLayer.scaleX = -1
     }
 
     moveRight() {
-        this.node.scaleX = 1
-    }
-
-    onKeyDown(event) {
-        switch (event.keyCode) {
-            case cc.macro.KEY.a:
-                this.node.scaleX = -1
-                break
-            case cc.macro.KEY.d:
-                this.node.scaleX = 1
-                break
-        }
+        this.animateLayer.scaleX = 1
     }
 
     move() {
     }
 
-    pause(){
+    pause() {
         let animate = this.animateLayer.getComponent(cc.Animation)
         animate.stop('HeroMove1');
         this.state = 'stateStay'
     }
 
-    resume(){
+    resume() {
     }
 }

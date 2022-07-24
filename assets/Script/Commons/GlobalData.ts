@@ -24,6 +24,7 @@ export default class NewClass extends cc.Component {
         this.LoadJson("LevelList");
         this.LoadJson("ProductList");
         this.LoadJson("lineweapon");
+        this.LoadJson("weapon");
 
         // 加载全局静态数据
         Data.Config.Init();
@@ -43,10 +44,10 @@ export default class NewClass extends cc.Component {
         let GlobalDataObject = GlobalDataNote.getComponent("GlobalData").Data;
         let JsonName:string = Paras[1][0]
         let JsonObj:Object = Paras[0]
-        console.log("JsonName:",JsonName)
-        console.log("JsonObj:",JsonObj)
+        // console.log("JsonName:",JsonName)
+        // console.log("JsonObj:",JsonObj)
         GlobalDataObject[JsonName] = JsonObj
-        console.log("GlobalDataObject:",GlobalDataObject)
+        // console.log("GlobalDataObject:",GlobalDataObject)
     }
 
     onDestroy(){

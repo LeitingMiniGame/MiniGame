@@ -1,3 +1,4 @@
+import { Data } from "../Tools/Tools";
 import JsonManager from "./JsonManager";
 import WeaponMgr from "./WeaponMgr";
 
@@ -23,9 +24,9 @@ export default class DataMgr {
     bulletData:any
     //// 临时数据
     // bulletData = {
-    //     ['LineTest']: [
+    //     ['magicwand']: [
     //         {
-    //             name: 'LineTest',
+    //             name: 'magicwand',
     //             type: 'Line',
     //             icon: 'Dart',
     //             bulletIcon: 'Hero',
@@ -129,16 +130,9 @@ export default class DataMgr {
 
         this.weaponList = cc.find('/UILayer/WeaponList')
 
-        let self = this
 
-        cc.resources.load("Config/lineweapon", function(err: any, res: cc.JsonAsset) {
-            if(err) {
-                cc.error(err.message || err)
-                return
-            }
-            self.bulletData = res.json
-        })
-
+        this.bulletData = Data.Config.GetConfig("weapon")
+        
     }
 
     getData(obj) {
