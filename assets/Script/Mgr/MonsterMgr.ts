@@ -13,6 +13,7 @@ export default class MonsterMgr {
     static _instance: MonsterMgr = null
     monsterLayer: MonsterLayer
 
+    // 临时数据
     randData = [
         {
             time: 0,
@@ -50,6 +51,8 @@ export default class MonsterMgr {
         //     ],
         // },
     ]
+
+    // 临时数据
     waveData = [
         // {
         //     time: 0,
