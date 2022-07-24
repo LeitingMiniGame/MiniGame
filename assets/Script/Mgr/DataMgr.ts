@@ -101,6 +101,7 @@ export default class DataMgr {
             node.parent = parentNode
             let levelLabel = parentNode.getChildByName('ItemLevelLabel')
             levelLabel.active = true
+            levelLabel.zIndex = 100
             levelLabel.getComponent(cc.Label).string = 'lv.' + 1
             node.setContentSize(25, 25)
         })
@@ -122,15 +123,24 @@ export default class DataMgr {
 
     // 升级武器
     upWeapon(typeName: string | number) {
+        if (typeof (typeName) === 'string') {
+            for (let i = 0; i < Math.min(6, this.bag.length); i++) {
+                if (this.bag[i].name == typeName) {
+                    this.upWeapon(i)
+                    return
+                }
+            }
+        }
 
-        let level = this.bag[typeName].level
+        let curWeapon = this.bag[typeName]
+        let level = curWeapon.level
         // 处理升级的逻辑
-        this.bag[typeName] = this.getData(this.bulletData[typeName][level])
+        this.bag[typeName] = this.getData(this.bulletData[curWeapon.name][level])
 
         let panelIndex = typeName as number + 1
         let parentNode = this.weaponList.getChildByName('Item' + panelIndex)
         let levelLabel = parentNode.getChildByName('ItemLevelLabel')
-        levelLabel.getComponent(cc.Label).string = 'lv.' + level
+        levelLabel.getComponent(cc.Label).string = 'lv.' + (level + 1)
 
         WeaponMgr.getInstance().upWeapon(this.bag[typeName])
     }
@@ -215,6 +225,7 @@ export default class DataMgr {
             let weaponData = self.bulletData[this.randWeapon[i - 1]][0]
             let iconPath = 'Image/Weapon/' + weaponData.icon
             let iconNode = itemNode.getChildByName('Icon')
+            iconNode.removeAllChildren()
 
             itemNode.getChildByName('NameLabel').getComponent(cc.Label).string = weaponData.name
 
