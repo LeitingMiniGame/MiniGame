@@ -1,10 +1,6 @@
 {
   "ver": "2.3.7",
-<<<<<<< HEAD
-  "uuid": "77957dcc-9bb7-453f-836d-badf72893c48",
-=======
   "uuid": "581839c8-af28-479d-b255-47261bca9de8",
->>>>>>> bffb0160390c9517c755705a92e421c6a4557035
   "importer": "texture",
   "type": "sprite",
   "wrapMode": "clamp",
@@ -18,15 +14,9 @@
   "subMetas": {
     "HeroStay2": {
       "ver": "1.0.6",
-<<<<<<< HEAD
-      "uuid": "74fb5503-0c99-4811-a064-a6e6a3bee84a",
-      "importer": "sprite-frame",
-      "rawTextureUuid": "77957dcc-9bb7-453f-836d-badf72893c48",
-=======
       "uuid": "c90916e3-06b0-4ea7-b246-bd2c0c4eb3d3",
       "importer": "sprite-frame",
       "rawTextureUuid": "581839c8-af28-479d-b255-47261bca9de8",
->>>>>>> bffb0160390c9517c755705a92e421c6a4557035
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
