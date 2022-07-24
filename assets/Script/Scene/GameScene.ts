@@ -218,6 +218,13 @@ export default class GameScene extends cc.Component {
         MonsterMgr.releaseInstance()
         WeaponMgr.releaseInstance()
 
+        cc.resources.load("Radio/Home", cc.AudioClip, (error, assets:cc.AudioClip)=>{
+            if(error){
+                return
+            }
+            cc.audioEngine.playMusic(assets, true);
+        })
+
     }
 
     openSetting() {
