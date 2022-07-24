@@ -20,11 +20,11 @@ export default class MonsterMgr {
             maxMonster: 100,
             monsterData: [
                 {
-                    name: 'Bee',
+                    name: 'bcrow',
                     weight: 80,
                 },
                 {
-                    name: 'Vine',
+                    name: 'bspider',
                     weight: 100
                 },
             ],
