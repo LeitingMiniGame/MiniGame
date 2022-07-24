@@ -9,8 +9,8 @@ export default class NewClass extends cc.Component {
     @property(cc.Prefab)
     HeroCoin: cc.Prefab = null;
 
-    @property(cc.RichText)
-    HeroName: cc.RichText = null;
+    @property(cc.Label)
+    HeroName: cc.Label = null;
 
     @property(cc.Sprite)
     HeroIMG: cc.Sprite = null;
@@ -89,13 +89,15 @@ export default class NewClass extends cc.Component {
             let Data = RoleConfigList[index];
             // console.log("Data : ", Data)
             // 获取组件的layout
-            let HeroCoinSprite = HeroCoin.getComponent(cc.Sprite);
+            let HeroCoinSprite = cc.find("Icon",HeroCoin).getComponent(cc.Sprite);
 
             cc.loader.loadRes(Data["Icon"], cc.SpriteFrame, (err: any, spriteFrame) => {
                 HeroCoinSprite.spriteFrame = spriteFrame;
             });
 
             HeroCoin.parent = this.HeroList.node
+            // HeroCoin.active = true
+            // HeroCoin.opacity = 255
 
             HeroCoin.getComponent('RoleChoice').init(String(Data["ID"]));
         }
@@ -109,7 +111,7 @@ export default class NewClass extends cc.Component {
             if(RoleConfigList[index]["ID"] == HeroID){
                 let Data = RoleConfigList[index];
                 // console.log("Data : ", Data)
-                this.HeroName.getComponent(cc.RichText).string = Data["Name"]
+                this.HeroName.getComponent(cc.Label).string = Data["Name"]
 
                 cc.loader.loadRes(Data["IMG"], cc.SpriteFrame, (err: any, spriteFrame) => {
                     this.HeroIMG.getComponent(cc.Sprite).spriteFrame = spriteFrame;

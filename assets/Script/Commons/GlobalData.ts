@@ -8,6 +8,9 @@ export default class NewClass extends cc.Component {
     @property
     Data: Object = null;
 
+    @property(cc.Prefab)
+    CommonPop: cc.Prefab = null;
+
     onLoad () {
         //添加DataNode为常驻节点
         this.Data = new Object();

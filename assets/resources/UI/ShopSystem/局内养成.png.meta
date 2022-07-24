@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "809c6f5d-96e4-4ee4-9eb6-c17bded89fea",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 1920,
+  "height": 1080,
+  "platformSettings": {},
+  "subMetas": {
+    "局内养成": {
+      "ver": "1.0.6",
+      "uuid": "6c5b7b14-4454-4b8b-9bb1-2fa6456af5ff",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "809c6f5d-96e4-4ee4-9eb6-c17bded89fea",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 1920,
+      "height": 1080,
+      "rawWidth": 1920,
+      "rawHeight": 1080,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

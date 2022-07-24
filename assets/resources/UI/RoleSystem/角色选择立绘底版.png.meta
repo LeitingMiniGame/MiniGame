@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "2607d088-c3f8-4e9c-9bf1-db75f8832672",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 252,
+  "height": 223,
+  "platformSettings": {},
+  "subMetas": {
+    "角色选择立绘底版": {
+      "ver": "1.0.6",
+      "uuid": "f7f59350-c62c-42b2-9f1e-eb259ea7cbf4",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "2607d088-c3f8-4e9c-9bf1-db75f8832672",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 248,
+      "height": 219,
+      "rawWidth": 252,
+      "rawHeight": 223,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,6 +1,7 @@
 import JsonManager from "../Mgr/JsonManager";
 import PopupManager from "../Mgr/PopupManager";
 import ConfirmPopup, { ConfirmPopupOptions } from "./ConfirmPopup"
+import { OpenPopups } from "../Tools/Tools";
 
 const {ccclass, property} = cc._decorator;
 
@@ -17,6 +18,30 @@ export default class NewClass extends cc.Component {
         //     console.log("控制界面预加载好了");
         // });
     }
+
+    SwitchToSettlement(){
+
+
+        console.log("运行到SwitchToSettlement");
+
+        // 否则说明要回到首页
+        cc.director.loadScene('SettlementSystem', function(){
+            console.log("切换到结算界面啦");
+        });
+    }
+
+    TestPop1(){
+        OpenPopups(1,"测试弹窗1",this.show,null);
+    }
+
+    show(){
+        console.log("弹窗确认内容")
+    }
+
+    TestPop2(){
+        OpenPopups(2,"测试弹窗2",this.show,null);
+    }
+
 
     SwitchToSetUp(){
 

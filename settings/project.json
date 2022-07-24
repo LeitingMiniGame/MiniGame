@@ -37,7 +37,7 @@
     "Hero",
     "Item"
   ],
-  "start-scene": "b8677bbf-dc52-43f3-ace6-7f8fb2dd0fea",
+  "start-scene": "current",
   "design-resolution-width": 1920,
   "design-resolution-height": 1080,
   "fit-width": false,

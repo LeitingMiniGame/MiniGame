@@ -30,3 +30,22 @@ export function randByWeight(arr): number {
     return randIndex;
 }
 
+/**
+ * 打开一个新的弹窗
+ * Mode    : 1.有确认取消两个按钮  2.只有确认按钮
+ * Message : 弹窗内容
+ * Confirm : 确认按钮的回调函数
+ * Cancel  : 取消按钮的回调函数
+*/
+export function OpenPopups(Mode:number = 1, Message:string, Confirm:Function, Cancel:Function = null){
+
+    let GlobalDataNote = cc.director.getScene().getChildByName("GlobalData");
+    let PopTemplate = GlobalDataNote.getComponent("GlobalData").CommonPop;
+    // 生成一个弹窗
+    let Pop = cc.instantiate(PopTemplate);
+    let Root = cc.find("Canvas");
+    let Script = cc.find("Data", Pop).getComponent("Popups");
+    console.log("准备开始初始化弹窗")
+    Script.Init(Mode, Message, Confirm, Cancel);
+    Pop.parent = Root;
+}
