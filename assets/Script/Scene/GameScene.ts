@@ -6,7 +6,7 @@ import ItemMgr from "../Mgr/ItemMgr";
 import MapMgr from "../Mgr/MapMgr";
 import MonsterMgr from "../Mgr/MonsterMgr";
 import WeaponMgr from "../Mgr/WeaponMgr";
-import { OpenPopups } from "../Tools/Tools";
+import { Data, OpenPopups } from "../Tools/Tools";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -42,7 +42,7 @@ export default class GameScene extends cc.Component {
         this.curTime = 0
     }
 
-    start(){
+    start() {
         this.addHero()
         this.addMapLayer()
         this.addBulletLayer()
@@ -87,7 +87,7 @@ export default class GameScene extends cc.Component {
     }
 
     // 添加道具层
-    addItemLayer(){
+    addItemLayer() {
         let node = new cc.Node('ItemLayer')
         let layerRoot = MapMgr.getInstance().getLayerByName('LayerRoot')
         node.parent = layerRoot
@@ -115,29 +115,32 @@ export default class GameScene extends cc.Component {
     }
 
     // 开始计时
-    startTimeCount(){
+    startTimeCount() {
         this.timeTween = cc.tween(this.node)
-        .repeatForever(
-            cc.tween()
-                .delay(1)
-                .call(() => {
-                    MonsterMgr.getInstance().beginCreateMonster(this.curTime)
-                    DataMgr.getInstance().setTimeLabel(this.curTime)
-                    ItemMgr.getInstance().updateItemPool(this.curTime)
-                    this.curTime++
-                })
-        ).start()
+            .repeatForever(
+                cc.tween()
+                    .delay(1)
+                    .call(() => {
+                        MonsterMgr.getInstance().beginCreateMonster(this.curTime)
+                        DataMgr.getInstance().setTimeLabel(this.curTime)
+                        ItemMgr.getInstance().updateItemPool(this.curTime)
+                        this.curTime++
+                        if (this.curTime == 1500) {
+                            this.gameOver(true)
+                        }
+                    })
+            ).start()
     }
 
     // 暂停按钮
-    onPauseButton(){
+    onPauseButton() {
         cc.find('/UILayer/PauseButton').active = false
         cc.find('/UILayer/StartButton').active = true
         cc.find('/UILayer/PausePanel').active = true
         this.pauseAll()
     }
 
-    onResumeButton(){
+    onResumeButton() {
         cc.find('/UILayer/PauseButton').active = true
         cc.find('/UILayer/StartButton').active = false
         cc.find('/UILayer/PausePanel').active = false
@@ -145,7 +148,7 @@ export default class GameScene extends cc.Component {
     }
 
     // 暂停
-    pauseAll(){
+    pauseAll() {
         // 暂停时间
         this.timeTween.stop()
         // 暂停角色
@@ -161,7 +164,7 @@ export default class GameScene extends cc.Component {
     }
 
     // 恢复
-    resumeAll(){
+    resumeAll() {
         // 恢复时间
         this.timeTween.start()
         // 恢复角色
@@ -176,14 +179,37 @@ export default class GameScene extends cc.Component {
         ItemMgr.getInstance().resume()
     }
 
-    quitGame(){
+    quitGame() {
         console.log('quit');
-        OpenPopups(1, "是否退出游戏", ()=>{
-        })
+        // OpenPopups(1, "是否退出游戏", () => {
+        // })
+        this.pauseAll()
+        cc.director.loadScene("SettlementSystem");
+
+        CharMgr.releaseInstance()
+        DataMgr.releaseInstance()
+        ItemMgr.releaseInstance()
+        MapMgr.releaseInstance()
+        MonsterMgr.releaseInstance()
+        WeaponMgr.releaseInstance()
+
     }
 
-    openSetting(){
+    openSetting() {
         console.log('setting');
+    }
 
+    gameOver(isWin) {
+        this.pauseAll()
+        let gameOverPanel = cc.find('/UILayer/GameOver')
+        gameOverPanel.active = true
+        if (isWin) {
+            cc.find('GoodGameImage', gameOverPanel).active = true
+            cc.find('GameOverImage', gameOverPanel).active = false
+
+        } else {
+            cc.find('GoodGameImage', gameOverPanel).active = false
+            cc.find('GameOverImage', gameOverPanel).active = true
+        }
     }
 }

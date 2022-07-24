@@ -22,6 +22,12 @@ export default class WeaponMgr {
         this.tweenMap = new Map
     }
 
+    public static releaseInstance() {
+        if (this._instance) {
+            this._instance = undefined
+        }
+    }
+
     // 生成攻击的缓动系统
     createFireTween(weapon) {
         let bulletLayer = MapMgr.getInstance().getLayerByName("BulletLayer")

@@ -22,6 +22,12 @@ export default class MapMgr {
     private _init(){  
     }
 
+    public static releaseInstance() {
+        if (this._instance) {
+            this._instance = undefined
+        }
+    }
+
     public addLayerMap(name:string, node:cc.Node){
         this.layerMap.set(name, node)
     }
