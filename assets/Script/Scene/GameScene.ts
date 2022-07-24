@@ -31,7 +31,7 @@ export default class GameScene extends cc.Component {
         var physicsManager = cc.director.getPhysicsManager();
         physicsManager.enabled = true;
         cc.director.getPhysicsManager().gravity = cc.v2(0, -640);
-        this.curTime = 599
+        this.curTime = 0
 
 
         this.addHero()
