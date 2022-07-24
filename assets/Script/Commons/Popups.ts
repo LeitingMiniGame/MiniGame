@@ -51,7 +51,8 @@ export default class NewClass extends cc.Component {
      * Confirm : 确认按钮的回调函数
      * Cancel  : 取消按钮的回调函数
     */
-    init(Mode:number = 1, Message:string, Confirm:Function, Cancel?:Function){
+    Init(Mode:number = 1, Message:string, Confirm:Function, Cancel?:Function){
+        console.log("进入弹窗初始化")
         this.Message.string = Message
         this.ConfirmCallBack = Confirm
         this.CancelCallBack = Cancel
