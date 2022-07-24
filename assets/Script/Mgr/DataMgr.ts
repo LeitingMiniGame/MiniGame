@@ -20,65 +20,65 @@ export default class DataMgr {
     selectItemPanel: any
     randWeapon: any
 
-    bulletData:any
+    // bulletData:any
     //// 临时数据
-    // bulletData = {
-    //     ['LineTest']: [
-    //         {
-    //             name: 'LineTest',
-    //             type: 'Line',
-    //             icon: 'Dart',
-    //             bulletIcon: 'Hero',
-    //             describe: '红红火火恍恍惚惚',
-    //             level: 1,
-    //             interval: 1,
-    //             preInterval: 0.05,
-    //             preCount: 1,
-    //             hp: 10,
-    //             minDamage: 5,
-    //             maxDamage: 10,
-    //             speed: 600,
-    //             size: cc.size(20, 20)
-    //         }
-    //     ],
-    //     ['DomainTest']: [
-    //         {
-    //             name: 'DomainTest',
-    //             type: 'Domain',
-    //             icon: 'MagicWand',
-    //             bulletIcon: 'Hero',
-    //             describe: '红红火火恍恍惚惚',
-    //             level: 1,
-    //             interval: 1,
-    //             preInterval: 0.05,
-    //             preCount: 1,
-    //             hp: 100000000,
-    //             minDamage: 5,
-    //             maxDamage: 5,
-    //             speed: 100,
-    //             maxSize: cc.size(800, 800), // 领域型武器 领域的最大值
-    //             size: cc.size(20, 20)
-    //         }
-    //     ],
-    //     ['ProjectileTest']: [
-    //         {
-    //             name: 'ProjectileTest',
-    //             type: 'Projectile',
-    //             icon: 'MagicWand1',
-    //             bulletIcon: 'Hero',
-    //             describe: '红红火火恍恍惚惚',
-    //             level: 1,
-    //             interval: 1,
-    //             preInterval: 0.05,
-    //             preCount: 1,
-    //             hp: 1000000,
-    //             minDamage: 5,
-    //             maxDamage: 5,
-    //             speed: 600,
-    //             size: cc.size(20, 20)
-    //         }
-    //     ]
-    // }
+    bulletData = {
+        ['magicwand']: [
+            {
+                name: 'magicwand',
+                type: 'Line',
+                icon: 'Dart',
+                bulletIcon: 'Hero',
+                describe: '红红火火恍恍惚惚',
+                level: 1,
+                interval: 1,
+                preInterval: 0.05,
+                preCount: 1,
+                hp: 10,
+                minDamage: 5,
+                maxDamage: 10,
+                speed: 600,
+                size: cc.size(20, 20)
+            }
+        ],
+        ['DomainTest']: [
+            {
+                name: 'DomainTest',
+                type: 'Domain',
+                icon: 'MagicWand',
+                bulletIcon: 'Hero',
+                describe: '红红火火恍恍惚惚',
+                level: 1,
+                interval: 1,
+                preInterval: 0.05,
+                preCount: 1,
+                hp: 100000000,
+                minDamage: 5,
+                maxDamage: 5,
+                speed: 100,
+                maxSize: cc.size(800, 800), // 领域型武器 领域的最大值
+                size: cc.size(20, 20)
+            }
+        ],
+        ['ProjectileTest']: [
+            {
+                name: 'ProjectileTest',
+                type: 'Projectile',
+                icon: 'MagicWand1',
+                bulletIcon: 'Hero',
+                describe: '红红火火恍恍惚惚',
+                level: 1,
+                interval: 1,
+                preInterval: 0.05,
+                preCount: 1,
+                hp: 1000000,
+                minDamage: 5,
+                maxDamage: 5,
+                speed: 600,
+                size: cc.size(20, 20)
+            }
+        ]
+    }
 
     //// 临时数据
     levelExp = [
@@ -131,13 +131,13 @@ export default class DataMgr {
 
         let self = this
 
-        cc.resources.load("Config/lineweapon", function(err: any, res: cc.JsonAsset) {
-            if(err) {
-                cc.error(err.message || err)
-                return
-            }
-            self.bulletData = res.json
-        })
+        // cc.resources.load("Config/lineweapon", function(err: any, res: cc.JsonAsset) {
+        //     if(err) {
+        //         cc.error(err.message || err)
+        //         return
+        //     }
+        //     self.bulletData = res.json
+        // })
 
     }
 

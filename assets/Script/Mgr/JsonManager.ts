@@ -31,7 +31,6 @@ export default class JsonManager{
         return this._instance;
     }
 
-
     /** 将所有数据保存到本地 */
     public SaveDB(){
         // 保存前将之前的存档删除
