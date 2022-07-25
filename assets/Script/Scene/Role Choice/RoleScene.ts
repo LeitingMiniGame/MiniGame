@@ -217,7 +217,7 @@ export default class NewClass extends cc.Component {
             for(let index = 0;index < BufferIDList.length; index++){
                 let CurrentID = parseInt(BufferIDList[index]);
                 let CurrentLevel = BufferList[CurrentID];
-                // //console.log("CurrentID : ",CurrentID,"  CurrentLevel : ",CurrentLevel)
+                // console.log("CurrentID : ",CurrentID,"  CurrentLevel : ",CurrentLevel)
                 let TempBuffer = Data.Buffer.GetBufferAttribute(CurrentID, CurrentLevel )
                 TempBuffer["ID"] = undefined
                 // CurrentHero+=TempBuffer
@@ -260,7 +260,7 @@ export default class NewClass extends cc.Component {
             //console.log("准备开始游戏");
 
             Data.Gamer.set_Temp("Role", CurrentHero)
-            console.log("Data.Gamer : ",Data.Gamer.queryAllTemp())
+            // console.log("Data.Gamer : ",Data.Gamer.queryAllTemp())
 
             // 否则说明要回到首页
             cc.director.loadScene('Main', function(){

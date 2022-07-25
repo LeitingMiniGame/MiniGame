@@ -301,7 +301,7 @@ export namespace Data {
                     this.BufferAttrivuteConfig.set(ProductAttributeList[Key]["ID"], Value)
                 }
                 //console.log("预处理道具参数信息完成")
-                //console.log("BufferAttrivuteConfig : ", this.BufferAttrivuteConfig)
+                // console.log("BufferAttrivuteConfig : ", this.BufferAttrivuteConfig)
 
                 return true;
             }
@@ -311,18 +311,12 @@ export namespace Data {
         // 获取指定道具的配置数据
         public static GetLevelConfig(BufferID:number){
             Buffer.Init();
-            // //console.log("Hero.HeroMap : ",Hero.HeroMap)
-            // //console.log("CurrentHeroID : ",CurrentHeroID)
-            // //console.log("Hero.HeroMap.get(CurrentHeroID) : ",Hero.HeroMap.get(CurrentHeroID))
-            // //console.log("deepCopyJson(Hero.HeroMap.get(CurrentHeroID)) : ",deepCopyJson(Hero.HeroMap.get(CurrentHeroID)))
             return deepCopyJson(Buffer.BufferLevelConfig.get(BufferID))
         }
 
         // 获取指定道具的配置数据
         public static GetLevelAttributeConfig(BufferID:number){
             Buffer.Init();
-            // //console.log("BufferID : ",BufferID)
-            // //console.log("Buffer.BufferAttrivuteConfig.get(BufferID) : ",Buffer.BufferAttrivuteConfig.get(BufferID))
             return deepCopyJson(Buffer.BufferAttrivuteConfig.get(BufferID))
         }
 
@@ -330,11 +324,11 @@ export namespace Data {
             Buffer.Init();
             // 通过ID查找道具
             let BufferData = Buffer.GetLevelConfig(BufferID);
-            // console.log("BufferID : ", BufferID," Level: ",Level)
-            // console.log("BufferData : ", BufferData)
+            // console.warn("BufferID : ", BufferID," Level: ",Level)
+            // console.warn("BufferData : ", BufferData)
 
             let NextAttributeID = BufferData["Attribute"][Level]
-            // //console.log("NextAttributeID : ",NextAttributeID)
+            // console.warn("NextAttributeID : ",NextAttributeID)
 
             return Buffer.GetLevelAttributeConfig(NextAttributeID);
         }
