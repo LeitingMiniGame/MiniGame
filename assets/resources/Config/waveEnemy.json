@@ -5,141 +5,140 @@
         "maxMonster": 100,
         "monsterData": [
             {
-                "name":"bee1",
-                "weight":100
+                "name": "bee1",
+                "weight": 100
             },
             {
-                "name":"crow1",
-                "weight":100
+                "name": "crow1",
+                "weight": 100
             }
         ]
     },
     {
         "time": 60,
-     "interval": 0.75,
+        "interval": 0.75,
         "maxMonster": 150,
-        "monsterData":[
+        "monsterData": [
             {
-                "name":"bee1",
-                "weight":20
+                "name": "bee1",
+                "weight": 20
             },
             {
-                "name":"crow1",
-                "weight":80
+                "name": "crow1",
+                "weight": 80
             }
         ]
     },
     {
         "time": 120,
-     "interval": 0.75,
+        "interval": 0.75,
         "maxMonster": 200,
         "monsterData": [
             {
-                "name":"bee1",
-                "weight":20
+                "name": "bee1",
+                "weight": 20
             },
             {
-                "name":"crow1",
-                "weight":60
+                "name": "crow1",
+                "weight": 60
             },
             {
-                "name":"spider1",
-                "weight":40
+                "name": "spider1",
+                "weight": 40
             }
         ]
     },
     {
         "time": 180,
-     "interval": 0.75,
+        "interval": 0.75,
         "maxMonster": 250,
         "monsterData": [
-
             {
-                "name":"crow1",
-                "weight":20
+                "name": "crow1",
+                "weight": 20
             },
             {
-                "name":"spider1",
-                "weight":80
+                "name": "spider1",
+                "weight": 80
             }
         ]
     },
     {
         "time": 240,
-     "interval": 0.8,
+        "interval": 0.8,
         "maxMonster": 300,
         "monsterData": [
             {
-                "name":"crow1",
-                "weight":20
+                "name": "crow1",
+                "weight": 20
             },
             {
-                "name":"spider1",
-                "weight":20
+                "name": "spider1",
+                "weight": 20
             },
             {
-                "name":"vine1",
-                "weight":60
+                "name": "vine1",
+                "weight": 60
             }
         ]
     },
     {
         "time": 300,
-     "interval": 0.8,
+        "interval": 0.8,
         "maxMonster": 350,
         "monsterData": [
             {
-                "name":"spider1",
-                "weight":50
+                "name": "spider1",
+                "weight": 50
             },
             {
-                "name":"vine1",
-                "weight":50
+                "name": "vine1",
+                "weight": 50
             }
         ]
     },
     {
         "time": 360,
-     "interval": 0.8,
+        "interval": 0.8,
         "maxMonster": 400,
         "monsterData": [
             {
-                "name":"vine1",
-                "weight":50
+                "name": "vine1",
+                "weight": 50
             },
             {
-                "name":"bee2",
-                "weight":50
+                "name": "bee2",
+                "weight": 50
             }
         ]
     },
     {
         "time": 420,
-     "interval": 0.8,
+        "interval": 0.8,
         "maxMonster": 450,
         "monsterData": [
             {
-                "name":"vine1",
-                "weight":20
+                "name": "vine1",
+                "weight": 20
             },
             {
-                "name":"bee2",
-                "weight":80
+                "name": "bee2",
+                "weight": 80
             }
         ]
     },
     {
         "time": 480,
-     "interval": 0.8,
+        "interval": 0.8,
         "maxMonster": 500,
         "monsterData": [
             {
-                "name":"vine1",
-                "weight":20
+                "name": "vine1",
+                "weight": 20
             },
             {
-                "name":"bee2",
-                "weight":80
+                "name": "bee2",
+                "weight": 80
             }
         ]
     },
@@ -149,16 +148,16 @@
         "maxMonster": 500,
         "monsterData": [
             {
-                "name":"spider1",
-                "weight":20
+                "name": "spider1",
+                "weight": 20
             },
             {
-                "name":"vine1",
-                "weight":20
+                "name": "vine1",
+                "weight": 20
             },
             {
-                "name":"bee2",
-                "weight":60
+                "name": "bee2",
+                "weight": 60
             }
         ]
     },
@@ -174,16 +173,16 @@
         "maxMonster": 500,
         "monsterData": [
             {
-                "name":"spider1",
-                "weight":20
+                "name": "spider1",
+                "weight": 20
             },
             {
-                "name":"vine1",
-                "weight":20
+                "name": "vine1",
+                "weight": 20
             },
             {
-                "name":"bee2",
-                "weight":60
+                "name": "bee2",
+                "weight": 60
             }
         ]
     },
@@ -199,16 +198,16 @@
         "maxMonster": 500,
         "monsterData": [
             {
-                "name":"spider1",
-                "weight":40
+                "name": "spider1",
+                "weight": 40
             },
             {
-                "name":"vine1",
-                "weight":40
+                "name": "vine1",
+                "weight": 40
             },
             {
-                "name":"bee2",
-                "weight":80
+                "name": "bee2",
+                "weight": 80
             }
         ]
     },
@@ -217,14 +216,13 @@
         "interval": 0.7,
         "maxMonster": 500,
         "monsterData": [
-
             {
-                "name":"bee2",
-                "weight":80
+                "name": "bee2",
+                "weight": 80
             },
             {
-                "name":"spider2",
-                "weight":20
+                "name": "spider2",
+                "weight": 20
             }
         ]
     },
@@ -234,12 +232,12 @@
         "maxMonster": 500,
         "monsterData": [
             {
-                "name":"bee2",
-                "weight":40
+                "name": "bee2",
+                "weight": 40
             },
             {
-                "name":"spider2",
-                "weight":80
+                "name": "spider2",
+                "weight": 80
             }
         ]
     },
@@ -249,16 +247,16 @@
         "maxMonster": 500,
         "monsterData": [
             {
-                "name":"vine1",
-                "weight":20
+                "name": "vine1",
+                "weight": 20
             },
             {
-                "name":"bee2",
-                "weight":40
+                "name": "bee2",
+                "weight": 40
             },
             {
-                "name":"spider2",
-                "weight":60
+                "name": "spider2",
+                "weight": 60
             }
         ]
     },
@@ -274,16 +272,16 @@
         "maxMonster": 500,
         "monsterData": [
             {
-                "name":"spider2",
-                "weight":20
+                "name": "spider2",
+                "weight": 20
             },
             {
-                "name":"spider3",
-                "weight":40
+                "name": "spider3",
+                "weight": 40
             },
             {
-                "name":"bee3",
-                "weight":60
+                "name": "bee3",
+                "weight": 60
             }
         ]
     },
@@ -293,16 +291,16 @@
         "maxMonster": 500,
         "monsterData": [
             {
-                "name":"spider2",
-                "weight":30
+                "name": "spider2",
+                "weight": 30
             },
             {
-                "name":"spider3",
-                "weight":60
+                "name": "spider3",
+                "weight": 60
             },
             {
-                "name":"bee3",
-                "weight":30
+                "name": "bee3",
+                "weight": 30
             }
         ]
     },
@@ -312,16 +310,16 @@
         "maxMonster": 500,
         "monsterData": [
             {
-                "name":"spider2",
-                "weight":20
+                "name": "spider2",
+                "weight": 20
             },
             {
-                "name":"spider3",
-                "weight":30
+                "name": "spider3",
+                "weight": 30
             },
             {
-                "name":"bee3",
-                "weight":60
+                "name": "bee3",
+                "weight": 60
             }
         ]
     },
@@ -331,16 +329,16 @@
         "maxMonster": 500,
         "monsterData": [
             {
-                "name":"spider3",
-                "weight":20
+                "name": "spider3",
+                "weight": 20
             },
             {
-                "name":"bee3",
-                "weight":20
+                "name": "bee3",
+                "weight": 20
             },
             {
-                "name":"crow2",
-                "weight":20
+                "name": "crow2",
+                "weight": 20
             }
         ]
     },
@@ -350,16 +348,16 @@
         "maxMonster": 500,
         "monsterData": [
             {
-                "name":"spider3",
-                "weight":20
+                "name": "spider3",
+                "weight": 20
             },
             {
-                "name":"bee3",
-                "weight":20
+                "name": "bee3",
+                "weight": 20
             },
             {
-                "name":"crow2",
-                "weight":20
+                "name": "crow2",
+                "weight": 20
             }
         ]
     },
@@ -369,8 +367,8 @@
         "maxMonster": 500,
         "monsterData": [
             {
-                "name":"abee",
-                "weight":100
+                "name": "abee",
+                "weight": 100
             }
         ]
     },
@@ -380,12 +378,12 @@
         "maxMonster": 500,
         "monsterData": [
             {
-                "name":"abee",
-                "weight":40
+                "name": "abee",
+                "weight": 40
             },
             {
-                "name":"acrow",
-                "weight":60
+                "name": "acrow",
+                "weight": 60
             }
         ]
     }

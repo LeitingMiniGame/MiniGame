@@ -90,6 +90,9 @@ export default class DataMgr {
 
         let iconPath = 'Image/Weapon/' + newWeapon.icon
         let parentNode = this.weaponList.getChildByName('Item' + this.bag.length)
+        if(!parentNode){
+            return
+        }
         cc.resources.load(iconPath, cc.SpriteFrame, (error, assets: cc.SpriteFrame) => {
             let node = new cc.Node
             let sprite = node.addComponent(cc.Sprite)
@@ -131,11 +134,17 @@ export default class DataMgr {
         let curWeapon = this.bag[typeName]
         let level = curWeapon.level
 
-        if (!this.bulletData[curWeapon.name][level]) {
+        let curData = this.bulletData[curWeapon.name]
+        if(!curData){
             return
         }
+
+        if (!curData[level]) {
+            return
+        }
+
         // 处理升级的逻辑
-        this.bag[typeName] = this.getData(this.bulletData[curWeapon.name][level])
+        this.bag[typeName] = this.getData(curData[level])
 
         let panelIndex = typeName as number + 1
         let parentNode = this.weaponList.getChildByName('Item' + panelIndex)

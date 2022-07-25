@@ -127,6 +127,9 @@ export default class MonsterMgr {
                                 if (self._mapMonsterById.size >= self.curRandData.maxMonster) {
                                     return
                                 }
+                                if(!self.curRandData.monsterData.length){
+                                    return
+                                }
                                 let index = randByWeight(self.curRandData.monsterData)
                                 let monsterData = self.curRandData.monsterData[index]
                                 self.addMonster(monsterData.name, 1)

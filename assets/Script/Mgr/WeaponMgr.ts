@@ -64,7 +64,9 @@ export default class WeaponMgr {
         // 处理缓动
         let name = weapon.name
         let oldTween = this.tweenMap.get(name)
-        oldTween.stop()
+        if(oldTween){
+            oldTween.stop()
+        }
         let newTween = this.createFireTween(weapon)
         this.tweenMap.set(name, newTween)
         newTween.start()

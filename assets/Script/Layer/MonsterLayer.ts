@@ -9,7 +9,6 @@ export default class MonsterLayer extends cc.Component {
     }
 
     start(): void{
-        MonsterMgr.getInstance().beginCreateMonster()
 
     }
 }

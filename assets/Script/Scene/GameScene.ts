@@ -59,6 +59,9 @@ export default class GameScene extends cc.Component {
     }
 
     startGame(){
+        if(this.timeTween){
+            return
+        }
         cc.resources.load("Radio/Fight", cc.AudioClip, (error, assets:cc.AudioClip)=>{
             if(error){
                 return
@@ -136,10 +139,7 @@ export default class GameScene extends cc.Component {
     // 开始计时
     startTimeCount() {
         let self = this
-        if(this.timeTween){
-            return
-        }
-        this.timeTween = cc.tween(this.node)
+        self.timeTween = cc.tween(self.node)
             .repeatForever(
                 cc.tween()
                     .delay(1)
@@ -207,9 +207,6 @@ export default class GameScene extends cc.Component {
     }
 
     quitGame() {
-        //console.log('quit');
-        // OpenPopups(1, "是否退出游戏", () => {
-        // })
         this.pauseAll()
         cc.director.loadScene("HomePage");
 
@@ -230,7 +227,7 @@ export default class GameScene extends cc.Component {
     }
 
     openSetting() {
-        //console.log('setting');
+        // TODO
     }
 
     gameOver(isWin) {
