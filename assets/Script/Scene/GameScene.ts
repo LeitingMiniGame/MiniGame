@@ -27,12 +27,10 @@ export default class GameScene extends cc.Component {
         // 开启碰撞检测
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
-        // manager.enabledDebugDraw =true
-        // manager.enabledDrawBoundingBox = true
 
         var physicsManager = cc.director.getPhysicsManager();
         physicsManager.enabled = true;
-        cc.director.getPhysicsManager().gravity = cc.v2(0, -960);
+        cc.director.getPhysicsManager().gravity = cc.v2(0, -640);
         this.curTime = 0
 
 
@@ -61,6 +59,9 @@ export default class GameScene extends cc.Component {
     }
 
     startGame(){
+        if(this.timeTween){
+            return
+        }
         cc.resources.load("Radio/Fight", cc.AudioClip, (error, assets:cc.AudioClip)=>{
             if(error){
                 return
@@ -70,7 +71,7 @@ export default class GameScene extends cc.Component {
         cc.find('UILayer/LoadingPanel').active = false
         // 开始计时
         this.resumeAll()
-        this.startTimeCount()
+        this.startTimeCount.call(this)
     }
 
     // 添加角色
@@ -137,17 +138,18 @@ export default class GameScene extends cc.Component {
 
     // 开始计时
     startTimeCount() {
-        this.timeTween = cc.tween(this.node)
+        let self = this
+        self.timeTween = cc.tween(self.node)
             .repeatForever(
                 cc.tween()
                     .delay(1)
                     .call(() => {
-                        MonsterMgr.getInstance().beginCreateMonster(this.curTime)
-                        DataMgr.getInstance().setTimeLabel(this.curTime)
-                        ItemMgr.getInstance().updateItemPool(this.curTime)
-                        this.curTime++
-                        if (this.curTime == 1500) {
-                            this.gameOver(true)
+                        MonsterMgr.getInstance().beginCreateMonster(self.curTime)
+                        DataMgr.getInstance().setTimeLabel(self.curTime)
+                        ItemMgr.getInstance().updateItemPool(self.curTime)
+                        self.curTime++
+                        if (self.curTime == 1500) {
+                            self.gameOver(true)
                         }
                     })
             ).start()
@@ -205,9 +207,6 @@ export default class GameScene extends cc.Component {
     }
 
     quitGame() {
-        //console.log('quit');
-        // OpenPopups(1, "是否退出游戏", () => {
-        // })
         this.pauseAll()
         cc.director.loadScene("HomePage");
 
@@ -228,7 +227,7 @@ export default class GameScene extends cc.Component {
     }
 
     openSetting() {
-        //console.log('setting');
+        // TODO
     }
 
     gameOver(isWin) {
