@@ -301,7 +301,7 @@ export namespace Data {
                     this.BufferAttrivuteConfig.set(ProductAttributeList[Key]["ID"], Value)
                 }
                 //console.log("预处理道具参数信息完成")
-                console.log("BufferAttrivuteConfig : ", this.BufferAttrivuteConfig)
+                // console.log("BufferAttrivuteConfig : ", this.BufferAttrivuteConfig)
 
                 return true;
             }

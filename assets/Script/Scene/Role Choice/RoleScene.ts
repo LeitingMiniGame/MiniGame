@@ -260,7 +260,7 @@ export default class NewClass extends cc.Component {
             //console.log("准备开始游戏");
 
             Data.Gamer.set_Temp("Role", CurrentHero)
-            console.log("Data.Gamer : ",Data.Gamer.queryAllTemp())
+            // console.log("Data.Gamer : ",Data.Gamer.queryAllTemp())
 
             // 否则说明要回到首页
             cc.director.loadScene('Main', function(){
