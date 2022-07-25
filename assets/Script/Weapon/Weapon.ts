@@ -29,7 +29,6 @@ export default abstract class Weapon extends cc.Component {
         this.data.hp -= this.data.minDamage
         if (this.data.hp <= 0) {
             this.node.removeFromParent()
-
         }
     }
 
