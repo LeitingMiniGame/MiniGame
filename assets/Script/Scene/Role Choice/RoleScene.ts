@@ -217,7 +217,7 @@ export default class NewClass extends cc.Component {
             for(let index = 0;index < BufferIDList.length; index++){
                 let CurrentID = parseInt(BufferIDList[index]);
                 let CurrentLevel = BufferList[CurrentID];
-                // //console.log("CurrentID : ",CurrentID,"  CurrentLevel : ",CurrentLevel)
+                // console.log("CurrentID : ",CurrentID,"  CurrentLevel : ",CurrentLevel)
                 let TempBuffer = Data.Buffer.GetBufferAttribute(CurrentID, CurrentLevel )
                 TempBuffer["ID"] = undefined
                 // CurrentHero+=TempBuffer

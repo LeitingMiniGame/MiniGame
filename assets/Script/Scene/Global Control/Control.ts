@@ -32,7 +32,7 @@ export default class NewClass extends cc.Component {
         //console.log("Control要onLoad啦")
         //console.log("准备开始获取常驻节点")
         this.GlobalDataNote = cc.director.getScene().getChildByName("GlobalData");
-        console.log("GlobalDataNote : ", this.GlobalDataNote)
+        // console.log("GlobalDataNote : ", this.GlobalDataNote)
         if(!this.CheckGlobalNode())
             return;
 
@@ -46,7 +46,7 @@ export default class NewClass extends cc.Component {
 
         // 在这里寻找金币的数量
         let GoldCoinNode = cc.find("Canvas/Main Layout/Top Layout/Gold coin/Coin Num");
-        console.log("金币数节点： ", GoldCoinNode);
+        // console.log("金币数节点： ", GoldCoinNode);
         let Basic = Data.Gamer.query("basic");
         if(!Basic){
             this.GlobalDataNote.getComponent("GlobalData").InitGame()
